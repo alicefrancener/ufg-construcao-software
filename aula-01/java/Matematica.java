@@ -1,6 +1,6 @@
 
 public class Matematica{
-  
+
   public int mod(int x, int y){
     if(y >= 0 & x > 0){
       int resto = x;
@@ -146,7 +146,99 @@ public class Matematica{
     return 0;
   }
 
+  public boolean quadradoPerfeito(int numero){
+    if (numero >= 1){
+      int s = 1;
+      int i = 1;
+      while(s < numero){
+        i+=2;
+        s+=i;
+      } 
+    return s == numero;  
+    }
+    System.out.println("Valor não permitido: numero>=1"); 
+    return  false;
+  }
+
+  public double raiz(double numero, int i){
+    if(numero > 0){
+      double r = 1;
+      for(; i >= 0; i--){
+        r = (r + numero/r)/2;
+      }
+      return r;
+    }
+    System.out.println("Valor não permitido: numero > 0"); 
+    return  0;
+  }
+
+  public boolean primo(int numero){
+    if(numero > 1){
+      for(int i = 2; i< numero; i++){
+        if(mod(numero,i) == 0){
+          return false;
+        }
+      }
+      return true;
+    }
+    System.out.println("Valor não permitido: numero > 1"); 
+    return  false;
+  }
+
+  public int MDC(int a, int b){
+    if(b<=a & b>0){
+      while(b !=0 ){
+        int m = mod(a,b);
+        a = b;
+        b = m;
+      }
+      return a;
+    }
+    System.out.println("Valor não permitido: b <= a & b > 0"); 
+    return 0;
+  }
+
+  public int MDC2(int a, int b){
+    if(b<=a & b>0){
+      while(a != b){
+        if(a>b){
+          a-= b;
+        } else {
+          b-= a;
+        }
+      }
+      return a;
+    }
+    System.out.println("Valor não permitido: b <= a & b > 0"); 
+    return 0;
+  }
+
+  public int crivoEratostenes(int[] a, int n){
+    if(n>1){
+      for(int i=2; i<=n; i++){
+        if(a[i] != 0){
+          System.out.println("Valor não permitido: a[" + i + "] != 0 "); 
+          return a;
+        }
+      }
+      int limite = Math.floor(raiz(n,100));
+      for(i = 2; i<=limite;i++){
+        if(a[i]==0){
+          int multiplo = i + i;
+          while(multiplo <= n){
+            a[multiplo] = 1;
+            multiplo+= i;
+          }
+        }
+      }
+    }
+    System.out.println("Valor não permitido: n > 1 "); 
+    return a;
+  }
+
+
 
   
+
 
 }

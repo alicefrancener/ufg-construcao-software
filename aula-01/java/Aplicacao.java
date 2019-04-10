@@ -23,5 +23,8 @@ public class Aplicacao {
     // System.out.println(mat.horner(2, b));
     // System.out.println(mat.fibonacci(6));
 
+    Data data = new Data(19,8,2019);
+    System.out.println(data.diaDaSemana());
+
   }
 }

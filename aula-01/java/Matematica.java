@@ -200,7 +200,6 @@ public class Matematica {
       }
 
       int limite = (int) Math.floor(raiz(a.length, 100));
-      System.out.println("limite:" + limite);
       for (int i = 1; i < limite; i++) {
         if (a[i] == 0) {
           for(int multiplo = 2*i; multiplo < a.length; multiplo += i) {

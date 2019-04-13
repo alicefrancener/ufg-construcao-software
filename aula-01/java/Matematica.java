@@ -9,7 +9,12 @@ public class Matematica {
       // (remova estes comentários)
       // for (; y <= resto; resto -= y)
       // ;
-      while (y <= resto) {
+      
+      // while (y <= resto) {
+      //   resto = resto - y;
+      // }
+      
+      while (resto >= y) {
         resto = resto - y;
       }
       

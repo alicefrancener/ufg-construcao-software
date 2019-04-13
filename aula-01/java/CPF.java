@@ -41,6 +41,9 @@ public class CPF{
     }
     return true;
   }
+  
+  // TODO: Character.getNumericValue está espalhado pelo código, sugiro uma funcao charToValue
+  // int[] converteCaracteresEmInteiros(String cpf)
 
   public boolean validarDigitosCPF(String cpf){
     int j = Character.getNumericValue(cpf.charAt(0));

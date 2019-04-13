@@ -1,8 +1,11 @@
 
 function validarDigitosCPF(cpf){
   if(cpf.length != 11){
+    // TODO RangeError captura melhor esta situação em vez de Error.
     throw new Error("Argumento inválido, CPF deve ter 11 dígitos");
   }
+  
+  // TODO parseInt espalhado pelo código, por que não localizar?
   var j = parseInt(cpf.charAt(0));
   var k = parseInt(cpf.charAt(1));
   for(var i = 1; i < 9; i++){
@@ -31,8 +34,11 @@ function validarDigitosCPF2(cpf){
   }
   var j = (s % 11) % 10;
   var k = ((s - p + 9*parseInt(cpf.charAt(9))) % 11) % 10;
-  if(j === parseInt(cpf.charAt(9)) && k === parseInt(cpf.charAt(10))){
-    return true;
-  }
-  return false;
+  // if(j === parseInt(cpf.charAt(9)) && k === parseInt(cpf.charAt(10))){
+  //  return true;
+  // }
+  // return false;
+  
+  // Lembra-se do "if" do código do João Carlos, era similar ao comentado acima.
+  return j === parseInt(cpf.charAt(9)) && k === parseInt(cpf.charAt(10));
 }

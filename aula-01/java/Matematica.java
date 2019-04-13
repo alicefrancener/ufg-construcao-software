@@ -4,8 +4,15 @@ public class Matematica {
   public int mod(int x, int y) {
     if (y >= 0 & x > 0) {
       int resto = x;
-      for (; y <= resto; resto -= y)
-        ;
+      
+      // Em defesa da legibilidade => manutenibilidade
+      // (remova estes comentários)
+      // for (; y <= resto; resto -= y)
+      // ;
+      while (y <= resto) {
+        resto = resto - y;
+      }
+      
       return resto;
     }
     throw new IllegalArgumentException("Argumento fora do intervalo permitido: y >=0 & x > 0");

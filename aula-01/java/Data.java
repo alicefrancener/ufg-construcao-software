@@ -13,11 +13,12 @@ public class Data {
   }
 
   public void setDia(int dia) {
-    if (dia >= 1 & dia <= 31) {
-      this.dia = dia;
-      return;
+    if (dia < 1 || dia > 31) {
+      throw new IllegalArgumentException("dia invalido: " + dia);
     }
-    throw new IllegalArgumentException("Argumento inválido: 1 <= dia <= 31");
+    
+    this.dia = dia;
+    return;
   }
 
   public void setMes(int mes) {

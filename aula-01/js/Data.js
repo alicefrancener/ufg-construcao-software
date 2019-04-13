@@ -36,6 +36,15 @@ function numeroEmDia(numero){
     return semana;
 }
 
+function diaDaSemanaToString(dia) {
+  // TODO verifique se dia está em uma faixa válida 0..6 ou RangeError.
+  // Este método deve substituir o método anterior, compare-os e escolha um.
+  
+  const nomes = [ "segunda-feira", "terça-feira", continue aqui por favor ];
+  
+  return nomes[dia];
+}
+
 function diaDaSemana(dia, mes, ano){
   if(validarData(dia, mes, ano)){
     if (mes === 1 || mes === 2) {

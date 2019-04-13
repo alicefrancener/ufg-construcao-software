@@ -18,7 +18,6 @@ public class Data {
     }
     
     this.dia = dia;
-    return;
   }
 
   public void setMes(int mes) {

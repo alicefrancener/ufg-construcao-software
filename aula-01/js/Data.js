@@ -9,6 +9,23 @@ function validarData(dia, mes, ano){
   return false;
 }
 
+// TODO verifique se prefere a versao acima ou aquela abaixo distribuída em 4 outras funcoes
+function diaValido(dia) {
+  return dia > 0 && dia < 32;
+}
+
+function mesValido(mes) {
+  return mes > 0 && mes < 13;
+}
+
+function anoValido(ano) {
+  return ano > 1753;
+}
+
+function validaData(dia, mes, ano) {
+  return diaValido(dia) && mesValido(mes) && anoValido(ano);
+}
+
 function numeroEmDia(numero){
   var semana = "";
   switch (numero) {
@@ -34,6 +51,15 @@ function numeroEmDia(numero){
       semana = "domingo";
     }
     return semana;
+}
+
+function diaDaSemanaToString(dia) {
+  // TODO verifique se dia está em uma faixa válida 0..6 ou RangeError.
+  // Este método deve substituir o método anterior, compare-os e escolha um.
+  
+  const nomes = [ "segunda-feira", "terça-feira", continue aqui por favor ];
+  
+  return nomes[dia];
 }
 
 function diaDaSemana(dia, mes, ano){

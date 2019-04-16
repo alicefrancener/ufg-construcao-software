@@ -23,9 +23,13 @@ public class CPF{
     if(!cpfNumerico(cpf)){
       throw new IllegalArgumentException("Argumento inválido, CPF deve conter somente dígitos (0 a 9)");
     }
+    
+    // FIXME: uso nao recomendado de exceção para indicar resultado de operação
     if(!validarDigitosCPF2(cpf)){
       throw new IllegalArgumentException("Argumento inválido, dígitos verificadores do CPF incorretos");
     }
+    
+    // FIXME retorno irrelevante, pois se exceção não é gerada, sempre retorna true.
     return true;
   }
 
@@ -37,6 +41,9 @@ public class CPF{
     }
     return true;
   }
+  
+  // TODO: Character.getNumericValue está espalhado pelo código, sugiro uma funcao charToValue
+  // int[] converteCaracteresEmInteiros(String cpf)
 
   public boolean validarDigitosCPF(String cpf){
     int j = Character.getNumericValue(cpf.charAt(0));

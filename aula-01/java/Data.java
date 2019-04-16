@@ -16,25 +16,21 @@ public class Data {
     if (dia < 1 || dia > 31) {
       throw new IllegalArgumentException("dia invalido: " + dia);
     }
-    
     this.dia = dia;
   }
 
   public void setMes(int mes) {
-    if (mes >= 1 & mes <= 12) {
-      this.mes = mes;
-      return;
+    if (mes < 1 || mes > 12) {
+      throw new IllegalArgumentException("Argumento inválido: 1 <= mes <= 12");
     }
-    throw new IllegalArgumentException("Argumento inválido: 1 <= mes <= 12");
-
+    this.mes = mes;
   }
 
   public void setAno(int ano) {
-    if (ano > 1753) {
-      this.ano = ano;
-      return;
+    if (ano < 1754) {
+      throw new IllegalArgumentException("Argumento inválido: ano > 1753");
     }
-    throw new IllegalArgumentException("Argumento inválido: ano > 1753");
+    this.ano = ano;
   }
 
   public int getDia() {
@@ -49,6 +45,14 @@ public class Data {
     return this.ano;
   }
 
+  public String diaDaSemanaToString(int dia) {
+    if(dia < 0 || dia > 6){
+      throw new IllegalArgumentException("O argumento dia deve estar entre 0 e 6.");
+    }
+    String nomes[] = {"segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"};
+    return nomes[dia];
+  }
+
   public String diaDaSemana() {
     int mes = getMes();
     int ano = getAno();
@@ -58,34 +62,7 @@ public class Data {
     }
     int soma = getDia() + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
     int resultado = soma % 7;
-    return numeroEmDia(resultado);
-  }
-
-  public String numeroEmDia(int numero) {
-    String semana = "";
-    switch (numero) {
-    case 0:
-      semana = "segunda-feira";
-      break;
-    case 1:
-      semana = "terça-feira";
-      break;
-    case 2:
-      semana = "quarta-feira";
-      break;
-    case 3:
-      semana = "quinta-feira";
-      break;
-    case 4:
-      semana = "sexta-feira";
-      break;
-    case 5:
-      semana = "sábado";
-      break;
-    case 6:
-      semana = "domingo";
-    }
-    return semana;
+    return diaDaSemanaToString(resultado);
   }
 
 }

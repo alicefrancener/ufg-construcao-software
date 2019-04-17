@@ -3,34 +3,24 @@ public class CPF{
   private String cpf;
 
   public CPF(String cpf){
-    setCpf(cpf);
-  }
-
-  public void setCpf(String cpf){
-    if(validarCPF(cpf)){
-      this.cpf = cpf;
-    }
+    validarCPF(cpf);
+    this.cpf = cpf;
   }
 
   public String getCpf(){
     return this.cpf;
   }
 
-  public boolean validarCPF(String cpf){
+  public void validarCPF(String cpf){
     if(cpf.length() != 11){
-      throw new IllegalArgumentException("Argumento inválido, CPF deve ter 11 dígitos");
+      throw new IllegalArgumentException("CPF deve ter 11 dígitos: " + cpf);
     }
     if(!cpfNumerico(cpf)){
-      throw new IllegalArgumentException("Argumento inválido, CPF deve conter somente dígitos (0 a 9)");
+      throw new IllegalArgumentException("CPF deve conter somente dígitos (0 a 9): " + cpf);
     }
-    
-    // FIXME: uso nao recomendado de exceção para indicar resultado de operação
     if(!validarDigitosCPF2(cpf)){
-      throw new IllegalArgumentException("Argumento inválido, dígitos verificadores do CPF incorretos");
+      throw new IllegalArgumentException("dígitos verificadores do CPF incorretos: " + cpf);
     }
-    
-    // FIXME retorno irrelevante, pois se exceção não é gerada, sempre retorna true.
-    return true;
   }
 
   public boolean cpfNumerico(String cpf){
@@ -42,39 +32,40 @@ public class CPF{
     return true;
   }
   
-  // TODO: Character.getNumericValue está espalhado pelo código, sugiro uma funcao charToValue
-  // int[] converteCaracteresEmInteiros(String cpf)
+  public int[] converteCaracteresEmInteiros(String cpf){
+    int[] cpfVetor = new int[11];
+    for(int i = 0; i < cpf.length(); i++){
+      cpfVetor[i] = Character.getNumericValue(cpf.charAt(i));
+    }
+    return cpfVetor;
+  }
 
   public boolean validarDigitosCPF(String cpf){
-    int j = Character.getNumericValue(cpf.charAt(0));
-    int k = Character.getNumericValue(cpf.charAt(1));
+    int[] cpfVetor = converteCaracteresEmInteiros(cpf);
+    int j = cpfVetor[0];
+    int k = cpfVetor[1];
     for(int i = 1; i < 9; i++){
-      j += Character.getNumericValue(cpf.charAt(i)*(i+1));
+      j += cpfVetor[i]*(i+1);
     }
     for(int i = 2; i < 10; i++){
-      k += Character.getNumericValue(cpf.charAt(i)*(i+1));
+      k += cpfVetor[i]*i;
     }
     int dj = (j % 11) % 10;
     int dk = (k % 11) % 10;
-    if(dj == Character.getNumericValue(cpf.charAt(9)) & dk == Character.getNumericValue(cpf.charAt(10))){
-      return true;
-    }
-    return false;
+    return dj == cpfVetor[9] & dk == cpfVetor[10];
   }
 
   public boolean validarDigitosCPF2(String cpf){
-    int p = Character.getNumericValue(cpf.charAt(8));
+    int[] cpfVetor = converteCaracteresEmInteiros(cpf);
+    int p = cpfVetor[8];
     int s = p;
     for(int c = 7; c >=0; c--){
-      p += Character.getNumericValue(cpf.charAt(c));
+      p += cpfVetor[c];
       s += p;
     }
     int j = (s % 11) % 10;
-    int k = ((s - p + 9*Character.getNumericValue(cpf.charAt(9))) % 11) % 10;
-    if(j == Character.getNumericValue(cpf.charAt(9)) & k == Character.getNumericValue(cpf.charAt(10))){
-      return true;
-    }
-    return false;
+    int k = ((s - p + 9 * cpfVetor[9]) % 11) % 10;
+    return (j == cpfVetor[9] & k == cpfVetor[10]);
   }
 
 }

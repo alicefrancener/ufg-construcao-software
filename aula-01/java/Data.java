@@ -21,14 +21,14 @@ public class Data {
 
   public void setMes(int mes) {
     if (mes < 1 || mes > 12) {
-      throw new IllegalArgumentException("Argumento inválido: 1 <= mes <= 12");
+      throw new IllegalArgumentException("mes inválido: " + mes);
     }
     this.mes = mes;
   }
 
   public void setAno(int ano) {
     if (ano < 1754) {
-      throw new IllegalArgumentException("Argumento inválido: ano > 1753");
+      throw new IllegalArgumentException("ano inválido: " + ano);
     }
     this.ano = ano;
   }
@@ -47,7 +47,7 @@ public class Data {
 
   public String diaDaSemanaToString(int dia) {
     if(dia < 0 || dia > 6){
-      throw new IllegalArgumentException("O argumento dia deve estar entre 0 e 6.");
+      throw new IllegalArgumentException("Dia inválido: " + dia + ". Dia deve estar entre 0 e 6.");
     }
     String nomes[] = {"segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"};
     return nomes[dia];

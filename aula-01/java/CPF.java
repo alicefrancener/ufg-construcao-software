@@ -20,16 +20,16 @@ public class CPF {
             throw new IllegalArgumentException("CPF deve ter 11 dígitos: " + cpf);
         }
 
-        if (!cpfNumerico(cpf)) {
+        if (!sequenciaContemApenasDigitos(cpf)) {
             throw new IllegalArgumentException("CPF deve conter somente dígitos (0 a 9): " + cpf);
         }
-        
+
         if (!validarDigitosCPF2(cpf)) {
             throw new IllegalArgumentException("dígitos verificadores do CPF incorretos: " + cpf);
         }
     }
 
-    public boolean cpfNumerico(String cpf) {
+    public boolean sequenciaContemApenasDigitos(String cpf) {
         for (int i = 0; i < cpf.length(); i++) {
             if (!Character.isDigit(cpf.charAt(i))) {
                 return false;

@@ -1,5 +1,3 @@
-import java.util.stream.Stream;
-
 public class CPF {
 
     private String cpf;
@@ -13,7 +11,7 @@ public class CPF {
         return this.cpf;
     }
 
-    public void validarCPF(String cpf) {
+    public static void validarCPF(String cpf) {
         if (cpf == null) {
             throw new IllegalArgumentException("argumento é null");
         }
@@ -31,15 +29,15 @@ public class CPF {
         }
     }
 
-    private boolean sequenciaContemApenasDigitos(final String cpf) {
+    private static boolean sequenciaContemApenasDigitos(final String cpf) {
         return cpf.chars().allMatch(c -> Character.isDigit(c));
     }
 
-    public int[] converteCaracteresEmInteiros(String cpf) {
+    public static int[] converteCaracteresEmInteiros(String cpf) {
         return cpf.chars().map(c -> Character.getNumericValue(c)).toArray();
     }
 
-    public boolean validarDigitosCPF(String cpf) {
+    public static boolean validarDigitosCPF(String cpf) {
         int[] cpfVetor = converteCaracteresEmInteiros(cpf);
         int j = cpfVetor[0];
         int k = cpfVetor[1];
@@ -54,7 +52,7 @@ public class CPF {
         return dj == cpfVetor[9] & dk == cpfVetor[10];
     }
 
-    public boolean validarDigitosCPF2(String cpf) {
+    public static boolean validarDigitosCPF2(String cpf) {
         int[] cpfVetor = converteCaracteresEmInteiros(cpf);
         int p = cpfVetor[8];
         int s = p;

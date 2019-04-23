@@ -31,7 +31,7 @@ public class CPF {
         }
     }
 
-    public boolean sequenciaContemApenasDigitos(final String cpf) {
+    private boolean sequenciaContemApenasDigitos(final String cpf) {
         return cpf.chars().allMatch(c -> Character.isDigit(c));
     }
 

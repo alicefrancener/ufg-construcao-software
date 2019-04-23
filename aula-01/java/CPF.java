@@ -12,12 +12,18 @@ public class CPF {
     }
 
     public void validarCPF(String cpf) {
+        if (cpf == null) {
+            throw new IllegalArgumentException("argumento é null");
+        }
+
         if (cpf.length() != 11) {
             throw new IllegalArgumentException("CPF deve ter 11 dígitos: " + cpf);
         }
+
         if (!cpfNumerico(cpf)) {
             throw new IllegalArgumentException("CPF deve conter somente dígitos (0 a 9): " + cpf);
         }
+        
         if (!validarDigitosCPF2(cpf)) {
             throw new IllegalArgumentException("dígitos verificadores do CPF incorretos: " + cpf);
         }

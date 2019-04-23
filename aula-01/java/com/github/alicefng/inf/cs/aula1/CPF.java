@@ -1,3 +1,5 @@
+package com.github.alicefng.inf.cs.aula1;
+
 public class CPF {
 
     private String cpf;

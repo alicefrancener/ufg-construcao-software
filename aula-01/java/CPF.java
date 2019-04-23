@@ -1,3 +1,5 @@
+import java.util.stream.Stream;
+
 public class CPF {
 
     private String cpf;
@@ -30,13 +32,7 @@ public class CPF {
     }
 
     public boolean sequenciaContemApenasDigitos(final String cpf) {
-        for (int i = 0; i < cpf.length(); i++) {
-            if (!Character.isDigit(cpf.charAt(i))) {
-                return false;
-            }
-        }
-        
-        return true;
+        return cpf.chars().allMatch(c -> Character.isDigit(c));
     }
 
     public int[] converteCaracteresEmInteiros(String cpf) {

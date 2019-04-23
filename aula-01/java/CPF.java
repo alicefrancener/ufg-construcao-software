@@ -36,11 +36,7 @@ public class CPF {
     }
 
     public int[] converteCaracteresEmInteiros(String cpf) {
-        int[] cpfVetor = new int[11];
-        for (int i = 0; i < cpf.length(); i++) {
-            cpfVetor[i] = Character.getNumericValue(cpf.charAt(i));
-        }
-        return cpfVetor;
+        return cpf.chars().map(c -> Character.getNumericValue(c)).toArray();
     }
 
     public boolean validarDigitosCPF(String cpf) {

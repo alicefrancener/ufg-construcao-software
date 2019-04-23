@@ -29,12 +29,13 @@ public class CPF {
         }
     }
 
-    public boolean sequenciaContemApenasDigitos(String cpf) {
+    public boolean sequenciaContemApenasDigitos(final String cpf) {
         for (int i = 0; i < cpf.length(); i++) {
             if (!Character.isDigit(cpf.charAt(i))) {
                 return false;
             }
         }
+        
         return true;
     }
 

@@ -26,7 +26,7 @@ public class CPF {
             throw new IllegalArgumentException("CPF deve conter somente dígitos (0 a 9): " + cpf);
         }
 
-        if (!validarDigitosCPF2(cpf)) {
+        if (!validarDigitosCPF(cpf)) {
             throw new IllegalArgumentException("dígitos verificadores do CPF incorretos: " + cpf);
         }
     }
@@ -40,31 +40,31 @@ public class CPF {
     }
 
     public static boolean validarDigitosCPF(String cpf) {
-        int[] cpfVetor = converteCaracteresEmInteiros(cpf);
-        int j = cpfVetor[0];
-        int k = cpfVetor[1];
+        int[] digitosCpf = converteCaracteresEmInteiros(cpf);
+        int calculoParcialDigito10 = digitosCpf[0];
+        int calculoParcialDigito11 = digitosCpf[1];
         for (int i = 1; i < 9; i++) {
-            j += cpfVetor[i] * (i + 1);
+            calculoParcialDigito10 += digitosCpf[i] * (i + 1);
         }
         for (int i = 2; i < 10; i++) {
-            k += cpfVetor[i] * i;
+            calculoParcialDigito11 += digitosCpf[i] * i;
         }
-        int dj = (j % 11) % 10;
-        int dk = (k % 11) % 10;
-        return dj == cpfVetor[9] & dk == cpfVetor[10];
+        int calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
+        int calculoFinalDigito11 = (calculoParcialDigito11 % 11) % 10;
+        return calculoFinalDigito10 == digitosCpf[9] & calculoFinalDigito11 == digitosCpf[10];
     }
 
     public static boolean validarDigitosCPF2(String cpf) {
-        int[] cpfVetor = converteCaracteresEmInteiros(cpf);
-        int p = cpfVetor[8];
-        int s = p;
-        for (int c = 7; c >= 0; c--) {
-            p += cpfVetor[c];
-            s += p;
+        int[] digitosCpf = converteCaracteresEmInteiros(cpf);
+        int calculoParcialDigito11 = digitosCpf[8];
+        int calculoParcialDigito10 = calculoParcialDigito11;
+        for (int i = 7; i >= 0; i--) {
+            calculoParcialDigito11 += digitosCpf[i];
+            calculoParcialDigito10 += calculoParcialDigito11;
         }
-        int j = (s % 11) % 10;
-        int k = ((s - p + 9 * cpfVetor[9]) % 11) % 10;
-        return (j == cpfVetor[9] & k == cpfVetor[10]);
+        int calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
+        int calculoFinalDigito11 = ((calculoParcialDigito10 - calculoParcialDigito11 + 9 * digitosCpf[9]) % 11) % 10;
+        return calculoFinalDigito10 == digitosCpf[9] & calculoFinalDigito11 == digitosCpf[10];
     }
 
 }

@@ -1,10 +1,10 @@
 function converteCaracteresEmInteiros(cpf) {
-  var cpfVetor = [];
+  var digitosCpf = [];
   for (var i = 0; i < cpf.length; i++) {
-    cpfVetor[i] = parseInt(cpf.charAt(i));
+    digitosCpf[i] = parseInt(cpf.charAt(i));
   }
 
-  return cpfVetor;
+  return digitosCpf;
 }
 
 function validarDigitosCPF(cpf) {
@@ -12,35 +12,35 @@ function validarDigitosCPF(cpf) {
     throw new RangeError("CPF deve ter 11 dígitos: " + cpf);
   }
 
-  var cpfVetor = converteCaracteresEmInteiros(cpf);
-  var j = cpfVetor[0];
-  var k = cpfVetor[1];;
+  var digitosCpf = converteCaracteresEmInteiros(cpf);
+  var calculoParcialDigito10 = digitosCpf[0];
+  var calculoParcialDigito11 = digitosCpf[1];;
   for (var i = 1; i < 9; i++) {
-    j += cpfVetor[i] * (i + 1);
+    calculoParcialDigito10 += digitosCpf[i] * (i + 1);
   }
 
   for (var i = 2; i < 10; i++) {
-    k += cpfVetor[i] * i;
+    calculoParcialDigito11 += digitosCpf[i] * i;
   }
 
-  var dj = (j % 11) % 10;
-  var dk = (k % 11) % 10;
+  var calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
+  var calculoFinalDigito11 = (calculoParcialDigito11 % 11) % 10;
 
-  return (dj == cpfVetor[9] && dk == cpfVetor[10]);
+  return calculoFinalDigito10 == digitosCpf[9] && calculoFinalDigito11 == digitosCpf[10]);
 }
 
 function validarDigitosCPF2(cpf) {
   if (cpf.length != 11) {
     throw new RangeError("CPF deve ter 11 dígitos: " + cpf);
   }
-  var cpfVetor = converteCaracteresEmInteiros(cpf);
-  var p = cpfVetor[8];
-  var s = p;
+  var digitosCpf = converteCaracteresEmInteiros(cpf);
+  var calculoParcialDigito11 = digitosCpf[8];
+  var calculoParcialDigito10 = calculoParcialDigito11;
   for (var c = 7; c >= 0; c--) {
-    p += cpfVetor[c];
-    s += p;
+    calculoParcialDigito11 += digitosCpf[c];
+    calculoParcialDigito10 += calculoParcialDigito11;
   }
-  var j = (s % 11) % 10;
-  var k = ((s - p + 9 * cpfVetor[9]) % 11) % 10;
-  return j === cpfVetor[9] && k === cpfVetor[10];
+  var calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
+  var calculoFinalDigito11 = ((calculoParcialDigito10 - calculoParcialDigito11 + 9 * digitosCpf[9]) % 11) % 10;
+  return calculoFinalDigito10 === digitosCpf[9] && calculoFinalDigito11 === digitosCpf[10];
 }

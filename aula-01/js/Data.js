@@ -18,8 +18,8 @@ function diaDaSemanaToString(dia) {
   if (dia < 0 || dia > 6) {
     throw new RangeError("dia inválido: " + dia + ". dia deve estar entre 0 e 6.");
   }
-  const nomes = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"];
-  return nomes[dia];
+  const nomesDiasDaSemana = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"];
+  return nomesDiasDaSemana[dia];
 }
 
 function diaDaSemana(dia, mes, ano) {
@@ -30,7 +30,7 @@ function diaDaSemana(dia, mes, ano) {
     mes += 12;
     ano -= 1;
   }
-  var soma = parseInt(dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
-  var resultado = soma % 7;
-  return diaDaSemanaToString(resultado);
+  var calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
+  var calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
+  return diaDaSemanaToString(calculoDiaDaSemanaFinal);
 }

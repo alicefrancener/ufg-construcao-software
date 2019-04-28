@@ -1,29 +1,29 @@
-function mod(x, y) {
-  if (y < 0 || x <= 0) {
-    throw new RangeError("x ou y inválido: x = " + x + ", y = " + y);
+function restoDaDivisaoInteira(numerador, denominador) {
+  if (numerador <= 0 || denominador < 0) {
+    throw new RangeError("numerador ou denominador inválido: numerado = " + numerador + ", denominador = " + denominador);
   }
-  var resto = x;
-  while (resto >= y) {
-    resto = resto - y;
+  var resto = numerador;
+  while (resto >= denominador) {
+    resto = resto - denominador;
   }
   return resto;
 }
 
-function produto(a, b) {
-  if (a < 0 || b < 0) {
-    throw new RangeError("a ou b inválido: a = " + a + ", b = " + b);
+function produto(multiplicando, multiplicador) {
+  if (multiplicando < 0 || multiplicador < 0) {
+    throw new RangeError("multiplicando ou multiplicador inválido: multiplicando = " + multiplicando + ", multiplicador = " + multiplicador);
   }
-  var totalParcelas = a;
-  var parcela = b;
-  if (b < a) {
-    totalParcelas = b;
-    parcela = a;
+  var totalParcelas = multiplicando;
+  var parcela = multiplicador;
+  if (multiplicador < multiplicando) {
+    totalParcelas = multiplicador;
+    parcela = multiplicando;
   }
-  var soma = 0;
+  var produto = 0;
   for (var i = 1; i <= totalParcelas; i += 1) {
-    soma += parcela;
+    produto += parcela;
   }
-  return soma;
+  return produto;
 }
 
 
@@ -31,47 +31,48 @@ function potencia(base, expoente) {
   if (base < 0 || expoente < 0) {
     throw new RangeError("base ou expoente inválido: base = " + base + ", expoente = " + expoente);
   }
-  var potencia2 = 1;
+  var potencia = 1;
   for (var i = 1; i <= expoente; i++) {
-    potencia2 = produto(potencia2, base);
+    potencia = produto(potencia, base);
   }
-  return potencia2;
+  return potencia;
 }
 
-function intervalo(numero, intervaloInferior, intervaloSuperior) {
-  if (numero >= intervaloInferior && numero <= intervaloSuperior)
-    return true;
+function estaDentroDoIntervalo(numero, intervaloInferior, intervaloSuperior) {
+  if (numero >= intervaloInferior && numero <= intervaloSuperior) {
+      return true;
+  }
   return false;
 }
 
-function propriedade3025(numero) {
-  if (!intervalo(numero, 0, 9999)) {
+function possuiPropriedade3025(numero) {
+  if (!estaDentroDoIntervalo(numero, 0, 9999)) {
     throw new RangeError("numero inválido: " + numero);
   }
   var quociente = parseInt(numero / 100);
-  var resto = mod(numero, 100);
+  var resto = restoDaDivisaoInteira(numero, 100);
   var resultado = potencia(quociente + resto, 2);
   return numero === resultado;
 }
 
-function propriedade153(numero) {
-  if (!intervalo(numero, 100, 999)) {
+function possuiPropriedade153(numero) {
+  if (!estaDentroDoIntervalo(numero, 100, 999)) {
     throw new RangeError("numero inválido: " + numero);
   }
   var quociente = parseInt(numero / 100);
-  var resto = mod(numero, 100);
+  var resto = restoDaDivisaoInteira(numero, 100);
   var quociente2 = parseInt(resto / 10);
-  var resto2 = mod(resto, 10);
+  var resto2 = restoDaDivisaoInteira(resto, 10);
   var resultado = potencia(quociente, 3) + potencia(quociente2, 3) + potencia(resto2, 3);
   return resultado === numero;
 }
 
-function somaNaturais(numero) {
+function somaDosPrimeirosNaturais(numero) {
   if (numero < 1) {
     throw new RangeError("numero inválido: " + numero);
   }
   var soma = 1;
-  for (var i = 2; numero >= i; i++) {
+  for (var i = 2; i <= numero; i++) {
     soma += i;
   }
   return soma;
@@ -88,153 +89,154 @@ function fatorial(numero) {
   return fatorial;
 }
 
-function pi(n) {
-  if (n < 1) {
+function pi(precisao) {
+  if (precisao < 1) {
     throw new RangeError("n inválido: " + n);
   }
   var p = 0, s = -1, d = -1;
-  for (var i = 1; i <= n; i++) {
+  for (var i = 1; i <= precisao; i++) {
     d += 2;
     s = -1 * s;
-    p += 4 * s / d;
+    pi += 4 * s / d;
   }
-  return p;
+  return pi;
 }
 
-function logaritmoNatural(n, k) {
-  if (n < 1 || k < 2) {
-    throw new RangeError("n ou k inválido: n = " + n + ", k = " + k);
+function logaritmoNatural(expoente, precisao) {
+  if (expoente < 1 || precisao < 2) {
+    throw new RangeError("expoente ou k inválido: expoente = " + expoente + ", precisao = " + precisao);
   }
-  var e = 1 + n;
-  var numerador = n;
+  var logaritmoNatural = 1 + expoente;
+  var numerador = expoente;
   var denominador = 1;
-  for (var i = 2; i <= k; i++) {
+  for (var i = 2; i <= precisao; i++) {
     numerador *= numerador;
     denominador += i;
-    e += numerador / denominador;
+    logaritmoNatural += numerador / denominador;
   }
-  return e;
+  return logaritmoNatural;
 }
 
-function razaoAurea(x, y, k) {
-  if (x < 0 || x >= y || k <= 0) {
-    throw new RangeError("x, y ou k inválido: x = " + x + ", y = " + y + ", k = " + k);
+function razaoAurea(numeroA, numeroB, precisao) {
+  if (x < 0 || x >= numeroB || precisao <= 0) {
+    throw new RangeError("numeroA, numeroB ou precisao inválido: numeroA = " + numeroA + ", numeroB = " + numeroB + ", precisao = " + precisao);
   }
-  var c = y;
-  var a = x;
-  for (var i = 1; i <= k; i++) {
-    var t = c;
-    c += a;
-    a = t;
+  var numerador = numeroB;
+  var denominador = numeroA;
+  for (var i = 1; i <= precisao; i++) {
+    var temporario = numerador;
+    numerador += denominador;
+    denominador = temporario;
   }
-  return c / a;
+  return numerador / denominador;
 }
 
 
-function quadradoPerfeito(numero) {
+function isQuadradoPerfeito(numero) {
   if (numero < 1) {
     throw new RangeError("numero inválido: " + numero);
   }
-  var s = 1;
-  for (var i = 3; s < numero; i += 2) {
-    s += i;
+  var soma = 1;
+  for (var i = 3; soma < numero; i += 2) {
+    soma += i;
   }
-  return s == numero;
+  return soma == numero;
 }
 
-function raiz(numero, i) {
-  if (numero <= 0) {
-    throw new RangeError("numero inválido: " + numero);
+function raizQuadrada(radicando, precisao) {
+  if (radicando <= 0) {
+    throw new RangeError("radicando inválido: " + radicando);
   }
-  var r = 1;
-  for (; i >= 0; i--) {
-    r = (r + numero / r) / 2;
+  var raizQuadrada = 1;
+  for (; precisao >= 0; precisao--) {
+    raizQuadrada = (raizQuadrada + radicando / raizQuadrada) / 2;
   }
-  return r;
+  return raizQuadrada;
 }
 
-function primo(numero) {
+function isPrimo(numero) {
   if (numero <= 1) {
     throw new RangeError("numero inválido: " + numero);
   }
   for (var i = 2; i < numero; i++) {
-    if (mod(numero, i) == 0) {
+    if (restoDaDivisaoInteira(numero, i) == 0) {
       return false;
     }
   }
   return true;
 }
 
-function MDC(a, b) {
-  if (b > a || b <= 0) {
-    throw new RangeError("a ou b inválido: a = " + a + ", b = " + b);
+function maiorDivisorComumMetodo1(numeroA, numeroB) {
+  if (numeroB > numeroA || numeroB <= 0) {
+    throw new RangeError("numeroA ou numeroB inválido: numeroA = " + numeroA + ", numeroB = " + numeroB);
   }
-  while (b !== 0) {
-    var m = mod(a, b);
-    a = b;
-    b = m;
+  while (numeroB !== 0) {
+    var temporario = restoDaDivisaoInteira(numeroA, numeroB);
+    numeroA = numeroB;
+    numeroB = temporario;
   }
-  return a;
+  return numeroA;
 }
 
-function MDC2(a, b) {
-  if (b > a || b <= 0) {
-    throw new RangeError("a ou b inválido: a = " + a + ", b = " + b);
+function maiorDivisorComumMetodo2(numeroA, numeroB) {
+  if (numeroB > numeroA || numeroB <= 0) {
+    throw new RangeError("numeroA ou numeroB inválido: numeroA = " + numeroA + ", numeroB = " + numeroB);
   }
-  while (a !== b) {
-    if (a > b) {
-      a -= b;
+  while (numeroA !== numeroB) {
+    if (numeroA > numeroB) {
+      numeroA -= numeroB;
     } else {
-      b -= a;
+      numeroB -= numeroA;
     }
   }
-  return a;
+  return numeroA;
 }
 
-function crivoEratostenes(a) {
-  if (a.length <= 1) {
-    throw new Error("a.length inválido: " + a.length);
+function determinarNumerosPrimos(vetorZeros) {
+  if (vetorZeros.length <= 1) {
+    throw new Error("vetorZeros.length inválido: " + vetorZeros.length);
   }
-  for (var i = 1; i < a.length; i++) {
-    if (a[i] != 0) {
-      throw new RangeError("a[" + i + "] inválido: " + a[i]);
+  for (var i = 1; i < vetorZeros.length; i++) {
+    if (vetorZeros[i] != 0) {
+      throw new RangeError("vetorZeros[" + i + "] inválido: " + vetorZeros[i]);
     }
   }
-  var limite = Math.floor(raiz(a.length, 100));
+  var limite = Math.floor(raiz(vetorZeros.length, 100));
   for (var i = 1; i < limite; i++) {
-    if (a[i] == 0) {
-      for (var multiplo = 2 * i; multiplo < a.length; multiplo += i) {
-        a[multiplo] = 1;
+    if (vetorZeros[i] == 0) {
+      for (var multiplo = 2 * i; multiplo < vetorZeros.length; multiplo += i) {
+        vetorZeros[multiplo] = 1;
       }
     }
   }
-  return a;
+  return vetorZeros;
 }
 
-function horner(x, vetorNumeros) {
-  if (vetorNumeros.length < 1) {
-    throw new Error("vetorNumeros.length inválido: " + vetorNumeros.length);
+function calcularPolinomio(numero, coeficientes) {
+  const grauDoPolinomio = coeficientes.length;
+  if (grauDoPolinomio < 1) {
+    throw new Error("grau do polinomio inválido: " + grauDoPolinomio);
   }
-  var p = vetorNumeros[vetorNumeros.length - 1];
-  for (var i = vetorNumeros.length - 2; i >= 0; i--) {
-    p = p * x + vetorNumeros[i];
+  var polinomio = coeficientes[grauDoPolinomio - 1];
+  for (var i = grauDoPolinomio - 2; i >= 0; i--) {
+    polinomio = polinomio * numero + coeficientes[i];
   }
-  return p;
+  return polinomio;
 }
 
-function fibonacci(n) {
-  if (n < 0) {
-    throw new RangeError("n inválido: " + n);
+function obterEnesimoTermoDaSequenciaDeFibonacci(enesimoTermo) {
+  if (enesimoTermo < 0) {
+    throw new RangeError("enesimoTermo inválido: " + enesimoTermo);
   }
-  var a = 0;
-  var c = 1;
-  if (n === 0 | n === 1) {
-    return n;
+  var termoProximo = 0;
+  var termoAtual = 1;
+  if (enesimoTermo === 0 | enesimoTermo === 1) {
+    return enesimoTermo;
   }
-  for (var i = 2; i <= n; i++) {
-    var t = c;
-    c += a;
-    a = t;
+  for (var i = 2; i <= enesimoTermo; i++) {
+    var temporario = termoAtual;
+    termoAtual = termoAtual + termoProximo;
+    termoProximo = temporario;
   }
-  return c;
+  return termoAtual;
 }

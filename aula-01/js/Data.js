@@ -1,31 +1,41 @@
+class DataInvalidaError extends Error {
+  constructor(msg) {
+    super(msg);
+    this.name = "DataInvalidaError";
+  }
+}
+
 function diaValido(dia) {
-  return dia > 0 && dia < 32;
+  if (dia < 1 || dia > 31){
+    throw new DataInvalidaError("dia invalido: " + dia);
+  }
 }
 
 function mesValido(mes) {
-  return mes > 0 && mes < 13;
+  if (mes < 1 || mes > 12) {
+    throw new DataInvalidaError("mes invalido: " + mes);
+  }
 }
 
 function anoValido(ano) {
-  return ano > 1753;
+  if (ano <= 1753) {
+    throw new DataInvalidaError("ano invalido: " + ano);
+  }
 }
 
 function validaData(dia, mes, ano) {
-  return diaValido(dia) && mesValido(mes) && anoValido(ano);
+  diaValido(dia);
+  mesValido(mes);
+  anoValido(ano);
 }
 
 function diaDaSemanaToString(dia) {
-  if (dia < 0 || dia > 6) {
-    throw new RangeError("dia inválido: " + dia + ". dia deve estar entre 0 e 6.");
-  }
   const nomesDiasDaSemana = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"];
   return nomesDiasDaSemana[dia];
 }
 
 function diaDaSemana(dia, mes, ano) {
-  if (!validaData(dia, mes, ano)) {
-    throw new Error("Data inválida: " + dia + "/" + mes + "/" + ano + " (dia/mes/ano)");
-  }
+  validaData(dia, mes, ano);
   if (mes === 1 || mes === 2) {
     mes += 12;
     ano -= 1;

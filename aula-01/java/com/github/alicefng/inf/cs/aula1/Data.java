@@ -14,21 +14,21 @@ public class Data {
 
     public void setDia(int dia) {
         if (dia < 1 || dia > 31) {
-            throw new IllegalArgumentException("dia invalido: " + dia);
+            throw new DataInvalidaException("dia invalido: " + dia);
         }
         this.dia = dia;
     }
 
     public void setMes(int mes) {
         if (mes < 1 || mes > 12) {
-            throw new IllegalArgumentException("mes inválido: " + mes);
+            throw new DataInvalidaException("mes inválido: " + mes);
         }
         this.mes = mes;
     }
 
     public void setAno(int ano) {
         if (ano < 1754) {
-            throw new IllegalArgumentException("ano inválido: " + ano);
+            throw new DataInvalidaException("ano inválido: " + ano);
         }
         this.ano = ano;
     }

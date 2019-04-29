@@ -43,10 +43,7 @@ public class Matematica {
     }
 
     public boolean estaDentroDoIntervalo(int numero, int intervaloInferior, int intervaloSuperior) {
-        if (numero >= intervaloInferior & numero <= intervaloSuperior) {
-            return true;
-        }
-        return false;
+        (numero >= intervaloInferior & numero <= intervaloSuperior) ? return true :return false;
     }
 
     public boolean possuiPropriedade3025(int numero) {
@@ -187,11 +184,7 @@ public class Matematica {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
         while (numeroA != numeroB) {
-            if (numeroA > numeroB) {
-                numeroA -= numeroB;
-            } else {
-                numeroB -= numeroA;
-            }
+            numeroA > numeroB ? numeroA -= numeroB : numeroB -= numeroA;
         }
         return numeroA;
     }

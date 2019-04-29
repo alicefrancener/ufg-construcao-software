@@ -39,10 +39,7 @@ function potencia(base, expoente) {
 }
 
 function estaDentroDoIntervalo(numero, intervaloInferior, intervaloSuperior) {
-  if (numero >= intervaloInferior && numero <= intervaloSuperior) {
-      return true;
-  }
-  return false;
+  (numero >= intervaloInferior && numero <= intervaloSuperior) ? return true: return false;
 }
 
 function possuiPropriedade3025(numero) {
@@ -183,11 +180,7 @@ function maiorDivisorComumMetodo2(numeroA, numeroB) {
     throw new RangeError("numeroA ou numeroB inválido: numeroA = " + numeroA + ", numeroB = " + numeroB);
   }
   while (numeroA !== numeroB) {
-    if (numeroA > numeroB) {
-      numeroA -= numeroB;
-    } else {
-      numeroB -= numeroA;
-    }
+    (numeroA > numeroB) ? numeroA -= numeroB : numeroB -= numeroA;
   }
   return numeroA;
 }

@@ -2,6 +2,8 @@
  * Operações matemáticas básicas
  */
 
+module.exports = { f1 : possuiPropriedade3025, f2 : restoDaDivisaoInteira};
+
 /**
  * Produz o resto da divisão entre dois numeros inteiros
  *
@@ -81,10 +83,7 @@ function potencia(base, expoente) {
  * @returns {boolean} Verdadeiro, se o número está dentro do intervalo fornecido, e Falso, caso esteja fora do intervalo
  */
 function estaDentroDoIntervalo(numero, intervaloInferior, intervaloSuperior) {
-    (numero >= intervaloInferior && numero <= intervaloSuperior) ?
-    return true
-:
-    return false;
+    return (numero >= intervaloInferior && numero <= intervaloSuperior) ? true : false;
 }
 
 /**

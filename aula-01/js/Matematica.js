@@ -2,6 +2,8 @@
  * Operações matemáticas básicas
  */
 
+module.exports = {f1: restoDaDivisaoInteira, f2: produto, f3: possuiPropriedade3025};
+
 /**
  * Produz o resto da divisão entre dois numeros inteiros
  *

@@ -35,13 +35,21 @@ module.exports = {
  * @throws {RangeError}  Se o numerador for <= 0 ou se o denominador for <0
  */
 function restoDaDivisaoInteira(numerador, denominador) {
+    if (!Number.isInteger(numerador) || !Number.isInteger(denominador)) {
+        throw new TypeError("argumentos devem ser inteiros");
+    }
+    if (numerador === undefined || numerador === null || denominador === null || denominador === undefined) {
+        throw new TypeError("argumento null ou undefined");
+    }
     if (numerador <= 0 || denominador < 0) {
         throw new RangeError("numerador ou denominador inválido: numerado = " + numerador + ", denominador = " + denominador);
     }
+
     var resto = numerador;
     while (resto >= denominador) {
         resto = resto - denominador;
     }
+
     return resto;
 }
 

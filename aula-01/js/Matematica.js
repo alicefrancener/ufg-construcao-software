@@ -576,6 +576,6 @@ function obterEnesimoTermoDaSequenciaDeFibonacci(enesimoTermo) {
         termoAtual = termoAtual + termoProximo;
         termoProximo = temporario;
     }
-    
+
     return termoAtual;
 }

@@ -29,8 +29,11 @@ class DataInvalidaError extends Error {
  * @throws {DataInvalidaError} Se o dia for menor que 1 ou maior que 31
  */
 function diaValido(dia) {
-    if (dia === null || dia === undefined){
-        throw new TypeError("argumento null ou undefined");
+    if (dia === null || dia === undefined) {
+        throw new DataInvalidaError("argumento null ou undefined");
+    }
+    if (!Number.isInteger(dia)) {
+        throw new DataInvalidaError("argumento deve ser inteiro")
     }
     if (dia < 1 || dia > 31) {
         throw new DataInvalidaError("dia invalido: " + dia);
@@ -45,6 +48,12 @@ function diaValido(dia) {
  * @throws {DataInvalidaError} Se o mes for menor que 1 ou maior que 12
  */
 function mesValido(mes) {
+    if (mes === null || mes === undefined) {
+        throw new DataInvalidaError("argumento null ou undefined");
+    }
+    if (!Number.isInteger(mes)) {
+        throw new DataInvalidaError("argumento deve ser inteiro")
+    }
     if (mes < 1 || mes > 12) {
         throw new DataInvalidaError("mes invalido: " + mes);
     }
@@ -58,6 +67,12 @@ function mesValido(mes) {
  * @throws {DataInvalidaError} Se o ano for menor ou igual a 1753
  */
 function anoValido(ano) {
+    if (ano === null || ano === undefined) {
+        throw new DataInvalidaError("argumento null ou undefined");
+    }
+    if (!Number.isInteger(ano)) {
+        throw new DataInvalidaError("argumento deve ser inteiro")
+    }
     if (ano <= 1753) {
         throw new DataInvalidaError("ano invalido: " + ano);
     }
@@ -111,5 +126,6 @@ function diaDaSemana(dia, mes, ano) {
     }
     var calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
     var calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
+
     return diaDaSemanaToString(calculoDiaDaSemanaFinal);
 }

@@ -14,3 +14,20 @@ test("denominador fora da faixa", () => {
     expect(() => funcao.f2(100, -1)).toThrow(RangeError);
 });
 
+test("ambos argumentos null/undefined", () => {
+    expect(() => {
+        funcao.f2();
+    }).toThrow(TypeError);
+});
+
+test("um argumento null/undefined", () => {
+    expect(() => {
+        funcao.f2(10);
+    }).toThrow(TypeError);
+});
+
+test("argumento nao numerico", () => {
+    expect(() => {
+        funcao.f2("abcd", 10);
+    }).toThrow(TypeError);
+});

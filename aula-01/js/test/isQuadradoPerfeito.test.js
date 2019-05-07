@@ -9,5 +9,19 @@ test("nao satisfaz ", () => {
 });
 
 test("valor fora da faixa", () => {
-    expect(() => { funcao.f12(0); }).toThrow(RangeError);
+    expect(() => {
+        funcao.f12(0);
+    }).toThrow(RangeError);
+});
+
+test("argumento null/undefined", () => {
+    expect(() => {
+        funcao.f12();
+    }).toThrow(TypeError);
+});
+
+test("argumento nao numerico", () => {
+    expect(() => {
+        funcao.f12("abcd");
+    }).toThrow(TypeError);
 });

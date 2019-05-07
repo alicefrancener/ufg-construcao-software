@@ -15,3 +15,15 @@ test("numeroB fora da faixa", () => {
         funcao.f16(10, -1);
     }).toThrow(RangeError);
 });
+
+test("argumento null/undefined", () => {
+    expect(() => {
+        funcao.f16();
+    }).toThrow(TypeError);
+});
+
+test("argumento nao numerico", () => {
+    expect(() => {
+        funcao.f16("abcd", "cc");
+    }).toThrow(TypeError);
+});

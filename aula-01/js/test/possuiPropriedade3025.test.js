@@ -11,13 +11,13 @@ test("3024 nao satisfaz", () => {
 test("argumento null/undefined", () => {
     expect(() => {
         funcao.f1();
-    }).toThrow();
+    }).toThrow(TypeError);
 });
 
 test("argumento nao numerico", () => {
     expect(() => {
         funcao.f1("abcd");
-    }).toThrow();
+    }).toThrow(TypeError);
 });
 
 test("valor negativo fora da faixa", () => {

@@ -9,3 +9,15 @@ test("numero fora da faixa", () => {
         funcao.f7(-1);
     }).toThrow(RangeError);
 });
+
+test("argumento null/undefined", () => {
+    expect(() => {
+        funcao.f7();
+    }).toThrow(TypeError);
+});
+
+test("argumento nao numerico", () => {
+    expect(() => {
+        funcao.f7("abcd");
+    }).toThrow(TypeError);
+});

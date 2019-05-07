@@ -64,7 +64,7 @@ function restoDaDivisaoInteira(numerador, denominador) {
  * @throws {RangeError} Se o multiplicando ou multiplicador for menor que 0
  */
 function produto(multiplicando, multiplicador) {
-    if (multiplicando === null || multiplicando === undefined || multiplicador === nul || multiplicador === undefined) {
+    if (multiplicando === null || multiplicando === undefined || multiplicador === null || multiplicador === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
     if (!Number.isInteger(multiplicando) || !Number.isInteger(multiplicador)) {
@@ -99,7 +99,7 @@ function produto(multiplicando, multiplicador) {
  * @throws {RangeError} Se o base ou expoente forem menores que 0
  */
 function potencia(base, expoente) {
-    if (base === null || base === undefined || expoente === nul || expoente === undefined) {
+    if (base === null || base === undefined || expoente === null || expoente === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
     if (!Number.isInteger(base) || !Number.isInteger(expoente)) {
@@ -441,14 +441,22 @@ function isPrimo(numero) {
  * @throws {RangeErros} Se o numeroB for maior que o numeroA, ou se o numero B for menor que 1
  */
 function maiorDivisorComumMetodo1(numeroA, numeroB) {
+    if (numeroA === null || numeroA === undefined || numeroB === null || numeroB === undefined) {
+        throw new TypeError("argumento null ou undefined");
+    }
+    if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)) {
+        throw new TypeError("argumentos devem ser inteiro");
+    }
     if (numeroB > numeroA || numeroB <= 0) {
         throw new RangeError("numeroA ou numeroB inválido: numeroA = " + numeroA + ", numeroB = " + numeroB);
     }
+
     while (numeroB !== 0) {
         var temporario = restoDaDivisaoInteira(numeroA, numeroB);
         numeroA = numeroB;
         numeroB = temporario;
     }
+
     return numeroA;
 }
 

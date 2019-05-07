@@ -15,3 +15,15 @@ test("precisao fora da faixa", () => {
         funcao.f10(5, 1);
     }).toThrow(RangeError);
 });
+
+test("argumento null/undefined", () => {
+    expect(() => {
+        funcao.f10();
+    }).toThrow(TypeError);
+});
+
+test("argumento nao numerico", () => {
+    expect(() => {
+        funcao.f10("abcd", 10);
+    }).toThrow(TypeError);
+});

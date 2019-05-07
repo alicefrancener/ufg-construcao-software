@@ -2,7 +2,27 @@
  * Operações matemáticas básicas
  */
 
-module.exports = { f1 : possuiPropriedade3025, f2 : restoDaDivisaoInteira};
+module.exports = {
+    f1: possuiPropriedade3025,
+    f2: restoDaDivisaoInteira,
+    f3: produto,
+    f4: potencia,
+    f5: estaDentroDoIntervalo,
+    f6: possuiPropriedade153,
+    f7: somaDosPrimeirosNaturais,
+    f8: fatorial,
+    f9: pi,
+    f10: logaritmoNatural,
+    f11: razaoAurea,
+    f12: isQuadradoPerfeito,
+    f13: raizQuadrada,
+    f14: isPrimo,
+    f15: maiorDivisorComumMetodo1,
+    f16: maiorDivisorComumMetodo2,
+    f17: determinarNumerosPrimos,
+    f18: calcularPolinomio,
+    f19: obterEnesimoTermoDaSequenciaDeFibonacci
+};
 
 /**
  * Produz o resto da divisão entre dois numeros inteiros

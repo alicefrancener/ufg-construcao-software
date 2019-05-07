@@ -9,22 +9,23 @@ test("3024 nao satisfaz", () => {
 });
 
 test("argumento null/undefined", () => {
-    expect(() => { funcao.f1(); }).toThrow();
+    expect(() => {
+        funcao.f1();
+    }).toThrow();
 });
 
 test("argumento nao numerico", () => {
-    expect(() => { funcao.f1("abcd"); }).toThrow();
+    expect(() => {
+        funcao.f1("abcd");
+    }).toThrow();
 });
 
-
 test("valor negativo fora da faixa", () => {
-    expect(() => { funcao.f1(-1); }).toThrow(RangeError);
+    expect(() => {
+        funcao.f1(-1);
+    }).toThrow(RangeError);
 });
 
 test("valor com mais de 4 digitos fora da faixa", () => {
     expect(() => funcao.f1(10000)).toThrow(RangeError);
-});
-
-test("valor deve ser inteiro", () => {
-    expect(() => funcao.f1(10.3)).toThrow(RangeError);
 });

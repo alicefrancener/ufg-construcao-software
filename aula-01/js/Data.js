@@ -29,6 +29,9 @@ class DataInvalidaError extends Error {
  * @throws {DataInvalidaError} Se o dia for menor que 1 ou maior que 31
  */
 function diaValido(dia) {
+    if (dia === null || dia === undefined){
+        throw new TypeError("argumento null ou undefined");
+    }
     if (dia < 1 || dia > 31) {
         throw new DataInvalidaError("dia invalido: " + dia);
     }

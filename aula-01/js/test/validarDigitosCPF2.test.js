@@ -11,3 +11,11 @@ test("nao satisfaz", () => {
 test("cpf com menos do que 11 digitos", () => {
     expect(() => funcao.f3("0308558650")).toThrow(RangeError);
 });
+
+test("cpf com mais do que 11 digitos", () => {
+    expect(() => funcao.f3("030855865001")).toThrow(RangeError);
+});
+
+test("argumento null/undefined ", () => {
+    expect(() => funcao.f3()).toThrow(TypeError);
+});

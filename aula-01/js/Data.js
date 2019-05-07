@@ -2,6 +2,14 @@
  * Funções relavitas a datas e dias da semana
  */
 
+module.export = {
+    f1: diaValido,
+    f2: mesValido,
+    f3: anoValido,
+    f4: validaData,
+    f5: diaDaSemanaToString,
+    f6: diaDaSemana
+};
 
 /**
  * Erro para uma data inválida

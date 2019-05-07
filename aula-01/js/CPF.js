@@ -34,6 +34,9 @@ function converteCaracteresEmInteiros(cpf) {
  * @throws {RangeError} Se String cpf tem mais que 11 dígitos
  */
 function validarDigitosCPF(cpf) {
+    if (cpf === null || cpf === undefined){
+        throw new TypeError("Argumento null ou undefined");
+    }
     if (cpf.length != 11) {
         throw new RangeError("CPF deve ter 11 dígitos: " + cpf);
     }
@@ -66,9 +69,13 @@ function validarDigitosCPF(cpf) {
  * @throws {RangeError} Se String cpf tem mais que 11 dígitos
  */
 function validarDigitosCPF2(cpf) {
+    if (cpf === null || cpf === undefined){
+        throw new TypeError("Argumento null ou undefined");
+    }
     if (cpf.length != 11) {
         throw new RangeError("CPF deve ter 11 dígitos: " + cpf);
     }
+
     var digitosCpf = converteCaracteresEmInteiros(cpf);
     var calculoParcialDigito11 = digitosCpf[8];
     var calculoParcialDigito10 = calculoParcialDigito11;
@@ -78,5 +85,6 @@ function validarDigitosCPF2(cpf) {
     }
     var calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
     var calculoFinalDigito11 = ((calculoParcialDigito10 - calculoParcialDigito11 + 9 * digitosCpf[9]) % 11) % 10;
+
     return calculoFinalDigito10 === digitosCpf[9] && calculoFinalDigito11 === digitosCpf[10];
 }

@@ -2,6 +2,11 @@
  * Funções para verificar validade de CPFs
  */
 
+module.exports = {
+    f1: converteCaracteresEmInteiros,
+    f2: validarDigitosCPF,
+    f3: validarDigitosCPF2
+};
 
 /**
  * Transforma caracteres numéricos em inteiros
@@ -48,8 +53,7 @@ function validarDigitosCPF(cpf) {
     var calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
     var calculoFinalDigito11 = (calculoParcialDigito11 % 11) % 10;
 
-    return calculoFinalDigito10 == digitosCpf[9] && calculoFinalDigito11 == digitosCpf[10]
-);
+    return calculoFinalDigito10 == digitosCpf[9] && calculoFinalDigito11 == digitosCpf[10];
 }
 
 /**

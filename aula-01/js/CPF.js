@@ -45,12 +45,12 @@ function validarDigitosCPF(cpf) {
     var digitosCpf = converteCaracteresEmInteiros(cpf);
     var calculoParcialDigito10 = digitosCpf[0];
     var calculoParcialDigito11 = digitosCpf[1];
-    ;
+
     for (var i = 1; i < 9; i++) {
         calculoParcialDigito10 += digitosCpf[i] * (i + 1);
     }
 
-    for (var i = 2; i < 10; i++) {
+    for (i = 2; i < 10; i++) {
         calculoParcialDigito11 += digitosCpf[i] * i;
     }
 

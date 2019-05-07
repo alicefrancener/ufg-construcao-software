@@ -26,7 +26,9 @@ class DataInvalidaError extends Error {
  *
  * @param {number} dia Inteiro que informa o dia do mês
  *
- * @throws {DataInvalidaError} Se o dia for menor que 1 ou maior que 31
+ * @throws {DataInvalidaError} Se dia for null ou undefined
+ * @throws {DataInvalidaError} Se dia não for inteiro
+ * @throws {DataInvalidaError} Se dia for menor que 1 ou maior que 31
  */
 function diaValido(dia) {
     if (dia === null || dia === undefined) {
@@ -45,7 +47,9 @@ function diaValido(dia) {
  *
  * @param {number} mes Inteiro que informa mes do ano
  *
- * @throws {DataInvalidaError} Se o mes for menor que 1 ou maior que 12
+ * @throws {DataInvalidaError} Se mes for null ou undefined
+ * @throws {DataInvalidaError} Se mes não for inteiro
+ * @throws {DataInvalidaError} Se mes for menor que 1 ou maior que 12
  */
 function mesValido(mes) {
     if (mes === null || mes === undefined) {
@@ -64,7 +68,9 @@ function mesValido(mes) {
  *
  * @param {number} ano Inteiro que informa ano
  *
- * @throws {DataInvalidaError} Se o ano for menor ou igual a 1753
+ * @throws {DataInvalidaError} Se ano for null ou undefined
+ * @throws {DataInvalidaError} Se ano não for inteiro
+ * @throws {DataInvalidaError} Se ano for menor ou igual a 1753
  */
 function anoValido(ano) {
     if (ano === null || ano === undefined) {

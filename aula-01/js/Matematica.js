@@ -32,6 +32,8 @@ module.exports = {
  *
  * @returns {number} O resto obtido na divisão: numerador/denominador
  *
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
  * @throws {RangeError}  Se o numerador for <= 0 ou se o denominador for <0
  */
 function restoDaDivisaoInteira(numerador, denominador) {
@@ -61,6 +63,8 @@ function restoDaDivisaoInteira(numerador, denominador) {
  *
  * @returns {number} O produto de dois numeros: multiplicando*multiplicador
  *
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
  * @throws {RangeError} Se o multiplicando ou multiplicador for menor que 0
  */
 function produto(multiplicando, multiplicador) {
@@ -96,7 +100,9 @@ function produto(multiplicando, multiplicador) {
  *
  * @returns {number} O resultado da base elevada ao expoente
  *
- * @throws {RangeError} Se o base ou expoente forem menores que 0
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
+ * @throws {RangeError} Se base ou expoente forem menores que 0
  */
 function potencia(base, expoente) {
     if (base === null || base === undefined || expoente === null || expoente === undefined) {
@@ -138,8 +144,10 @@ function estaDentroDoIntervalo(numero, intervaloInferior, intervaloSuperior) {
  *
  * @returns {boolean} Verdadeiro, se o número possui a propriedade, Falso, caso não possua
  *
- * @throws {RangeError} Se o argumento está fora do intervalo permitido [0,9999]
  *
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
+ * @throws {RangeError} Se parâmetro está fora do intervalo permitido [0,9999]
  */
 function possuiPropriedade3025(numero) {
     if (numero === null || numero === undefined) {
@@ -168,8 +176,9 @@ function possuiPropriedade3025(numero) {
  *
  * @returns {boolean} Verdadeiro, se o número possui a propriedade, Falso, caso não possua
  *
- * @throws {RangeError} Se o argumento está fora do intervalo permitido [100,999]
- *
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
+ * @throws {RangeError} Se parâmetro está fora do intervalo permitido [100,999]
  */
 function possuiPropriedade153(numero) {
     if (numero === null || numero === undefined) {
@@ -198,7 +207,9 @@ function possuiPropriedade153(numero) {
  *
  * @returns {number} A soma dos naturais
  *
- * @throws {RangeError} Se o argumento for menor que 1
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
+ * @throws {RangeError} Se parâmetro for menor que 1
  */
 function somaDosPrimeirosNaturais(numero) {
     if (numero === null || numero === undefined) {
@@ -226,7 +237,9 @@ function somaDosPrimeirosNaturais(numero) {
  *
  * @returns {number} A fatoração do argumento
  *
- * @throws {RangeError} Se o argumento for menor que 1
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
+ * @throws {RangeError} Se parâmetro for menor que 1
  */
 function fatorial(numero) {
     if (numero === null || numero === undefined) {
@@ -254,6 +267,8 @@ function fatorial(numero) {
  *
  * @returns {number} O valor de pi, dada a precisão
  *
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
  * @throws {RangeError} Se precisao for menor que 1
  */
 function pi(precisao) {
@@ -285,6 +300,8 @@ function pi(precisao) {
  *
  * @returns {number} Resultado do logaritmo natural, dado o expoente e precisão informadas
  *
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
  * @throws {RangeError} Se expoente for menor que 1 ou se precisao for menor que 2
  */
 function logaritmoNatural(expoente, precisao) {
@@ -320,6 +337,8 @@ function logaritmoNatural(expoente, precisao) {
  *
  * @returns {number} A razão áurea de acordo com a precisão informada
  *
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
  * @throws {RangeError} Se o numeroA for menor que 0 ou maior/igual ao numeroB ou se a precisão é menor ou igual a 0
  */
 function razaoAurea(numeroA, numeroB, precisao) {
@@ -351,6 +370,8 @@ function razaoAurea(numeroA, numeroB, precisao) {
  *
  * @returns {boolean} Verdadeito, se o numero é um quadrado perfeito, Falso, se não
  *
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
  * @throws {RangeError} Se o argumento é menor que 1
  */
 function isQuadradoPerfeito(numero) {
@@ -373,14 +394,16 @@ function isQuadradoPerfeito(numero) {
 }
 
 /**
- * Produz o resultado de um número elevado ao quadrado, de acordo com a precisão fornecida
+ * Produz a raiz quadrada de um número de acordo com a precisão fornecida
  *
  * @param {number} radicando O número que se deseja calcular a raiz quadrada
  * @param {number} precisao A precisão desejada do resultado retornado, quanto maior o valor, maior a precisão
  *
  * @returns {number} O resultado da raiz quadrada do radicando dada a precisao fornecida
  *
- * @throws {RangeError} Se o argumento é menor ou igual a 0
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
+ * @throws {RangeError} Se radicando é menor ou igual a 0
  */
 function raizQuadrada(radicando, precisao) {
     if (radicando === null || radicando === undefined || precisao === null || precisao === undefined) {
@@ -408,7 +431,9 @@ function raizQuadrada(radicando, precisao) {
  *
  * @returns {boolean} Verdadeiro, se o argumento é primo; Falso, se não é primo
  *
- * @throws {RangeError} Se o argumento é menor ou igual a 1
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
+ * @throws {RangeError} Se parâmetro é menor ou igual a 1
  */
 function isPrimo(numero) {
     if (numero === null || numero === undefined) {
@@ -438,6 +463,8 @@ function isPrimo(numero) {
  *
  * @returns {number} O maior divisor comum entre os argumentos fornecidos
  *
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
  * @throws {RangeErros} Se o numeroB for maior que o numeroA, ou se o numero B for menor que 1
  */
 function maiorDivisorComumMetodo1(numeroA, numeroB) {
@@ -468,6 +495,8 @@ function maiorDivisorComumMetodo1(numeroA, numeroB) {
  *
  * @returns {number} O maior divisor comum entre os argumentos fornecidos
  *
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
  * @throws {RangeErros} Se o numeroB for maior que o numeroA, ou se o numero B for menor que 1
  */
 function maiorDivisorComumMetodo2(numeroA, numeroB) {
@@ -494,6 +523,9 @@ function maiorDivisorComumMetodo2(numeroA, numeroB) {
  * @param {number} vetorZeros O vetor com a quantidade de números a serem avaliados (devem todos conter valor 0)
  *
  * @returns {Array} Vetor nos quais as posições com valor 1 são primos
+ *
+ * @throws {Error} Se vetor fornecido possuir menos do que 2 elementos
+ * @throws {RangeError} Se números do vetor fornecido não for 0
  */
 function determinarNumerosPrimos(vetorZeros) {
     if (vetorZeros.length <= 1) {
@@ -524,6 +556,8 @@ function determinarNumerosPrimos(vetorZeros) {
  *
  * @returns {number} O valor final do polinômio
  *
+ * @throws {TypeError} Se parâmetros forem null ou undefined
+ * @throws {TypeError} Se parâmetros não forem inteiros
  * @throws {Error} Se o grau do polinômio for menor que 1
  */
 function calcularPolinomio(numero, coeficientes) {
@@ -561,6 +595,8 @@ function calcularPolinomio(numero, coeficientes) {
  *
  * @returns {number} O valor do enésimo termo da sequência de Fibonnaci
  *
+ * @throws {TypeError} Se parâmetro for null ou undefined
+ * @throws {TypeError} Se parâmetro não for inteiro
  * @throws {RangeError} Se o argumento for menor que 0
  */
 function obterEnesimoTermoDaSequenciaDeFibonacci(enesimoTermo) {

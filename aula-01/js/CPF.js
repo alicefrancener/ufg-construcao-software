@@ -31,7 +31,8 @@ function converteCaracteresEmInteiros(cpf) {
  *
  * @returns {boolean} Verdadeiro, se dígitos verificadores do CPF estiverem corretos, Falso, se não
  *
- * @throws {RangeError} Se String cpf tem mais que 11 dígitos
+ * @throws {RangeError} Se cpf tem mais que 11 caracteres
+ * @throws {TypeError} Se cpf é null ou undefined
  */
 function validarDigitosCPF(cpf) {
     if (cpf === null || cpf === undefined){
@@ -66,7 +67,8 @@ function validarDigitosCPF(cpf) {
  *
  * @returns {boolean} Verdadeiro, se dígitos verificadores do CPF estiverem corretos, Falso, se não
  *
- * @throws {RangeError} Se String cpf tem mais que 11 dígitos
+ * @throws {RangeError} Se cpf tem mais que 11 dígitos
+ * @throws {TypeError} Se cpf é null ou undefined
  */
 function validarDigitosCPF2(cpf) {
     if (cpf === null || cpf === undefined){

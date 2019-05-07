@@ -538,7 +538,7 @@ function determinarNumerosPrimos(vetorZeros) {
     }
 
     var limite = Math.floor(raizQuadrada(vetorZeros.length, 100));
-    for (var i = 1; i < limite; i++) {
+    for (i = 1; i < limite; i++) {
         if (vetorZeros[i] === 0) {
             for (var multiplo = 2 * i; multiplo < vetorZeros.length; multiplo += i) {
                 vetorZeros[multiplo] = 1;
@@ -581,7 +581,7 @@ function calcularPolinomio(numero, coeficientes) {
     }
 
     var polinomio = coeficientes[grauDoPolinomio - 1];
-    for (var i = grauDoPolinomio - 2; i >= 0; i--) {
+    for (i = grauDoPolinomio - 2; i >= 0; i--) {
         polinomio = polinomio * numero + coeficientes[i];
     }
 

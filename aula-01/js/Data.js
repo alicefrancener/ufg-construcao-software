@@ -35,7 +35,7 @@ function diaValido(dia) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
     if (!Number.isInteger(dia)) {
-        throw new DataInvalidaError("argumento deve ser inteiro")
+        throw new DataInvalidaError("argumento deve ser inteiro");
     }
     if (dia < 1 || dia > 31) {
         throw new DataInvalidaError("dia invalido: " + dia);
@@ -56,7 +56,7 @@ function mesValido(mes) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
     if (!Number.isInteger(mes)) {
-        throw new DataInvalidaError("argumento deve ser inteiro")
+        throw new DataInvalidaError("argumento deve ser inteiro");
     }
     if (mes < 1 || mes > 12) {
         throw new DataInvalidaError("mes invalido: " + mes);
@@ -77,7 +77,7 @@ function anoValido(ano) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
     if (!Number.isInteger(ano)) {
-        throw new DataInvalidaError("argumento deve ser inteiro")
+        throw new DataInvalidaError("argumento deve ser inteiro");
     }
     if (ano <= 1753) {
         throw new DataInvalidaError("ano invalido: " + ano);

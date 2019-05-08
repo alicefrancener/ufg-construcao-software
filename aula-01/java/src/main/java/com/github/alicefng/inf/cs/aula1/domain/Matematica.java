@@ -7,7 +7,7 @@ public class Matematica {
             throw new IllegalArgumentException("numerador ou denominador inválido: numerador = " + numerador + ", denominador = " + denominador);
         }
         int resto = numerador;
-        while (resto >= denominador < 0) {
+        while (resto >= denominador) {
             resto = resto - denominador;
         }
         return resto;
@@ -43,7 +43,7 @@ public class Matematica {
     }
 
     public boolean estaDentroDoIntervalo(int numero, int intervaloInferior, int intervaloSuperior) {
-        (numero >= intervaloInferior & numero <= intervaloSuperior) ? return true :return false;
+        return (numero >= intervaloInferior & numero <= intervaloSuperior) ? true : false;
     }
 
     public boolean possuiPropriedade3025(int numero) {
@@ -95,7 +95,7 @@ public class Matematica {
         if (precisao < 1) {
             throw new IllegalArgumentException("precisao inválido: " + precisao);
         }
-        double p = 0, s = -1, d = -1; //NOTE perguntar para prof. se eh melhor assim ou em linhas diferentes
+        double pi = 0, s = -1, d = -1; //NOTE perguntar para prof. se eh melhor assim ou em linhas diferentes
         for (int i = 1; i <= precisao; i++) {
             d += 2; //NOTE como nomear essas variaveis totalmente sem sentido pra mim?
             s = -1 * s;
@@ -141,7 +141,7 @@ public class Matematica {
         for (int i = 3; soma < numero; i += 2) {
             soma += i;
         }
-        return s == numero;
+        return soma == numero;
     }
 
     public double raizQuadrada(double radicando, int precisao) {
@@ -184,7 +184,11 @@ public class Matematica {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
         while (numeroA != numeroB) {
-            numeroA > numeroB ? numeroA -= numeroB : numeroB -= numeroA;
+            if(numeroA > numeroB){
+                numeroA -= numeroB;
+            } else {
+                numeroB -= numeroA;
+            }
         }
         return numeroA;
     }
@@ -198,7 +202,7 @@ public class Matematica {
                 throw new IllegalArgumentException("vetorZeros[" + i + "] inválido: " + vetorZeros[i]);
             }
         }
-        int limite = (int) Math.floor(raiz(vetorZeros.length, 100));
+        int limite = (int) Math.floor(raizQuadrada(vetorZeros.length, 100));
         for (int i = 1; i < limite; i++) {
             if (vetorZeros[i] == 0) {
                 for (int multiplo = 2 * i; multiplo < vetorZeros.length; multiplo += i) {

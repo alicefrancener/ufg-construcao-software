@@ -2,3 +2,4 @@
 .vscode/
 node_modules/
 stale_outputs_checked
+target/

@@ -19,15 +19,17 @@ public class Matematica {
      * @return O resto obtido na divisão: numerador/denominador
      * @throws IllegalArgumentException Se o numerador for menor ou igual 0 ou se o denominador for menor que 0
      */
-    public int restoDaDivisaoInteira(int numerador, int denominador) {
+    public static int restoDaDivisaoInteira(int numerador, int denominador) {
         if (numerador <= 0 || denominador < 0) {
             throw new IllegalArgumentException("numerador ou denominador inválido: numerador = " + numerador + ", " +
                     "denominador = " + denominador);
         }
+
         int resto = numerador;
         while (resto >= denominador) {
             resto = resto - denominador;
         }
+
         return resto;
     }
 
@@ -39,11 +41,12 @@ public class Matematica {
      * @return O produto de dois numeros: multiplicando*multiplicador
      * @throws IllegalArgumentException Se o multiplicando ou multiplicador for menor que 0
      */
-	public int produto(int multiplicando, int multiplicador) {
+    public static int produto(int multiplicando, int multiplicador) {
         if (multiplicando < 0 || multiplicador < 0) {
             throw new IllegalArgumentException("multiplicando ou b inválido: multiplicando = " + multiplicando + ", " +
                     "multiplicador = " + multiplicador);
         }
+
         int totalParcelas = multiplicando;
         int parcela = multiplicador;
         if (multiplicador < multiplicando) {
@@ -65,16 +68,17 @@ public class Matematica {
      * @return O resultado da base elevada ao expoente
      * @throws IllegalArgumentException Se base ou expoente forem menores que 0
      */
-    public int potencia(int base, int expoente) {
+    public static potencia(int base, int expoente) {
         if (base < 0 || expoente < 0) {
             throw new IllegalArgumentException("base ou expoente inválido: base = " + base +
                     ", expoente = " + expoente);
-
         }
+
         int potencia = 1;
         for (int i = 1; i <= expoente; i++) {
             potencia = produto(potencia, base);
         }
+
         return potencia;
     }
 
@@ -86,7 +90,7 @@ public class Matematica {
      * @param intervaloSuperior O Intervalo superior a ser considerado
      * @return Verdadeiro, se o número está dentro do intervalo fornecido, e Falso, caso esteja fora do intervalo
      */
-    public boolean estaDentroDoIntervalo(int numero, int intervaloInferior, int intervaloSuperior) {
+    private static boolean estaDentroDoIntervalo(int numero, int intervaloInferior, int intervaloSuperior) {
         return (numero >= intervaloInferior & numero <= intervaloSuperior) ? true : false;
     }
 
@@ -98,13 +102,15 @@ public class Matematica {
      * @return Verdadeiro, se o número possui a propriedade, Falso, caso não possua
      * @throws IllegalArgumentException Se parâmetro está fora do intervalo permitido [0,9999]
      */
-    public boolean possuiPropriedade3025(int numero) {
+    public static boolean possuiPropriedade3025(int numero) {
         if (!estaDentroDoIntervalo(numero, 0, 9999)) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
+
         int quociente = numero / 100;
         int resto = restoDaDivisaoInteira(numero, 100);
         int resultado = potencia(quociente + resto, 2);
+
         return numero == resultado;
     }
 
@@ -117,16 +123,17 @@ public class Matematica {
      * @return Verdadeiro, se o número possui a propriedade, Falso, caso não possua
      * @throws IllegalArgumentException Se parâmetro está fora do intervalo permitido [100,999]
      */
-    public boolean possuiPropriedade153(int numero) {
+    public static boolean possuiPropriedade153(int numero) {
         if (!estaDentroDoIntervalo(numero, 100, 999)) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
+
         int quociente = numero / 100;
         int resto = restoDaDivisaoInteira(numero, 100);
         int quociente2 = resto / 10;
         int resto2 = restoDaDivisaoInteira(resto, 10);
-        int resultado = potencia(quociente, 3) + potencia(quociente2, 3) +
-                potencia(resto2, 3);
+        int resultado = potencia(quociente, 3) + potencia(quociente2, 3) + potencia(resto2, 3);
+
         return resultado == numero;
     }
 
@@ -137,14 +144,16 @@ public class Matematica {
      * @return A soma dos naturais
      * @throws IllegalArgumentException Se parâmetro for menor que 1
      */
-    public int somaDosPrimeirosNaturais(int numero) {
+    public static int somaDosPrimeirosNaturais(int numero) {
         if (numero < 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
+
         int soma = 1;
         for (int i = 2; i <= numero; i++) {
             soma += i;
         }
+
         return soma;
     }
 
@@ -155,15 +164,17 @@ public class Matematica {
      * @return A fatoração do argumento
      * @throws IllegalArgumentException Se parâmetro for menor que 1
      */
-    public int fatorial(int numero) {
+    public static int fatorial(int numero) {
         if (numero < 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
 
         }
+
         int fatorial = 1;
         for (int i = 2; i <= numero; i++) {
             fatorial *= i;
         }
+
         return fatorial;
     }
 
@@ -174,18 +185,21 @@ public class Matematica {
      * @return O valor de pi, dada a precisão
      * @throws IllegalArgumentException Se precisao for menor que 1
      */
-    public double pi(int precisao) {
+    public static double pi(int precisao) {
         if (precisao < 1) {
             throw new IllegalArgumentException("precisao inválido: " + precisao);
         }
+
         double pi = 0;
         double s = -1;
         double d = -1;
+
         for (int i = 1; i <= precisao; i++) {
             d += 2;
             s = -1 * s;
             pi += 4 * s / d;
         }
+
         return pi;
     }
 
@@ -197,19 +211,22 @@ public class Matematica {
      * @return Resultado do logaritmo natural, dado o expoente e precisão informadas
      * @throws IllegalArgumentException Se expoente for menor que 1 ou se precisao for menor que 2
      */
-    public double logaritmoNatural(double expoente, double precisao) {
+    public static double logaritmoNatural(double expoente, double precisao) {
         if (expoente < 1 || precisao < 2) {
             throw new IllegalArgumentException("expoente ou precisao inválido: expoente = " + expoente + ", " +
                     "precisao = " + precisao);
         }
+
         double logaritmoNatural = 1 + expoente;
         double numerador = expoente;
         double denominador = 1;
+
         for (double i = 2; i <= precisao; i++) {
             numerador *= numerador;
             denominador += i;
             logaritmoNatural += numerador / denominador;
         }
+
         return logaritmoNatural;
     }
 
@@ -221,13 +238,14 @@ public class Matematica {
      * @param precisao A precisão desejada do resultado retornado, quanto maior o valor, maior a precisão
      * @return A razão áurea de acordo com a precisão informada
      * @throws IllegalArgumentException Se o numeroA for menor que 0 ou maior/igual ao numeroB ou se a precisão
-     * é menor ou igual a 0
+     *                                  é menor ou igual a 0
      */
-    public double razaoAurea(double numeroA, double numeroB, double precisao) {
+    public static double razaoAurea(double numeroA, double numeroB, double precisao) {
         if (numeroA < 0 || numeroA >= numeroB || precisao <= 0) {
             throw new IllegalArgumentException("numeroA, numeroB ou precisao inválido: numeroA = " + numeroA +
                     ", numeroB = " + numeroB + ", precisao = " + precisao);
         }
+
         double numerador = numeroB;
         double denominador = numeroA;
         for (int i = 1; i <= precisao; i++) {
@@ -235,6 +253,7 @@ public class Matematica {
             numerador += denominador;
             denominador = temporario;
         }
+
         return numerador / denominador;
     }
 
@@ -245,14 +264,16 @@ public class Matematica {
      * @return Verdadeito, se o numero é um quadrado perfeito, Falso, se não
      * @throws IllegalArgumentException Se o argumento é menor que 1
      */
-    public boolean isQuadradoPerfeito(int numero) {
+    public static boolean isQuadradoPerfeito(int numero) {
         if (numero < 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
+
         int soma = 1;
         for (int i = 3; soma < numero; i += 2) {
             soma += i;
         }
+
         return soma == numero;
     }
 
@@ -264,14 +285,16 @@ public class Matematica {
      * @return O resultado da raiz quadrada do radicando dada a precisao fornecida
      * @throws IllegalArgumentException Se radicando é menor ou igual a 0
      */
-    public double raizQuadrada(double radicando, int precisao) {
+    public static double raizQuadrada(double radicando, int precisao) {
         if (radicando <= 0) {
             throw new IllegalArgumentException("radicando inválido: " + radicando);
         }
+
         double raizQuadrada = 1;
         for (; precisao >= 0; precisao--) {
             raizQuadrada = (raizQuadrada + radicando / raizQuadrada) / 2;
         }
+
         return raizQuadrada;
     }
 
@@ -282,15 +305,17 @@ public class Matematica {
      * @return Verdadeiro, se o argumento é primo; Falso, se não é primo
      * @throws IllegalArgumentException Se parâmetro é menor ou igual a 1
      */
-    public boolean isPrimo(int numero) {
+    public static boolean isPrimo(int numero) {
         if (numero <= 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
+
         for (int i = 2; i < numero; i++) {
             if (restoDaDivisaoInteira(numero, i) == 0) {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -302,16 +327,18 @@ public class Matematica {
      * @return O maior divisor comum entre os argumentos fornecidos
      * @throws IllegalArgumentException Se o numeroB for maior que o numeroA, ou se o numero B for menor que 1
      */
-    public int maiorDivisorComumMetodo1(int numeroA, int numeroB) {
+    public static int maiorDivisorComumMetodo1(int numeroA, int numeroB) {
         if (numeroB > numeroA || numeroB <= 0) {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: numeroA = " + numeroA +
                     ", numeroB = " + numeroB);
         }
+
         while (numeroB != 0) {
             int temporario = restoDaDivisaoInteira(numeroA, numeroB);
             numeroA = numeroB;
             numeroB = temporario;
         }
+
         return numeroA;
     }
 
@@ -323,11 +350,12 @@ public class Matematica {
      * @return O maior divisor comum entre os argumentos fornecidos
      * @throws IllegalArgumentException Se o numeroB for maior que o numeroA, ou se o numero B for menor que 1
      */
-    public int maiorDivisorComumMetodo2(int numeroA, int numeroB) {
+    public static int maiorDivisorComumMetodo2(int numeroA, int numeroB) {
         if (numeroB > numeroA || numeroB <= 0) {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: numeroA = " + numeroA +
                     ", numeroB = " + numeroB);
         }
+
         while (numeroA != numeroB) {
             if (numeroA > numeroB) {
                 numeroA -= numeroB;
@@ -335,6 +363,7 @@ public class Matematica {
                 numeroB -= numeroA;
             }
         }
+
         return numeroA;
     }
 
@@ -346,7 +375,7 @@ public class Matematica {
      * @throws IllegalArgumentException Se vetor fornecido possuir menos do que 2 elementos
      * @throws IllegalArgumentException Se números do vetor fornecido não for 0
      */
-    public int[] determinarNumerosPrimos(int vetorZeros[]) {
+    public static int[] determinarNumerosPrimos(int[] vetorZeros) {
         if (vetorZeros.length <= 1) {
             throw new IllegalArgumentException("vetorZeros.length inválido: " + vetorZeros.length);
         }
@@ -355,6 +384,7 @@ public class Matematica {
                 throw new IllegalArgumentException("vetorZeros[" + i + "] inválido: " + vetorZeros[i]);
             }
         }
+
         int limite = (int) Math.floor(raizQuadrada(vetorZeros.length, 100));
         for (int i = 1; i < limite; i++) {
             if (vetorZeros[i] == 0) {
@@ -363,6 +393,7 @@ public class Matematica {
                 }
             }
         }
+
         return vetorZeros;
     }
 
@@ -374,15 +405,17 @@ public class Matematica {
      * @return O valor final do polinômio
      * @throws IllegalArgumentException Se o grau do polinômio for menor que 1
      */
-    public int calcularPolinomio(int numero, int[] coeficientes) {
+    public static int calcularPolinomio(int numero, int[] coeficientes) {
         int grauDoPolinomio = coeficientes.length;
         if (grauDoPolinomio < 1) {
             throw new IllegalArgumentException("grau do polinomio inválido: " + grauDoPolinomio);
         }
+
         int polinomio = coeficientes[grauDoPolinomio - 1];
         for (int i = grauDoPolinomio - 2; i >= 0; i--) {
             polinomio = polinomio * numero + coeficientes[i];
         }
+
         return polinomio;
     }
 
@@ -393,20 +426,23 @@ public class Matematica {
      * @return O valor do enésimo termo da sequência de Fibonnaci
      * @throws IllegalArgumentException Se o argumento for menor que 0
      */
-    public int obterEnesimoTermoDaSequenciaDeFibonacci(int enesimoTermo) {
+    public static int obterEnesimoTermoDaSequenciaDeFibonacci(int enesimoTermo) {
         if (enesimoTermo < 0) {
             throw new IllegalArgumentException("enesimoTermo inválido: " + enesimoTermo);
         }
+
         int termoProximo = 0;
         int termoAtual = 1;
         if (enesimoTermo == 0 | enesimoTermo == 1) {
             return enesimoTermo;
         }
+
         for (int i = 2; i <= enesimoTermo; i++) {
             int temporario = termoAtual;
             termoAtual += termoProximo;
             termoProximo = temporario;
         }
+
         return termoAtual;
     }
 

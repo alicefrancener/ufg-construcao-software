@@ -4,7 +4,7 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package com.github.alicefng.inf.cs.aula1;
+package com.github.alicefng.cs.aula1.domain;
 
 /**
  * Implementação de várias operações matemáticas básicas
@@ -17,7 +17,7 @@ public class Matematica {
      * @param numerador   O numerador da divisão
      * @param denominador O denominador da divisão
      * @return O resto obtido na divisão: numerador/denominador
-     * @throws IllegalArgumentException Se o numerador for <= 0 ou se o denominador for <0
+     * @throws IllegalArgumentException Se o numerador for menor ou igual 0 ou se o denominador for menor que 0
      */
     public int restoDaDivisaoInteira(int numerador, int denominador) {
         if (numerador <= 0 || denominador < 0) {
@@ -34,12 +34,12 @@ public class Matematica {
     /**
      * Resulta no produto entre o primeiro e o segundo argumento
      *
-     * @param multiplicando
-     * @param multiplicador
+     * @param multiplicando O número a ser multiplicado
+     * @param multiplicador O número a multiplicar
      * @return O produto de dois numeros: multiplicando*multiplicador
      * @throws IllegalArgumentException Se o multiplicando ou multiplicador for menor que 0
      */
-    public int produto(int multiplicando, int multiplicador) {
+	public int produto(int multiplicando, int multiplicador) {
         if (multiplicando < 0 || multiplicador < 0) {
             throw new IllegalArgumentException("multiplicando ou b inválido: multiplicando = " + multiplicando + ", " +
                     "multiplicador = " + multiplicador);

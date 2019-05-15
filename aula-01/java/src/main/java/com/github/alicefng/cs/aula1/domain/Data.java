@@ -4,7 +4,7 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package com.github.alicefng.inf.cs.aula1;
+package com.github.alicefng.cs.aula1.domain;
 
 /**
  * Implementação do algoritmo para calcular o  dia da semana de acordo com uma data válida fornecida
@@ -105,7 +105,7 @@ public class Data {
      *
      * @param dia Inteiro que representa o dia da semana (0 = segunda, 1 = terça, e assim sucessivamente)
      * @return String que representa o nome do dia da semana
-     * @throws IllegalArgumentException, se o dia informado estiver fora do amplitude
+     * @throws IllegalArgumentException se o dia informado estiver fora do amplitude
      */
     public String diaDaSemanaToString(int dia) {
         if (dia < 0 || dia > 6) {

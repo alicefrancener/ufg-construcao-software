@@ -4,7 +4,7 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package com.github.alicefng.inf.cs.aula1;
+package com.github.alicefng.cs.aula1.domain;
 
 /**
  * Exceção para datas inválidas

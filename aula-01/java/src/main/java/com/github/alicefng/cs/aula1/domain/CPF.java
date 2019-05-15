@@ -4,7 +4,7 @@
  * Creative Commons Attribution 4.0 International License.
  */
 
-package com.github.alicefng.inf.cs.aula1;
+package com.github.alicefng.cs.aula1.domain;
 
 /**
  * Implementação de algoritomos para validar CPF
@@ -17,7 +17,7 @@ public class CPF {
      * verificadores são válidos)
      *
      * @param cpf O CPF fornecido para ser validado
-     * @throws IllegalArgumentException, se argumento é null
+	 * @throws IllegalArgumentException se argumento é null
      *                                   se argumento contém mais ou menos do que 11 dígitos
      *                                   se argumento contém algo diferente de dígitos (0 a 9)
      *                                   se dígitos verificadores não são válidos

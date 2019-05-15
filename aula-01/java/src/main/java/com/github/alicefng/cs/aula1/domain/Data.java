@@ -17,12 +17,8 @@ public class Data {
      *
      * @param dia Inteiro que informa dia do mês
      * @throws DataInvalidaException    Se o dia for inválido
-     * @throws IllegalArgumentException Se o argumento for null
      */
-    public static void validaDia(int dia) {
-        if (dia == null) {
-            throw new IllegalArgumentException("argumento é null");
-        }
+    private static void validaDia(int dia) {
         if (dia < 1 || dia > 31) {
             throw new DataInvalidaException("dia invalido: " + dia);
         }
@@ -33,12 +29,8 @@ public class Data {
      *
      * @param mes Inteiro que informa mês do ano
      * @throws DataInvalidaException    Se o mês for inválido
-     * @throws IllegalArgumentException Se o argumento for null
      */
-    public static void validaMes(int mes) {
-        if (mes == null) {
-            throw new IllegalArgumentException("argumento é null");
-        }
+    private static void validaMes(int mes) {
         if (mes < 1 || mes > 12) {
             throw new DataInvalidaException("mes inválido: " + mes);
         }
@@ -49,12 +41,8 @@ public class Data {
      *
      * @param ano Inteiro que informa ano
      * @throws DataInvalidaException    Se o ano for inválido
-     * @throws IllegalArgumentException Se o argumento for null
      */
-    public static void validaAno(int ano) {
-        if (ano == null) {
-            throw new IllegalArgumentException("argumento é null");
-        }
+    private static void validaAno(int ano) {
         if (ano < 1754) {
             throw new DataInvalidaException("ano inválido: " + ano);
         }
@@ -81,7 +69,10 @@ public class Data {
 
     /**
      * Calcula o dia da semana equivalente a data fornecida
-     *
+	 *
+	 * @param dia Inteiro que informa dia do mês
+     * @param mes Inteiro que informa mês do ano
+	 * @param ano Inteiro que informa ano
      * @return O nome do dia da semana correspondente a data fornecida
      */
     public static String diaDaSemana(int dia, int mes, int ano) {

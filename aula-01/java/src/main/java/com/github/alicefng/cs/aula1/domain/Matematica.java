@@ -68,7 +68,7 @@ public class Matematica {
      * @return O resultado da base elevada ao expoente
      * @throws IllegalArgumentException Se base ou expoente forem menores que 0
      */
-    public static potencia(int base, int expoente) {
+    public static int potencia(int base, int expoente) {
         if (base < 0 || expoente < 0) {
             throw new IllegalArgumentException("base ou expoente inválido: base = " + base +
                     ", expoente = " + expoente);

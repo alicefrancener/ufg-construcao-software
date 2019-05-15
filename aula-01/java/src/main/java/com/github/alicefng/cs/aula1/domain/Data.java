@@ -7,13 +7,14 @@
 package com.github.alicefng.cs.aula1.domain;
 
 /**
- * Implementação do algoritmo para calcular o  dia da semana de acordo com uma data válida fornecida
+ * Implementação do algoritmo para calcular o  dia da semana de acordo com uma
+ * data válida fornecida.
  */
 
 public class Data {
 
     /**
-     * Valida dia
+     * Valida dia.
      *
      * @param dia Inteiro que informa dia do mês
      * @throws DataInvalidaException Se o dia for inválido
@@ -25,7 +26,7 @@ public class Data {
     }
 
     /**
-     * Valida mês
+     * Valida mês.
      *
      * @param mes Inteiro que informa mês do ano
      * @throws DataInvalidaException Se o mês for inválido
@@ -37,7 +38,7 @@ public class Data {
     }
 
     /**
-     * Valida ano
+     * Valida ano.
      *
      * @param ano Inteiro que informa ano
      * @throws DataInvalidaException Se o ano for inválido
@@ -49,26 +50,31 @@ public class Data {
     }
 
     /**
-     * Transforma inteiros (0 a 6) em strings correspondetes aos dias da semana: "segunda-feira" (índice 0),
-     * "terça-feira" (índice 1) e assim sucessivamente, até "domingo" (índice 6).
+     * Transforma inteiros (0 a 6) em strings correspondetes aos dias da semana:
+     * "segunda-feira" (índice 0), "terça-feira" (índice 1) e assim
+     * sucessivamente, até "domingo" (índice 6).
      *
-     * @param dia Inteiro que representa o dia da semana (0 = segunda, 1 = terça, e assim sucessivamente)
+     * @param dia Inteiro que representa o dia da semana (0 = segunda,
+     *            1 = terça, e assim sucessivamente)
      * @return String que representa o nome do dia da semana
-     * @throws IllegalArgumentException se o dia informado estiver fora do amplitude
+     * @throws IllegalArgumentException se o dia informado estiver fora da
+     *                                  amplitude
      */
     private static String diaDaSemanaToString(int dia) {
         if (dia < 0 || dia > 6) {
-            throw new IllegalArgumentException("Dia inválido: " + dia + ". Dia deve estar entre 0 e 6.");
+            throw new IllegalArgumentException("Dia inválido: " + dia + ". "
+                    + "Dia deve estar entre 0 e 6.");
         }
 
-        String nomesDiasDaSemana[] = {"segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira",
-                "sábado", "domingo"};
+        String nomesDiasDaSemana[] = {"segunda-feira", "terça-feira",
+                "quarta-feira", "quinta-feira", "sexta-feira", "sábado",
+                "domingo"};
 
         return nomesDiasDaSemana[dia];
     }
 
     /**
-     * Calcula o dia da semana equivalente a data fornecida
+     * Calcula o dia da semana equivalente a data fornecida.
      *
      * @param dia Inteiro que informa dia do mês
      * @param mes Inteiro que informa mês do ano
@@ -84,7 +90,8 @@ public class Data {
             mes = mes + 12;
             ano = ano - 1;
         }
-        int calculoDiaDaSemanaParcial = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+        int calculoDiaDaSemanaParcial = dia + 2 * mes + 3 * (mes + 1) / 5
+                + ano + ano / 4 - ano / 100 + ano / 400;
         int calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
 
         return diaDaSemanaToString(calculoDiaDaSemanaFinal);

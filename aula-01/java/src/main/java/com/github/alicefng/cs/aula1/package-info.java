@@ -1,10 +1,10 @@
 /**
  * Pacote do repositório de "cs-2019-01". Contém cinco classes:
  * (a) {@link com.github.alicefng.cs.aula1.domain.CPF},
- * (b) {@link ccom.github.alicefng.cs.aula1.domain.Data},
- * (c) {@link ccom.github.alicefng.cs.aula1.domain.DataInvalidaException},
- * (d) {@link ccom.github.alicefng.cs.aula1.domain.Matematica} e
- * (e) {@link ccom.github.alicefng.cs.aula1.application.console.Programa}.
+ * (b) {@link com.github.alicefng.cs.aula1.domain.Data},
+ * (c) {@link com.github.alicefng.cs.aula1.domain.DataInvalidaException},
+ * (d) {@link com.github.alicefng.cs.aula1.domain.Matematica} e
+ * (e) {@link com.github.alicefng.cs.aula1.application.console.Programa}.
  * Observe que essa última classe apenas ilustra como um
  * programa em Java pode chamar o código das outras quatro classes.
  *

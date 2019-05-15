@@ -12,6 +12,13 @@ package com.github.alicefng.cs.aula1.domain;
 public class Matematica {
 
     /**
+     * Previne a classe utilitária de ter um construtor público.
+     */
+    protected Matematica() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Produz o resto da divisão entre dois numeros inteiros.
      *
      * @param numerador   O numerador da divisão

@@ -7,10 +7,15 @@
 package com.github.alicefng.cs.aula1.domain;
 
 /**
- * Exceção para datas inválidas
+ * Exceção para datas inválidas.
  */
 class DataInvalidaException extends RuntimeException {
-    public DataInvalidaException(String msg) {
+    /**
+     * Construtor da exceção.
+     *
+     * @param msg A mensagem a ser enviada quanto a exceção é lançada.
+     */
+    DataInvalidaException(final String msg) {
         super(msg);
     }
 }

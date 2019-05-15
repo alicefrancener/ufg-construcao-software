@@ -27,7 +27,8 @@ public class Matematica {
      * @throws IllegalArgumentException Se o numerador for menor ou igual 0 ou
      *                                  se o denominador for menor que 0
      */
-    public static int restoDaDivisaoInteira(int numerador, int denominador) {
+    public static int restoDaDivisaoInteira(final int numerador,
+                                            final int denominador) {
         if (numerador <= 0 || denominador < 0) {
             throw new IllegalArgumentException("numerador ou denominador "
                     + "inválido: numerador = " + numerador + ", "
@@ -51,7 +52,8 @@ public class Matematica {
      * @throws IllegalArgumentException Se o multiplicando ou multiplicador
      *                                  for menor que 0
      */
-    public static int produto(int multiplicando, int multiplicador) {
+    public static int produto(final int multiplicando,
+                              final int multiplicador) {
         if (multiplicando < 0 || multiplicador < 0) {
             throw new IllegalArgumentException("multiplicando ou b inválido: "
                     + "multiplicando = " + multiplicando + ", "
@@ -80,7 +82,7 @@ public class Matematica {
      * @return O resultado da base elevada ao expoente
      * @throws IllegalArgumentException Se base ou expoente forem menores que 0
      */
-    public static int potencia(int base, int expoente) {
+    public static int potencia(final int base, final int expoente) {
         if (base < 0 || expoente < 0) {
             throw new IllegalArgumentException("base ou expoente inválido: "
                     + "base = " + base + ", expoente = " + expoente);
@@ -103,11 +105,10 @@ public class Matematica {
      * @return Verdadeiro, se o número está dentro do intervalo fornecido,
      * Falso, caso esteja fora do intervalo
      */
-    public static boolean estaDentroDoIntervalo(int numero,
-                                                int intervaloInferior,
-                                                int intervaloSuperior) {
-        return (numero >= intervaloInferior & numero <= intervaloSuperior)
-                ? true : false;
+    public static boolean estaDentroDoIntervalo(final int numero,
+                                                final int intervaloInferior,
+                                                final int intervaloSuperior) {
+        return (numero >= intervaloInferior & numero <= intervaloSuperior);
     }
 
     /**
@@ -121,14 +122,14 @@ public class Matematica {
      * @throws IllegalArgumentException Se parâmetro está fora do intervalo
      *                                  permitido [0,9999]
      */
-    public static boolean possuiPropriedade3025(int numero) {
+    public static boolean possuiPropriedade3025(final int numero) {
         if (!estaDentroDoIntervalo(numero, 0, 9999)) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
 
-        int quociente = numero / 100;
-        int resto = restoDaDivisaoInteira(numero, 100);
-        int resultado = potencia(quociente + resto, 2);
+        final int quociente = numero / 100;
+        final int resto = restoDaDivisaoInteira(numero, 100);
+        final int resultado = potencia(quociente + resto, 2);
 
         return numero == resultado;
     }
@@ -144,16 +145,16 @@ public class Matematica {
      * @throws IllegalArgumentException Se parâmetro está fora do intervalo
      *                                  permitido [100,999]
      */
-    public static boolean possuiPropriedade153(int numero) {
+    public static boolean possuiPropriedade153(final int numero) {
         if (!estaDentroDoIntervalo(numero, 100, 999)) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
 
-        int quociente = numero / 100;
-        int resto = restoDaDivisaoInteira(numero, 100);
-        int quociente2 = resto / 10;
-        int resto2 = restoDaDivisaoInteira(resto, 10);
-        int resultado = potencia(quociente, 3)
+        final int quociente = numero / 100;
+        final int resto = restoDaDivisaoInteira(numero, 100);
+        final int quociente2 = resto / 10;
+        final int resto2 = restoDaDivisaoInteira(resto, 10);
+        final int resultado = potencia(quociente, 3)
                 + potencia(quociente2, 3) + potencia(resto2, 3);
 
         return resultado == numero;
@@ -166,7 +167,7 @@ public class Matematica {
      * @return A soma dos naturais
      * @throws IllegalArgumentException Se parâmetro for menor que 1
      */
-    public static int somaDosPrimeirosNaturais(int numero) {
+    public static int somaDosPrimeirosNaturais(final int numero) {
         if (numero < 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
@@ -186,7 +187,7 @@ public class Matematica {
      * @return A fatoração do argumento
      * @throws IllegalArgumentException Se parâmetro for menor que 1
      */
-    public static int fatorial(int numero) {
+    public static int fatorial(final int numero) {
         if (numero < 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
 
@@ -208,7 +209,7 @@ public class Matematica {
      * @return O valor de pi, dada a precisão
      * @throws IllegalArgumentException Se precisao for menor que 1
      */
-    public static double pi(int precisao) {
+    public static double pi(final int precisao) {
         if (precisao < 1) {
             throw new IllegalArgumentException("precisao inválido: "
                     + precisao);
@@ -240,7 +241,8 @@ public class Matematica {
      * @throws IllegalArgumentException Se expoente for menor que 1 ou se
      *                                  precisao for menor que 2
      */
-    public static double logaritmoNatural(double expoente, double precisao) {
+    public static double logaritmoNatural(final double expoente,
+                                          final double precisao) {
         if (expoente < 1 || precisao < 2) {
             throw new IllegalArgumentException("expoente ou precisao inválido: "
                     + "expoente = " + expoente + ", "
@@ -272,8 +274,8 @@ public class Matematica {
      *                                  maior/igual ao numeroB ou se a precisão
      *                                  é menor ou igual a 0
      */
-    public static double razaoAurea(double numeroA, double numeroB,
-                                    double precisao) {
+    public static double razaoAurea(final double numeroA, final double numeroB,
+                                    final double precisao) {
         if (numeroA < 0 || numeroA >= numeroB || precisao <= 0) {
             throw new IllegalArgumentException("numeroA, numeroB ou precisao "
                     + "inválido: numeroA = " + numeroA + ", numeroB = "
@@ -298,7 +300,7 @@ public class Matematica {
      * @return Verdadeito, se o numero é um quadrado perfeito, Falso, se não
      * @throws IllegalArgumentException Se o argumento é menor que 1
      */
-    public static boolean isQuadradoPerfeito(int numero) {
+    public static boolean isQuadradoPerfeito(final int numero) {
         if (numero < 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
@@ -321,7 +323,8 @@ public class Matematica {
      * fornecida
      * @throws IllegalArgumentException Se radicando é menor ou igual a 0
      */
-    public static double raizQuadrada(double radicando, int precisao) {
+    public static double raizQuadrada(final double radicando,
+                                      final int precisao) {
         if (radicando <= 0) {
             throw new IllegalArgumentException("radicando inválido: "
                     + radicando);
@@ -342,7 +345,7 @@ public class Matematica {
      * @return Verdadeiro, se o argumento é primo; Falso, se não é primo
      * @throws IllegalArgumentException Se parâmetro é menor ou igual a 1
      */
-    public static boolean isPrimo(int numero) {
+    public static boolean isPrimo(final int numero) {
         if (numero <= 1) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
@@ -365,19 +368,22 @@ public class Matematica {
      * @throws IllegalArgumentException Se o numeroB for maior que o numeroA,
      *                                  ou se o numero B for menor que 1
      */
-    public static int maiorDivisorComumMetodo1(int numeroA, int numeroB) {
+    public static int maiorDivisorComumMetodo1(final int numeroA,
+                                               final int numeroB) {
         if (numeroB > numeroA || numeroB <= 0) {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: "
                     + "numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
 
-        while (numeroB != 0) {
-            int temporario = restoDaDivisaoInteira(numeroA, numeroB);
-            numeroA = numeroB;
-            numeroB = temporario;
+        int numeroA2 = numeroA;
+        int numeroB2 = numeroB;
+        while (numeroB2 != 0) {
+            int temporario = restoDaDivisaoInteira(numeroA2, numeroB2);
+            numeroA2 = numeroB2;
+            numeroB2 = temporario;
         }
 
-        return numeroA;
+        return numeroA2;
     }
 
     /**
@@ -389,21 +395,24 @@ public class Matematica {
      * @throws IllegalArgumentException Se o numeroB for maior que o numeroA,
      *                                  ou se o numero B for menor que 1
      */
-    public static int maiorDivisorComumMetodo2(int numeroA, int numeroB) {
+    public static int maiorDivisorComumMetodo2(final int numeroA,
+                                               final int numeroB) {
         if (numeroB > numeroA || numeroB <= 0) {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: "
                     + "numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
 
-        while (numeroA != numeroB) {
-            if (numeroA > numeroB) {
-                numeroA -= numeroB;
+        int numeroA2 = numeroA;
+        int numeroB2 = numeroB;
+        while (numeroA2 != numeroB2) {
+            if (numeroA2 > numeroB2) {
+                numeroA2 -= numeroB2;
             } else {
-                numeroB -= numeroA;
+                numeroB2 -= numeroA2;
             }
         }
 
-        return numeroA;
+        return numeroA2;
     }
 
     /**
@@ -417,7 +426,7 @@ public class Matematica {
      *                                  que 2 elementos
      * @throws IllegalArgumentException Se números do vetor fornecido não for 0
      */
-    public static int[] determinarNumerosPrimos(int[] vetorZeros) {
+    public static int[] determinarNumerosPrimos(final int[] vetorZeros) {
         if (vetorZeros.length <= 1) {
             throw new IllegalArgumentException("vetorZeros.length inválido: "
                     + vetorZeros.length);
@@ -429,17 +438,20 @@ public class Matematica {
             }
         }
 
-        int limite = (int) Math.floor(raizQuadrada(vetorZeros.length, 100));
+
+        final int limite = (int) Math.floor(raizQuadrada(vetorZeros.length,
+                100));
+        int[] vetorZerosResultado = vetorZeros;
         for (int i = 1; i < limite; i++) {
-            if (vetorZeros[i] == 0) {
-                for (int multiplo = 2 * i; multiplo < vetorZeros.length;
-                     multiplo += i) {
-                    vetorZeros[multiplo] = 1;
+            if (vetorZerosResultado[i] == 0) {
+                for (int multiplo = 2 * i;
+                     multiplo < vetorZerosResultado.length; multiplo += i) {
+                    vetorZerosResultado[multiplo] = 1;
                 }
             }
         }
 
-        return vetorZeros;
+        return vetorZerosResultado;
     }
 
     /**
@@ -450,8 +462,9 @@ public class Matematica {
      * @return O valor final do polinômio
      * @throws IllegalArgumentException Se o grau do polinômio for menor que 1
      */
-    public static int calcularPolinomio(int numero, int[] coeficientes) {
-        int grauDoPolinomio = coeficientes.length;
+    public static int calcularPolinomio(final int numero,
+                                        final int[] coeficientes) {
+        final int grauDoPolinomio = coeficientes.length;
         if (grauDoPolinomio < 1) {
             throw new IllegalArgumentException("grau do polinomio inválido: "
                     + grauDoPolinomio);
@@ -473,7 +486,7 @@ public class Matematica {
      * @return O valor do enésimo termo da sequência de Fibonnaci
      * @throws IllegalArgumentException Se o argumento for menor que 0
      */
-    public static int obterEnesimoTermoDeFibonacci(int enesimoTermo) {
+    public static int obterEnesimoTermoDeFibonacci(final int enesimoTermo) {
         if (enesimoTermo < 0) {
             throw new IllegalArgumentException("enesimoTermo inválido: "
                     + enesimoTermo);

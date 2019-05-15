@@ -16,9 +16,9 @@ public class Data {
      * Valida dia
      *
      * @param dia Inteiro que informa dia do mês
-     * @throws DataInvalidaException    Se o dia for inválido
+     * @throws DataInvalidaException Se o dia for inválido
      */
-    private static void validaDia(int dia) {
+    public static void validaDia(int dia) {
         if (dia < 1 || dia > 31) {
             throw new DataInvalidaException("dia invalido: " + dia);
         }
@@ -28,7 +28,7 @@ public class Data {
      * Valida mês
      *
      * @param mes Inteiro que informa mês do ano
-     * @throws DataInvalidaException    Se o mês for inválido
+     * @throws DataInvalidaException Se o mês for inválido
      */
     private static void validaMes(int mes) {
         if (mes < 1 || mes > 12) {
@@ -40,7 +40,7 @@ public class Data {
      * Valida ano
      *
      * @param ano Inteiro que informa ano
-     * @throws DataInvalidaException    Se o ano for inválido
+     * @throws DataInvalidaException Se o ano for inválido
      */
     private static void validaAno(int ano) {
         if (ano < 1754) {
@@ -69,10 +69,10 @@ public class Data {
 
     /**
      * Calcula o dia da semana equivalente a data fornecida
-	 *
-	 * @param dia Inteiro que informa dia do mês
+     *
+     * @param dia Inteiro que informa dia do mês
      * @param mes Inteiro que informa mês do ano
-	 * @param ano Inteiro que informa ano
+     * @param ano Inteiro que informa ano
      * @return O nome do dia da semana correspondente a data fornecida
      */
     public static String diaDaSemana(int dia, int mes, int ano) {

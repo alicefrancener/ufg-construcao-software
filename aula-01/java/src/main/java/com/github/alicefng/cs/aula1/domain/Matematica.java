@@ -90,7 +90,7 @@ public class Matematica {
      * @param intervaloSuperior O Intervalo superior a ser considerado
      * @return Verdadeiro, se o número está dentro do intervalo fornecido, e Falso, caso esteja fora do intervalo
      */
-    private static boolean estaDentroDoIntervalo(int numero, int intervaloInferior, int intervaloSuperior) {
+    public static boolean estaDentroDoIntervalo(int numero, int intervaloInferior, int intervaloSuperior) {
         return (numero >= intervaloInferior & numero <= intervaloSuperior) ? true : false;
     }
 

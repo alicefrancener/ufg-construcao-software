@@ -130,9 +130,9 @@ public class MatematicaTest {
     }
 
     @Test
-    public void testObterEnesimoTermoDaSequenciaDeFibonacci() {
-        assertThrows(IllegalArgumentException.class, () -> Matematica.obterEnesimoTermoDaSequenciaDeFibonacci(-1));
-        assertEquals(8, Matematica.obterEnesimoTermoDaSequenciaDeFibonacci(6));
+    public void testObterEnesimoTermoDeFibonacci() {
+        assertThrows(IllegalArgumentException.class, () -> Matematica.obterEnesimoTermoDeFibonacci(-1));
+        assertEquals(8, Matematica.obterEnesimoTermoDeFibonacci(6));
     }
 
     @Test

@@ -14,6 +14,32 @@ package com.github.alicefng.cs.aula1.domain;
 public class Data {
 
     /**
+     * Maior valor para um dia.
+     */
+    public static final int MAIOR_DIA = 31;
+
+    /**
+     * Menor valor para um dia.
+     */
+    public static final int MENOR_DIA = 1;
+
+    /**
+     * Maior valor para um mês.
+     */
+    public static final int MAIOR_MES = 12;
+
+    /**
+     * Menor valor para um mês.
+     */
+    public static final int MENOR_MES = 1;
+
+    /**
+     * Menor valor para um ano no algoritmo para calcular dia da semana.
+     */
+    public static final int MENOR_ANO = 1753;
+
+
+    /**
      * Previne a classe utilitária de ter um construtor público.
      */
     protected Data() {
@@ -27,7 +53,7 @@ public class Data {
      * @throws DataInvalidaException Se o dia for inválido
      */
     public static void validaDia(int dia) {
-        if (dia < 1 || dia > 31) {
+        if (dia < MENOR_DIA || dia > MAIOR_DIA) {
             throw new DataInvalidaException("dia invalido: " + dia);
         }
     }
@@ -39,7 +65,7 @@ public class Data {
      * @throws DataInvalidaException Se o mês for inválido
      */
     private static void validaMes(int mes) {
-        if (mes < 1 || mes > 12) {
+        if (mes < MENOR_MES || mes > MAIOR_MES) {
             throw new DataInvalidaException("mes inválido: " + mes);
         }
     }
@@ -51,7 +77,7 @@ public class Data {
      * @throws DataInvalidaException Se o ano for inválido
      */
     private static void validaAno(int ano) {
-        if (ano < 1754) {
+        if (ano <= MENOR_ANO) {
             throw new DataInvalidaException("ano inválido: " + ano);
         }
     }

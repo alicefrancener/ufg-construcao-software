@@ -25,16 +25,16 @@ public final class Programa {
     }
 
     /**
-     * Ponto de entrada da aplicação. Apenas para ilustra chamada de método.
+     * Ponto de entrada da aplicação. Apenas para ilustrar chamada de método.
      *
      * @param args Ignorados.
      */
     public static void main(final String[] args) {
 
         logger.info("iniciado");
-		Data data = new Data(14,5,2019);
-        System.out.println(data.diaDaSemana());
-		System.out.println(CPF.validarDigitosCPF("12345678901"));
+        System.out.println(Data.diaDaSemana(14, 5, 2019));
+        System.out.println(CPF.validarDigitosCPF("43415200086"));
+        System.out.println(Matematica.fatorial(5));
     }
 
 }

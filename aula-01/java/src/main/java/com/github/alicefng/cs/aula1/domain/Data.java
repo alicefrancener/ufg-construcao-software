@@ -13,90 +13,39 @@ package com.github.alicefng.cs.aula1.domain;
 public class Data {
 
     /**
-     * Valores que compõe uma data, correspondentes ao dia, mes e ano
-     */
-    private int dia;
-    private int mes;
-    private int ano;
-
-    /**
-     * Configura data (dia, mes e ano)
-     *
-     * @param dia Inteiro que informa dia do mês
-     * @param mes Inteiro que informa mês do ano
-     * @param ano Inteiro que informa ano
-     */
-    public Data(int dia, int mes, int ano) {
-        setDia(dia);
-        setMes(mes);
-        setAno(ano);
-    }
-
-    /**
-     * Configura dia, avaliando sua validade
+     * Valida dia
      *
      * @param dia Inteiro que informa dia do mês
      * @throws DataInvalidaException Se o dia for inválido
      */
-    public void setDia(int dia) {
+    public static void validaDia(int dia) {
         if (dia < 1 || dia > 31) {
             throw new DataInvalidaException("dia invalido: " + dia);
         }
-        this.dia = dia;
     }
 
     /**
-     * Configura mês, avaliando sua validade
+     * Valida mês
      *
      * @param mes Inteiro que informa mês do ano
      * @throws DataInvalidaException Se o mês for inválido
      */
-    public void setMes(int mes) {
+    private static void validaMes(int mes) {
         if (mes < 1 || mes > 12) {
             throw new DataInvalidaException("mes inválido: " + mes);
         }
-        this.mes = mes;
     }
 
     /**
-     * Configura ano, avaliando sua validade
+     * Valida ano
      *
      * @param ano Inteiro que informa ano
      * @throws DataInvalidaException Se o ano for inválido
      */
-    public void setAno(int ano) {
+    private static void validaAno(int ano) {
         if (ano < 1754) {
             throw new DataInvalidaException("ano inválido: " + ano);
         }
-        this.ano = ano;
-    }
-
-    /**
-     * Retorna dia
-     *
-     * @return O inteiro correspondente ao dia
-     */
-    public int getDia() {
-        return this.dia;
-    }
-
-    /**
-     * Retorna o mes
-     *
-     * @return O inteiro correspondente ao mês
-     */
-
-    public int getMes() {
-        return this.mes;
-    }
-
-    /**
-     * Retorna ano
-     *
-     * @return O inteiro correspondente ao ano
-     */
-    public int getAno() {
-        return this.ano;
     }
 
     /**
@@ -107,29 +56,37 @@ public class Data {
      * @return String que representa o nome do dia da semana
      * @throws IllegalArgumentException se o dia informado estiver fora do amplitude
      */
-    public String diaDaSemanaToString(int dia) {
+    private static String diaDaSemanaToString(int dia) {
         if (dia < 0 || dia > 6) {
             throw new IllegalArgumentException("Dia inválido: " + dia + ". Dia deve estar entre 0 e 6.");
         }
+
         String nomesDiasDaSemana[] = {"segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira",
                 "sábado", "domingo"};
+
         return nomesDiasDaSemana[dia];
     }
 
     /**
      * Calcula o dia da semana equivalente a data fornecida
      *
+     * @param dia Inteiro que informa dia do mês
+     * @param mes Inteiro que informa mês do ano
+     * @param ano Inteiro que informa ano
      * @return O nome do dia da semana correspondente a data fornecida
      */
-    public String diaDaSemana() {
-        int mes = getMes();
-        int ano = getAno();
-        if (getMes() == 1 | getMes() == 2) {
-            mes = getMes() + 12;
-            ano = getAno() - 1;
+    public static String diaDaSemana(int dia, int mes, int ano) {
+        validaDia(dia);
+        validaMes(mes);
+        validaAno(ano);
+
+        if (mes == 1 | mes == 2) {
+            mes = mes + 12;
+            ano = ano - 1;
         }
-        int calculoDiaDaSemanaParcial = getDia() + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
+        int calculoDiaDaSemanaParcial = dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400;
         int calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
+
         return diaDaSemanaToString(calculoDiaDaSemanaFinal);
     }
 

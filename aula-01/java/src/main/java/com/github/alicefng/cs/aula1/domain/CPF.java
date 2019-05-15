@@ -11,41 +11,12 @@ package com.github.alicefng.cs.aula1.domain;
  */
 public class CPF {
 
-
-    /**
-     * Valida CPF de acordo com vários critérios (se contém apenas dígitos, se contém 11 dígitos, se dígitos
-     * verificadores são válidos)
-     *
-     * @param cpf O CPF fornecido para ser validado
-	 * @throws IllegalArgumentException se argumento é null
-     *                                   se argumento contém mais ou menos do que 11 dígitos
-     *                                   se argumento contém algo diferente de dígitos (0 a 9)
-     *                                   se dígitos verificadores não são válidos
-     */
-    public static void validarCPF(String cpf) {
-        if (cpf == null) {
-            throw new IllegalArgumentException("argumento é null");
-        }
-
-        if (cpf.length() != 11) {
-            throw new IllegalArgumentException("CPF deve ter 11 dígitos: " + cpf);
-        }
-
-        if (!sequenciaContemApenasDigitos(cpf)) {
-            throw new IllegalArgumentException("CPF deve conter somente dígitos (0 a 9): " + cpf);
-        }
-
-        if (!validarDigitosCPF(cpf)) {
-            throw new IllegalArgumentException("dígitos verificadores do CPF incorretos: " + cpf);
-        }
-    }
-
     /**
      * Avalia se uma String contém apenas dígitos
      *
      * @param cpf A string contendo o CPF a ser avaliado
      * @return verdadeiro, se a string contém apenos dígitos
-     *         falso, se a string contém outros caracteres
+     * falso, se a string contém outros caracteres
      */
     private static boolean sequenciaContemApenasDigitos(final String cpf) {
         return cpf.chars().allMatch(c -> Character.isDigit(c));
@@ -65,13 +36,26 @@ public class CPF {
      * Avalia se CPF fornecido é válido dado seus dígitos verificados (dois últimos dígitos) - algoritmo 1
      *
      * @param cpf String que contém CPF
-     * @return verdadeiro, se dígitos verificadores do CPF estiverem corretos,
-     *         falso, se não
+     * @return verdadeiro, se dígitos verificadores do CPF estiverem corretos, falso, se não
+     * @throws IllegalArgumentException Se argumento é null
+     * @throws IllegalArgumentException Se argumento não contém 11 dígitos
+     * @throws IllegalArgumentException Se argumento contém algo diferente de dígitos (0 a 9)
      */
     public static boolean validarDigitosCPF(String cpf) {
+        if (cpf == null) {
+            throw new IllegalArgumentException("argumento é null");
+        }
+        if (cpf.length() != 11) {
+            throw new IllegalArgumentException("CPF deve ter 11 dígitos: " + cpf);
+        }
+        if (!sequenciaContemApenasDigitos(cpf)) {
+            throw new IllegalArgumentException("CPF deve conter somente dígitos (0 a 9): " + cpf);
+        }
+
         int[] digitosCpf = converteCaracteresEmInteiros(cpf);
         int calculoParcialDigito10 = digitosCpf[0];
         int calculoParcialDigito11 = digitosCpf[1];
+
         for (int i = 1; i < 9; i++) {
             calculoParcialDigito10 += digitosCpf[i] * (i + 1);
         }
@@ -80,6 +64,7 @@ public class CPF {
         }
         int calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
         int calculoFinalDigito11 = (calculoParcialDigito11 % 11) % 10;
+
         return calculoFinalDigito10 == digitosCpf[9] & calculoFinalDigito11 == digitosCpf[10];
     }
 
@@ -88,18 +73,33 @@ public class CPF {
      *
      * @param cpf String que contém CPF
      * @return verdadeiro, se dígitos verificadores do CPF estiverem corretos,
-     *         falso, se não
+     * falso, se não
+     * @throws IllegalArgumentException Se argumento é null
+     * @throws IllegalArgumentException Se argumento não contém 11 dígitos
+     * @throws IllegalArgumentException Se argumento contém algo diferente de dígitos (0 a 9)
      */
     public static boolean validarDigitosCPF2(String cpf) {
+        if (cpf == null) {
+            throw new IllegalArgumentException("argumento é null");
+        }
+        if (cpf.length() != 11) {
+            throw new IllegalArgumentException("CPF deve ter 11 dígitos: " + cpf);
+        }
+        if (!sequenciaContemApenasDigitos(cpf)) {
+            throw new IllegalArgumentException("CPF deve conter somente dígitos (0 a 9): " + cpf);
+        }
+
         int[] digitosCpf = converteCaracteresEmInteiros(cpf);
         int calculoParcialDigito11 = digitosCpf[8];
         int calculoParcialDigito10 = calculoParcialDigito11;
+
         for (int i = 7; i >= 0; i--) {
             calculoParcialDigito11 += digitosCpf[i];
             calculoParcialDigito10 += calculoParcialDigito11;
         }
         int calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
         int calculoFinalDigito11 = ((calculoParcialDigito10 - calculoParcialDigito11 + 9 * digitosCpf[9]) % 11) % 10;
+
         return calculoFinalDigito10 == digitosCpf[9] & calculoFinalDigito11 == digitosCpf[10];
     }
 

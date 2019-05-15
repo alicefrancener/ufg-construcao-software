@@ -14,6 +14,13 @@ package com.github.alicefng.cs.aula1.domain;
 public class Data {
 
     /**
+     * Previne a classe utilitária de ter um construtor público.
+     */
+    protected Data() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Valida dia.
      *
      * @param dia Inteiro que informa dia do mês

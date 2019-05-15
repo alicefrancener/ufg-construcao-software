@@ -12,6 +12,9 @@ import com.github.alicefng.cs.aula1.domain.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Programa para rodar aplicação.
+ */
 public final class Programa {
 
     private static final Logger logger =
@@ -32,9 +35,14 @@ public final class Programa {
     public static void main(final String[] args) {
 
         logger.info("iniciado");
-        System.out.println(Data.diaDaSemana(14, 5, 2019));
-        System.out.println(CPF.validarDigitosCPF("43415200086"));
-        System.out.println(Matematica.fatorial(5));
+        int dia = 14;
+        int mes = 5;
+        int ano = 2019;
+        System.out.println(Data.diaDaSemana(dia, mes, ano));
+        String cpf = "43415200086";
+        System.out.println(CPF.validarDigitosCPF(cpf));
+        int fator = 5;
+        System.out.println(Matematica.fatorial(fator));
     }
 
 }

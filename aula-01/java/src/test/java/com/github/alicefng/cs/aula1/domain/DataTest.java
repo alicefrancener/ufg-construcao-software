@@ -14,28 +14,33 @@ public class DataTest {
 
     @Test
     public void diaInvalido() {
-        assertThrows(DataInvalidaException.class, () -> Data.diaDaSemana(0, 1, 2019));
+        assertThrows(DataInvalidaException.class,
+                () -> Data.diaDaSemana(0, 1, 2019));
     }
 
     @Test
     public void diaInvalido2() {
-        assertThrows(DataInvalidaException.class, () -> Data.diaDaSemana(32, 1, 2019));
+        assertThrows(DataInvalidaException.class,
+                () -> Data.diaDaSemana(32, 1, 2019));
     }
 
     @Test
     public void mesInvalido() {
-        assertThrows(DataInvalidaException.class, () -> Data.diaDaSemana(1, 0, 2019));
+        assertThrows(DataInvalidaException.class,
+                () -> Data.diaDaSemana(1, 0, 2019));
     }
 
     @Test
     public void mesInvalido2() {
-        assertThrows(DataInvalidaException.class, () -> Data.diaDaSemana(1, 13, 2019));
+        assertThrows(DataInvalidaException.class,
+                () -> Data.diaDaSemana(1, 13, 2019));
     }
 
 
     @Test
     public void anoMenorQueLimiteInferior() {
-        assertThrows(DataInvalidaException.class, () -> Data.diaDaSemana(1, 13, 1750));
+        assertThrows(DataInvalidaException.class,
+                () -> Data.diaDaSemana(1, 13, 1750));
     }
 
     @Test

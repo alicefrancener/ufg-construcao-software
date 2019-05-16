@@ -16,26 +16,34 @@ public class CPFTest {
 
     @Test
     public void cpfNull() {
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF(null));
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF2(null));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF(null));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF2(null));
     }
 
     @Test
     public void cpfMaiorQuePermitido() {
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF("123456789012"));
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF2("123456789012"));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF("123456789012"));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF2("123456789012"));
     }
 
     @Test
     public void cpfMenorQuePermitido() {
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF("1234567890"));
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF2("1234567890"));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF("1234567890"));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF2("1234567890"));
     }
 
     @Test
     public void cpfComOutrosCaracteres() {
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF("a2345678901"));
-        assertThrows(IllegalArgumentException.class, () -> CPF.validarDigitosCPF2("a2345678901"));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF("a2345678901"));
+        assertThrows(IllegalArgumentException.class,
+                () -> CPF.validarDigitosCPF2("a2345678901"));
     }
 
     @Test

@@ -124,9 +124,9 @@ function diaDaSemana(dia, mes, ano) {
         mes += 12;
         ano -= 1;
     }
-    var calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3
+    const calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3
         * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
-    var calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
+    const calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
 
     return diaDaSemanaToString(calculoDiaDaSemanaFinal);
 }

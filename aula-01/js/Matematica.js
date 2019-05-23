@@ -27,7 +27,7 @@ function restoDaDivisaoInteira(numerador, denominador) {
             + numerador + ", denominador = " + denominador);
     }
 
-    var resto = numerador;
+    let resto = numerador;
     while (resto >= denominador) {
         resto = resto - denominador;
     }
@@ -61,14 +61,14 @@ function produto(multiplicando, multiplicador) {
             + multiplicador);
     }
 
-    var totalParcelas = multiplicando;
-    var parcela = multiplicador;
+    let totalParcelas = multiplicando;
+    let parcela = multiplicador;
     if (multiplicador < multiplicando) {
         totalParcelas = multiplicador;
         parcela = multiplicando;
     }
-    var produto = 0;
-    for (var i = 1; i <= totalParcelas; i += 1) {
+    let produto = 0;
+    for (let i = 1; i <= totalParcelas; i++) {
         produto += parcela;
     }
 
@@ -100,8 +100,8 @@ function potencia(base, expoente) {
             + ", expoente = " + expoente);
     }
 
-    var potencia = 1;
-    for (var i = 1; i <= expoente; i++) {
+    let potencia = 1;
+    for (let i = 1; i <= expoente; i++) {
         potencia = produto(potencia, base);
     }
 
@@ -148,9 +148,9 @@ function possuiPropriedade3025(numero) {
         throw new RangeError("numero inválido: " + numero);
     }
 
-    var quociente = parseInt(numero / 100);
-    var resto = restoDaDivisaoInteira(numero, 100);
-    var resultado = potencia(quociente + resto, 2);
+    const quociente = parseInt(numero / 100);
+    const resto = restoDaDivisaoInteira(numero, 100);
+    const resultado = potencia(quociente + resto, 2);
 
     return numero === resultado;
 }
@@ -181,11 +181,11 @@ function possuiPropriedade153(numero) {
         throw new RangeError("numero inválido: " + numero);
     }
 
-    var quociente = parseInt(numero / 100);
-    var resto = restoDaDivisaoInteira(numero, 100);
-    var quociente2 = parseInt(resto / 10);
-    var resto2 = restoDaDivisaoInteira(resto, 10);
-    var resultado = potencia(quociente, 3) + potencia(quociente2, 3)
+    const quociente = parseInt(numero / 100);
+    const resto = restoDaDivisaoInteira(numero, 100);
+    const quociente2 = parseInt(resto / 10);
+    const resto2 = restoDaDivisaoInteira(resto, 10);
+    const resultado = potencia(quociente, 3) + potencia(quociente2, 3)
         + potencia(resto2, 3);
 
     return resultado === numero;
@@ -214,8 +214,8 @@ function somaDosPrimeirosNaturais(numero) {
         throw new RangeError("numero inválido: " + numero);
     }
 
-    var soma = 1;
-    for (var i = 2; i <= numero; i++) {
+    let soma = 1;
+    for (let i = 2; i <= numero; i++) {
         soma += i;
     }
 
@@ -244,8 +244,8 @@ function fatorial(numero) {
         throw new RangeError("numero inválido: " + numero);
     }
 
-    var fatorial = 1;
-    for (var i = 2; i <= numero; i++) {
+    let fatorial = 1;
+    for (let i = 2; i <= numero; i++) {
         fatorial *= i;
     }
 
@@ -275,8 +275,8 @@ function pi(precisao) {
         throw new RangeError("precisao inválido: " + precisao);
     }
 
-    var pi = 0, s = -1, d = -1;
-    for (var i = 1; i <= precisao; i++) {
+    let pi = 0, s = -1, d = -1;
+    for (let i = 1; i <= precisao; i++) {
         d += 2;
         s = -1 * s;
         pi += 4 * s / d;
@@ -314,10 +314,10 @@ function logaritmoNatural(expoente, precisao) {
             + expoente + ", precisao = " + precisao);
     }
 
-    var logaritmoNatural = 1 + expoente;
-    var numerador = expoente;
-    var denominador = 1;
-    for (var i = 2; i <= precisao; i++) {
+    let logaritmoNatural = 1 + expoente;
+    let numerador = expoente;
+    let denominador = 1;
+    for (let i = 2; i <= precisao; i++) {
         numerador *= numerador;
         denominador += i;
         logaritmoNatural += numerador / denominador;
@@ -357,10 +357,10 @@ function razaoAurea(numeroA, numeroB, precisao) {
             + numeroA + ", numeroB = " + numeroB + ", precisao = " + precisao);
     }
 
-    var numerador = numeroB;
-    var denominador = numeroA;
-    for (var i = 1; i <= precisao; i++) {
-        var temporario = numerador;
+    let numerador = numeroB;
+    let denominador = numeroA;
+    for (let i = 1; i <= precisao; i++) {
+        let temporario = numerador;
         numerador += denominador;
         denominador = temporario;
     }
@@ -391,8 +391,8 @@ function isQuadradoPerfeito(numero) {
         throw new RangeError("numero inválido: " + numero);
     }
 
-    var soma = 1;
-    for (var i = 3; soma < numero; i += 2) {
+    let soma = 1;
+    for (let i = 3; soma < numero; i = i + 2) {
         soma += i;
     }
 
@@ -424,7 +424,7 @@ function raizQuadrada(radicando, precisao) {
         throw new RangeError("radicando inválido: " + radicando);
     }
 
-    var raizQuadrada = 1;
+    let raizQuadrada = 1;
     for (; precisao >= 0; precisao--) {
         raizQuadrada = (raizQuadrada + radicando / raizQuadrada) / 2;
     }
@@ -454,7 +454,7 @@ function isPrimo(numero) {
         throw new RangeError("numero inválido: " + numero);
     }
 
-    for (var i = 2; i < numero; i++) {
+    for (let i = 2; i < numero; i++) {
         if (restoDaDivisaoInteira(numero, i) === 0) {
             return false;
         }
@@ -490,7 +490,7 @@ function maiorDivisorComumMetodo1(numeroA, numeroB) {
     }
 
     while (numeroB !== 0) {
-        var temporario = restoDaDivisaoInteira(numeroA, numeroB);
+        let temporario = restoDaDivisaoInteira(numeroA, numeroB);
         numeroA = numeroB;
         numeroB = temporario;
     }
@@ -547,17 +547,17 @@ function determinarNumerosPrimos(vetorZeros) {
     if (vetorZeros.length <= 1) {
         throw new Error("vetorZeros.length inválido: " + vetorZeros.length);
     }
-    for (var i = 1; i < vetorZeros.length; i++) {
+    for (let i = 1; i < vetorZeros.length; i++) {
         if (vetorZeros[i] !== 0) {
             throw new RangeError("vetorZeros[" + i + "] inválido: "
                 + vetorZeros[i]);
         }
     }
 
-    var limite = Math.floor(raizQuadrada(vetorZeros.length, 100));
+    const limite = Math.floor(raizQuadrada(vetorZeros.length, 100));
     for (i = 1; i < limite; i++) {
         if (vetorZeros[i] === 0) {
-            for (var multiplo = 2 * i; multiplo < vetorZeros.length;
+            for (let multiplo = 2 * i; multiplo < vetorZeros.length;
                  multiplo += i) {
                 vetorZeros[multiplo] = 1;
             }
@@ -589,7 +589,7 @@ function calcularPolinomio(numero, coeficientes) {
     if (grauDoPolinomio < 1) {
         throw new Error("grau do polinomio inválido: " + grauDoPolinomio);
     }
-    for (var i = 0; i < grauDoPolinomio; i++) {
+    for (let i = 0; i < grauDoPolinomio; i++) {
         if (coeficientes[i] === null || coeficientes[i] === undefined) {
             throw new TypeError("argumento null ou undefined");
         }
@@ -598,7 +598,7 @@ function calcularPolinomio(numero, coeficientes) {
         }
     }
 
-    var polinomio = coeficientes[grauDoPolinomio - 1];
+    let polinomio = coeficientes[grauDoPolinomio - 1];
     for (i = grauDoPolinomio - 2; i >= 0; i--) {
         polinomio = polinomio * numero + coeficientes[i];
     }
@@ -628,13 +628,13 @@ function obterEnesimoTermoDeFibonacci(enesimoTermo) {
         throw new RangeError("enesimoTermo inválido: " + enesimoTermo);
     }
 
-    var termoProximo = 0;
-    var termoAtual = 1;
+    let termoProximo = 0;
+    let termoAtual = 1;
     if (enesimoTermo === 0 | enesimoTermo === 1) {
         return enesimoTermo;
     }
-    for (var i = 2; i <= enesimoTermo; i++) {
-        var temporario = termoAtual;
+    for (let i = 2; i <= enesimoTermo; i++) {
+        let temporario = termoAtual;
         termoAtual = termoAtual + termoProximo;
         termoProximo = temporario;
     }

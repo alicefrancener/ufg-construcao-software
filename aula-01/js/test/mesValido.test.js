@@ -2,24 +2,24 @@ const funcao = require("../Data.js");
 
 test("mes fora da faixa", () => {
     expect(() => {
-        funcao.f2(13);
+        funcao.mesValido(13);
     }).toThrow();
 });
 
 test("mes null/undefined", () => {
     expect(() => {
-        funcao.f2();
+        funcao.mesValido();
     }).toThrow();
 });
 
 test("mes nao numerico", () => {
     expect(() => {
-        funcao.f2("abcd");
+        funcao.mesValido("abcd");
     }).toThrow();
 });
 
 test("mes nao inteiro", () => {
     expect(() => {
-        funcao.f2(10.5);
+        funcao.mesValido(10.5);
     }).toThrow();
 });

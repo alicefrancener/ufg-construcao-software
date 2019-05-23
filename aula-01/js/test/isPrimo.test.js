@@ -1,25 +1,25 @@
 const funcao = require("../Matematica.js");
 
 test("satisfaz (caso classico)", () => {
-    expect(funcao.f14(7)).toBe(true);
+    expect(funcao.isPrimo(7)).toBe(true);
 });
 
 test("nao satisfaz ", () => {
-    expect(funcao.f14(4)).toBe(false);
+    expect(funcao.isPrimo(4)).toBe(false);
 });
 
 test("valor fora da faixa", () => {
-    expect(() => { funcao.f14(1); }).toThrow(RangeError);
+    expect(() => { funcao.isPrimo(1); }).toThrow(RangeError);
 });
 
 test("argumento null/undefined", () => {
     expect(() => {
-        funcao.f14();
+        funcao.isPrimo();
     }).toThrow(TypeError);
 });
 
 test("argumento nao numerico", () => {
     expect(() => {
-        funcao.f14("abcd");
+        funcao.isPrimo("abcd");
     }).toThrow(TypeError);
 });

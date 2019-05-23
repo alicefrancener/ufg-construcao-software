@@ -1,27 +1,27 @@
 const funcao = require("../Matematica.js");
 
 test("satisfaz (caso classico)", () => {
-    expect(funcao.f12(9)).toBe(true);
+    expect(funcao.isQuadradoPerfeito(9)).toBe(true);
 });
 
 test("nao satisfaz ", () => {
-    expect(funcao.f12(7)).toBe(false);
+    expect(funcao.isQuadradoPerfeito(7)).toBe(false);
 });
 
 test("valor fora da faixa", () => {
     expect(() => {
-        funcao.f12(0);
+        funcao.isQuadradoPerfeito(0);
     }).toThrow(RangeError);
 });
 
 test("argumento null/undefined", () => {
     expect(() => {
-        funcao.f12();
+        funcao.isQuadradoPerfeito();
     }).toThrow(TypeError);
 });
 
 test("argumento nao numerico", () => {
     expect(() => {
-        funcao.f12("abcd");
+        funcao.isQuadradoPerfeito("abcd");
     }).toThrow(TypeError);
 });

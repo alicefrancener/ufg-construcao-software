@@ -1,23 +1,23 @@
 const funcao = require("../Matematica.js");
 
 test("satisfaz (caso classico)", () => {
-    expect(funcao.f9(1)).toBe(4);
+    expect(funcao.pi(1)).toBe(4);
 });
 
 test("valor fora da faixa", () => {
     expect(() => {
-        funcao.f9(-1);
+        funcao.pi(-1);
     }).toThrow(RangeError);
 });
 
 test("argumento null/undefined", () => {
     expect(() => {
-        funcao.f9();
+        funcao.pi();
     }).toThrow(TypeError);
 });
 
 test("argumento nao numerico", () => {
     expect(() => {
-        funcao.f9("abcd");
+        funcao.pi("abcd");
     }).toThrow(TypeError);
 });

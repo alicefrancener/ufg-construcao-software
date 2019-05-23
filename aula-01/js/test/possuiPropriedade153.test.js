@@ -1,31 +1,31 @@
 const funcao = require("../Matematica.js");
 
 test("153 satisfaz (caso classico)", () => {
-    expect(funcao.f6(153)).toBe(true);
+    expect(funcao.possuiPropriedade153(153)).toBe(true);
 });
 
 test("157 nao satisfaz", () => {
-    expect(funcao.f6(157)).toBe(false);
+    expect(funcao.possuiPropriedade153(157)).toBe(false);
 });
 
 test("argumento null/undefined", () => {
     expect(() => {
-        funcao.f6();
+        funcao.possuiPropriedade153();
     }).toThrow(TypeError);
 });
 
 test("argumento nao numerico", () => {
     expect(() => {
-        funcao.f6("abcd");
+        funcao.possuiPropriedade153("abcd");
     }).toThrow(TypeError);
 });
 
 test("valor negativo fora da faixa", () => {
     expect(() => {
-        funcao.f6(-1);
+        funcao.possuiPropriedade153(-1);
     }).toThrow(RangeError);
 });
 
 test("valor de 4 digitos fora da faixa", () => {
-    expect(() => funcao.f6(1000)).toThrow(RangeError);
+    expect(() => funcao.possuiPropriedade153(1000)).toThrow(RangeError);
 });

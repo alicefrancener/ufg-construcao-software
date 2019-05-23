@@ -76,7 +76,8 @@ function anoValido(ano) {
 }
 
 /**
- * Avalia data, chamando outras funções que lançam exceçõe se o dia, mes ou ano forem inválidos
+ * Avalia data, chamando outras funções que lançam exceçõe se o dia, mes ou ano
+ * forem inválidos
  *
  * @param {number} dia Inteiro que informa dia do mês
  * @param {number} mes Inteiro que informa mes do ano
@@ -95,12 +96,14 @@ function validaData(dia, mes, ano) {
 /**
  * Transforma inteiros (0 a 6) em strings correspondetes aos dias da semana
  *
- * @param {number} dia Inteiro que representa o dia da semana (0 = segunda, 1 = terça, e assim sucessivamente)
+ * @param {number} dia Inteiro que representa o dia da semana (0 = segunda,
+ * 1 = terça, e assim sucessivamente)
  *
  * @returns {string} String que representa o dia da semana
  */
 function diaDaSemanaToString(dia) {
-    const nomesDiasDaSemana = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado", "domingo"];
+    const nomesDiasDaSemana = ["segunda-feira", "terça-feira", "quarta-feira",
+        "quinta-feira", "sexta-feira", "sábado", "domingo"];
     return nomesDiasDaSemana[dia];
 }
 
@@ -121,7 +124,8 @@ function diaDaSemana(dia, mes, ano) {
         mes += 12;
         ano -= 1;
     }
-    var calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3 * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
+    var calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3
+        * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
     var calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
 
     return diaDaSemanaToString(calculoDiaDaSemanaFinal);

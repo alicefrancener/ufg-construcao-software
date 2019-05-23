@@ -19,11 +19,13 @@ function converteCaracteresEmInteiros(cpf) {
 }
 
 /**
- * Avalia se CPF fornecido é válido dado seus dígitos verificados (dois últimos dígitos)
+ * Avalia se CPF fornecido é válido dado seus dígitos verificados
+ * (dois últimos dígitos)
  *
  * @param {String} cpf String que contém CPF
  *
- * @returns {boolean} Verdadeiro, se dígitos verificadores do CPF estiverem corretos, Falso, se não
+ * @returns {boolean} Verdadeiro, se dígitos verificadores do CPF estiverem
+ * corretos, Falso, se não
  *
  * @throws {RangeError} Se cpf tem mais que 11 caracteres
  * @throws {TypeError} Se cpf é null ou undefined
@@ -51,15 +53,18 @@ function validarDigitosCPF(cpf) {
     var calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
     var calculoFinalDigito11 = (calculoParcialDigito11 % 11) % 10;
 
-    return calculoFinalDigito10 === digitosCpf[9] && calculoFinalDigito11 === digitosCpf[10];
+    return calculoFinalDigito10 === digitosCpf[9]
+        && calculoFinalDigito11 === digitosCpf[10];
 }
 
 /**
- * Avalia se CPF fornecido é válido dado seus dígitos verificados (dois últimos dígitos)
+ * Avalia se CPF fornecido é válido dado seus dígitos verificados
+ * (dois últimos dígitos)
  *
  * @param {String} cpf String que contém CPF
  *
- * @returns {boolean} Verdadeiro, se dígitos verificadores do CPF estiverem corretos, Falso, se não
+ * @returns {boolean} Verdadeiro, se dígitos verificadores do CPF estiverem
+ * corretos, Falso, se não
  *
  * @throws {RangeError} Se cpf tem mais que 11 dígitos
  * @throws {TypeError} Se cpf é null ou undefined
@@ -80,9 +85,11 @@ function validarDigitosCPF2(cpf) {
         calculoParcialDigito10 += calculoParcialDigito11;
     }
     var calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
-    var calculoFinalDigito11 = ((calculoParcialDigito10 - calculoParcialDigito11 + 9 * digitosCpf[9]) % 11) % 10;
+    var calculoFinalDigito11 = ((calculoParcialDigito10 - calculoParcialDigito11
+        + 9 * digitosCpf[9]) % 11) % 10;
 
-    return calculoFinalDigito10 === digitosCpf[9] && calculoFinalDigito11 === digitosCpf[10];
+    return calculoFinalDigito10 === digitosCpf[9]
+        && calculoFinalDigito11 === digitosCpf[10];
 }
 
 module.exports = {

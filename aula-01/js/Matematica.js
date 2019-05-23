@@ -2,28 +2,6 @@
  * Operações matemáticas básicas
  */
 
-module.exports = {
-    f1: possuiPropriedade3025,
-    f2: restoDaDivisaoInteira,
-    f3: produto,
-    f4: potencia,
-    f5: estaDentroDoIntervalo,
-    f6: possuiPropriedade153,
-    f7: somaDosPrimeirosNaturais,
-    f8: fatorial,
-    f9: pi,
-    f10: logaritmoNatural,
-    f11: razaoAurea,
-    f12: isQuadradoPerfeito,
-    f13: raizQuadrada,
-    f14: isPrimo,
-    f15: maiorDivisorComumMetodo1,
-    f16: maiorDivisorComumMetodo2,
-    f17: determinarNumerosPrimos,
-    f18: calcularPolinomio,
-    f19: obterEnesimoTermoDaSequenciaDeFibonacci
-};
-
 /**
  * Produz o resto da divisão entre dois numeros inteiros
  *
@@ -599,7 +577,7 @@ function calcularPolinomio(numero, coeficientes) {
  * @throws {TypeError} Se parâmetro não for inteiro
  * @throws {RangeError} Se o argumento for menor que 0
  */
-function obterEnesimoTermoDaSequenciaDeFibonacci(enesimoTermo) {
+function obterEnesimoTermoDeFibonacci(enesimoTermo) {
     if (enesimoTermo === null || enesimoTermo === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
@@ -623,3 +601,25 @@ function obterEnesimoTermoDaSequenciaDeFibonacci(enesimoTermo) {
 
     return termoAtual;
 }
+
+module.exports = {
+    possuiPropriedade3025: possuiPropriedade3025,
+    restoDaDivisaoInteira: restoDaDivisaoInteira,
+    produto: produto,
+    potencia: potencia,
+    estaDentroDoIntervalo: estaDentroDoIntervalo,
+    possuiPropriedade153: possuiPropriedade153,
+    somaDosPrimeirosNaturais: somaDosPrimeirosNaturais,
+    fatorial: fatorial,
+    pi: pi,
+    logaritmoNatural: logaritmoNatural,
+    razaoAurea: razaoAurea,
+    isQuadradoPerfeito: isQuadradoPerfeito,
+    raizQuadrada: raizQuadrada,
+    isPrimo: isPrimo,
+    maiorDivisorComumMetodo1: maiorDivisorComumMetodo1,
+    maiorDivisorComumMetodo2: maiorDivisorComumMetodo2,
+    determinarNumerosPrimos: determinarNumerosPrimos,
+    calcularPolinomio: calcularPolinomio,
+    obterEnesimoTermoDeFibonacci: obterEnesimoTermoDeFibonacci
+};

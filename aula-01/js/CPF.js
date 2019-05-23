@@ -2,12 +2,6 @@
  * Funções para verificar validade de CPFs
  */
 
-module.exports = {
-    f1: converteCaracteresEmInteiros,
-    f2: validarDigitosCPF,
-    f3: validarDigitosCPF2
-};
-
 /**
  * Transforma caracteres numéricos em inteiros
  *
@@ -35,10 +29,10 @@ function converteCaracteresEmInteiros(cpf) {
  * @throws {TypeError} Se cpf é null ou undefined
  */
 function validarDigitosCPF(cpf) {
-    if (cpf === null || cpf === undefined){
+    if (cpf === null || cpf === undefined) {
         throw new TypeError("Argumento null ou undefined");
     }
-    if (cpf.length != 11) {
+    if (cpf.length !== 11) {
         throw new RangeError("CPF deve ter 11 dígitos: " + cpf);
     }
 
@@ -57,7 +51,7 @@ function validarDigitosCPF(cpf) {
     var calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
     var calculoFinalDigito11 = (calculoParcialDigito11 % 11) % 10;
 
-    return calculoFinalDigito10 == digitosCpf[9] && calculoFinalDigito11 == digitosCpf[10];
+    return calculoFinalDigito10 === digitosCpf[9] && calculoFinalDigito11 === digitosCpf[10];
 }
 
 /**
@@ -71,10 +65,10 @@ function validarDigitosCPF(cpf) {
  * @throws {TypeError} Se cpf é null ou undefined
  */
 function validarDigitosCPF2(cpf) {
-    if (cpf === null || cpf === undefined){
+    if (cpf === null || cpf === undefined) {
         throw new TypeError("Argumento null ou undefined");
     }
-    if (cpf.length != 11) {
+    if (cpf.length !== 11) {
         throw new RangeError("CPF deve ter 11 dígitos: " + cpf);
     }
 
@@ -90,3 +84,9 @@ function validarDigitosCPF2(cpf) {
 
     return calculoFinalDigito10 === digitosCpf[9] && calculoFinalDigito11 === digitosCpf[10];
 }
+
+module.exports = {
+    converteCaracteresEmInteiros: converteCaracteresEmInteiros,
+    validarDigitosCPF: validarDigitosCPF,
+    validarDigitosCPF2: validarDigitosCPF2
+};

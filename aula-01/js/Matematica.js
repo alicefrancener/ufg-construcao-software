@@ -275,7 +275,9 @@ function pi(precisao) {
         throw new RangeError("precisao inválido: " + precisao);
     }
 
-    let pi = 0, s = -1, d = -1;
+    let pi = 0;
+    let s = -1;
+    let d = -1;
     for (let i = 1; i <= precisao; i++) {
         d += 2;
         s = -1 * s;

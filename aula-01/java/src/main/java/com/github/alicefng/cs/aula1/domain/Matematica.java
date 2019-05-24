@@ -9,7 +9,7 @@ package com.github.alicefng.cs.aula1.domain;
 /**
  * Implementação de várias operações matemáticas básicas.
  */
-public class Matematica {
+public final class Matematica {
 
     /**
      * Previne a classe utilitária de ter um construtor público.
@@ -330,8 +330,9 @@ public class Matematica {
                     + radicando);
         }
 
+        int precisaoAux = precisao;
         double raizQuadrada = 1;
-        for (; precisao >= 0; precisao--) {
+        for (; precisaoAux >= 0; precisaoAux--) {
             raizQuadrada = (raizQuadrada + radicando / raizQuadrada) / 2;
         }
 

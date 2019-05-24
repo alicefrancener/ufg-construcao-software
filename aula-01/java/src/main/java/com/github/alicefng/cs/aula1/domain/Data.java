@@ -11,7 +11,7 @@ package com.github.alicefng.cs.aula1.domain;
  * data válida fornecida.
  */
 
-public class Data {
+public final class Data {
 
     /**
      * Maior valor para um dia.

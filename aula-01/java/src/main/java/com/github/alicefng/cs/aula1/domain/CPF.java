@@ -9,7 +9,7 @@ package com.github.alicefng.cs.aula1.domain;
 /**
  * Implementação de algoritomos para validar CPF.
  */
-public class CPF {
+public final class CPF {
 
     /**
      * Valor correspondente ao tamanho (quantidade de dígitos) de um CPF.

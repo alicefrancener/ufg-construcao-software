@@ -58,9 +58,4 @@ public class CPFTest {
         assertFalse(CPF.validarDigitosCPF2("43415200016"));
     }
 
-    @Test
-    public void coberturaCemPorCento() {
-        assertNotNull(new CPF());
-    }
-
 }

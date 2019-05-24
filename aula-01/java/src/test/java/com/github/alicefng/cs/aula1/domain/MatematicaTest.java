@@ -174,9 +174,4 @@ public class MatematicaTest {
         assertFalse(Matematica.estaDentroDoIntervalo(-101, -100, 100));
     }
 
-
-    @Test
-    public void coberturaCemPorCento() {
-        assertNotNull(new Matematica());
-    }
 }

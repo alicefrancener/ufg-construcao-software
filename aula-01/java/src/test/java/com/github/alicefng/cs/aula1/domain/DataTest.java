@@ -54,9 +54,4 @@ public class DataTest {
         assertEquals("domingo", Data.diaDaSemana(19, 5, 2019));
     }
 
-    @Test
-    public void coberturaCemPorCento() {
-        assertNotNull(new Data());
-    }
-
 }

@@ -192,9 +192,4 @@ public class MatematicaUtilsTest {
         assertFalse(MatematicaUtils.estaDentroDoIntervalo(-101, -100, 100));
     }
 
-    @Test
-    public void testClasse() {
-        assertThrows(UnsupportedOperationException.class,
-                () -> new Matematica());
-    }
 }

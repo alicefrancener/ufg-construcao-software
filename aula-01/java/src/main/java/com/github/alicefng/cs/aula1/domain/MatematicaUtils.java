@@ -12,9 +12,9 @@ package com.github.alicefng.cs.aula1.domain;
 public final class MatematicaUtils {
 
     /**
-     * Previne a classe utilitária de ter um construtor público.
+     * Previne a classe utilitária de ser instanciada.
      */
-    protected MatematicaUtils() {
+    private MatematicaUtils() {
         throw new UnsupportedOperationException();
     }
 

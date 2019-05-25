@@ -53,9 +53,9 @@ public final class CpfUtils {
     public static final int DIGITO_11 = 10;
 
     /**
-     * Previne a classe utilitária de ter um construtor público.
+     * Previne a classe utilitária de ser instanciada.
      */
-    protected CpfUtils() {
+    private CpfUtils() {
         throw new UnsupportedOperationException();
     }
 

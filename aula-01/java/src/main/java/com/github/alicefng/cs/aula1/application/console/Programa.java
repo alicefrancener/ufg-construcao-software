@@ -6,9 +6,9 @@
 
 package com.github.alicefng.cs.aula1.application.console;
 
-import com.github.alicefng.cs.aula1.domain.CPF;
-import com.github.alicefng.cs.aula1.domain.Matematica;
-import com.github.alicefng.cs.aula1.domain.Data;
+import com.github.alicefng.cs.aula1.domain.CpfUtils;
+import com.github.alicefng.cs.aula1.domain.MatematicaUtils;
+import com.github.alicefng.cs.aula1.domain.DataUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,11 +38,11 @@ public final class Programa {
         int dia = 14;
         int mes = 5;
         int ano = 2019;
-        System.out.println(Data.diaDaSemana(dia, mes, ano));
+        System.out.println(DataUtils.diaDaSemana(dia, mes, ano));
         String cpf = "43415200086";
-        System.out.println(CPF.validarDigitosCPF(cpf));
+        System.out.println(CpfUtils.validarDigitosCPF(cpf));
         int fator = 5;
-        System.out.println(Matematica.fatorial(fator));
+        System.out.println(MatematicaUtils.fatorial(fator));
     }
 
 }

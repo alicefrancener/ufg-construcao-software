@@ -64,9 +64,4 @@ public class DataUtilsTest {
                 () -> DataUtils.diaDaSemanaToString(-1));
     }
 
-    @Test
-    public void testClasse() {
-        assertThrows(UnsupportedOperationException.class, () -> new Data());
-    }
-
 }

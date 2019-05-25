@@ -40,9 +40,9 @@ public final class DataUtils {
 
 
     /**
-     * Previne a classe utilitária de ter um construtor público.
+     * Previne a classe utilitária de ser instanciada.
      */
-    protected DataUtils() {
+    private DataUtils() {
         throw new UnsupportedOperationException();
     }
 
@@ -83,9 +83,7 @@ public final class DataUtils {
     }
 
     /**
-     * Transforma inteiros (0 a 6) em strings correspondetes aos dias da semana:
-     * "segunda-feira" (índice 0), "terça-feira" (índice 1) e assim
-     * sucessivamente, até "domingo" (índice 6).
+     * Transforma inteiros (0 a 6) em strings correspondetes aos dias da semana.
      *
      * @param dia Inteiro que representa o dia da semana (0 = segunda,
      *            1 = terça, e assim sucessivamente)
@@ -120,17 +118,19 @@ public final class DataUtils {
         validaMes(mes);
         validaAno(ano);
 
-        int m = mes;
-        int a = ano;
+        final int diaDaSemana = 0;
         if (mes == 1 | mes == 2) {
-            m = m + 12;
-            a = a - 1;
-        }
-        int calculoDiaDaSemanaParcial = dia + 2 * m + 3 * (m + 1) / 5
-                + a + a / 4 - a / 100 + a / 400;
-        final int calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
+            final int mes2 = mes + 12;
+            final int ano2 = ano - 1;
 
-        return diaDaSemanaToString(calculoDiaDaSemanaFinal);
+            diaDaSemana = dia + 2 * mes2 + 3 * (mes2 + 1) / 5 + ano2
+                    + ano2 / 4 - ano2 / 100 + ano2 / 400;
+        } else {
+            diaDaSemana = dia + 2 * mes + 3 * (mes + 1) / 5 + ano
+                    + ano / 4 - ano / 100 + ano / 400;
+        }
+
+        return diaDaSemanaToString(diaDaSemana % 7);
     }
 
 }

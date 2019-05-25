@@ -60,9 +60,4 @@ public class CpfUtilsTest {
         assertFalse(CpfUtils.validarDigitosCPF2("43415200016"));
     }
 
-    @Test
-    public void testClasse() {
-        assertThrows(UnsupportedOperationException.class, () -> new CPF());
-    }
-
 }

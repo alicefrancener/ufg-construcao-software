@@ -12,50 +12,52 @@ import java.lang.String;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CPFTest {
+import com.github.alicefng.cs.aula1.domain.CpfUtils;
+
+public class CpfUtilsTest {
 
     @Test
     public void cpfNull() {
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF(null));
+                () -> CpfUtils.validarDigitosCPF(null));
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF2(null));
+                () -> CpfUtils.validarDigitosCPF2(null));
     }
 
     @Test
     public void cpfMaiorQuePermitido() {
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF("123456789012"));
+                () -> CpfUtils.validarDigitosCPF("123456789012"));
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF2("123456789012"));
+                () -> CpfUtils.validarDigitosCPF2("123456789012"));
     }
 
     @Test
     public void cpfMenorQuePermitido() {
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF("1234567890"));
+                () -> CpfUtils.validarDigitosCPF("1234567890"));
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF2("1234567890"));
+                () -> CpfUtils.validarDigitosCPF2("1234567890"));
     }
 
     @Test
     public void cpfComOutrosCaracteres() {
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF("a2345678901"));
+                () -> CpfUtils.validarDigitosCPF("a2345678901"));
         assertThrows(IllegalArgumentException.class,
-                () -> CPF.validarDigitosCPF2("a2345678901"));
+                () -> CpfUtils.validarDigitosCPF2("a2345678901"));
     }
 
     @Test
     public void cpfValido() {
-        assertTrue(CPF.validarDigitosCPF("43415200086"));
-        assertTrue(CPF.validarDigitosCPF2("43415200086"));
+        assertTrue(CpfUtils.validarDigitosCPF("43415200086"));
+        assertTrue(CpfUtils.validarDigitosCPF2("43415200086"));
     }
 
     @Test
     public void cpfInvalido() {
-        assertFalse(CPF.validarDigitosCPF("43415200016"));
-        assertFalse(CPF.validarDigitosCPF2("43415200016"));
+        assertFalse(CpfUtils.validarDigitosCPF("43415200016"));
+        assertFalse(CpfUtils.validarDigitosCPF2("43415200016"));
     }
 
     @Test

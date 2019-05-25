@@ -9,7 +9,7 @@ package com.github.alicefng.cs.aula1.domain;
 /**
  * Implementação de algoritomos para validar CPF.
  */
-public final class CPF {
+public final class CpfUtils {
 
     /**
      * Valor correspondente ao tamanho (quantidade de dígitos) de um CPF.
@@ -55,7 +55,7 @@ public final class CPF {
     /**
      * Previne a classe utilitária de ter um construtor público.
      */
-    protected CPF() {
+    protected CpfUtils() {
         throw new UnsupportedOperationException();
     }
 

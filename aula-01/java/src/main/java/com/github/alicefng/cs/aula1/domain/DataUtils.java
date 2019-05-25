@@ -11,7 +11,7 @@ package com.github.alicefng.cs.aula1.domain;
  * data válida fornecida.
  */
 
-public final class Data {
+public final class DataUtils {
 
     /**
      * Maior valor para um dia.
@@ -42,7 +42,7 @@ public final class Data {
     /**
      * Previne a classe utilitária de ter um construtor público.
      */
-    protected Data() {
+    protected DataUtils() {
         throw new UnsupportedOperationException();
     }
 

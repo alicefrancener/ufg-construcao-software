@@ -9,12 +9,12 @@ package com.github.alicefng.cs.aula1.domain;
 /**
  * Implementação de várias operações matemáticas básicas.
  */
-public final class Matematica {
+public final class MatematicaUtils {
 
     /**
      * Previne a classe utilitária de ter um construtor público.
      */
-    protected Matematica() {
+    protected MatematicaUtils() {
         throw new UnsupportedOperationException();
     }
 

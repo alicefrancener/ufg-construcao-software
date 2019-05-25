@@ -93,7 +93,7 @@ public final class Data {
      * @throws IllegalArgumentException se o dia informado estiver fora da
      *                                  amplitude
      */
-    private static String diaDaSemanaToString(final int dia) {
+    public static String diaDaSemanaToString(final int dia) {
         if (dia < 0 || dia > 6) {
             throw new IllegalArgumentException("Dia inválido: " + dia + ". "
                     + "Dia deve estar entre 0 e 6.");

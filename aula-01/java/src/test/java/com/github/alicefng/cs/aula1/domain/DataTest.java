@@ -40,7 +40,7 @@ public class DataTest {
     @Test
     public void anoMenorQueLimiteInferior() {
         assertThrows(DataInvalidaException.class,
-                () -> Data.diaDaSemana(1, 13, 1750));
+                () -> Data.diaDaSemana(10, 5, 1700));
     }
 
     @Test
@@ -50,8 +50,28 @@ public class DataTest {
         assertEquals("quarta-feira", Data.diaDaSemana(15, 5, 2019));
         assertEquals("quinta-feira", Data.diaDaSemana(16, 5, 2019));
         assertEquals("sexta-feira", Data.diaDaSemana(17, 5, 2019));
-        assertEquals("sábado", Data.diaDaSemana(18, 5, 2019));
-        assertEquals("domingo", Data.diaDaSemana(19, 5, 2019));
+        assertEquals("sábado", Data.diaDaSemana(19, 1, 2019));
+        assertEquals("domingo", Data.diaDaSemana(10, 2, 2019));
+    }
+
+    @Test
+    public void diaDaSemanaToStringTest() {
+        assertThrows(IllegalArgumentException.class,
+                () -> Data.diaDaSemanaToString(8));
+        assertThrows(IllegalArgumentException.class,
+                () -> Data.diaDaSemanaToString(-1));
+    }
+
+    /*@Test
+    public void diaDaSemanaToStringTest() {
+        assertThrows(DataInvalidaException.class,
+                () -> Data.validaAno(1700));
+    }*/
+
+
+    @Test
+    public void testClasse() {
+        assertThrows(UnsupportedOperationException.class, () -> new Data());
     }
 
 }

@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import javax.accessibility.AccessibleAttributeSequence;
 
+import java.util.*;
+
 import com.github.alicefng.cs.aula1.domain.Matematica;
 
 public class MatematicaTest {
@@ -103,7 +105,7 @@ public class MatematicaTest {
         assertThrows(IllegalArgumentException.class,
                 () -> Matematica.razaoAurea(11, 10, 10));
         assertThrows(IllegalArgumentException.class,
-                () -> Matematica.razaoAurea(10, 8, 0));
+                () -> Matematica.razaoAurea(7, 8, 0));
         assertEquals(1.5, Matematica.razaoAurea(1, 2, 1));
     }
 
@@ -145,13 +147,14 @@ public class MatematicaTest {
                 () -> Matematica.maiorDivisorComumMetodo2(10, 100));
         assertThrows(IllegalArgumentException.class,
                 () -> Matematica.maiorDivisorComumMetodo2(10, -1));
-        assertEquals(5, Matematica.maiorDivisorComumMetodo2(10, 5));
+        assertEquals(5, Matematica.maiorDivisorComumMetodo2(100, 5));
+        assertEquals(1, Matematica.maiorDivisorComumMetodo2(10, 3));
     }
 
     @Test
     public void testCalcularPolinomio() {
-        int[] vetor = {10, 5, 6};
-        assertEquals(79, Matematica.calcularPolinomio(3, vetor));
+        int[] vetorTest = {10, 5, 6};
+        assertEquals(79, Matematica.calcularPolinomio(3, vetorTest));
     }
 
     @Test
@@ -159,13 +162,28 @@ public class MatematicaTest {
         assertThrows(IllegalArgumentException.class,
                 () -> Matematica.obterEnesimoTermoDeFibonacci(-1));
         assertEquals(8, Matematica.obterEnesimoTermoDeFibonacci(6));
+        assertEquals(0, Matematica.obterEnesimoTermoDeFibonacci(0));
+        assertEquals(1, Matematica.obterEnesimoTermoDeFibonacci(1));
     }
 
     @Test
     public void testDeterminarNumerosPrimos() {
         int[] vetorTest1 = {1};
+        int[] vetorTest2 = {0, 0, 0};
+        int[] vetorTest2Compare = {0, 0, 0};
+        int[] vetorTest3 = {0, 0, 0, 0, 0};
+        int[] vetorTest3Compare = {1, 1, 1, 1, 1};
         assertThrows(IllegalArgumentException.class,
                 () -> Matematica.determinarNumerosPrimos(vetorTest1));
+        assertFalse(vetorTest2Compare.equals
+                (Matematica.determinarNumerosPrimos(vetorTest2)));
+
+        vetorTest2[0] = 1;
+        assertThrows(IllegalArgumentException.class,
+                () -> Matematica.determinarNumerosPrimos(vetorTest2));
+
+        assertFalse(vetorTest3Compare.equals
+                (Matematica.determinarNumerosPrimos(vetorTest3)));
     }
 
     @Test
@@ -174,4 +192,9 @@ public class MatematicaTest {
         assertFalse(Matematica.estaDentroDoIntervalo(-101, -100, 100));
     }
 
+    @Test
+    public void testClasse() {
+        assertThrows(UnsupportedOperationException.class,
+                () -> new Matematica());
+    }
 }

@@ -432,7 +432,7 @@ public final class Matematica {
             throw new IllegalArgumentException("vetorZeros.length inválido: "
                     + vetorZeros.length);
         }
-        for (int i = 1; i < vetorZeros.length; i++) {
+        for (int i = 0; i < vetorZeros.length; i++) {
             if (vetorZeros[i] != 0) {
                 throw new IllegalArgumentException("vetorZeros[" + i + "] "
                         + "inválido: " + vetorZeros[i]);
@@ -446,7 +446,8 @@ public final class Matematica {
         for (int i = 1; i < limite; i++) {
             if (vetorZerosResultado[i] == 0) {
                 for (int multiplo = 2 * i;
-                     multiplo < vetorZerosResultado.length; multiplo += i) {
+                     multiplo < vetorZerosResultado.length; multiplo =
+                             multiplo + i) {
                     vetorZerosResultado[multiplo] = 1;
                 }
             }
@@ -466,10 +467,6 @@ public final class Matematica {
     public static int calcularPolinomio(final int numero,
                                         final int[] coeficientes) {
         final int grauDoPolinomio = coeficientes.length;
-        if (grauDoPolinomio < 1) {
-            throw new IllegalArgumentException("grau do polinomio inválido: "
-                    + grauDoPolinomio);
-        }
 
         int polinomio = coeficientes[grauDoPolinomio - 1];
         for (int i = grauDoPolinomio - 2; i >= 0; i--) {

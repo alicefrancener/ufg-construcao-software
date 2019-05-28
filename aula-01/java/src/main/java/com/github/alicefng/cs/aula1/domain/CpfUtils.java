@@ -106,20 +106,20 @@ public final class CpfUtils {
         }
 
         final int[] digitosCpf = converteCaracteresEmInteiros(cpf);
-        int calculoParcialDigito10 = digitosCpf[DIGITO_1];
-        int calculoParcialDigito11 = digitosCpf[DIGITO_2];
+        int calculoDigito10 = digitosCpf[DIGITO_1];
+        int calculoDigito11 = digitosCpf[DIGITO_2];
 
         for (int i = DIGITO_2; i < DIGITO_10; i++) {
-            calculoParcialDigito10 += digitosCpf[i] * (i + 1);
+            calculoDigito10 += digitosCpf[i] * (i + 1);
         }
         for (int i = DIGITO_3; i < DIGITO_11; i++) {
-            calculoParcialDigito11 += digitosCpf[i] * i;
+            calculoDigito11 += digitosCpf[i] * i;
         }
-        final int calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
-        final int calculoFinalDigito11 = (calculoParcialDigito11 % 11) % 10;
+        calculoDigito10 = (calculoDigito10 % 11) % 10;
+        calculoDigito11 = (calculoDigito11 % 11) % 10;
 
-        return calculoFinalDigito10 == digitosCpf[DIGITO_10]
-                & calculoFinalDigito11 == digitosCpf[DIGITO_11];
+        return calculoDigito10 == digitosCpf[DIGITO_10]
+                & calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
     /**
@@ -148,20 +148,20 @@ public final class CpfUtils {
         }
 
         final int[] digitosCpf = converteCaracteresEmInteiros(cpf);
-        int calculoParcialDigito11 = digitosCpf[DIGITO_9];
-        int calculoParcialDigito10 = calculoParcialDigito11;
+        int calculoDigito11 = digitosCpf[DIGITO_9];
+        int calculoDigito10 = digitosCpf[DIGITO_9];
 
         for (int i = DIGITO_8; i >= DIGITO_1; i--) {
-            calculoParcialDigito11 += digitosCpf[i];
-            calculoParcialDigito10 += calculoParcialDigito11;
+            calculoDigito11 += digitosCpf[i];
+            calculoDigito10 += calculoDigito11;
         }
-        final int calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
-        final int calculoFinalDigito11 = ((calculoParcialDigito10
-                - calculoParcialDigito11 + 9 * digitosCpf[DIGITO_10]) % 11)
+        calculoDigito10 = (calculoDigito10 % 11) % 10;
+        calculoDigito11 = ((calculoDigito10
+                - calculoDigito11 + 9 * digitosCpf[DIGITO_10]) % 11)
                 % 10;
 
-        return calculoFinalDigito10 == digitosCpf[DIGITO_10]
-                & calculoFinalDigito11 == digitosCpf[DIGITO_11];
+        return calculoDigito10 == digitosCpf[DIGITO_10]
+                & calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
 }

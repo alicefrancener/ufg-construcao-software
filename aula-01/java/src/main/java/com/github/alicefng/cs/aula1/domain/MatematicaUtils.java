@@ -60,12 +60,13 @@ public final class MatematicaUtils {
                     + "multiplicador = " + multiplicador);
         }
 
-        int totalParcelas = multiplicando;
-        int parcela = multiplicador;
-        if (multiplicador < multiplicando) {
-            totalParcelas = multiplicador;
-            parcela = multiplicando;
-        }
+        final int totalParcelas = multiplicador < multiplicando
+                ? multiplicador
+                : multiplicando;
+        final int parcela = multiplicador < multiplicando
+                ? multiplicando
+                : multiplicador;
+
         int produto = 0;
         for (int i = 1; i <= totalParcelas; i += 1) {
             produto += parcela;

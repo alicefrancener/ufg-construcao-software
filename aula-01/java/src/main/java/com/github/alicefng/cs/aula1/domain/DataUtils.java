@@ -118,17 +118,15 @@ public final class DataUtils {
         validaMes(mes);
         validaAno(ano);
 
-        final int diaDaSemana = 0;
-        if (mes == 1 | mes == 2) {
-            final int mes2 = mes + 12;
-            final int ano2 = ano - 1;
+        final int mesAux = mes == 1 | mes == 2
+                ? mes + 12
+                : mes;
+        final int anoAux = mes == 1 | mes == 2
+                ? ano - 1
+                : ano;
 
-            diaDaSemana = dia + 2 * mes2 + 3 * (mes2 + 1) / 5 + ano2
-                    + ano2 / 4 - ano2 / 100 + ano2 / 400;
-        } else {
-            diaDaSemana = dia + 2 * mes + 3 * (mes + 1) / 5 + ano
-                    + ano / 4 - ano / 100 + ano / 400;
-        }
+        final int diaDaSemana = dia + 2 * mesAux + 3 * (mesAux + 1) / 5 + anoAux
+                + anoAux / 4 - anoAux / 100 + anoAux / 400;
 
         return diaDaSemanaToString(diaDaSemana % 7);
     }

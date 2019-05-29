@@ -109,7 +109,7 @@ public final class MatematicaUtils {
     public static boolean estaDentroDoIntervalo(final int numero,
                                                 final int intervaloInferior,
                                                 final int intervaloSuperior) {
-        return (numero >= intervaloInferior & numero <= intervaloSuperior);
+        return numero >= intervaloInferior & numero <= intervaloSuperior;
     }
 
     /**

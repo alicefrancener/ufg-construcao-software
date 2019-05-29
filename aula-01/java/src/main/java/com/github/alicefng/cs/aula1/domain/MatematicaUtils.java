@@ -14,7 +14,7 @@ public final class MatematicaUtils {
     /**
      * Mensagem padrão para argumento inválido.
      */
-    public static final String ARGUMENTO_INVALIDO = "Argumento (s) invalido " +
+    public static final String ARG_INVALIDO = "Argumento (s) invalido " +
             "(s).";
 
     /**
@@ -37,7 +37,7 @@ public final class MatematicaUtils {
                                             final int denominador) {
         final int limiteMinimo = 0;
         if (numerador <= limiteMinimo || denominador < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numerador = " + numerador
                     + ", denominador = " + denominador);
         }
@@ -63,7 +63,7 @@ public final class MatematicaUtils {
                               final int multiplicador) {
         final int limiteMinimo = 0;
         if (multiplicando < limiteMinimo || multiplicador < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " multiplicando = " + multiplicando
                     + ", multiplicador = " + multiplicador);
         }
@@ -94,7 +94,7 @@ public final class MatematicaUtils {
     public static int potencia(final int base, final int expoente) {
         final int limiteMinimo = 0;
         if (base < limiteMinimo || expoente < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + "base = " + base + ", expoente = " + expoente);
         }
 
@@ -134,7 +134,7 @@ public final class MatematicaUtils {
      */
     public static boolean possuiPropriedade3025(final int numero) {
         if (!estaDentroDoIntervalo(numero, 0, 9999)) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }
 
@@ -158,7 +158,7 @@ public final class MatematicaUtils {
      */
     public static boolean possuiPropriedade153(final int numero) {
         if (!estaDentroDoIntervalo(numero, 100, 999)) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }
 
@@ -182,7 +182,7 @@ public final class MatematicaUtils {
     public static int somaDosPrimeirosNaturais(final int numero) {
         final int limiteMinimo = 1;
         if (numero < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }
 
@@ -204,7 +204,7 @@ public final class MatematicaUtils {
     public static int fatorial(final int numero) {
         final int limiteMinimo = 1;
         if (numero < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero =" + numero);
         }
 
@@ -227,7 +227,7 @@ public final class MatematicaUtils {
     public static double pi(final int precisao) {
         final int limiteMinimo = 1;
         if (precisao < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " precisao = " + precisao);
         }
 
@@ -237,7 +237,7 @@ public final class MatematicaUtils {
 
         for (int i = 1; i <= precisao; i++) {
             d = d + 2;
-            s = -1 * s;
+            s = -s;
             pi = pi + 4 * s / d;
         }
 
@@ -260,7 +260,7 @@ public final class MatematicaUtils {
     public static double logaritmoNatural(final double expoente,
                                           final double precisao) {
         if (expoente < 1 || precisao < 2) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " expoente = " + expoente + ", precisao = " + precisao);
         }
 
@@ -294,7 +294,7 @@ public final class MatematicaUtils {
         final int limiteMinimo = 0;
         if (numeroA < limiteMinimo || numeroA >= numeroB
                 || precisao <= limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numeroA = " + numeroA
                     + ", numeroB = " + numeroB
                     + ", precisao = " + precisao);
@@ -303,7 +303,7 @@ public final class MatematicaUtils {
         double numerador = numeroB;
         double denominador = numeroA;
         for (int i = 1; i <= precisao; i++) {
-            double temporario = numerador;
+            final double temporario = numerador;
             numerador = numerador + denominador;
             denominador = temporario;
         }
@@ -321,7 +321,7 @@ public final class MatematicaUtils {
     public static boolean isQuadradoPerfeito(final int numero) {
         final int limiteMinimo = 1;
         if (numero < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }
 
@@ -347,7 +347,7 @@ public final class MatematicaUtils {
                                       final int precisao) {
         final int limiteMinimo = 0;
         if (radicando <= limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " radicando = " + radicando);
         }
 
@@ -371,7 +371,7 @@ public final class MatematicaUtils {
     public static boolean isPrimo(final int numero) {
         final int limiteMinimo = 1;
         if (numero <= limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }
 
@@ -397,14 +397,14 @@ public final class MatematicaUtils {
                                                final int numeroB) {
         final int limiteMinimo = 0;
         if (numeroB > numeroA || numeroB <= limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
 
         int numeroA2 = numeroA;
         int numeroB2 = numeroB;
         while (numeroB2 != 0) {
-            int temporario = restoDaDivisaoInteira(numeroA2, numeroB2);
+            final int temporario = restoDaDivisaoInteira(numeroA2, numeroB2);
             numeroA2 = numeroB2;
             numeroB2 = temporario;
         }
@@ -425,7 +425,7 @@ public final class MatematicaUtils {
                                                final int numeroB) {
         final int limiteMinimo = 0;
         if (numeroB > numeroA || numeroB <= limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
 
@@ -456,12 +456,12 @@ public final class MatematicaUtils {
     public static int[] determinarNumerosPrimos(final int[] vetorZeros) {
         final int limiteMinimo = 1;
         if (vetorZeros.length <= limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + " Tamanho do vetor menor que o permitido.");
         }
         for (int i = 0; i < vetorZeros.length; i++) {
             if (vetorZeros[i] != 0) {
-                throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                throw new IllegalArgumentException(ARG_INVALIDO
                         + " vetorZeros[" + i + "] = " + vetorZeros[i]);
             }
         }
@@ -469,18 +469,18 @@ public final class MatematicaUtils {
 
         final int limite = (int) Math.floor(raizQuadrada(vetorZeros.length,
                 100));
-        int[] vetorZerosResultado = vetorZeros;
+        int[] numerosPrimos = vetorZeros;
         for (int i = 1; i < limite; i++) {
-            if (vetorZerosResultado[i] == 0) {
+            if (numerosPrimos[i] == 0) {
                 for (int multiplo = 2 * i;
-                     multiplo < vetorZerosResultado.length; multiplo =
+                     multiplo < numerosPrimos.length; multiplo =
                              multiplo + i) {
-                    vetorZerosResultado[multiplo] = 1;
+                    numerosPrimos[multiplo] = 1;
                 }
             }
         }
 
-        return vetorZerosResultado;
+        return numerosPrimos;
     }
 
     /**
@@ -514,7 +514,7 @@ public final class MatematicaUtils {
     public static int obterEnesimoTermoDeFibonacci(final int enesimoTermo) {
         final int limiteMinimo = 0;
         if (enesimoTermo < limiteMinimo) {
-            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+            throw new IllegalArgumentException(ARG_INVALIDO
                     + "enesimoTermo = " + enesimoTermo);
         }
 
@@ -525,7 +525,7 @@ public final class MatematicaUtils {
         }
 
         for (int i = 2; i <= enesimoTermo; i++) {
-            int temporario = termoAtual;
+            final int temporario = termoAtual;
             termoAtual = termoAtual + termoProximo;
             termoProximo = temporario;
         }

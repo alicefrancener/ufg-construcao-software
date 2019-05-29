@@ -156,9 +156,8 @@ public final class CpfUtils {
             calculoDigito10 = calculoDigito10 + calculoDigito11;
         }
         calculoDigito10 = (calculoDigito10 % 11) % 10;
-        calculoDigito11 = ((calculoDigito10
-                - calculoDigito11 + 9 * digitosCpf[DIGITO_10]) % 11)
-                % 10;
+        calculoDigito11 = ((calculoDigito10 - calculoDigito11
+                + 9 * digitosCpf[DIGITO_10]) % 11) % 10;
 
         return calculoDigito10 == digitosCpf[DIGITO_10]
                 & calculoDigito11 == digitosCpf[DIGITO_11];

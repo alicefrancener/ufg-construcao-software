@@ -14,8 +14,7 @@ public final class MatematicaUtils {
     /**
      * Mensagem padrão para argumento inválido.
      */
-    public static final String ARG_INVALIDO = "Argumento (s) invalido " +
-            "(s).";
+    public static final String ARG_INVALIDO = "Argumento (s) invalido (s).";
 
     /**
      * Previne a classe utilitária de ser instanciada.
@@ -133,7 +132,9 @@ public final class MatematicaUtils {
      *                                  permitido [0,9999]
      */
     public static boolean possuiPropriedade3025(final int numero) {
-        if (!estaDentroDoIntervalo(numero, 0, 9999)) {
+        final int intervaloMinino = 0;
+        final int intervaloMaximo = 9999;
+        if (!estaDentroDoIntervalo(numero, intervaloMinino, intervaloMaximo)) {
             throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }
@@ -157,7 +158,9 @@ public final class MatematicaUtils {
      *                                  permitido [100,999]
      */
     public static boolean possuiPropriedade153(final int numero) {
-        if (!estaDentroDoIntervalo(numero, 100, 999)) {
+        final int intervaloMinino = 100;
+        final int intervaloMaximo = 999;
+        if (!estaDentroDoIntervalo(numero, intervaloMinino, intervaloMaximo)) {
             throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }

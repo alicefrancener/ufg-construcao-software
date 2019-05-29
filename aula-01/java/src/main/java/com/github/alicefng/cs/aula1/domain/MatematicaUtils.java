@@ -29,7 +29,8 @@ public final class MatematicaUtils {
      */
     public static int restoDaDivisaoInteira(final int numerador,
                                             final int denominador) {
-        if (numerador <= 0 || denominador < 0) {
+        final int limiteMinimo = 0;
+        if (numerador <= limiteMinimo || denominador < limiteMinimo) {
             throw new IllegalArgumentException("numerador ou denominador "
                     + "inválido: numerador = " + numerador + ", "
                     + "denominador = " + denominador);
@@ -54,7 +55,8 @@ public final class MatematicaUtils {
      */
     public static int produto(final int multiplicando,
                               final int multiplicador) {
-        if (multiplicando < 0 || multiplicador < 0) {
+        final int limiteMinimo = 0;
+        if (multiplicando < limiteMinimo || multiplicador < limiteMinimo) {
             throw new IllegalArgumentException("multiplicando ou b inválido: "
                     + "multiplicando = " + multiplicando + ", "
                     + "multiplicador = " + multiplicador);
@@ -84,7 +86,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se base ou expoente forem menores que 0
      */
     public static int potencia(final int base, final int expoente) {
-        if (base < 0 || expoente < 0) {
+        final int limiteMinimo = 0;
+        if (base < limiteMinimo || expoente < limiteMinimo) {
             throw new IllegalArgumentException("base ou expoente inválido: "
                     + "base = " + base + ", expoente = " + expoente);
         }
@@ -169,7 +172,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se parâmetro for menor que 1
      */
     public static int somaDosPrimeirosNaturais(final int numero) {
-        if (numero < 1) {
+        final int limiteMinimo = 1;
+        if (numero < limiteMinimo) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
 
@@ -189,7 +193,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se parâmetro for menor que 1
      */
     public static int fatorial(final int numero) {
-        if (numero < 1) {
+        final int limiteMinimo = 1;
+        if (numero < limiteMinimo) {
             throw new IllegalArgumentException("numero inválido: " + numero);
 
         }
@@ -211,7 +216,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se precisao for menor que 1
      */
     public static double pi(final int precisao) {
-        if (precisao < 1) {
+        final int limiteMinimo = 1;
+        if (precisao < limiteMinimo) {
             throw new IllegalArgumentException("precisao inválido: "
                     + precisao);
         }
@@ -277,7 +283,9 @@ public final class MatematicaUtils {
      */
     public static double razaoAurea(final double numeroA, final double numeroB,
                                     final double precisao) {
-        if (numeroA < 0 || numeroA >= numeroB || precisao <= 0) {
+        final int limiteMinimo = 0;
+        if (numeroA < limiteMinimo || numeroA >= numeroB
+                || precisao <= limiteMinimo) {
             throw new IllegalArgumentException("numeroA, numeroB ou precisao "
                     + "inválido: numeroA = " + numeroA + ", numeroB = "
                     + numeroB + ", precisao = " + precisao);
@@ -302,7 +310,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se o argumento é menor que 1
      */
     public static boolean isQuadradoPerfeito(final int numero) {
-        if (numero < 1) {
+        final int limiteMinimo = 1;
+        if (numero < limiteMinimo) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
 
@@ -326,7 +335,8 @@ public final class MatematicaUtils {
      */
     public static double raizQuadrada(final double radicando,
                                       final int precisao) {
-        if (radicando <= 0) {
+        final int limiteMinimo = 0;
+        if (radicando <= limiteMinimo) {
             throw new IllegalArgumentException("radicando inválido: "
                     + radicando);
         }
@@ -348,7 +358,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se parâmetro é menor ou igual a 1
      */
     public static boolean isPrimo(final int numero) {
-        if (numero <= 1) {
+        final int limiteMinimo = 1;
+        if (numero <= limiteMinimo) {
             throw new IllegalArgumentException("numero inválido: " + numero);
         }
 
@@ -372,7 +383,8 @@ public final class MatematicaUtils {
      */
     public static int maiorDivisorComumMetodo1(final int numeroA,
                                                final int numeroB) {
-        if (numeroB > numeroA || numeroB <= 0) {
+        final int limiteMinimo = 0;
+        if (numeroB > numeroA || numeroB <= limiteMinimo) {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: "
                     + "numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
@@ -399,7 +411,8 @@ public final class MatematicaUtils {
      */
     public static int maiorDivisorComumMetodo2(final int numeroA,
                                                final int numeroB) {
-        if (numeroB > numeroA || numeroB <= 0) {
+        final int limiteMinimo = 0;
+        if (numeroB > numeroA || numeroB <= limiteMinimo) {
             throw new IllegalArgumentException("numeroA ou numeroB inválido: "
                     + "numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
@@ -429,7 +442,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se números do vetor fornecido não for 0
      */
     public static int[] determinarNumerosPrimos(final int[] vetorZeros) {
-        if (vetorZeros.length <= 1) {
+        final int limiteMinimo = 1;
+        if (vetorZeros.length <= limiteMinimo) {
             throw new IllegalArgumentException("vetorZeros.length inválido: "
                     + vetorZeros.length);
         }
@@ -486,7 +500,8 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se o argumento for menor que 0
      */
     public static int obterEnesimoTermoDeFibonacci(final int enesimoTermo) {
-        if (enesimoTermo < 0) {
+        final int limiteMinimo = 0;
+        if (enesimoTermo < limiteMinimo) {
             throw new IllegalArgumentException("enesimoTermo inválido: "
                     + enesimoTermo);
         }

@@ -119,7 +119,7 @@ public final class CpfUtils {
         calculoDigito11 = (calculoDigito11 % 11) % 10;
 
         return calculoDigito10 == digitosCpf[DIGITO_10]
-                & calculoDigito11 == digitosCpf[DIGITO_11];
+                && calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
     /**
@@ -160,7 +160,7 @@ public final class CpfUtils {
                 + 9 * digitosCpf[DIGITO_10]) % 11) % 10;
 
         return calculoDigito10 == digitosCpf[DIGITO_10]
-                & calculoDigito11 == digitosCpf[DIGITO_11];
+                && calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
 }

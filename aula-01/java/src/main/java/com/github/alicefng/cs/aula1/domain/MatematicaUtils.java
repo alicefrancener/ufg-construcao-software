@@ -12,6 +12,12 @@ package com.github.alicefng.cs.aula1.domain;
 public final class MatematicaUtils {
 
     /**
+     * Mensagem padrão para argumento inválido.
+     */
+    public static final String ARGUMENTO_INVALIDO = "Argumento (s) invalido " +
+            "(s).";
+
+    /**
      * Previne a classe utilitária de ser instanciada.
      */
     private MatematicaUtils() {
@@ -31,9 +37,9 @@ public final class MatematicaUtils {
                                             final int denominador) {
         final int limiteMinimo = 0;
         if (numerador <= limiteMinimo || denominador < limiteMinimo) {
-            throw new IllegalArgumentException("numerador ou denominador "
-                    + "inválido: numerador = " + numerador + ", "
-                    + "denominador = " + denominador);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numerador = " + numerador
+                    + ", denominador = " + denominador);
         }
 
         int resto = numerador;
@@ -57,9 +63,9 @@ public final class MatematicaUtils {
                               final int multiplicador) {
         final int limiteMinimo = 0;
         if (multiplicando < limiteMinimo || multiplicador < limiteMinimo) {
-            throw new IllegalArgumentException("multiplicando ou b inválido: "
-                    + "multiplicando = " + multiplicando + ", "
-                    + "multiplicador = " + multiplicador);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " multiplicando = " + multiplicando
+                    + ", multiplicador = " + multiplicador);
         }
 
         final int totalParcelas = multiplicador < multiplicando
@@ -88,7 +94,7 @@ public final class MatematicaUtils {
     public static int potencia(final int base, final int expoente) {
         final int limiteMinimo = 0;
         if (base < limiteMinimo || expoente < limiteMinimo) {
-            throw new IllegalArgumentException("base ou expoente inválido: "
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
                     + "base = " + base + ", expoente = " + expoente);
         }
 
@@ -128,7 +134,8 @@ public final class MatematicaUtils {
      */
     public static boolean possuiPropriedade3025(final int numero) {
         if (!estaDentroDoIntervalo(numero, 0, 9999)) {
-            throw new IllegalArgumentException("numero inválido: " + numero);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numero = " + numero);
         }
 
         final int quociente = numero / 100;
@@ -151,7 +158,8 @@ public final class MatematicaUtils {
      */
     public static boolean possuiPropriedade153(final int numero) {
         if (!estaDentroDoIntervalo(numero, 100, 999)) {
-            throw new IllegalArgumentException("numero inválido: " + numero);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numero = " + numero);
         }
 
         final int quociente = numero / 100;
@@ -174,7 +182,8 @@ public final class MatematicaUtils {
     public static int somaDosPrimeirosNaturais(final int numero) {
         final int limiteMinimo = 1;
         if (numero < limiteMinimo) {
-            throw new IllegalArgumentException("numero inválido: " + numero);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numero = " + numero);
         }
 
         int soma = 1;
@@ -195,8 +204,8 @@ public final class MatematicaUtils {
     public static int fatorial(final int numero) {
         final int limiteMinimo = 1;
         if (numero < limiteMinimo) {
-            throw new IllegalArgumentException("numero inválido: " + numero);
-
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numero =" + numero);
         }
 
         int fatorial = 1;
@@ -218,8 +227,8 @@ public final class MatematicaUtils {
     public static double pi(final int precisao) {
         final int limiteMinimo = 1;
         if (precisao < limiteMinimo) {
-            throw new IllegalArgumentException("precisao inválido: "
-                    + precisao);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " precisao = " + precisao);
         }
 
         double pi = 0;
@@ -251,9 +260,8 @@ public final class MatematicaUtils {
     public static double logaritmoNatural(final double expoente,
                                           final double precisao) {
         if (expoente < 1 || precisao < 2) {
-            throw new IllegalArgumentException("expoente ou precisao inválido: "
-                    + "expoente = " + expoente + ", "
-                    + "precisao = " + precisao);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " expoente = " + expoente + ", precisao = " + precisao);
         }
 
         double logaritmoNatural = 1 + expoente;
@@ -286,9 +294,10 @@ public final class MatematicaUtils {
         final int limiteMinimo = 0;
         if (numeroA < limiteMinimo || numeroA >= numeroB
                 || precisao <= limiteMinimo) {
-            throw new IllegalArgumentException("numeroA, numeroB ou precisao "
-                    + "inválido: numeroA = " + numeroA + ", numeroB = "
-                    + numeroB + ", precisao = " + precisao);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numeroA = " + numeroA
+                    + ", numeroB = " + numeroB
+                    + ", precisao = " + precisao);
         }
 
         double numerador = numeroB;
@@ -312,7 +321,8 @@ public final class MatematicaUtils {
     public static boolean isQuadradoPerfeito(final int numero) {
         final int limiteMinimo = 1;
         if (numero < limiteMinimo) {
-            throw new IllegalArgumentException("numero inválido: " + numero);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numero = " + numero);
         }
 
         int soma = 1;
@@ -337,8 +347,8 @@ public final class MatematicaUtils {
                                       final int precisao) {
         final int limiteMinimo = 0;
         if (radicando <= limiteMinimo) {
-            throw new IllegalArgumentException("radicando inválido: "
-                    + radicando);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " radicando = " + radicando);
         }
 
         int precisaoAux = precisao;
@@ -361,7 +371,8 @@ public final class MatematicaUtils {
     public static boolean isPrimo(final int numero) {
         final int limiteMinimo = 1;
         if (numero <= limiteMinimo) {
-            throw new IllegalArgumentException("numero inválido: " + numero);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numero = " + numero);
         }
 
         for (int i = 2; i < numero; i++) {
@@ -386,8 +397,8 @@ public final class MatematicaUtils {
                                                final int numeroB) {
         final int limiteMinimo = 0;
         if (numeroB > numeroA || numeroB <= limiteMinimo) {
-            throw new IllegalArgumentException("numeroA ou numeroB inválido: "
-                    + "numeroA = " + numeroA + ", numeroB = " + numeroB);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
 
         int numeroA2 = numeroA;
@@ -414,8 +425,8 @@ public final class MatematicaUtils {
                                                final int numeroB) {
         final int limiteMinimo = 0;
         if (numeroB > numeroA || numeroB <= limiteMinimo) {
-            throw new IllegalArgumentException("numeroA ou numeroB inválido: "
-                    + "numeroA = " + numeroA + ", numeroB = " + numeroB);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
 
         int numeroA2 = numeroA;
@@ -445,13 +456,13 @@ public final class MatematicaUtils {
     public static int[] determinarNumerosPrimos(final int[] vetorZeros) {
         final int limiteMinimo = 1;
         if (vetorZeros.length <= limiteMinimo) {
-            throw new IllegalArgumentException("vetorZeros.length inválido: "
-                    + vetorZeros.length);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + " Tamanho do vetor menor que o permitido.");
         }
         for (int i = 0; i < vetorZeros.length; i++) {
             if (vetorZeros[i] != 0) {
-                throw new IllegalArgumentException("vetorZeros[" + i + "] "
-                        + "inválido: " + vetorZeros[i]);
+                throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                        + " vetorZeros[" + i + "] = " + vetorZeros[i]);
             }
         }
 
@@ -503,8 +514,8 @@ public final class MatematicaUtils {
     public static int obterEnesimoTermoDeFibonacci(final int enesimoTermo) {
         final int limiteMinimo = 0;
         if (enesimoTermo < limiteMinimo) {
-            throw new IllegalArgumentException("enesimoTermo inválido: "
-                    + enesimoTermo);
+            throw new IllegalArgumentException(ARGUMENTO_INVALIDO
+                    + "enesimoTermo = " + enesimoTermo);
         }
 
         int termoProximo = 0;

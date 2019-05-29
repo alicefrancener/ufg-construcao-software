@@ -110,10 +110,10 @@ public final class CpfUtils {
         int calculoDigito11 = digitosCpf[DIGITO_2];
 
         for (int i = DIGITO_2; i < DIGITO_10; i++) {
-            calculoDigito10 += digitosCpf[i] * (i + 1);
+            calculoDigito10 = calculoDigito10 + digitosCpf[i] * (i + 1);
         }
         for (int i = DIGITO_3; i < DIGITO_11; i++) {
-            calculoDigito11 += digitosCpf[i] * i;
+            calculoDigito11 = calculoDigito11 + digitosCpf[i] * i;
         }
         calculoDigito10 = (calculoDigito10 % 11) % 10;
         calculoDigito11 = (calculoDigito11 % 11) % 10;
@@ -152,8 +152,8 @@ public final class CpfUtils {
         int calculoDigito10 = digitosCpf[DIGITO_9];
 
         for (int i = DIGITO_8; i >= DIGITO_1; i--) {
-            calculoDigito11 += digitosCpf[i];
-            calculoDigito10 += calculoDigito11;
+            calculoDigito11 = calculoDigito11 + digitosCpf[i];
+            calculoDigito10 = calculoDigito10 + calculoDigito11;
         }
         calculoDigito10 = (calculoDigito10 % 11) % 10;
         calculoDigito11 = ((calculoDigito10

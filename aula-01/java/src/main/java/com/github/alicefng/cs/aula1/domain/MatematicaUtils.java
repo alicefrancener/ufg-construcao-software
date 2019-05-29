@@ -70,8 +70,8 @@ public final class MatematicaUtils {
                 : multiplicador;
 
         int produto = 0;
-        for (int i = 1; i <= totalParcelas; i += 1) {
-            produto += parcela;
+        for (int i = 1; i <= totalParcelas; i++) {
+            produto = produto + parcela;
         }
         return produto;
     }
@@ -179,7 +179,7 @@ public final class MatematicaUtils {
 
         int soma = 1;
         for (int i = 2; i <= numero; i++) {
-            soma += i;
+            soma = soma + i;
         }
 
         return soma;
@@ -201,7 +201,7 @@ public final class MatematicaUtils {
 
         int fatorial = 1;
         for (int i = 2; i <= numero; i++) {
-            fatorial *= i;
+            fatorial = fatorial * i;
         }
 
         return fatorial;
@@ -227,9 +227,9 @@ public final class MatematicaUtils {
         double d = -1;
 
         for (int i = 1; i <= precisao; i++) {
-            d += 2;
+            d = d + 2;
             s = -1 * s;
-            pi += 4 * s / d;
+            pi = pi + 4 * s / d;
         }
 
         return pi;
@@ -261,9 +261,9 @@ public final class MatematicaUtils {
         double denominador = 1;
 
         for (double i = 2; i <= precisao; i++) {
-            numerador *= numerador;
-            denominador += i;
-            logaritmoNatural += numerador / denominador;
+            numerador = numerador * numerador;
+            denominador = denominador + i;
+            logaritmoNatural = logaritmoNatural + numerador / denominador;
         }
 
         return logaritmoNatural;
@@ -295,7 +295,7 @@ public final class MatematicaUtils {
         double denominador = numeroA;
         for (int i = 1; i <= precisao; i++) {
             double temporario = numerador;
-            numerador += denominador;
+            numerador = numerador + denominador;
             denominador = temporario;
         }
 
@@ -316,8 +316,8 @@ public final class MatematicaUtils {
         }
 
         int soma = 1;
-        for (int i = 3; soma < numero; i += 2) {
-            soma += i;
+        for (int i = 3; soma < numero; i = i + 2) {
+            soma = soma + i;
         }
 
         return soma == numero;
@@ -343,8 +343,9 @@ public final class MatematicaUtils {
 
         int precisaoAux = precisao;
         double raizQuadrada = 1;
-        for (; precisaoAux >= 0; precisaoAux--) {
+        while (precisaoAux >= 0) {
             raizQuadrada = (raizQuadrada + radicando / raizQuadrada) / 2;
+            precisaoAux--;
         }
 
         return raizQuadrada;
@@ -421,9 +422,9 @@ public final class MatematicaUtils {
         int numeroB2 = numeroB;
         while (numeroA2 != numeroB2) {
             if (numeroA2 > numeroB2) {
-                numeroA2 -= numeroB2;
+                numeroA2 = numeroA2 - numeroB2;
             } else {
-                numeroB2 -= numeroA2;
+                numeroB2 = numeroB2 - numeroA2;
             }
         }
 
@@ -514,7 +515,7 @@ public final class MatematicaUtils {
 
         for (int i = 2; i <= enesimoTermo; i++) {
             int temporario = termoAtual;
-            termoAtual += termoProximo;
+            termoAtual = termoAtual + termoProximo;
             termoProximo = temporario;
         }
 

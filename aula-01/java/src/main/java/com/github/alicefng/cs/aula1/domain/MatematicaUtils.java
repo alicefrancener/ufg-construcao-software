@@ -518,12 +518,12 @@ public final class MatematicaUtils {
                     + "enesimoTermo = " + enesimoTermo);
         }
 
-        int termoProximo = 0;
-        int termoAtual = 1;
         if (enesimoTermo == 0 | enesimoTermo == 1) {
             return enesimoTermo;
         }
 
+        int termoProximo = 0;
+        int termoAtual = 1;
         for (int i = 2; i <= enesimoTermo; i++) {
             final int temporario = termoAtual;
             termoAtual = termoAtual + termoProximo;

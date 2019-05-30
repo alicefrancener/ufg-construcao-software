@@ -8,15 +8,7 @@ package com.github.alicefng.cs.aula1.domain;
 
 import org.junit.jupiter.api.Test;
 
-import jdk.jfr.Timestamp;
-
 import static org.junit.jupiter.api.Assertions.*;
-
-import javax.accessibility.AccessibleAttributeSequence;
-
-import java.util.*;
-
-import com.github.alicefng.cs.aula1.domain.MatematicaUtils;
 
 public class MatematicaUtilsTest {
 

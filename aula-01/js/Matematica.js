@@ -69,7 +69,7 @@ function produto(multiplicando, multiplicador) {
     }
     let produto = 0;
     for (let i = 1; i <= totalParcelas; i++) {
-        produto += parcela;
+        produto = produto + parcela;
     }
 
     return produto;
@@ -216,7 +216,7 @@ function somaDosPrimeirosNaturais(numero) {
 
     let soma = 1;
     for (let i = 2; i <= numero; i++) {
-        soma += i;
+        soma = soma + i;
     }
 
     return soma;
@@ -246,7 +246,7 @@ function fatorial(numero) {
 
     let fatorial = 1;
     for (let i = 2; i <= numero; i++) {
-        fatorial *= i;
+        fatorial = fatorial * i;
     }
 
     return fatorial;
@@ -279,9 +279,9 @@ function pi(precisao) {
     let s = -1;
     let d = -1;
     for (let i = 1; i <= precisao; i++) {
-        d += 2;
-        s = -1 * s;
-        pi += 4 * s / d;
+        d = d + 2;
+        s = -s;
+        pi = pi + 4 * s / d;
     }
 
     return pi;
@@ -320,9 +320,9 @@ function logaritmoNatural(expoente, precisao) {
     let numerador = expoente;
     let denominador = 1;
     for (let i = 2; i <= precisao; i++) {
-        numerador *= numerador;
-        denominador += i;
-        logaritmoNatural += numerador / denominador;
+        numerador = numerador * numerador;
+        denominador = denominador + i;
+        logaritmoNatural = logaritmoNatural + numerador / denominador;
     }
 
     return logaritmoNatural;
@@ -363,7 +363,7 @@ function razaoAurea(numeroA, numeroB, precisao) {
     let denominador = numeroA;
     for (let i = 1; i <= precisao; i++) {
         let temporario = numerador;
-        numerador += denominador;
+        numerador = numerador + denominador;
         denominador = temporario;
     }
 
@@ -395,7 +395,7 @@ function isQuadradoPerfeito(numero) {
 
     let soma = 1;
     for (let i = 3; soma < numero; i = i + 2) {
-        soma += i;
+        soma = soma + i;
     }
 
     return soma === numero;
@@ -527,7 +527,7 @@ function maiorDivisorComumMetodo2(numeroA, numeroB) {
     }
 
     while (numeroA !== numeroB) {
-        (numeroA > numeroB) ? numeroA -= numeroB : numeroB -= numeroA;
+        (numeroA > numeroB) ? numeroA = numeroA - numeroB : numeroB -= numeroA;
     }
 
     return numeroA;
@@ -560,7 +560,7 @@ function determinarNumerosPrimos(vetorZeros) {
     for (i = 1; i < limite; i++) {
         if (vetorZeros[i] === 0) {
             for (let multiplo = 2 * i; multiplo < vetorZeros.length;
-                 multiplo += i) {
+                 multiplo = multiplo + i) {
                 vetorZeros[multiplo] = 1;
             }
         }

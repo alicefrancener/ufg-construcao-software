@@ -43,11 +43,11 @@ function validarDigitosCPF(cpf) {
     let calculoParcialDigito11 = digitosCpf[1];
 
     for (let i = 1; i < 9; i++) {
-        calculoParcialDigito10 += digitosCpf[i] * (i + 1);
+        calculoParcialDigito10 = calculoParcialDigito10 + digitosCpf[i] * (i + 1);
     }
 
     for (i = 2; i < 10; i++) {
-        calculoParcialDigito11 += digitosCpf[i] * i;
+        calculoParcialDigito11 = calculoParcialDigito11 + digitosCpf[i] * i;
     }
 
     const calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
@@ -81,8 +81,8 @@ function validarDigitosCPF2(cpf) {
     let calculoParcialDigito11 = digitosCpf[8];
     let calculoParcialDigito10 = calculoParcialDigito11;
     for (let c = 7; c >= 0; c--) {
-        calculoParcialDigito11 += digitosCpf[c];
-        calculoParcialDigito10 += calculoParcialDigito11;
+        calculoParcialDigito11 = calculoParcialDigito11 + digitosCpf[c];
+        calculoParcialDigito10 = calculoParcialDigito10 + calculoParcialDigito11;
     }
     const calculoFinalDigito10 = (calculoParcialDigito10 % 11) % 10;
     const calculoFinalDigito11 = ((calculoParcialDigito10 - calculoParcialDigito11

@@ -17,5 +17,11 @@ public final class VetorUtils {
     private VetorUtils() {
         throw new UnsupportedOperationException();
     }
-    
+
+    /**
+     * Encontra a menor temperatura em um vetor de valores.
+     */
+    public static double menorTemperatura(int[] temperaturas) {
+        
+    }
 }

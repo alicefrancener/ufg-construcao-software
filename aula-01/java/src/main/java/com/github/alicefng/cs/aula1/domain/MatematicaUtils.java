@@ -117,7 +117,7 @@ public final class MatematicaUtils {
     public static boolean estaDentroDoIntervalo(final int numero,
                                                 final int intervaloInferior,
                                                 final int intervaloSuperior) {
-        return numero >= intervaloInferior & numero <= intervaloSuperior;
+        return numero >= intervaloInferior && numero <= intervaloSuperior;
     }
 
     /**
@@ -521,7 +521,7 @@ public final class MatematicaUtils {
                     + "enesimoTermo = " + enesimoTermo);
         }
 
-        if (enesimoTermo == 0 | enesimoTermo == 1) {
+        if (enesimoTermo == 0 || enesimoTermo == 1) {
             return enesimoTermo;
         }
 

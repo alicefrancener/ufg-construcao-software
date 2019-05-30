@@ -119,10 +119,10 @@ public final class DataUtils {
         validaMes(mes);
         validaAno(ano);
 
-        final int mesAux = mes == 1 | mes == 2
+        final int mesAux = mes == 1 || mes == 2
                 ? mes + 12
                 : mes;
-        final int anoAux = mes == 1 | mes == 2
+        final int anoAux = mes == 1 || mes == 2
                 ? ano - 1
                 : ano;
 

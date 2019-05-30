@@ -119,8 +119,9 @@ public final class DataUtils {
         validaMes(mes);
         validaAno(ano);
 
-        final int mesAux = mes == 1 || mes == 2
-                ? mes + 12
+        final int totalMesesDeAno = 12;
+        final int mesAux = ((mes == 1) ||S (mes == 2))
+                ? (mes + totalMesesDeAno)
                 : mes;
         final int anoAux = mes == 1 || mes == 2
                 ? ano - 1
@@ -129,7 +130,8 @@ public final class DataUtils {
         final int diaDaSemana = dia + 2 * mesAux + 3 * (mesAux + 1) / 5 + anoAux
                 + anoAux / 4 - anoAux / 100 + anoAux / 400;
 
-        return diaDaSemanaToString(diaDaSemana % 7);
+        final int totalDiasDaSemana = 7;
+        return diaDaSemanaToString(diaDaSemana % totalDiasDaSemana);
     }
 
 }

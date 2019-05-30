@@ -121,8 +121,8 @@ function diaDaSemanaToString(dia) {
 function diaDaSemana(dia, mes, ano) {
     validaData(dia, mes, ano);
     if (mes === 1 || mes === 2) {
-        mes += 12;
-        ano -= 1;
+        mes = mes + 12;
+        ano = ano - 1;
     }
     const calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3
         * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);

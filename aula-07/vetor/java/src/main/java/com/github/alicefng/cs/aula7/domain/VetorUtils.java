@@ -20,8 +20,18 @@ public final class VetorUtils {
 
     /**
      * Encontra a menor temperatura em um vetor de valores.
+     * @param temperaturas Vetor contendo valores de temperaturas
+     * @return A menor temperatura registrada no vetor
      */
-    public static double menorTemperatura(int[] temperaturas) {
-        
+    public static double menorTemperatura(final double[] temperaturas) {
+
+        double menorTemperatura = temperaturas[0];
+        for (int i = 1; i < temperaturas.length; i++){
+            if (menorTemperatura > temperaturas[i]) {
+                menorTemperatura = temperaturas[i];
+            }
+        }
+        return menorTemperatura;
     }
+
 }

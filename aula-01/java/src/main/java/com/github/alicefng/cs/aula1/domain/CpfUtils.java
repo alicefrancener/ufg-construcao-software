@@ -6,6 +6,8 @@
 
 package com.github.alicefng.cs.aula1.domain;
 
+import java.util.stream.IntStream;
+
 /**
  * Implementação de algoritomos para validar CPF.
  */
@@ -17,7 +19,8 @@ public final class CpfUtils {
     public static final int TAMANHO_CPF = 11;
 
     /**
-     * Valor correspondente ao 1º dígitos de um CPF em um vetor.
+     * // TODO Não é o valor, mas o índice de
+     * Índice correspondente ao 1º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_1 = 0;
 
@@ -93,33 +96,34 @@ public final class CpfUtils {
      *                                  de dígitos
      */
     public static boolean validarDigitosCPF(final String cpf) {
-        if (cpf == null) {
-            throw new IllegalArgumentException("argumento é null");
-        }
-        if (cpf.length() != TAMANHO_CPF) {
-            throw new IllegalArgumentException("CPF deve ter 11 dígitos: "
-                    + cpf);
-        }
-        if (!sequenciaContemApenasDigitos(cpf)) {
-            throw new IllegalArgumentException("CPF deve conter somente "
-                    + "dígitos (0 a 9): " + cpf);
-        }
+        final int[] digitos = cpfStringParaDigitos(cpf);
 
-        final int[] digitosCpf = converteCaracteresEmInteiros(cpf);
+        final int primeiro = primeiroDigitoVerificador(digitos);
+        final int segundo = segundoDigitoVerificador(digitos);
+
+        return confereDigitosVerificadores(digitos, primeiro, segundo);
+    }
+
+    private static boolean confereDigitosVerificadores(
+            final int[] digitos, final int primeiro, final long segundo) {
+        return primeiro == digitos[DIGITO_10] && segundo == digitos[DIGITO_11];
+    }
+
+    private static int segundoDigitoVerificador(final int[] digitosCpf) {
+        IntStream indices = IntStream.range(DIGITO_3, DIGITO_11);
+        final int parcelas = (int) indices
+                .mapToLong(i -> digitosCpf[i] * i).sum();
+
+        return ((parcelas + digitosCpf[DIGITO_2]) % 11) % 10;
+    }
+
+    private static int primeiroDigitoVerificador(final int[] digitosCpf) {
         int calculoDigito10 = digitosCpf[DIGITO_1];
-        int calculoDigito11 = digitosCpf[DIGITO_2];
-
         for (int i = DIGITO_2; i < DIGITO_10; i++) {
             calculoDigito10 = calculoDigito10 + digitosCpf[i] * (i + 1);
         }
-        for (int i = DIGITO_3; i < DIGITO_11; i++) {
-            calculoDigito11 = calculoDigito11 + digitosCpf[i] * i;
-        }
-        calculoDigito10 = (calculoDigito10 % 11) % 10;
-        calculoDigito11 = (calculoDigito11 % 11) % 10;
 
-        return calculoDigito10 == digitosCpf[DIGITO_10]
-                && calculoDigito11 == digitosCpf[DIGITO_11];
+        return (calculoDigito10 % 11) % 10;
     }
 
     /**
@@ -135,19 +139,7 @@ public final class CpfUtils {
      *                                  de dígitos (0 a 9)
      */
     public static boolean validarDigitosCPF2(final String cpf) {
-        if (cpf == null) {
-            throw new IllegalArgumentException("argumento é null");
-        }
-        if (cpf.length() != TAMANHO_CPF) {
-            throw new IllegalArgumentException("CPF deve ter 11 dígitos: "
-                    + cpf);
-        }
-        if (!sequenciaContemApenasDigitos(cpf)) {
-            throw new IllegalArgumentException("CPF deve conter somente "
-                    + "dígitos (0 a 9): " + cpf);
-        }
-
-        final int[] digitosCpf = converteCaracteresEmInteiros(cpf);
+        final int[] digitosCpf = cpfStringParaDigitos(cpf);
         int calculoDigito11 = digitosCpf[DIGITO_9];
         int calculoDigito10 = digitosCpf[DIGITO_9];
 
@@ -161,6 +153,22 @@ public final class CpfUtils {
 
         return calculoDigito10 == digitosCpf[DIGITO_10]
                 && calculoDigito11 == digitosCpf[DIGITO_11];
+    }
+
+    private static int[] cpfStringParaDigitos(String cpf) {
+        if (cpf == null) {
+            throw new IllegalArgumentException("argumento é null");
+        }
+        if (cpf.length() != TAMANHO_CPF) {
+            throw new IllegalArgumentException("CPF deve ter 11 dígitos: "
+                    + cpf);
+        }
+        if (!sequenciaContemApenasDigitos(cpf)) {
+            throw new IllegalArgumentException("CPF deve conter somente "
+                    + "dígitos (0 a 9): " + cpf);
+        }
+
+        return converteCaracteresEmInteiros(cpf);
     }
 
 }

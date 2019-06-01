@@ -120,7 +120,7 @@ public final class DataUtils {
         validaAno(ano);
 
         final int totalMesesDeAno = 12;
-        final int mesAux = ((mes == 1) ||S (mes == 2))
+        final int mesAux = ((mes == 1) || (mes == 2))
                 ? (mes + totalMesesDeAno)
                 : mes;
         final int anoAux = mes == 1 || mes == 2

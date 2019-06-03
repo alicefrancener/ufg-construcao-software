@@ -52,4 +52,21 @@ public final class VetorUtils {
         return soma;
     }
 
+    /**
+     * Produz a contagem em que determinado número ocorre em um vetor.
+     * @param numeros
+     * @param comparador
+     * @return
+     */
+    public static int conteIguais(final double[] numeros,
+                                  final double comparador) {
+        int quantidade = 0;
+        for (int i = 0; i < numeros.length; i++) {
+            if (numeros[i] == comparador) {
+                quantidade = quantidade + 1;
+            }
+        }
+
+        return quantidade;
+    }
 }

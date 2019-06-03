@@ -32,4 +32,14 @@ public class VetorUtilsTest {
         assertEquals(0, VetorUtils.somaImpares(vetorTest3));
     }
 
+    @Test
+    public void testConteIguais() {
+        double[] vetorTest1 = {2, 3, 5.1, 10, 20.5, 2, 2};
+        double[] vetorTest2 = {1, 0, 15.5};
+
+        assertEquals(3, VetorUtils.conteIguais(vetorTest1, 2));
+        assertEquals(0, VetorUtils.conteIguais(vetorTest2, 5));
+
+    }
+
 }

@@ -39,7 +39,35 @@ public class VetorUtilsTest {
 
         assertEquals(3, VetorUtils.conteIguais(vetorTest1, 2));
         assertEquals(0, VetorUtils.conteIguais(vetorTest2, 5));
+    }
 
+    @Test
+    public void testConteLetras() {
+        String strTest1 = "Hello world!!!";
+        String strTest2 = "123456789";
+
+        assertEquals(10, VetorUtils.conteLetras(strTest1));
+        assertEquals(0, VetorUtils.conteLetras(strTest2));
+    }
+
+    @Test
+    public void testContePalavra() {
+        String[] strTest1 = {"hello", "hello", "1235", "hello"};
+        String[] strTest2 = {"teste", "??"};
+
+        assertEquals(3, VetorUtils.contePalavra("hello", strTest1));
+        assertEquals(0, VetorUtils.contePalavra("hello", strTest2));
+    }
+
+    @Test
+    public void testPalavraMaisFrequente() {
+        String strTest1 = "a ola como como como";
+        String strTest2 = "voce esta bem";
+
+        assertEquals("como",
+                VetorUtils.palavraMaisFrequente(strTest1));
+        assertEquals("voce",
+                VetorUtils.palavraMaisFrequente(strTest2));
     }
 
 }

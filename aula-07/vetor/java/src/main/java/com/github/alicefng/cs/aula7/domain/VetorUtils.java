@@ -20,18 +20,36 @@ public final class VetorUtils {
 
     /**
      * Encontra a menor temperatura em um vetor de valores.
+     *
      * @param temperaturas Vetor contendo valores de temperaturas
      * @return A menor temperatura registrada no vetor
      */
     public static double menorTemperatura(final double[] temperaturas) {
 
         double menorTemperatura = temperaturas[0];
-        for (int i = 1; i < temperaturas.length; i++){
+        for (int i = 1; i < temperaturas.length; i++) {
             if (menorTemperatura > temperaturas[i]) {
                 menorTemperatura = temperaturas[i];
             }
         }
         return menorTemperatura;
+    }
+
+    /**
+     * Produz a soma dos números ímpares de um vetor.
+     *
+     * @param numeros Vetor contendo inteiros
+     * @return A soma dos ímpares do vetor
+     */
+    public static int somaImpares(final int[] numeros) {
+        int soma = 0;
+        for (int i = 0; i < numeros.length; i++) {
+            if (numeros[i] % 2 == 1) {
+                soma = soma + numeros[i];
+            }
+        }
+
+        return soma;
     }
 
 }

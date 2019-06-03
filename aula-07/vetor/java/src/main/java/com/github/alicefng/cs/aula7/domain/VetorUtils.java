@@ -54,9 +54,10 @@ public final class VetorUtils {
 
     /**
      * Produz a contagem em que determinado número ocorre em um vetor.
-     * @param numeros
-     * @param comparador
-     * @return
+     *
+     * @param numeros    Vetor contendo números a serem comparados
+     * @param comparador Valor a ser comparado com vetor
+     * @return Quantidade de vezes que o valor comparado ocorre no vetor
      */
     public static int conteIguais(final double[] numeros,
                                   final double comparador) {

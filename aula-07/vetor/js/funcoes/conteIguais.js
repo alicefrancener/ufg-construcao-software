@@ -33,4 +33,4 @@ function conteIguais(numeros, comparador) {
     return quantidade;
 }
 
-module.exports = {conteIguais: conteIguais};
+module.exports = {conteIguais};

@@ -34,4 +34,4 @@ function contePalavra(palavra, frase) {
     return quantidade;
 }
 
-module.exports = {contePalavra: contePalavra};
+module.exports = {contePalavra};

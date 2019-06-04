@@ -28,4 +28,4 @@ function somaImpares(numeros) {
     return soma;
 }
 
-module.exports = {somaImpares: somaImpares};
+module.exports = {somaImpares};

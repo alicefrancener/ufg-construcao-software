@@ -28,4 +28,4 @@ function menorTemperatura(temperaturas) {
     return menorTemperatura;
 }
 
-module.exports = {menorTemperatura: menorTemperatura};
+module.exports = {menorTemperatura};

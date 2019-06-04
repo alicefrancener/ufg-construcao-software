@@ -35,4 +35,4 @@ function palavraMaisFrequente(frase) {
     return palavra;
 }
 
-module.exports = {palavraMaisFrequente: palavraMaisFrequente};
+module.exports = {palavraMaisFrequente};

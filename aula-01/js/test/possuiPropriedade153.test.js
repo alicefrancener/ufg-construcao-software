@@ -1,4 +1,4 @@
-const funcao = require("../Matematica.js");
+const funcao = require("../funcoes/Matematica.js");
 
 test("153 satisfaz (caso classico)", () => {
     expect(funcao.possuiPropriedade153(153)).toBe(true);

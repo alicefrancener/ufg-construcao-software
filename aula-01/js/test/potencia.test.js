@@ -1,4 +1,4 @@
-const funcao = require("../Matematica.js");
+const funcao = require("../funcoes/Matematica.js");
 
 test("satisfaz (caso classico)", () => {
     expect(funcao.potencia(10, 2)).toBe(100);

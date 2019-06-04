@@ -132,10 +132,10 @@ function diaDaSemana(dia, mes, ano) {
 }
 
 module.export = {
-    diaValido: diaValido,
-    mesValido: mesValido,
-    anoValido: anoValido,
-    validaData: validaData,
-    diaDaSemanaToString: diaDaSemanaToString,
-    diaDaSemana: diaDaSemana
+    diaDaSemanaToString,
+    diaValido,
+    mesValido,
+    anoValido,
+    validaData,
+    diaDaSemana
 };

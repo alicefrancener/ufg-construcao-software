@@ -1,4 +1,4 @@
-const funcao = require("../Matematica.js");
+const funcao = require("../funcoes/Matematica.js");
 
 test("satisfaz (caso classico)", () => {
     expect(funcao.logaritmoNatural(1, 3)).toBe(2.5);

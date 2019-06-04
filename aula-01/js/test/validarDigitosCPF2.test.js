@@ -1,4 +1,4 @@
-const funcao = require("../CPF.js");
+const funcao = require("../funcoes/CPF.js");
 
 test("satisfaz (caso classico)", () => {
     expect(funcao.validarDigitosCPF2("43415200086")).toBe(true);

@@ -46,7 +46,7 @@ function validarDigitosCPF(cpf) {
         calculoParcialDigito10 = calculoParcialDigito10 + digitosCpf[i] * (i + 1);
     }
 
-    for (i = 2; i < 10; i++) {
+    for (let i = 2; i < 10; i++) {
         calculoParcialDigito11 = calculoParcialDigito11 + digitosCpf[i] * i;
     }
 
@@ -93,7 +93,7 @@ function validarDigitosCPF2(cpf) {
 }
 
 module.exports = {
-    converteCaracteresEmInteiros: converteCaracteresEmInteiros,
-    validarDigitosCPF: validarDigitosCPF,
-    validarDigitosCPF2: validarDigitosCPF2
+    converteCaracteresEmInteiros,
+    validarDigitosCPF,
+    validarDigitosCPF2
 };

@@ -557,10 +557,10 @@ function determinarNumerosPrimos(vetorZeros) {
     }
 
     const limite = Math.floor(raizQuadrada(vetorZeros.length, 100));
-    for (i = 1; i < limite; i++) {
+    for (let i = 1; i < limite; i++) {
         if (vetorZeros[i] === 0) {
-            for (let multiplo = 2 * i; multiplo < vetorZeros.length;
-                 multiplo = multiplo + i) {
+            for (let multiplo = 2 * i; multiplo < vetorZeros.length; multiplo =
+                multiplo + i) {
                 vetorZeros[multiplo] = 1;
             }
         }
@@ -601,7 +601,7 @@ function calcularPolinomio(numero, coeficientes) {
     }
 
     let polinomio = coeficientes[grauDoPolinomio - 1];
-    for (i = grauDoPolinomio - 2; i >= 0; i--) {
+    for (let i = grauDoPolinomio - 2; i >= 0; i--) {
         polinomio = polinomio * numero + coeficientes[i];
     }
 
@@ -645,23 +645,24 @@ function obterEnesimoTermoDeFibonacci(enesimoTermo) {
 }
 
 module.exports = {
-    possuiPropriedade3025: possuiPropriedade3025,
-    restoDaDivisaoInteira: restoDaDivisaoInteira,
-    produto: produto,
-    potencia: potencia,
-    estaDentroDoIntervalo: estaDentroDoIntervalo,
-    possuiPropriedade153: possuiPropriedade153,
-    somaDosPrimeirosNaturais: somaDosPrimeirosNaturais,
-    fatorial: fatorial,
-    pi: pi,
-    logaritmoNatural: logaritmoNatural,
-    razaoAurea: razaoAurea,
-    isQuadradoPerfeito: isQuadradoPerfeito,
-    raizQuadrada: raizQuadrada,
-    isPrimo: isPrimo,
-    maiorDivisorComumMetodo1: maiorDivisorComumMetodo1,
-    maiorDivisorComumMetodo2: maiorDivisorComumMetodo2,
-    determinarNumerosPrimos: determinarNumerosPrimos,
-    calcularPolinomio: calcularPolinomio,
-    obterEnesimoTermoDeFibonacci: obterEnesimoTermoDeFibonacci
+    possuiPropriedade3025,
+    restoDaDivisaoInteira,
+    produto,
+    potencia,
+    estaDentroDoIntervalo,
+    possuiPropriedade153,
+    somaDosPrimeirosNaturais,
+    fatorial,
+    pi,
+    logaritmoNatural,
+    razaoAurea,
+    isQuadradoPerfeito,
+    raizQuadrada,
+    isPrimo,
+    maiorDivisorComumMetodo1,
+    maiorDivisorComumMetodo2,
+    determinarNumerosPrimos,
+    calcularPolinomio,
+    obterEnesimoTermoDeFibonacci
 };
+

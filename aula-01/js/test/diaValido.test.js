@@ -1,4 +1,4 @@
-const funcao = require("../Data.js");
+const funcao = require("../funcoes/Data.js");
 
 test("mes fora da faixa", () => {
     expect(() => {

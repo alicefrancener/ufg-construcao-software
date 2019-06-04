@@ -1,4 +1,4 @@
-const funcao = require("../Matematica.js");
+const funcao = require("../funcoes/Matematica.js");
 
 test("satisfaz (caso classico)", () => {
     expect(funcao.restoDaDivisaoInteira(10, 3)).toBe(1);

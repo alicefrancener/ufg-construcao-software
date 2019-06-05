@@ -1,6 +1,6 @@
 package com.github.alicefng.cs.aula8.application.console;
 
-import com.github.alicefng.cs.aula8.domain.LeituraArquivo;
+import com.github.alicefng.cs.aula8.domain.OutputArquivo;
 
 import java.io.IOException;
 
@@ -8,8 +8,7 @@ public class Programa {
 
     public static void main(String[] args) {
         try {
-            LeituraArquivo.lerArquivo(args[0]);
-            //LeituraArquivo.lerArquivo("C:\\Users\\alice\\Desktop\\test\\LeituraArquivo.class");
+            OutputArquivo.imprimeHexadecimal(args[0]);
         } catch (IOException e) {
             e.printStackTrace();
         }

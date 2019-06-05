@@ -4,9 +4,9 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public final class LeituraArquivo {
+public final class OutputArquivo {
 
-    public static void lerArquivo(String nomeArquivo) throws IOException {
+    public static void imprimeHexadecimal(String nomeArquivo) throws IOException {
         FileInputStream fis = new FileInputStream(nomeArquivo);
         DataInputStream dis = new DataInputStream(fis);
 

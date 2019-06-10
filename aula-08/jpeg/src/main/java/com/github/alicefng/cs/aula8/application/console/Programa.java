@@ -8,7 +8,7 @@ public class Programa {
 
     public static void main(String[] args) {
         try {
-            IsJpeg.isJpeg(args[0]);
+            System.out.println(IsJpeg.isJpeg(args[0]));
         } catch (IOException e) {
             e.printStackTrace();
         }

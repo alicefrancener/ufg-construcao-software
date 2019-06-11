@@ -7,7 +7,13 @@ import java.io.IOException;
 /**
  * Classe para executar o EncontraPalavra pelo temrinal.
  */
-public class Programa {
+public final class Programa {
+
+    /**
+     * Construtor privado para evitar instanciação.
+     */
+    private Programa() {
+    }
 
     /**
      * Executor.

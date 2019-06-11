@@ -24,10 +24,10 @@ public final class OutputArquivoUtils {
      */
     public static void imprimeHexadecimal(final String caminhoArquivo)
             throws IOException {
-        FileInputStream fis = new FileInputStream(caminhoArquivo);
-        DataInputStream dis = new DataInputStream(fis);
+        final FileInputStream fis = new FileInputStream(caminhoArquivo);
+        final DataInputStream dis = new DataInputStream(fis);
 
-        int valor = dis.readInt();
+        final int valor = dis.readInt();
         System.out.println(Integer.toHexString(valor));
 
         dis.close();

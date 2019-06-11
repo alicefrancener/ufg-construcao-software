@@ -30,9 +30,9 @@ public final class EncontraPalavra {
                                          final String palavraProcurada)
             throws IOException {
 
-        FileInputStream fis = new FileInputStream(caminhoArquivo);
-        InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
-        BufferedReader br = new BufferedReader(isr);
+        final FileInputStream fis = new FileInputStream(caminhoArquivo);
+        final InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+        final BufferedReader br = new BufferedReader(isr);
 
         String linha;
         StringBuilder sb = new StringBuilder();
@@ -65,12 +65,14 @@ public final class EncontraPalavra {
      */
     public static int conteOcorrencias(final String palavraProcurada,
                                        final String texto) {
-        Pattern p = Pattern.compile(palavraProcurada);
-        Matcher m = p.matcher(texto);
+        final Pattern p = Pattern.compile(palavraProcurada);
+        final Matcher m = p.matcher(texto);
+
         int ocorrencias = 0;
         while (m.find()) {
             ocorrencias++;
         }
+
         return ocorrencias;
     }
 

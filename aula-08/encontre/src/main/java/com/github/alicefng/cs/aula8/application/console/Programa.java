@@ -22,7 +22,7 @@ public final class Programa {
      */
     public static void main(final String[] args) {
         try {
-            String resultado =
+            final String resultado =
                     EncontraPalavra.encontraPalavra(args[0], args[1]);
             System.out.println(resultado);
         } catch (IOException e) {

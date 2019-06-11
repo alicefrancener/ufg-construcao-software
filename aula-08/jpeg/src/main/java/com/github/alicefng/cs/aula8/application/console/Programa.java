@@ -4,7 +4,13 @@ import com.github.alicefng.cs.aula8.domain.IsJpeg;
 
 import java.io.IOException;
 
-public class Programa {
+public final class Programa {
+
+    /**
+     * Construtor privado para evitar instanciação.
+     */
+    private Programa() {
+    }
 
     public static void main(String[] args) {
         try {

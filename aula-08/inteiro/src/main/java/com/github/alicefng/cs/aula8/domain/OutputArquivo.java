@@ -6,9 +6,16 @@ import java.io.IOException;
 
 public final class OutputArquivo {
 
-    public static void imprimeHexadecimal(final String nomeArquivo)
+    /**
+     * Imprime os quatro primeiros bytes (inteiro de 32 bits) em formato
+     * hexadecimal na saída padrão.
+     *
+     * @param caminhoArquivo Caminho do arquivo a ser impresso
+     * @throws IOException Se houver problema na leitura do arquivo
+     */
+    public static void imprimeHexadecimal(final String caminhoArquivo)
             throws IOException {
-        FileInputStream fis = new FileInputStream(nomeArquivo);
+        FileInputStream fis = new FileInputStream(caminhoArquivo);
         DataInputStream dis = new DataInputStream(fis);
 
         int valor = dis.readInt();

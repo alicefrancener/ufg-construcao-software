@@ -6,6 +6,11 @@ import java.io.IOException;
 
 public class Programa {
 
+    /**
+     * Programa para executar pelo terminal.
+     *
+     * @param args Argumentos a ser inseridos pelo usuário no terminal
+     */
     public static void main(final String[] args) {
         try {
             OutputArquivo.imprimeHexadecimal(args[0]);

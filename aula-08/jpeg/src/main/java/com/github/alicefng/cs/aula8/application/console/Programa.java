@@ -1,6 +1,6 @@
 package com.github.alicefng.cs.aula8.application.console;
 
-import com.github.alicefng.cs.aula8.domain.IsJpeg;
+import com.github.alicefng.cs.aula8.domain.IsJpegUtils;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ public final class Programa {
      */
     public static void main(final String[] args) {
         try {
-            System.out.println(IsJpeg.isJpeg(args[0]));
+            System.out.println(IsJpegUtils.isJpeg(args[0]));
         } catch (IOException e) {
             e.printStackTrace();
         }

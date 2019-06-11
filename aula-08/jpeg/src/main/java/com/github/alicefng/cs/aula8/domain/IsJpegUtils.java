@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 /**
  * Classe utilitária para verificar se arquivo é de extensão jpeg.
  */
-public final class IsJpeg {
+public final class IsJpegUtils {
 
     /**
      * Primeiros 2 bytes em hexadecimal de um aquivo jpeg.
@@ -24,7 +24,7 @@ public final class IsJpeg {
     /**
      * Construtor privado para não permitir instanciação da classe.
      */
-    private IsJpeg() {
+    private IsJpegUtils() {
     }
 
     /**

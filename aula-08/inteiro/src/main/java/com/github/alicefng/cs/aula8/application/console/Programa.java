@@ -4,6 +4,9 @@ import com.github.alicefng.cs.aula8.domain.OutputArquivoUtils;
 
 import java.io.IOException;
 
+/**
+ * Para execuçlão da classe OutputArquivoUtils.
+ */
 public final class Programa {
 
     /**

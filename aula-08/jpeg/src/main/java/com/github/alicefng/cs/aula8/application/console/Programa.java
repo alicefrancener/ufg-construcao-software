@@ -4,6 +4,9 @@ import com.github.alicefng.cs.aula8.domain.IsJpeg;
 
 import java.io.IOException;
 
+/**
+ * Para execução da classe IsJpegUtils.
+ */
 public final class Programa {
 
     /**
@@ -12,6 +15,10 @@ public final class Programa {
     private Programa() {
     }
 
+    /**
+     * Programa para executar pelo terminal..
+     * @param args Caminho do arquivo a ser informado pelo usuário no terminal
+     */
     public static void main(final String[] args) {
         try {
             System.out.println(IsJpeg.isJpeg(args[0]));

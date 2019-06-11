@@ -4,7 +4,13 @@ import com.github.alicefng.cs.aula8.domain.OutputArquivo;
 
 import java.io.IOException;
 
-public class Programa {
+public final class Programa {
+
+    /**
+     * Construtor privado para evitar instanciação.
+     */
+    private Programa() {
+    }
 
     /**
      * Programa para executar pelo terminal.

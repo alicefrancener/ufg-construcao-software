@@ -7,6 +7,12 @@ import java.io.IOException;
 public final class OutputArquivo {
 
     /**
+     * Construtor privado para evitar instanciação de classe utilitária.
+     */
+    private OutputArquivo() {
+    }
+
+    /**
      * Imprime os quatro primeiros bytes (inteiro de 32 bits) em formato
      * hexadecimal na saída padrão.
      *

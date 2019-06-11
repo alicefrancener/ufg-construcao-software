@@ -62,7 +62,8 @@ public final class IsJpegUtils {
         final int ultimoHex = hexArquivo.length() - 1;
 
         return hexArquivo.substring(primeiroHex, segundoHex).equals(JPEG_INICIO)
-               & hexArquivo.substring(penultimoHex, ultimoHex).equals(JPEG_FIM);
+                && hexArquivo.substring(penultimoHex, ultimoHex)
+                .equals(JPEG_FIM);
     }
 
 }

@@ -12,7 +12,7 @@ public final class Programa {
     private Programa() {
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         try {
             System.out.println(IsJpeg.isJpeg(args[0]));
         } catch (IOException e) {

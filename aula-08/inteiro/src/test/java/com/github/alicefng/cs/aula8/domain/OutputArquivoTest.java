@@ -1,3 +1,3 @@
-public final class OutputArquivoTest {
+public final class OutputArquivoUtilsTest {
 
 }

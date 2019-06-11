@@ -4,12 +4,12 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public final class OutputArquivo {
+public final class OutputArquivoUtils {
 
     /**
      * Construtor privado para evitar instanciação de classe utilitária.
      */
-    private OutputArquivo() {
+    private OutputArquivoUtils() {
     }
 
     /**

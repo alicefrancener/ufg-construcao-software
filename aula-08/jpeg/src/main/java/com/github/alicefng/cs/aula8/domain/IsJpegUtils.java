@@ -34,10 +34,11 @@ public final class IsJpegUtils {
      * @return String com dados de bytes convertidos para caracteres
      */
     public static String byteToHex(final byte[] bytes) {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {
             sb.append(String.format("%02X ", b));
         }
+        
         return sb.toString();
     }
 
@@ -51,16 +52,15 @@ public final class IsJpegUtils {
      */
     public static boolean isJpeg(final String caminhoArquivo)
             throws IOException {
-        Path path = Paths.get(caminhoArquivo);
+        final Path path = Paths.get(caminhoArquivo);
         final byte[] bytesArquivo = Files.readAllBytes(path);
 
-        String hexArquivo = byteToHex(bytesArquivo);
+        final String hexArquivo = byteToHex(bytesArquivo);
 
         final int primeiroHex = 0;
         final int segundoHex = 5;
         final int penultimoHex = hexArquivo.length() - 6;
         final int ultimoHex = hexArquivo.length() - 1;
-
 
         return hexArquivo.substring(primeiroHex, segundoHex).equals(JPEG_INICIO)
                & hexArquivo.substring(penultimoHex, ultimoHex).equals(JPEG_FIM);

@@ -1,6 +1,5 @@
 package com.github.alicefng.cs.aula8.domain;
 
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +37,7 @@ public final class IsJpegUtils {
         for (byte b : bytes) {
             sb.append(String.format("%02X ", b));
         }
-        
+
         return sb.toString();
     }
 

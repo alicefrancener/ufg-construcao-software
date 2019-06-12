@@ -20,6 +20,7 @@ public final class MatematicaUtils {
      * Previne a classe utilitária de ser instanciada.
      */
     private MatematicaUtils() {
+        // Como esta exceção pode ser gerada, se o construtor é private? Melhor é remover a linha abaixo.
         throw new UnsupportedOperationException();
     }
 

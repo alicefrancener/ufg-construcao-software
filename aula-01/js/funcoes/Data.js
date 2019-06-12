@@ -1,7 +1,8 @@
 /**
- * Funções relavitas a datas e dias da semana
+ * Funções relativas a datas e dias da semana
  */
 
+// TODO considere a possibilidade de colocar esta classe em arquivo próprio. Imagine dezenas delas, ...
 /**
  * Erro para uma data inválida
  */
@@ -25,9 +26,11 @@ function diaValido(dia) {
     if (dia === null || dia === undefined) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(dia)) {
         throw new DataInvalidaError("argumento deve ser inteiro");
     }
+    
     if (dia < 1 || dia > 31) {
         throw new DataInvalidaError("dia invalido: " + dia);
     }
@@ -46,9 +49,11 @@ function mesValido(mes) {
     if (mes === null || mes === undefined) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(mes)) {
         throw new DataInvalidaError("argumento deve ser inteiro");
     }
+    
     if (mes < 1 || mes > 12) {
         throw new DataInvalidaError("mes invalido: " + mes);
     }
@@ -67,9 +72,11 @@ function anoValido(ano) {
     if (ano === null || ano === undefined) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(ano)) {
         throw new DataInvalidaError("argumento deve ser inteiro");
     }
+    
     if (ano <= 1753) {
         throw new DataInvalidaError("ano invalido: " + ano);
     }
@@ -80,7 +87,7 @@ function anoValido(ano) {
  * forem inválidos
  *
  * @param {number} dia Inteiro que informa dia do mês
- * @param {number} mes Inteiro que informa mes do ano
+ * @param {number} mes Inteiro que informa mes do ano (varia de 1 até 12, inclusive).
  * @param {number} ano Inteiro que informa ano
  *
  * @see {Data#diaValido}
@@ -124,6 +131,9 @@ function diaDaSemana(dia, mes, ano) {
         mes = mes + 12;
         ano = ano - 1;
     }
+    // FIXME observe que ano / 400, por exemplo, é sempre "real", enquanto o algoritmo, salvo engano, é div. 
+    // Noutras palavras, a expressão abaixo supostamente não é aquela fornecida pelo algoritmo. A alternativa
+    // especulada é Math.floor(ano / 400), por exemplo, e não para toda a expressão. 
     const calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3
         * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
     const calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;

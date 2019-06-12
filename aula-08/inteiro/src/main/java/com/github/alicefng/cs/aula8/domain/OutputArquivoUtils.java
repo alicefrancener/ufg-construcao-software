@@ -31,5 +31,6 @@ public final class OutputArquivoUtils {
         System.out.println(Integer.toHexString(valor));
 
         dis.close();
+        fis.close();
     }
 }

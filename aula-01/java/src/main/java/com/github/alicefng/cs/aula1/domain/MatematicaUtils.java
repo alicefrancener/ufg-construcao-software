@@ -62,9 +62,9 @@ public final class MatematicaUtils {
                               final int multiplicador) {
         final int limiteMinimo = 0;
         if (multiplicando < limiteMinimo || multiplicador < limiteMinimo) {
-            throw new IllegalArgumentException(ARG_INVALIDO
-                    + " multiplicando = " + multiplicando
-                    + ", multiplicador = " + multiplicador);
+            final String fmt = "%s multiplicando = %d, multiplicador = %d";
+            final String msg = String.format(fmt, ARG_INVALIDO, multiplicando, multiplicador);
+            throw new IllegalArgumentException(msg);
         }
 
         final int totalParcelas = multiplicador < multiplicando

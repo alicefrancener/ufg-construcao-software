@@ -22,7 +22,7 @@ public final class Programa {
      */
     public static void main(final String[] args) {
         try {
-            OutputArquivoUtils.imprimeHexadecimal(args[0]);
+            System.out.println(OutputArquivoUtils.imprimeHexadecimal(args[0]));
         } catch (IOException e) {
             e.printStackTrace();
         }

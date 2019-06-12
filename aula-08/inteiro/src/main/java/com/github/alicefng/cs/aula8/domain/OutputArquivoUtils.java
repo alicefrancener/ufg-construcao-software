@@ -22,15 +22,16 @@ public final class OutputArquivoUtils {
      * @param caminhoArquivo Caminho do arquivo a ser impresso
      * @throws IOException Se houver problema na leitura do arquivo
      */
-    public static void imprimeHexadecimal(final String caminhoArquivo)
+    public static String imprimeHexadecimal(final String caminhoArquivo)
             throws IOException {
         final FileInputStream fis = new FileInputStream(caminhoArquivo);
         final DataInputStream dis = new DataInputStream(fis);
 
         final int valor = dis.readInt();
-        System.out.println(Integer.toHexString(valor));
 
         dis.close();
         fis.close();
+
+        return Integer.toHexString(valor);
     }
 }

@@ -35,6 +35,10 @@ public final class MatematicaUtils {
     public static int restoDaDivisaoInteira(final int numerador,
                                             final int denominador) {
         final int limiteMinimo = 0;
+        
+        // Se é menor que o limite, ok, mas se é igual também é gerada exceção?
+        // Semanticamente não soa bem este cenário. Você não deveria alterar o limiteMinimo 
+        // e melhorar a condição (legibilidade)?
         if (numerador <= limiteMinimo || denominador < limiteMinimo) {
             throw new IllegalArgumentException(ARG_INVALIDO
                     + " numerador = " + numerador

@@ -472,7 +472,9 @@ public final class MatematicaUtils {
 
         final int limite = (int) Math.floor(raizQuadrada(vetorZeros.length,
                 100));
-        int[] numerosPrimos = vetorZeros;
+        // FIXME? Era para fazer uma cópia?
+        // int[] numerosPrimos = vetorZeros;
+        int[] numerosPrimos = vetorZeros.clone();
         for (int i = 1; i < limite; i++) {
             if (numerosPrimos[i] == 0) {
                 for (int multiplo = 2 * i;

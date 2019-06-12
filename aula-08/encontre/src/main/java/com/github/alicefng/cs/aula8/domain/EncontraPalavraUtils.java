@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Classe utilizada para encontrar palavras em arquivos.
+ */
 public final class EncontraPalavraUtils {
 
     /**

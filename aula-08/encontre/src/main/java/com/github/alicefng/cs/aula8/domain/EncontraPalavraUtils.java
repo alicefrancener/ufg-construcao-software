@@ -55,6 +55,8 @@ public final class EncontraPalavraUtils {
         }
 
         br.close();
+        isr.close();
+        fis.close();
 
         return "Encontradas: " + ocorrenciaTotal + "\n" + sb.toString();
     }

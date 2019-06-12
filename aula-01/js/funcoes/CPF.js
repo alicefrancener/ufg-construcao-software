@@ -10,6 +10,7 @@
  * @returns {Array} Vetor contendo em cada posição um dígito do CPF como inteiro
  */
 function converteCaracteresEmInteiros(cpf) {
+    // FIXME use const neste caso. A referência não se altera, apenas os elementos. 
     let digitosCpf = [];
     for (let i = 0; i < cpf.length; i++) {
         digitosCpf[i] = parseInt(cpf.charAt(i));

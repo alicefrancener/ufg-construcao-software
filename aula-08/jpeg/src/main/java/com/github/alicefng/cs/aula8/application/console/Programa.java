@@ -21,6 +21,7 @@ public final class Programa {
      */
     public static void main(final String[] args) {
         try {
+            // FIXME gera excecao ArrayIndexOutOfBoundsException se nenhum argumento fornecido.
             System.out.println(IsJpegUtils.isJpeg(args[0]));
         } catch (IOException e) {
             e.printStackTrace();

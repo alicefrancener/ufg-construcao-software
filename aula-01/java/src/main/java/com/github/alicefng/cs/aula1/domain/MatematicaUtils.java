@@ -106,14 +106,17 @@ public final class MatematicaUtils {
     }
 
     /**
+     * // TODO não seria melhor: "Verifica se um número está contido no intervalo fechado, ...
      * Avalia se um número está dentro ou fora de um dado intervalo.
      *
      * @param numero            O número a ser avaliado
+     * // TODO não seria melhor limiteInferior, limiteSuperior?
      * @param intervaloInferior O Intervalo inferior a ser considerado
      * @param intervaloSuperior O Intervalo superior a ser considerado
      * @return Verdadeiro, se o número está dentro do intervalo fornecido,
      * Falso, caso esteja fora do intervalo
      */
+    // TODO não seria melhor está contidoNoIntervalo?
     public static boolean estaDentroDoIntervalo(final int numero,
                                                 final int intervaloInferior,
                                                 final int intervaloSuperior) {
@@ -131,6 +134,7 @@ public final class MatematicaUtils {
      * @throws IllegalArgumentException Se parâmetro está fora do intervalo
      *                                  permitido [0,9999]
      */
+    // TODO não seria melhor atende ou satisfaz?
     public static boolean possuiPropriedade3025(final int numero) {
         final int intervaloMinino = 0;
         final int intervaloMaximo = 9999;
@@ -160,11 +164,14 @@ public final class MatematicaUtils {
     public static boolean possuiPropriedade153(final int numero) {
         final int intervaloMinino = 100;
         final int intervaloMaximo = 999;
+        // TODO por que não o método se chamar foraDoIntervalo? Não evitaria a negação?
         if (!estaDentroDoIntervalo(numero, intervaloMinino, intervaloMaximo)) {
             throw new IllegalArgumentException(ARG_INVALIDO
                     + " numero = " + numero);
         }
 
+        // TODO definitivamente quociente, quociente2 não são bons, pois quase não dizem o que guardam.
+        // TODO Por exemplo, centena, dezena e unidade não seriam melhores?
         final int quociente = numero / 100;
         final int resto = restoDaDivisaoInteira(numero, 100);
         final int quociente2 = resto / 10;
@@ -189,6 +196,8 @@ public final class MatematicaUtils {
                     + " numero = " + numero);
         }
 
+        // TODO talvez este seja o caso de...
+        // TODO return IntStream.range(1, numero + 1).sum();
         int soma = 1;
         for (int i = 2; i <= numero; i++) {
             soma = soma + i;
@@ -432,6 +441,7 @@ public final class MatematicaUtils {
                     + " numeroA = " + numeroA + ", numeroB = " + numeroB);
         }
 
+        // TODO não seria melhor a e b em vez de numeroA2, ...?
         int numeroA2 = numeroA;
         int numeroB2 = numeroB;
         while (numeroA2 != numeroB2) {
@@ -442,6 +452,9 @@ public final class MatematicaUtils {
             }
         }
 
+        // TODO para deixar claro a necesside de variáveis locais, talvez fosse necessário
+        // fazer o registro de log como "o maior divisor comum de numeroA e numeroB é numeroA2", aqui, 
+        // neste ponto. 
         return numeroA2;
     }
 

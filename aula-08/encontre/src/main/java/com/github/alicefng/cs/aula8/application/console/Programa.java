@@ -1,11 +1,11 @@
 package com.github.alicefng.cs.aula8.application.console;
 
-import com.github.alicefng.cs.aula8.domain.EncontraPalavra;
+import com.github.alicefng.cs.aula8.domain.EncontraPalavraUtils;
 
 import java.io.IOException;
 
 /**
- * Classe para executar o EncontraPalavra pelo temrinal.
+ * Classe para executar o EncontraPalavraUtils pelo temrinal.
  */
 public final class Programa {
 
@@ -23,7 +23,7 @@ public final class Programa {
     public static void main(final String[] args) {
         try {
             final String resultado =
-                    EncontraPalavra.encontraPalavra(args[0], args[1]);
+                    EncontraPalavraUtils.encontraPalavra(args[0], args[1]);
             System.out.println(resultado);
         } catch (IOException e) {
             e.printStackTrace();

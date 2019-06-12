@@ -7,12 +7,12 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class EncontraPalavra {
+public final class EncontraPalavraUtils {
 
     /**
      * Construtor privado para não haver instanciação da classe.
      */
-    private EncontraPalavra() {
+    private EncontraPalavraUtils() {
     }
 
     /**

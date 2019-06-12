@@ -14,7 +14,7 @@ public final class MatematicaUtils {
     /**
      * Mensagem padrão para argumento inválido.
      */
-    public static final String ARG_INVALIDO = "Argumento (s) invalido (s).";
+    private static final String ARG_INVALIDO = "Argumento (s) invalido (s).";
 
     /**
      * Previne a classe utilitária de ser instanciada.

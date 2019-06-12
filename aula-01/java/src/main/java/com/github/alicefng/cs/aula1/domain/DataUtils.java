@@ -31,6 +31,7 @@ public final class DataUtils {
     /**
      * Menor valor para um mês.
      */
+    // TODO não poderia ser JANEIRO e o "maior" DEZEMBRO?
     public static final int MENOR_MES = 1;
 
     /**
@@ -43,6 +44,7 @@ public final class DataUtils {
      * Previne a classe utilitária de ser instanciada.
      */
     private DataUtils() {
+        // FIXME comentado em outro local
         throw new UnsupportedOperationException();
     }
 
@@ -94,6 +96,7 @@ public final class DataUtils {
     public static String diaDaSemanaToString(final int dia) {
         final int maximoDiasSemana = 6;
         if (dia < 0 || dia > maximoDiasSemana) {
+            // TODO uso de String.format é recomendado neste caso, enquanto o anterior (acima) é aceitável.
             throw new IllegalArgumentException("Dia inválido: " + dia + ". "
                     + "Dia deve estar entre 0 e 6.");
         }
@@ -120,6 +123,7 @@ public final class DataUtils {
         validaAno(ano);
 
         final int totalMesesDeAno = 12;
+        // TODO por que não "mes == JANEIRO", ou "mes == FEVEREIRO"?
         final int mesAux = ((mes == 1) || (mes == 2))
                 ? (mes + totalMesesDeAno)
                 : mes;

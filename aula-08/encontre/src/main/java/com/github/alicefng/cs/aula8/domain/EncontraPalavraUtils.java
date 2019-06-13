@@ -1,6 +1,9 @@
 package com.github.alicefng.cs.aula8.domain;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,32 +38,31 @@ public final class EncontraPalavraUtils {
             throw new IllegalArgumentException("Arquivo está vazio.");
         }
 
-        final FileInputStream fis = new FileInputStream(caminhoArquivo);
-        final InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
-        final BufferedReader br = new BufferedReader(isr);
+        final Charset utf8 = Charset.forName("UTF-8");
+        final BufferedReader br =
+                Files.newBufferedReader(Paths.get(caminhoArquivo), utf8);
 
-        String linha;
         StringBuilder sb = new StringBuilder();
+        String conteudoLinha;
         int numeroLinha = 1;
         int ocorrenciaTotal = 0;
 
-        while ((linha = br.readLine()) != null) {
-            if (linha.contains(palavraProcurada)) {
-                sb.append("L" + numeroLinha
-                        + " C" + linha.indexOf(palavraProcurada) + ": "
-                        + linha + "\n");
+        while ((conteudoLinha = br.readLine()) != null) {
+
+            int numeroColuna = conteudoLinha.indexOf(palavraProcurada);
+            if (numeroColuna != -1) {
+                sb.append(String.format("L%d C%d: %s\n",
+                        numeroLinha, numeroColuna, conteudoLinha));
             }
             numeroLinha++;
 
             ocorrenciaTotal = ocorrenciaTotal
-                    + conteOcorrencias(palavraProcurada, linha);
+                    + conteOcorrencias(palavraProcurada, conteudoLinha);
         }
 
         br.close();
-        isr.close();
-        fis.close();
 
-        return "Encontradas: " + ocorrenciaTotal + "\n" + sb.toString();
+        return String.format("Encontradas: %d\n%s", ocorrenciaTotal, sb.toString());
     }
 
     /**

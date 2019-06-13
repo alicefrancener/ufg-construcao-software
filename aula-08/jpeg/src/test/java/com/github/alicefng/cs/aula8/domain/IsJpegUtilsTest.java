@@ -2,11 +2,8 @@ package com.github.alicefng.cs.aula8.domain;
 
 import com.github.alicefng.cs.aula8.application.console.Programa;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.io.IOException;
-
-import static com.github.alicefng.cs.aula8.application.console.Programa.main;
 import static org.junit.jupiter.api.Assertions.*;
 
 public final class IsJpegUtilsTest {

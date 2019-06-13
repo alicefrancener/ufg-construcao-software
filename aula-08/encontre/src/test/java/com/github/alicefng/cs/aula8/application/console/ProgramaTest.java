@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ProgramaText {
+public class ProgramaTest {
 
     /* Método getFilename() copiado de:
      * https://github.com/ottoleggio/cs-2019-01/tree/master/aula-08/inteiro

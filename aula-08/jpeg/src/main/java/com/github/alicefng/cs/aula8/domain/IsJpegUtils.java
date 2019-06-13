@@ -54,11 +54,6 @@ public final class IsJpegUtils {
             throws IOException {
 
         final File checkFile = new File(caminhoArquivo);
-
-        if(!checkFile.exists()){
-            throw new IllegalArgumentException("Arquivo inexistente.");
-        }
-
         if(checkFile.length() == 0){
             throw new IllegalArgumentException("Arquivo não contém dados " +
                     "suficientes.");

@@ -17,14 +17,12 @@ public final class Programa {
 
     /**
      * Programa para executar pelo terminal..
+     *
      * @param args Caminho do arquivo a ser informado pelo usuário no terminal
      */
-    public static void main(final String[] args) {
-        try {
-            System.out.println(IsJpegUtils.isJpeg(args[0]));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(final String[] args) throws IOException {
+        System.out.println(IsJpegUtils.isJpeg(args[0]));
+
     }
 
 }

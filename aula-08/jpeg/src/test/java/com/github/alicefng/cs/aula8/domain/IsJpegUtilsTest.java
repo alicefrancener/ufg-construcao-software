@@ -1,11 +1,13 @@
 package com.github.alicefng.cs.aula8.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.github.alicefng.cs.aula8.application.console.Programa;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.jupiter.api.Test;
+import static com.github.alicefng.cs.aula8.application.console.Programa.main;
+import static org.junit.jupiter.api.Assertions.*;
 
 public final class IsJpegUtilsTest {
 
@@ -32,12 +34,27 @@ public final class IsJpegUtilsTest {
     public void testNaoEhJpeg() throws IOException {
         assertFalse(IsJpegUtils.isJpeg(getFilename("arquivo-com-frase.txt")));
         assertFalse(IsJpegUtils.isJpeg(getFilename("package-info.class")));
+        assertFalse(IsJpegUtils.isJpeg(getFilename(
+                "arquivo-test-missed-branch.txt")));
     }
 
     @Test
     public void testExcecoes() throws IOException {
         assertThrows(IllegalArgumentException.class,
                 () -> IsJpegUtils.isJpeg(getFilename("arquivo-vazio.txt")));
+    }
+
+    @Test
+    public void testMain() throws IOException {
+        String[] args = {getFilename("imagem.jpeg")};
+        Programa.main(args);
+    }
+
+    @Test
+    public void testMainExcecoes() throws IOException {
+        String[] args = {getFilename("arquivo-vazio.txt")};
+        assertThrows(IllegalArgumentException.class,
+                () -> Programa.main(args));
     }
 
 }

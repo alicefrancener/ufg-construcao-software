@@ -27,11 +27,6 @@ public final class OutputArquivoUtils {
             throws IOException {
 
         final File checkFile = new File(caminhoArquivo);
-
-        if(!checkFile.exists()){
-            throw new IllegalArgumentException("Arquivo inexistente.");
-        }
-
         final int minimoBytes = 4;
         if(checkFile.length() < minimoBytes){
             throw new IllegalArgumentException("Arquivo contém quantidade de " +

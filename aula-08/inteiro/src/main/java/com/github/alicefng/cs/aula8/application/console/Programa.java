@@ -20,12 +20,8 @@ public final class Programa {
      *
      * @param args Argumentos a ser inseridos pelo usuário no terminal
      */
-    public static void main(final String[] args) {
-        try {
-            System.out.println(OutputArquivoUtils.imprimeHexadecimal(args[0]));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(final String[] args) throws IOException {
+       System.out.println(OutputArquivoUtils.imprimeHexadecimal(args[0]));
     }
 
 }

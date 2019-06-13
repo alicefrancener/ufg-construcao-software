@@ -21,8 +21,12 @@ public final class Programa {
      * @param args Caminho do arquivo a ser informado pelo usuário no terminal
      */
     public static void main(final String[] args) throws IOException {
-        System.out.println(IsJpegUtils.isJpeg(args[0]));
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Nenhum argumento foi " +
+                    "fornecido.");
+        }
 
+        System.out.println(IsJpegUtils.isJpeg(args[0]));
     }
 
 }

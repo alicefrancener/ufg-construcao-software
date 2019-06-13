@@ -5,4 +5,7 @@ stale_outputs_checked
 target/
 out/
 .idea
+.idea/
 cs-2019-01.iml
+
+!package-info.class

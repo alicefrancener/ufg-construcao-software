@@ -23,7 +23,7 @@ public final class ProgramaTest {
 
     @Test
     public void testMain() throws IOException {
-        String[] args = {getFilename("imagem.jpeg")};
+        String[] args = {getFilename("package-info.class")};
         Programa.main(args);
     }
 
@@ -32,6 +32,10 @@ public final class ProgramaTest {
         String[] args = {getFilename("arquivo-vazio.txt")};
         assertThrows(IllegalArgumentException.class,
                 () -> Programa.main(args));
+
+        String[] args2 = {};
+        assertThrows(IllegalArgumentException.class,
+                () -> Programa.main(args2));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.github.alicefng.cs.aula8.domain;
+package com.github.alicefng.cs.aula8.application.console;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public final class IsJpegUtilsTest {
+public class ProgramaTest {
 
     /* Método getFilename() copiado de:
      * https://github.com/ottoleggio/cs-2019-01/tree/master/aula-08/inteiro
@@ -24,22 +24,16 @@ public final class IsJpegUtilsTest {
     }
 
     @Test
-    public void testEhJpeg() throws IOException {
-        assertTrue(IsJpegUtils.isJpeg(getFilename("imagem.jpeg")));
+    public void testMain() throws IOException {
+        String[] args = {getFilename("imagem.jpeg")};
+        Programa.main(args);
     }
 
     @Test
-    public void testNaoEhJpeg() throws IOException {
-        assertFalse(IsJpegUtils.isJpeg(getFilename("arquivo-com-frase.txt")));
-        assertFalse(IsJpegUtils.isJpeg(getFilename("package-info.class")));
-        assertFalse(IsJpegUtils.isJpeg(getFilename(
-                "arquivo-test-missed-branch.txt")));
-    }
-
-    @Test
-    public void testExcecoes() throws IOException {
+    public void testMainExcecoes() throws IOException {
+        String[] args = {getFilename("arquivo-vazio.txt")};
         assertThrows(IllegalArgumentException.class,
-                () -> IsJpegUtils.isJpeg(getFilename("arquivo-vazio.txt")));
+                () -> Programa.main(args));
     }
 
 }

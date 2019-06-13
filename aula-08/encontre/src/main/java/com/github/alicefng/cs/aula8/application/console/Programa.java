@@ -24,7 +24,6 @@ public final class Programa {
         final String resultado =
                 EncontraPalavraUtils.encontraPalavra(args[0], args[1]);
         System.out.println(resultado);
-
     }
 
 }

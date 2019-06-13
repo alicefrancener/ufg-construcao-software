@@ -1,6 +1,7 @@
 package com.github.alicefng.cs.aula8.domain;
 
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -24,6 +25,19 @@ public final class OutputArquivoUtils {
      */
     public static String imprimeHexadecimal(final String caminhoArquivo)
             throws IOException {
+
+        final File checkFile = new File(caminhoArquivo);
+
+        if(!checkFile.exists()){
+            throw new IllegalArgumentException("Arquivo inexistente.");
+        }
+
+        final int minimoBytes = 4;
+        if(checkFile.length() < minimoBytes){
+            throw new IllegalArgumentException("Arquivo contém quantidade de " +
+                    "bytes menor que permitida.");
+        }
+
         final FileInputStream fis = new FileInputStream(caminhoArquivo);
         final DataInputStream dis = new DataInputStream(fis);
 

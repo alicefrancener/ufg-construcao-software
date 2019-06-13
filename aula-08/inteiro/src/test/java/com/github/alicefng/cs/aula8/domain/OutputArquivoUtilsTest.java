@@ -1,8 +1,7 @@
 package com.github.alicefng.cs.aula8.domain;
 
-import com.github.alicefng.cs.aula8.application.console.Programa;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -45,19 +44,6 @@ public final class OutputArquivoUtilsTest {
         assertThrows(IllegalArgumentException.class,
                 () -> OutputArquivoUtils.imprimeHexadecimal
                         (getFilename("arquivo-vazio.txt")));
-    }
-
-    @Test
-    public void testMain() throws IOException {
-        String[] args = {getFilename("package-info.class")};
-        Programa.main(args);
-    }
-
-    @Test
-    public void testMainExcecoes() throws IOException {
-        String[] args = {getFilename("arquivo-vazio.txt")};
-        assertThrows(IllegalArgumentException.class,
-                () -> Programa.main(args));
     }
 
 }

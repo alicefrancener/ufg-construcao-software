@@ -20,14 +20,11 @@ public final class Programa {
      *
      * @param args Argumentos a ser inseridos pelo usuário no terminal
      */
-    public static void main(final String[] args) {
-        try {
-            final String resultado =
-                    EncontraPalavraUtils.encontraPalavra(args[0], args[1]);
-            System.out.println(resultado);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(final String[] args) throws IOException {
+        final String resultado =
+                EncontraPalavraUtils.encontraPalavra(args[0], args[1]);
+        System.out.println(resultado);
+
     }
 
 }

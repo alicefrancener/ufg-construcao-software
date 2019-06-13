@@ -34,6 +34,14 @@ public class ProgramaTest {
         String[] args = {getFilename("arquivo-vazio.txt"), "texto"};
         assertThrows(IllegalArgumentException.class,
                 () -> Programa.main(args));
+
+        String[] args2 = {};
+        assertThrows(IllegalArgumentException.class,
+                () -> Programa.main(args2));
+
+        String[] args3 = {getFilename("arquivo-vazio.txt")};
+        assertThrows(IllegalArgumentException.class,
+                () -> Programa.main(args3));
     }
 
 }

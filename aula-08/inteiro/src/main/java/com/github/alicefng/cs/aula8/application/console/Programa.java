@@ -18,10 +18,15 @@ public final class Programa {
     /**
      * Programa para executar pelo terminal.
      *
-     * @param args Argumentos a ser inseridos pelo usuário no terminal
+     * @param args Caminho do arquivo a ser informado pelo usuário no terminal
      */
     public static void main(final String[] args) throws IOException {
-       System.out.println(OutputArquivoUtils.imprimeHexadecimal(args[0]));
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Nenhum argumento foi " +
+                    "fornecido.");
+        }
+
+        System.out.println(OutputArquivoUtils.imprimeHexadecimal(args[0]));
     }
 
 }

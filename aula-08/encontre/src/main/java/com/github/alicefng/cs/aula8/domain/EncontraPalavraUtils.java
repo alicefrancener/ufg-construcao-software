@@ -1,9 +1,6 @@
 package com.github.alicefng.cs.aula8.domain;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +29,11 @@ public final class EncontraPalavraUtils {
     public static String encontraPalavra(final String caminhoArquivo,
                                          final String palavraProcurada)
             throws IOException {
+
+        final File checkFile = new File(caminhoArquivo);
+        if (checkFile.length() == 0) {
+            throw new IllegalArgumentException("Arquivo está vazio.");
+        }
 
         final FileInputStream fis = new FileInputStream(caminhoArquivo);
         final InputStreamReader isr = new InputStreamReader(fis, "UTF-8");

@@ -1,5 +1,6 @@
 package com.github.alicefng.cs.aula8.domain;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,6 +52,18 @@ public final class IsJpegUtils {
      */
     public static boolean isJpeg(final String caminhoArquivo)
             throws IOException {
+
+        final File checkFile = new File(caminhoArquivo);
+
+        if(!checkFile.exists()){
+            throw new IllegalArgumentException("Arquivo inexistente.");
+        }
+
+        if(checkFile.length() == 0){
+            throw new IllegalArgumentException("Arquivo não contém dados " +
+                    "suficientes.");
+        }
+
         final Path path = Paths.get(caminhoArquivo);
         final byte[] bytesArquivo = Files.readAllBytes(path);
 

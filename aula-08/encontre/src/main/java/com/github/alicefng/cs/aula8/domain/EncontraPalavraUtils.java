@@ -33,6 +33,9 @@ public final class EncontraPalavraUtils {
                                          final String palavraProcurada)
             throws IOException {
 
+        // TODO Apenas para expandir horizontes, ... observe a alternativa abaixo
+        // Charset utf8 = Charset.forName("UTF-8");
+        // BufferedReader br = Files.newBufferedReader(Paths.get(caminhoArquivo), utf8);
         final FileInputStream fis = new FileInputStream(caminhoArquivo);
         final InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
         final BufferedReader br = new BufferedReader(isr);
@@ -43,7 +46,10 @@ public final class EncontraPalavraUtils {
         int ocorrenciaTotal = 0;
 
         while ((linha = br.readLine()) != null) {
+            // TODO Você pode usar indexOf nesta linha e eliminar a chamada a contains
             if (linha.contains(palavraProcurada)) {
+                // TODO criação de Strings desnecessárias. Usar String.format
+                // (ja comentei o uso de String.format em outra issue ou pull request) conforme ilustrado no fim do método
                 sb.append("L" + numeroLinha
                         + " C" + linha.indexOf(palavraProcurada) + ": "
                         + linha + "\n");
@@ -58,7 +64,8 @@ public final class EncontraPalavraUtils {
         isr.close();
         fis.close();
 
-        return "Encontradas: " + ocorrenciaTotal + "\n" + sb.toString();
+        return String.format("Encontradas: %d\n%s", ocorrenciaTotal, sb.toString());
+        //return "Encontradas: " + ocorrenciaTotal + "\n" + sb.toString();
     }
 
     /**

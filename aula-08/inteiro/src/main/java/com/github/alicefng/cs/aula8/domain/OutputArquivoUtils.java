@@ -21,6 +21,7 @@ public final class OutputArquivoUtils {
      * hexadecimal na saída padrão.
      *
      * @param caminhoArquivo Caminho do arquivo a ser impresso
+     * @return Os 4 primeiros bytes de um arquivo em formato hexadecimal
      * @throws IOException Se houver problema na leitura do arquivo
      */
     public static String imprimeHexadecimal(final String caminhoArquivo)
@@ -28,9 +29,9 @@ public final class OutputArquivoUtils {
 
         final File checkFile = new File(caminhoArquivo);
         final int minimoBytes = 4;
-        if(checkFile.length() < minimoBytes){
-            throw new IllegalArgumentException("Arquivo contém quantidade de " +
-                    "bytes menor que permitida.");
+        if (checkFile.length() < minimoBytes) {
+            throw new IllegalArgumentException("Arquivo contém quantidade de "
+                    + "bytes menor que permitida.");
         }
 
         final FileInputStream fis = new FileInputStream(caminhoArquivo);

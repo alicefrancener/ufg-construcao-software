@@ -1,0 +1,22 @@
+language: java
+
+script:
+  - cd aula-01/java && mvn test checkstyle:check spotbugs:check verify -P cobertura
+  - cd ..
+  - cd ..
+  - cd aula-07/vetor/java && mvn test checkstyle:check spotbugs:check verify -P cobertura
+  - cd ..
+  - cd ..
+  - cd ..
+  - cd aula-08/encontre && mvn test checkstyle:check spotbugs:check verify -P cobertura
+  - cd ..
+  - cd aula-08/inteiro && mvn test checkstyle:check spotbugs:check verify -P cobertura
+  - cd ..
+  - cd aula-08/jpeg && mvn test checkstyle:check spotbugs:check verify -P cobertura
+  
+cache:
+  directories:
+  - "$HOME/.m2/repository"
+  - "$HOME/.sonar/cache"
+jdk:
+  - openjdk8

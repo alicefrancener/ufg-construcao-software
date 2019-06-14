@@ -59,7 +59,6 @@ public final class CpfUtils {
      * Previne a classe utilitária de ser instanciada.
      */
     private CpfUtils() {
-        throw new UnsupportedOperationException();
     }
 
     /**

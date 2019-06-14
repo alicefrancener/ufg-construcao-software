@@ -20,7 +20,6 @@ public final class MatematicaUtils {
      * Previne a classe utilitária de ser instanciada.
      */
     private MatematicaUtils() {
-        throw new UnsupportedOperationException();
     }
 
     /**

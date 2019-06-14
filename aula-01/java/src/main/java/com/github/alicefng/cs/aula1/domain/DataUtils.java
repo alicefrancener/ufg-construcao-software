@@ -43,7 +43,6 @@ public final class DataUtils {
      * Previne a classe utilitária de ser instanciada.
      */
     private DataUtils() {
-        throw new UnsupportedOperationException();
     }
 
     /**

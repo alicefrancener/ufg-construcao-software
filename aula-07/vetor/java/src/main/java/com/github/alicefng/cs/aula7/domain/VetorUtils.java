@@ -15,7 +15,6 @@ public final class VetorUtils {
      * Previne a classe utilitária de ser instanciada.
      */
     private VetorUtils() {
-        throw new UnsupportedOperationException();
     }
 
     /**

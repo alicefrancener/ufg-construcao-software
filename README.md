@@ -1,5 +1,7 @@
 # Construção de Software
 
+[![Build Status](https://travis-ci.com/alicefng/cs-2019-01.svg?branch=master)](https://travis-ci.com/alicefng/cs-2019-01)
+
 Repositório com registro das atividades realizadas na disciplina Construção de Software, Engenharia de Software, [INF/UFG](http://inf.ufg.br/)
 
 **Objetivo geral da disciplina:** Aprimorar as técnicas de programação, desenvolver clara percepção de arquitetura de software. 

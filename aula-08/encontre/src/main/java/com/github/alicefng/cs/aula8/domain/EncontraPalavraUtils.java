@@ -45,7 +45,7 @@ public final class EncontraPalavraUtils {
         final BufferedReader br =
                 Files.newBufferedReader(Paths.get(caminhoArquivo), utf8);
 
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         String conteudoLinha;
         int numeroLinha = 1;
         int ocorrenciaTotal = 0;

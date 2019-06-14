@@ -5,9 +5,14 @@ import com.github.alicefng.cs.aula8.domain.EncontraPalavraUtils;
 import java.io.IOException;
 
 /**
- * Classe para executar o EncontraPalavraUtils pelo temrinal.
+ * Classe para executar o EncontraPalavraUtils pelo terminal.
  */
 public final class Programa {
+
+    /**
+     * O número de parâmetros necessários para executar o método.
+     */
+    private static final int NUMERO_PARAMETROS = 2;
 
     /**
      * Construtor privado para evitar instanciação.
@@ -28,7 +33,7 @@ public final class Programa {
      *                                  passando somente um dos argumentos
      */
     public static void main(final String[] args) throws IOException {
-        if (args.length < 2) {
+        if (args.length < NUMERO_PARAMETROS) {
             if (args.length == 0) {
                 throw new IllegalArgumentException("Nenhum argumento foi "
                         + "fornecido.");

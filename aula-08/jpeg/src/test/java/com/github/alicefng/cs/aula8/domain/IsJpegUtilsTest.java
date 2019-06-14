@@ -32,7 +32,7 @@ public final class IsJpegUtilsTest {
     public void testNaoEhJpeg() throws IOException {
         assertFalse(IsJpegUtils.isJpeg(getFilename("arquivo-com-frase.txt")));
         assertFalse(IsJpegUtils.isJpeg(getFilename(
-                "arquivo-test-missed-branch.txt")));
+                "package-info.class")));
     }
 
     @Test

@@ -54,7 +54,8 @@ public final class DataUtils {
      */
     public static void validaDia(final int dia) {
         if (dia < MENOR_DIA || dia > MAIOR_DIA) {
-            throw new DataInvalidaException("dia invalido: " + dia);
+            throw new DataInvalidaException("dia invalido: " + dia,
+                    new IllegalArgumentException());
         }
     }
 
@@ -66,7 +67,8 @@ public final class DataUtils {
      */
     private static void validaMes(final int mes) {
         if (mes < MENOR_MES || mes > MAIOR_MES) {
-            throw new DataInvalidaException("mes inválido: " + mes);
+            throw new DataInvalidaException("mes inválido: " + mes,
+                    new IllegalArgumentException());
         }
     }
 
@@ -78,7 +80,8 @@ public final class DataUtils {
      */
     private static void validaAno(final int ano) {
         if (ano <= MENOR_ANO) {
-            throw new DataInvalidaException("ano inválido: " + ano);
+            throw new DataInvalidaException("ano inválido: " + ano,
+                    new IllegalArgumentException());
         }
     }
 
@@ -112,9 +115,12 @@ public final class DataUtils {
      * @param mes Inteiro que informa mês do ano
      * @param ano Inteiro que informa ano
      * @return O nome do dia da semana correspondente a data fornecida
+     * @throws DataInvalidaException Se algum dos argumentos for uma
+     * data inválida
      */
     public static String diaDaSemana(final int dia, final int mes,
-                                     final int ano) {
+                                     final int ano)
+            throws DataInvalidaException {
         validaDia(dia);
         validaMes(mes);
         validaAno(ano);

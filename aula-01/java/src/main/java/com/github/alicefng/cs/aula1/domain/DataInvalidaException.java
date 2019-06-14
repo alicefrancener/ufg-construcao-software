@@ -15,15 +15,16 @@ class DataInvalidaException extends RuntimeException implements
     /**
      * Serial para resolver MissingSerialVersionUID.
      */
-    public static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 1;
 
 
     /**
-     * Construtor da exceção.
+     * Constroi uma exceção com mensagem e causa.
      *
-     * @param msg A mensagem a ser enviada quanto a exceção é lançada.
+     * @param mensagem A mensagem a ser enviada quanto a exceção é lançada.
+     * @param causa Causa raiz da exceção (root case)
      */
-    DataInvalidaException(final String msg) {
-        super(msg);
+    DataInvalidaException(final String mensagem, Throwable causa) {
+        super(mensagem, causa);
     }
 }

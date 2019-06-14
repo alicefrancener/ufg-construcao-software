@@ -16,10 +16,16 @@ public final class Programa {
     }
 
     /**
-     * Executor.
+     * Programa para executar pelo terminal e fazer um relatório de quantas
+     * vezes uma  palavra ocorre em determinado arquivo e em quais locais.
      *
      * @param args Caminho do arquivo e palavra a ser procurada a ser informado
      *             pelo usuário no terminal
+     * @throws IOException              se houver problema na leitura do caminho
+     *                                  do arquivo
+     * @throws IllegalArgumentException se não for passado nenhum argumento
+     *                                  pela linha de comando, ou se for
+     *                                  passando somente um dos argumentos
      */
     public static void main(final String[] args) throws IOException {
         if (args.length < 2) {

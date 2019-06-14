@@ -1,6 +1,8 @@
 package com.github.alicefng.cs.aula8.domain;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,7 +29,8 @@ public final class EncontraPalavraUtils {
      * @param palavraProcurada A palavra a ser procurada no arquivo texto
      * @return Relatório do número de ocorrências total da palavra procurada
      * no arquivo, bem como de cada linha e coluna em que a palavra ocorre
-     * @throws IOException Se houver problema na leitura do arquivo
+     * @throws IOException              Se houver problema na leitura do arquivo
+     * @throws IllegalArgumentException Se arquivo estiver vazio
      */
     public static String encontraPalavra(final String caminhoArquivo,
                                          final String palavraProcurada)
@@ -62,7 +65,8 @@ public final class EncontraPalavraUtils {
 
         br.close();
 
-        return String.format("Encontradas: %d\n%s", ocorrenciaTotal, sb.toString());
+        return String.format("Encontradas: %d\n%s",
+                ocorrenciaTotal, sb.toString());
     }
 
     /**

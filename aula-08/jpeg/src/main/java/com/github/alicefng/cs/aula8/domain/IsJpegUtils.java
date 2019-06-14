@@ -1,11 +1,9 @@
 package com.github.alicefng.cs.aula8.domain;
 
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -56,36 +54,36 @@ public final class IsJpegUtils {
 
         final File checkFile = new File(caminhoArquivo);
         if (checkFile.length() == 0) {
-            throw new IllegalArgumentException("Arquivo não contém dados " +
-                    "suficientes.");
+            throw new IllegalArgumentException("Arquivo não contém dados "
+                    + "suficientes.");
         }
 
-        final FileInputStream fis = new FileInputStream(caminhoArquivo);
-        final String primeiroHex = String.format("%02x", fis.read());
-        final String segundoHex = String.format("%02x", fis.read());
+        final InputStream is = Files.newInputStream(Paths.get(caminhoArquivo));
+        final String primeiroByteHex = String.format("%02x", is.read());
+        final String segundoByteHex = String.format("%02x", is.read());
 
-        if (primeiroHex.equals(PRIMEIRO_BYTE)
-                & segundoHex.equals(SEGUNDO_BYTE)) {
+        if (primeiroByteHex.equals(PRIMEIRO_BYTE)
+                & segundoByteHex.equals(SEGUNDO_BYTE)) {
 
-            String penultimoHex = "";
-            String ultimoHex = "";
+            String penultimoByteHex = "";
+            String ultimoByteHex = "";
             int auxiliar = 0;
 
-            while ((auxiliar = fis.read()) != -1) {
-                penultimoHex = ultimoHex;
-                ultimoHex = String.format("%02x", auxiliar);
+            while ((auxiliar = is.read()) != -1) {
+                penultimoByteHex = ultimoByteHex;
+                ultimoByteHex = String.format("%02x", auxiliar);
             }
 
-            if (penultimoHex.equals(PENULTIMO_BYTE)
-                    & ultimoHex.equals(ULTIMO_BYTE)) {
+            if (penultimoByteHex.equals(PENULTIMO_BYTE)
+                    & ultimoByteHex.equals(ULTIMO_BYTE)) {
 
-                fis.close();
+                is.close();
                 return true;
 
             }
         }
 
-        fis.close();
+        is.close();
         return false;
     }
 

@@ -14,6 +14,7 @@ public final class IsJpegUtils {
     /**
      * Primeiros 2 bytes em hexadecimal de um aquivo jpeg.
      */
+    // FIXME por que nao PRIMEIRO_BYTE = 0xFF e assim por diante, bem mais eficiente e mais claro!
     public static final String JPEG_INICIO = "FF D8";
 
     /**
@@ -60,8 +61,12 @@ public final class IsJpegUtils {
         }
 
         final Path path = Paths.get(caminhoArquivo);
+        
+        // FIXME Estamos aprendendo, mas não esqueça, a sentença abaixo é imperdoável!
+        // Precisamos ler apenas 4 bytes, e você lê todo o arquivo? Memória, CPU, ...
         final byte[] bytesArquivo = Files.readAllBytes(path);
 
+        // FIXME operacao ineficiente byteToHex é relevante para exibição, não para comparação!
         final String hexArquivo = byteToHex(bytesArquivo);
 
         final int primeiroHex = 0;

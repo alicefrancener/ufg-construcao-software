@@ -2,8 +2,10 @@ package com.github.alicefng.cs.aula8.domain;
 
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Classe para gerar output de arquivo.
@@ -34,7 +36,7 @@ public final class OutputArquivoUtils {
                     + "bytes menor que permitida.");
         }
 
-        final FileInputStream fis = new FileInputStream(caminhoArquivo);
+        final InputStream fis = Files.newInputStream(Paths.get(caminhoArquivo));
         final DataInputStream dis = new DataInputStream(fis);
 
         final int valor = dis.readInt();

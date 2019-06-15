@@ -8,11 +8,7 @@ package com.github.alicefng.cs.aula1.domain;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.String;
-
 import static org.junit.jupiter.api.Assertions.*;
-
-import com.github.alicefng.cs.aula1.domain.CpfUtils;
 
 public class CpfUtilsTest {
 

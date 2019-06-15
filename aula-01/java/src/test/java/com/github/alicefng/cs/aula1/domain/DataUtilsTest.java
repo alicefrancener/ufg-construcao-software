@@ -8,9 +8,8 @@ package com.github.alicefng.cs.aula1.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import com.github.alicefng.cs.aula1.domain.DataUtils;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DataUtilsTest {
 

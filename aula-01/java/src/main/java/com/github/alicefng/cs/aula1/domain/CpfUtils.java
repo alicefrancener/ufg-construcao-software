@@ -154,7 +154,7 @@ public final class CpfUtils {
                 & calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
-    private static int[] cpfStringParaDigitos(String cpf) {
+    private static int[] cpfStringParaDigitos(final String cpf) {
         if (cpf == null) {
             throw new IllegalArgumentException("argumento é null");
         }

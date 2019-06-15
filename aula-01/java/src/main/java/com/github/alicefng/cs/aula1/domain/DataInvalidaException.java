@@ -24,7 +24,7 @@ class DataInvalidaException extends RuntimeException implements
      * @param mensagem A mensagem a ser enviada quanto a exceção é lançada.
      * @param causa Causa raiz da exceção (root case)
      */
-    DataInvalidaException(final String mensagem, Throwable causa) {
+    DataInvalidaException(final String mensagem, final Throwable causa) {
         super(mensagem, causa);
     }
 }

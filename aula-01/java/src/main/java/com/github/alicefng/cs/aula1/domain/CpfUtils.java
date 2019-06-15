@@ -115,7 +115,9 @@ public final class CpfUtils {
             calculoDigito10 = calculoDigito10 + digitosCpf[i] * (i + 1);
         }
 
-        return (calculoDigito10 % 11) % 10;
+        final int numeroDigitos = 11;
+        final int constante = 10;
+        return (calculoDigito10 % numeroDigitos) % constante;
     }
 
     /**

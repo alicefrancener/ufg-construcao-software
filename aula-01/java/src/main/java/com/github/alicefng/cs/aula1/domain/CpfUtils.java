@@ -103,11 +103,27 @@ public final class CpfUtils {
         return confereDigitosVerificadores(digitos, primeiro, segundo);
     }
 
-    private static boolean confereDigitosVerificadores(
-            final int[] digitos, final int primeiro, final long segundo) {
-        return primeiro == digitos[DIGITO_10] & segundo == digitos[DIGITO_11];
+    /**
+     * Produz o valor do segundo dígito verificador do CPF, com base no CPF.
+     *
+     * @param digitosCpf O número de CPF em um vetor
+     * @return O valor calculado do primeiro dígito verificador
+     */
+    private static int primeiroDigitoVerificador(final int[] digitosCpf) {
+        int calculoDigito10 = digitosCpf[DIGITO_1];
+        for (int i = DIGITO_2; i < DIGITO_10; i++) {
+            calculoDigito10 = calculoDigito10 + digitosCpf[i] * (i + 1);
+        }
+
+        return (calculoDigito10 % 11) % 10;
     }
 
+    /**
+     * Produz o valor do segundo dígito verificador do CPF, com base no CPF.
+     *
+     * @param digitosCpf O número de CPF em um vetor
+     * @return O valor calculado do segundo dígito verificador
+     */
     private static int segundoDigitoVerificador(final int[] digitosCpf) {
         IntStream indices = IntStream.range(DIGITO_3, DIGITO_11);
         final int parcelas = (int) indices
@@ -116,13 +132,19 @@ public final class CpfUtils {
         return ((parcelas + digitosCpf[DIGITO_2]) % 11) % 10;
     }
 
-    private static int primeiroDigitoVerificador(final int[] digitosCpf) {
-        int calculoDigito10 = digitosCpf[DIGITO_1];
-        for (int i = DIGITO_2; i < DIGITO_10; i++) {
-            calculoDigito10 = calculoDigito10 + digitosCpf[i] * (i + 1);
-        }
-
-        return (calculoDigito10 % 11) % 10;
+    /**
+     * Verifica se dígitos verificadores calculados, são iguais aos dígitos
+     * do CPF.
+     *
+     * @param digitos  O número de CPF em um vetor
+     * @param primeiro O primeiro dígito verificador
+     * @param segundo  O segundo dígito verificador
+     * @return True, se os dígitos verificadores forem iguais aos do CPF,
+     * false, se algum deles não for igual
+     */
+    private static boolean confereDigitosVerificadores(
+            final int[] digitos, final int primeiro, final long segundo) {
+        return primeiro == digitos[DIGITO_10] & segundo == digitos[DIGITO_11];
     }
 
     /**
@@ -154,6 +176,14 @@ public final class CpfUtils {
                 & calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
+    /**
+     * Produz o CPF que estava em um string para um vetor com dígitos inteiros.
+     *
+     * @param cpf String contendo o CPF
+     * @return Os números de CPF em um vetor de inteiros
+     * @throws IllegalArgumentException Se cpf for null, se cpf tiver menos
+     * ou mais que 11 dígitos, se cpf não conter somente dígitos
+     */
     private static int[] cpfStringParaDigitos(final String cpf) {
         if (cpf == null) {
             throw new IllegalArgumentException("argumento é null");

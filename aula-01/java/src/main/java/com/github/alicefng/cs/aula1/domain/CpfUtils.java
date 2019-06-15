@@ -127,7 +127,7 @@ public final class CpfUtils {
      * @return O valor calculado do segundo dígito verificador
      */
     private static int segundoDigitoVerificador(final int[] digitosCpf) {
-        IntStream indices = IntStream.range(DIGITO_3, DIGITO_11);
+        final IntStream indices = IntStream.range(DIGITO_3, DIGITO_11);
         final int parcelas = (int) indices
                 .mapToLong(i -> digitosCpf[i] * i).sum();
 

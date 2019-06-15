@@ -88,10 +88,6 @@ public final class CpfUtils {
      * @param cpf String que contém CPF
      * @return verdadeiro, se dígitos verificadores do CPF estiverem corretos,
      * falso, se não
-     * @throws IllegalArgumentException Se argumento é null
-     * @throws IllegalArgumentException Se argumento não contém 11 dígitos
-     * @throws IllegalArgumentException Se argumento contém algo diferente
-     *                                  de dígitos
      */
     public static boolean validarDigitosCPF(final String cpf) {
         final int[] digitos = cpfStringParaDigitos(cpf);
@@ -157,10 +153,6 @@ public final class CpfUtils {
      * @param cpf String que contém CPF
      * @return verdadeiro, se dígitos verificadores do CPF estiverem corretos,
      * falso, se não
-     * @throws IllegalArgumentException Se argumento é null
-     * @throws IllegalArgumentException Se argumento não contém 11 dígitos
-     * @throws IllegalArgumentException Se argumento contém algo diferente
-     *                                  de dígitos (0 a 9)
      */
     public static boolean validarDigitosCPF2(final String cpf) {
         final int[] digitosCpf = cpfStringParaDigitos(cpf);
@@ -188,9 +180,10 @@ public final class CpfUtils {
      *
      * @param cpf String contendo o CPF
      * @return Os números de CPF em um vetor de inteiros
-     * @throws IllegalArgumentException Se cpf for null, se cpf tiver menos
-     *                                  ou mais que 11 dígitos, se cpf não
-     *                                  conter somente dígitos
+     * @throws IllegalArgumentException Se argumento é null
+     * @throws IllegalArgumentException Se argumento não contém 11 dígitos
+     * @throws IllegalArgumentException Se argumento contém algo diferente
+     *                                  de dígitos
      */
     private static int[] cpfStringParaDigitos(final String cpf) {
         if (cpf == null) {

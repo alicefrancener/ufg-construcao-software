@@ -19,39 +19,38 @@ public final class CpfUtils {
     public static final int TAMANHO_CPF = 11;
 
     /**
-     * // TODO Não é o valor, mas o índice de
      * Índice correspondente ao 1º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_1 = 0;
 
     /**
-     * Valor correspondente ao 2º dígitos de um CPF em um vetor.
+     * Índice correspondente ao 2º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_2 = 1;
 
     /**
-     * Valor correspondente ao 3º dígitos de um CPF em um vetor.
+     * Índice correspondente ao 3º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_3 = 2;
 
 
     /**
-     * Valor correspondente ao 8º dígitos de um CPF em um vetor.
+     * Índice correspondente ao 8º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_8 = 7;
 
     /**
-     * Valor correspondente ao 9º dígitos de um CPF em um vetor.
+     * Índice correspondente ao 9º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_9 = 8;
 
     /**
-     * Valor correspondente ao 10º dígitos de um CPF em um vetor.
+     * Índice correspondente ao 10º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_10 = 9;
 
     /**
-     * Valor correspondente ao 11º dígitos de um CPF em um vetor.
+     * Índice correspondente ao 11º dígitos de um CPF em um vetor.
      */
     public static final int DIGITO_11 = 10;
 

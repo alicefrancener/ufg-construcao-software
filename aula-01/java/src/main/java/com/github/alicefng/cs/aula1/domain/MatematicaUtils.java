@@ -147,8 +147,8 @@ public final class MatematicaUtils {
 
     /**
      * Avalia se o argumento possuia a propriedade matemática 153.
-     * Essa propriedade é tal que a soma do cubo dos dígidos do número resulta
-     * no próprio número. Exemplo numero 153: 1^3 + 5^3 + 3^3 = 153.
+     * Essa propriedade é tal que a soma do cubo dos dígidos do número
+     * resulta no próprio número. Exemplo numero 153: 1^3 + 5^3 + 3^3 = 153.
      *
      * @param numero O número a ser avaliado
      * @return Verdadeiro, se o número possui a propriedade,
@@ -238,9 +238,10 @@ public final class MatematicaUtils {
         double d = -1;
 
         for (int i = 1; i <= precisao; i++) {
+            final int constante = 4;
             d = d + 2;
             s = -s;
-            pi = pi + 4 * s / d;
+            pi = pi + constante * s / d;
         }
 
         return pi;
@@ -328,7 +329,8 @@ public final class MatematicaUtils {
         }
 
         int soma = 1;
-        for (int i = 3; soma < numero; i = i + 2) {
+        final int inicio = 3;
+        for (int i = inicio; soma < numero; i = i + 2) {
             soma = soma + i;
         }
 
@@ -453,7 +455,8 @@ public final class MatematicaUtils {
      * @return Vetor nos quais as posições com valor 1 são primos
      * @throws IllegalArgumentException Se vetor fornecido possuir menos do
      *                                  que 2 elementos
-     * @throws IllegalArgumentException Se números do vetor fornecido não for 0
+     * @throws IllegalArgumentException Se números do vetor fornecido não
+     *                                  forem iguais a 0
      */
     public static int[] determinarNumerosPrimos(final int[] vetorZeros) {
         final int limiteMinimo = 1;
@@ -469,8 +472,7 @@ public final class MatematicaUtils {
         }
 
 
-        final int limite = (int) Math.floor(raizQuadrada(vetorZeros.length,
-                100));
+        final int limite = (int) Math.floor(Math.sqrt(vetorZeros.length));
         int[] numerosPrimos = vetorZeros;
         for (int i = 1; i < limite; i++) {
             if (numerosPrimos[i] == 0) {

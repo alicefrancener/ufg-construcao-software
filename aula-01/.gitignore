@@ -5,4 +5,5 @@ stale_outputs_checked
 target/
 out/
 .idea/
+cs-2019-01.iml
 coverage/

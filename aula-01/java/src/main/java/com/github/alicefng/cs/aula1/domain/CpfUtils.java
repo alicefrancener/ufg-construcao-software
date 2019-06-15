@@ -187,15 +187,15 @@ public final class CpfUtils {
      */
     private static int[] cpfStringParaDigitos(final String cpf) {
         if (cpf == null) {
-            throw new IllegalArgumentException("argumento é null");
+            throw new IllegalArgumentException("cpf null");
         }
         if (cpf.length() != TAMANHO_CPF) {
-            throw new IllegalArgumentException("CPF deve ter 11 dígitos: "
-                    + cpf);
+            throw new IllegalArgumentException(String.format(
+                    "cpf deve conter 11 dígitos: %s", cpf));
         }
         if (!sequenciaContemApenasDigitos(cpf)) {
-            throw new IllegalArgumentException("CPF deve conter somente "
-                    + "dígitos (0 a 9): " + cpf);
+            throw new IllegalArgumentException(String.format(
+                    "cpf deve conter somente dígitos (0 a 9): %s", cpf));
         }
 
         return converteCaracteresEmInteiros(cpf);

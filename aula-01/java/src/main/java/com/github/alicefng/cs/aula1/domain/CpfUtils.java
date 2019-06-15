@@ -16,43 +16,43 @@ public final class CpfUtils {
     /**
      * Valor correspondente ao tamanho (quantidade de dígitos) de um CPF.
      */
-    public static final int TAMANHO_CPF = 11;
+    private static final int TAMANHO_CPF = 11;
 
     /**
      * Índice correspondente ao 1º dígitos de um CPF em um vetor.
      */
-    public static final int DIGITO_1 = 0;
+    private static final int DIGITO_1 = 0;
 
     /**
      * Índice correspondente ao 2º dígitos de um CPF em um vetor.
      */
-    public static final int DIGITO_2 = 1;
+    private static final int DIGITO_2 = 1;
 
     /**
      * Índice correspondente ao 3º dígitos de um CPF em um vetor.
      */
-    public static final int DIGITO_3 = 2;
+    private static final int DIGITO_3 = 2;
 
 
     /**
      * Índice correspondente ao 8º dígitos de um CPF em um vetor.
      */
-    public static final int DIGITO_8 = 7;
+    private static final int DIGITO_8 = 7;
 
     /**
      * Índice correspondente ao 9º dígitos de um CPF em um vetor.
      */
-    public static final int DIGITO_9 = 8;
+    private static final int DIGITO_9 = 8;
 
     /**
      * Índice correspondente ao 10º dígitos de um CPF em um vetor.
      */
-    public static final int DIGITO_10 = 9;
+    private static final int DIGITO_10 = 9;
 
     /**
      * Índice correspondente ao 11º dígitos de um CPF em um vetor.
      */
-    public static final int DIGITO_11 = 10;
+    private static final int DIGITO_11 = 10;
 
     /**
      * Previne a classe utilitária de ser instanciada.

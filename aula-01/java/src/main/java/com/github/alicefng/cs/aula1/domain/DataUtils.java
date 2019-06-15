@@ -16,27 +16,27 @@ public final class DataUtils {
     /**
      * Maior valor para um dia.
      */
-    public static final int MAIOR_DIA = 31;
+    private static final int MAIOR_DIA = 31;
 
     /**
      * Menor valor para um dia.
      */
-    public static final int MENOR_DIA = 1;
+    private static final int MENOR_DIA = 1;
 
     /**
      * Maior valor para um mês.
      */
-    public static final int MAIOR_MES = 12;
+    private static final int MAIOR_MES = 12;
 
     /**
      * Menor valor para um mês.
      */
-    public static final int MENOR_MES = 1;
+    private static final int MENOR_MES = 1;
 
     /**
      * Menor valor para um ano no algoritmo para calcular dia da semana.
      */
-    public static final int MENOR_ANO = 1753;
+    private static final int MENOR_ANO = 1753;
 
 
     /**

@@ -105,7 +105,7 @@ public final class CpfUtils {
 
     private static boolean confereDigitosVerificadores(
             final int[] digitos, final int primeiro, final long segundo) {
-        return primeiro == digitos[DIGITO_10] && segundo == digitos[DIGITO_11];
+        return primeiro == digitos[DIGITO_10] & segundo == digitos[DIGITO_11];
     }
 
     private static int segundoDigitoVerificador(final int[] digitosCpf) {
@@ -151,7 +151,7 @@ public final class CpfUtils {
                 + 9 * digitosCpf[DIGITO_10]) % 11) % 10;
 
         return calculoDigito10 == digitosCpf[DIGITO_10]
-                && calculoDigito11 == digitosCpf[DIGITO_11];
+                & calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
     private static int[] cpfStringParaDigitos(String cpf) {

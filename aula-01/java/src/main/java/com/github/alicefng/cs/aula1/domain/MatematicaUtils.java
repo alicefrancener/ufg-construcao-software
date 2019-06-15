@@ -28,8 +28,9 @@ public final class MatematicaUtils {
      */
     public static int restoDaDivisaoInteira(final int numerador,
                                             final int denominador) {
-        final int limiteMinimo = 0;
-        if (numerador <= limiteMinimo || denominador < limiteMinimo) {
+        final int limiteMinimoNum = 1;
+        final int limiteMinimoDen = 0;
+        if (numerador <= limiteMinimoNum || denominador < limiteMinimoDen) {
             throw new IllegalArgumentException(
                     String.format("numerador: %d, denominador: %d",
                             numerador, denominador));

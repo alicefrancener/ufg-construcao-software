@@ -259,7 +259,7 @@ public final class MatematicaUtils {
                                           final double precisao) {
         if (expoente < 1 || precisao < 2) {
             throw new IllegalArgumentException(
-                    String.format("expoente: %d, precisao: %d",
+                    String.format("expoente: %f, precisao: %f",
                             expoente, precisao));
         }
 
@@ -465,7 +465,7 @@ public final class MatematicaUtils {
         for (int i = 0; i < vetorZeros.length; i++) {
             if (vetorZeros[i] != 0) {
                 throw new IllegalArgumentException(String.format(
-                        "vetorZeros[%d]: ", vetorZeros[i]));
+                        "vetorZeros[%d]: %d", i, vetorZeros[i]));
             }
         }
 
@@ -517,7 +517,7 @@ public final class MatematicaUtils {
         final int limiteMinimo = 0;
         if (enesimoTermo < limiteMinimo) {
             throw new IllegalArgumentException(String.format(
-                    "enesimoTermo: %d ", enesimoTermo));
+                    "enesimoTermo: %d", enesimoTermo));
         }
 
         if (enesimoTermo == 0 || enesimoTermo == 1) {

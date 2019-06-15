@@ -53,7 +53,7 @@ public final class DataUtils {
      */
     public static void validaDia(final int dia) {
         if (dia < MENOR_DIA || dia > MAIOR_DIA) {
-            throw new DataInvalidaException("dia invalido: " + dia,
+            throw new DataInvalidaException(String.format("dia: %d", dia),
                     new IllegalArgumentException());
         }
     }
@@ -66,7 +66,7 @@ public final class DataUtils {
      */
     private static void validaMes(final int mes) {
         if (mes < MENOR_MES || mes > MAIOR_MES) {
-            throw new DataInvalidaException("mes inválido: " + mes,
+            throw new DataInvalidaException(String.format("mes: %d", mes),
                     new IllegalArgumentException());
         }
     }
@@ -79,7 +79,7 @@ public final class DataUtils {
      */
     private static void validaAno(final int ano) {
         if (ano <= MENOR_ANO) {
-            throw new DataInvalidaException("ano inválido: " + ano,
+            throw new DataInvalidaException(String.format("ano: %d", ano),
                     new IllegalArgumentException());
         }
     }
@@ -96,8 +96,8 @@ public final class DataUtils {
     public static String diaDaSemanaToString(final int dia) {
         final int maximoDiasSemana = 6;
         if (dia < 0 || dia > maximoDiasSemana) {
-            throw new IllegalArgumentException("Dia inválido: " + dia + ". "
-                    + "Dia deve estar entre 0 e 6.");
+            throw new IllegalArgumentException(String.format(
+                    "dia inválido: %d. dia deve estar entre 0 e 6", dia));
         }
 
         final String[] nomesDiasDaSemana = {"segunda-feira", "terça-feira",
@@ -115,7 +115,7 @@ public final class DataUtils {
      * @param ano Inteiro que informa ano
      * @return O nome do dia da semana correspondente a data fornecida
      * @throws DataInvalidaException Se algum dos argumentos for uma
-     * data inválida
+     *                               data inválida
      */
     public static String diaDaSemana(final int dia, final int mes,
                                      final int ano)

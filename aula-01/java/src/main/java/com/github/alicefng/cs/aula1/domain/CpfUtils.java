@@ -131,7 +131,9 @@ public final class CpfUtils {
         final int parcelas = (int) indices
                 .mapToLong(i -> digitosCpf[i] * i).sum();
 
-        return ((parcelas + digitosCpf[DIGITO_2]) % 11) % 10;
+        final int numeroDigitos = 11;
+        final int constante = 10;
+        return ((parcelas + digitosCpf[DIGITO_2]) % numeroDigitos) % constante;
     }
 
     /**
@@ -170,9 +172,13 @@ public final class CpfUtils {
             calculoDigito11 = calculoDigito11 + digitosCpf[i];
             calculoDigito10 = calculoDigito10 + calculoDigito11;
         }
-        calculoDigito10 = (calculoDigito10 % 11) % 10;
-        calculoDigito11 = ((calculoDigito10 - calculoDigito11
-                + 9 * digitosCpf[DIGITO_10]) % 11) % 10;
+
+        final int numeroDigitos = 11;
+        final int constanteDez = 10;
+        final int contanteNove = 9;
+        calculoDigito10 = (calculoDigito10 % numeroDigitos) % constanteDez;
+        calculoDigito11 = ((calculoDigito10 - calculoDigito11 + contanteNove
+                * digitosCpf[DIGITO_10]) % numeroDigitos) % constanteDez;
 
         return calculoDigito10 == digitosCpf[DIGITO_10]
                 & calculoDigito11 == digitosCpf[DIGITO_11];
@@ -184,7 +190,8 @@ public final class CpfUtils {
      * @param cpf String contendo o CPF
      * @return Os números de CPF em um vetor de inteiros
      * @throws IllegalArgumentException Se cpf for null, se cpf tiver menos
-     * ou mais que 11 dígitos, se cpf não conter somente dígitos
+     *                                  ou mais que 11 dígitos, se cpf não
+     *                                  conter somente dígitos
      */
     private static int[] cpfStringParaDigitos(final String cpf) {
         if (cpf == null) {

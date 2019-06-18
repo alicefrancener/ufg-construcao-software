@@ -25,7 +25,7 @@ public final class ValidaEntradaUtils {
      * com o esperado; 0, se o número de argumentos estiver correto
      */
     public static int qtdArgumentos(final String[] argumentos) {
-        return argumentos.length < NUMERO_ARGUMENTOS ? -1 : 0;
+        return argumentos.length == NUMERO_ARGUMENTOS ? 0 : -1;
     }
 
     /**

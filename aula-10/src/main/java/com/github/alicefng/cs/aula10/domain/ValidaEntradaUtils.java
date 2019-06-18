@@ -29,20 +29,24 @@ public final class ValidaEntradaUtils {
     }
 
     /**
-     * Analisa se os argumentos são do tipo inteiro (R8).
+     * Analisa se os argumentos são do números naturais(R8 e R9). Obs: números
+     * naturais são os inteiros positivos.
      *
      * @param argumentos Os argumentos fornecidos pelo usuário.
-     * @return -1, se algum dos argumentos não for inteiro; 0, se todos
-     * argumentos forem inteiros
+     * @return -1, se algum dos argumentos não for natural; 0, se todos
+     * argumentos forem naturais
      */
-    public static int argumentoIsInteiro(final String[] argumentos) {
+    public static int argumentoIsNatural(final String[] argumentos) {
         for (final String argumento : argumentos) {
             try {
-                Integer.parseInt(argumento);
+                if(Integer.parseInt(argumento) < 0){
+                    return -1;
+                }
             } catch (NumberFormatException nfe) {
                 return -1;
             }
         }
+
         return 0;
     }
 

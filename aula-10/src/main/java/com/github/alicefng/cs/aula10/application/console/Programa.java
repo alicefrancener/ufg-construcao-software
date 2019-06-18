@@ -19,7 +19,7 @@ public final class Programa {
      */
     public static void main(final String[] args) {
         System.out.println(ValidaEntradaUtils.qtdArgumentos(args));
-        System.out.println(ValidaEntradaUtils.argumentoIsInteiro(args));
+        System.out.println(ValidaEntradaUtils.argumentoIsNatural(args));
     }
 
 }

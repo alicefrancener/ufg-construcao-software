@@ -21,13 +21,22 @@ public class ValidaEntradaUtilsTest {
     @Test
     public void testIsInteiro() {
         String[] test1 = {"20190618", "2011", "20190618", "1"};
-        assertEquals(0, ValidaEntradaUtils.argumentoIsInteiro(test1));
+        assertEquals(0, ValidaEntradaUtils.argumentoIsNatural(test1));
 
         String[] test2 = {"alice", "2011", "20190618", "1"};
-        assertEquals(-1, ValidaEntradaUtils.argumentoIsInteiro(test2));
+        assertEquals(-1, ValidaEntradaUtils.argumentoIsNatural(test2));
 
         String[] test3 = {"20190618", "10.5", "20190618", "1"};
-        assertEquals(-1, ValidaEntradaUtils.argumentoIsInteiro(test3));
+        assertEquals(-1, ValidaEntradaUtils.argumentoIsNatural(test3));
+    }
+
+    @Test
+    public void testIsPositivo() {
+        String[] test1 = {"-20190618", "2011", "20190618", "1"};
+        assertEquals(0, ValidaEntradaUtils.argumentoIsNatural(test1));
+
+        String[] test2 = {"20190618", "2011", "20190618", "-1"};
+        assertEquals(-1, ValidaEntradaUtils.argumentoIsNatural(test2));
     }
 
 }

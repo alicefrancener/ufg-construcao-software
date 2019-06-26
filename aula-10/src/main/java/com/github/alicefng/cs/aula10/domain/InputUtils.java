@@ -3,7 +3,7 @@ package com.github.alicefng.cs.aula10.domain;
 /**
  * Classe para validar entrada do usuário pela linha de comando.
  */
-public final class ValidaEntradaUtils {
+public final class InputUtils {
 
     /**
      * Número de argumentos exigidos para ser utilizado em outros métodos.
@@ -13,7 +13,7 @@ public final class ValidaEntradaUtils {
     /**
      * Construtor privado para evitar instaciação da classe utilitária.
      */
-    private ValidaEntradaUtils() {
+    private InputUtils() {
 
     }
 

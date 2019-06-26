@@ -1,6 +1,6 @@
 package com.github.alicefng.cs.aula10.application.console;
 
-import com.github.alicefng.cs.aula10.domain.ValidaEntradaUtils;
+import com.github.alicefng.cs.aula10.domain.InputUtils;
 
 /**
  * Classe para executar o programa pelo terminal.
@@ -18,8 +18,8 @@ public final class Programa {
      * @param args Os argumentos fornecidos pelo usuário.
      */
     public static void main(final String[] args) {
-        System.out.println(ValidaEntradaUtils.qtdArgumentos(args));
-        System.out.println(ValidaEntradaUtils.argumentoIsNatural(args));
+        System.out.println(InputUtils.qtdArgumentos(args));
+        System.out.println(InputUtils.argumentoIsNatural(args));
     }
 
 }

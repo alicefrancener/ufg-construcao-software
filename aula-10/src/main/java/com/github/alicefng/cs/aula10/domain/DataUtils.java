@@ -111,7 +111,7 @@ public class DataUtils {
     }
 
     public static void rangeAno(final String data) {
-        final int primeiroDigitoData = Integer.parseInt(data.substring(0));
+        final int primeiroDigitoData = Integer.parseInt(data.substring(0,1));
         if (primeiroDigitoData == 0) {
             throw new DataInvalidaException();
         }

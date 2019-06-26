@@ -2,8 +2,6 @@ package com.github.alicefng.cs.aula10.domain;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ControladorUtilsTest {
@@ -46,4 +44,11 @@ public class ControladorUtilsTest {
         assertEquals(-1, ControladorUtils.executar(entrada2));
     }
 
+    @Test
+    public void diaDaSemanaInvalido(){
+        String[] entrada1 = {"20190626", "2016", "20190101", "-2"};
+        String[] entrada2 = {"20190626", "2016", "20201231", "8"};
+        assertEquals(-1, ControladorUtils.executar(entrada1));
+        assertEquals(-1, ControladorUtils.executar(entrada2));
+    }
 }

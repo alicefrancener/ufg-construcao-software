@@ -15,6 +15,7 @@ public class ControladorUtilsTest {
         String[] entrada5 = {"20160931", "1", "23450101", "1"};
         String[] entrada6 = {"20160900", "1", "23450101", "1"};
         String[] entrada7 = {"01110101", "1", "23450101", "1"};
+        String[] entrada8 = {"19000229", "2016", "20190626", "2"};
 
         assertEquals(-1, ControladorUtils.executar(entrada));
         assertEquals(-1, ControladorUtils.executar(entrada2));
@@ -23,6 +24,7 @@ public class ControladorUtilsTest {
         assertEquals(-1, ControladorUtils.executar(entrada5));
         assertEquals(-1, ControladorUtils.executar(entrada6));
         assertEquals(-1, ControladorUtils.executar(entrada7));
+        assertEquals(-1, ControladorUtils.executar(entrada8));
     }
 
     @Test
@@ -50,5 +52,15 @@ public class ControladorUtilsTest {
         String[] entrada2 = {"20190626", "2016", "20201231", "8"};
         assertEquals(-1, ControladorUtils.executar(entrada1));
         assertEquals(-1, ControladorUtils.executar(entrada2));
+    }
+
+    @Test
+    public void entradasValidas(){
+        String[] entrada1 = {"20160928", "2016", "20160928", "2"};
+        String[] entrada2 = {"20160301", "2016", "20160228", "6"};
+        String[] entrada3 = {"19280229", "2000", "20190626", "2"};
+        assertEquals(2, ControladorUtils.executar(entrada1));
+        assertEquals(1, ControladorUtils.executar(entrada2));
+        assertEquals(2, ControladorUtils.executar(entrada3));
     }
 }

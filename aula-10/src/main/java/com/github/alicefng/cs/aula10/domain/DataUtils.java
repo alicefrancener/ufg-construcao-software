@@ -289,7 +289,7 @@ public final class DataUtils {
      * correspondente à segunda-feira, 1 à terça-feira, e assim sucessivamente.
      * @implNote Para atender requisitos R17 e R18
      */
-    public static final int getDiaDaSemana(final String dataDeInteresse,
+    public static int getDiaDaSemana(final String dataDeInteresse,
                                            final String anoBissexto,
                                            final String dataDeReferencia,
                                            final String diaDaSemana) {

@@ -9,6 +9,17 @@ public final class ControladorUtils {
 
     }
 
+    /**
+     * Executa método para obter dia da semana, avaliando todos os parâmetros
+     * de  entrada fornecidos pelo usuário.
+     *
+     * @param argumentos Argumentos a serem fornecidos pelo usuário
+     * @return -1, caso os argumentos fornecidos não estejam de acordo com
+     * especificado pelos requisitos; 0 a 6, caso os parâmetros estejam
+     * corretos, sendo 0 correspondente à segunda-feira, 1, terça-feira, e
+     * assim sucessivamente.
+     * @implNote Para atender aos requisitos R6 e R14
+     */
     public static int executar(String[] argumentos) {
         try {
             InputUtils.evalQtdArgumentos(argumentos);

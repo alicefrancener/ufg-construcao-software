@@ -1,5 +1,6 @@
 package com.github.alicefng.cs.aula10.domain;
 
+import javax.xml.crypto.Data;
 import java.util.Arrays;
 
 /**
@@ -104,21 +105,21 @@ public class DataUtils {
      * esteja correta
      */
     public static void qtdDigitosData(final String data) {
-        if(data.length() != NUMERO_DIGITOS){
-          throw new DataInvalidaException();
-        }
-    }
-
-    public static void rangeAno(final String data){
-        final int primeiroDigitoData = Integer.parseInt(data.substring(0));
-        if(primeiroDigitoData == 0) {
+        if (data.length() != NUMERO_DIGITOS) {
             throw new DataInvalidaException();
         }
     }
 
-    public static void rangeDiaDaSemana(final String diaDaSemana){
+    public static void rangeAno(final String data) {
+        final int primeiroDigitoData = Integer.parseInt(data.substring(0));
+        if (primeiroDigitoData == 0) {
+            throw new DataInvalidaException();
+        }
+    }
+
+    public static void rangeDiaDaSemana(final String diaDaSemana) {
         final int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
-        if(diaDaSemanaAux > 6 ){
+        if (diaDaSemanaAux > 6) {
             throw new IllegalArgumentException();
         }
     }
@@ -138,7 +139,11 @@ public class DataUtils {
      */
     public static int getMesAsInt(final String data) {
         final int mes = Integer.parseInt(data.substring(4, 6));
-        return mes == 0 | mes > DEZEMBRO ? -1 : mes;
+        if (mes == 0 | mes > DEZEMBRO) {
+            throw new DataInvalidaException();
+        }
+
+        return mes;
     }
 
     /**
@@ -150,24 +155,30 @@ public class DataUtils {
     public static int getDiaAsInt(final String data, final String anoBissexto) {
         final int dia = Integer.parseInt(data.substring(6, 8));
         final int mes = getMesAsInt(data);
+        final int ano = getAnoAsInt(data);
+        final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
+                OUTUBRO, DEZEMBRO};
 
-        if (dia == 31) {
-            final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO,
-                    AGOSTO, OUTUBRO, DEZEMBRO};
-            return Arrays.stream(mesesTrintaEUmDias).anyMatch(m -> m == mes)
-                    ? dia
-                    : -1;
+        if(dia == 0 | dia > MAX_DIAS ) {
+            throw new DataInvalidaException();
         }
 
-        if (mes == FEVEREIRO) {
-            final int ano = getAnoAsInt(data);
-            return dia <= MAX_DIAS_FEV | (dia == MAX_DIAS_FEV_BISSEXTO
-                    & isBissexto(anoBissexto, ano))
-                    ? dia
-                    : -1;
+        if (dia == 31 &
+                Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
+            throw new DataInvalidaException();
         }
 
-        return dia > 0 & dia <= MAX_DIAS ? dia : -1;
+        if (dia > MAX_DIAS_FEV & mes == FEVEREIRO) {
+            if (isBissexto(anoBissexto, ano)) {
+                if (dia > MAX_DIAS_FEV_BISSEXTO) {
+                    throw new DataInvalidaException();
+                }
+            } else {
+                throw new DataInvalidaException();
+            }
+        }
+
+        return dia;
     }
 
     public static int comparaDatas(final String data,

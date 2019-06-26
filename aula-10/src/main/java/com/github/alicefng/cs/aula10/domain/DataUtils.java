@@ -323,7 +323,8 @@ public final class DataUtils {
      * @param anoBissexto O ano bissexto de referência
      * @return A data posterior à data passada como argumento
      */
-    public static String adicionaDia(String data, String anoBissexto) {
+    public static String adicionaDia(final String data,
+                                     final String anoBissexto) {
         int ano = getAnoAsInt(data);
         int mes = getMesAsInt(data);
         int dia = getDiaAsInt(data, anoBissexto);
@@ -388,7 +389,8 @@ public final class DataUtils {
      * @param anoBissexto O ano bissexto de referência
      * @return A data anterior à data passada como argumento
      */
-    private static String subtraiDia(String data, String anoBissexto) {
+    private static String subtraiDia(final String data,
+                                     final String anoBissexto) {
         int ano = getAnoAsInt(data);
         int mes = getMesAsInt(data);
         int dia = getDiaAsInt(data, anoBissexto);
@@ -451,12 +453,13 @@ public final class DataUtils {
      * @param mes O mês a ser adicionado
      * @return O mes posterior ao mês passado como argumento
      */
-    private static int adicionaMes(int mes) {
-        if (mes == DEZEMBRO) {
+    private static int adicionaMes(final int mes) {
+        int mesAux = mes;
+        if (mesAux == DEZEMBRO) {
             return JANEIRO;
         }
 
-        return ++mes;
+        return ++mesAux;
     }
 
     /**
@@ -465,12 +468,13 @@ public final class DataUtils {
      * @param mes O mês a ser subtraído
      * @return O mes anterior ao mes passado como argumento
      */
-    private static int subtraiMes(int mes) {
-        if (mes == JANEIRO) {
+    private static int subtraiMes(final int mes) {
+        int mesAux = mes;
+        if (mesAux == JANEIRO) {
             return DEZEMBRO;
         }
 
-        return --mes;
+        return --mesAux;
     }
 
     /**
@@ -494,11 +498,12 @@ public final class DataUtils {
      * @param diaDaSemana O dia da semana a ser subtraído
      * @return O diaDaSemana anterior ao dia da semana passado
      */
-    private static int subtraiDiaDaSemana(int diaDaSemana) {
-        if (diaDaSemana == SEGUNDA) {
+    private static int subtraiDiaDaSemana(final int diaDaSemana) {
+        int diaDaSemanaAux = diaDaSemana;
+        if (diaDaSemanaAux == SEGUNDA) {
             return DOMINGO;
         }
-        return --diaDaSemana;
+        return --diaDaSemanaAux;
     }
 
     /**

@@ -124,6 +124,13 @@ public class DataUtils {
         }
     }
 
+    public static void rangeAnoBissexto(final String anoBissexto){
+        final int anoBissextoAux = Integer.parseInt(anoBissexto);
+        if(anoBissextoAux < 1){
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     public static int getAnoAsInt(final String data) {
         final int ano = Integer.parseInt(data.substring(0, 4));

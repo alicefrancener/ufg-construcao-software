@@ -19,6 +19,7 @@ public final class ControladorUtils {
 
             DataUtils.rangeAno(argumentos[0]);
             DataUtils.rangeAno(argumentos[2]);
+            DataUtils.rangeAnoBissexto(argumentos[1]);
             DataUtils.rangeDiaDaSemana(argumentos[3]);
 
             return DataUtils.getDiaDaSemana(argumentos[0], argumentos[1],

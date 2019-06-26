@@ -216,8 +216,8 @@ public final class DataUtils {
             throw new DataInvalidaException();
         }
 
-        if (dia == DIAS_MES_MAIS_LONGO &
-                Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
+        if (dia == DIAS_MES_MAIS_LONGO
+                & Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
             throw new DataInvalidaException();
         }
 

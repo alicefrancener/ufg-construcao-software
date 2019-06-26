@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Classe para validar datas.
  */
-public class DataUtils {
+public final class DataUtils {
 
     /**
      * Número de dígitos necessários para uma data válida no formato String.

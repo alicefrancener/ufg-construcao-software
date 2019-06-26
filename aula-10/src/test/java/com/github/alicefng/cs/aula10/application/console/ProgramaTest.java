@@ -8,6 +8,12 @@ public class ProgramaTest {
     public void testMain() {
         String[] args = {"20190618", "2019", "20190617", "1"};
         Programa.main(args);
+
+        String[] args2 = {"-2010", "2019", "20190617", "1"};
+        Programa.main(args2);
+
+        String[] args3 = {"2010", "2019", "20190617", "1"};
+        Programa.main(args3);
     }
 
 }

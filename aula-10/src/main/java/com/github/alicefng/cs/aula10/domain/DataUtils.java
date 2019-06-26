@@ -26,7 +26,7 @@ public class DataUtils {
     /**
      * Inteiro correspondente ao mês de março.
      */
-    private static final int MARÇO = 3;
+    private static final int MARCO = 3;
 
     /**
      * Inteiro correspondente ao mês abril.
@@ -135,7 +135,7 @@ public class DataUtils {
         final int mes = getMesAsInt(data);
 
         if (dia == 31) {
-            final int[] mesesTrintaEUmDias = {JANEIRO, MARÇO, MAIO, JULHO,
+            final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO,
                     AGOSTO, OUTUBRO, DEZEMBRO};
             return Arrays.stream(mesesTrintaEUmDias).anyMatch(m -> m == mes)
                     ? dia
@@ -231,7 +231,7 @@ public class DataUtils {
                 }
                 break;
             case JANEIRO:
-            case MARÇO:
+            case MARCO:
             case MAIO:
             case JULHO:
             case AGOSTO:
@@ -276,7 +276,7 @@ public class DataUtils {
     }
 
     private static int adicionaMes(int mes) {
-        final int[] mesesDoAno = {JANEIRO, FEVEREIRO, MARÇO, ABRIL, MAIO, JUNHO,
+        final int[] mesesDoAno = {JANEIRO, FEVEREIRO, MARCO, ABRIL, MAIO, JUNHO,
                 JULHO, AGOSTO, SETEMBRO, OUTUBRO, NOVEMBRO, DEZEMBRO};
 
         if (mes == DEZEMBRO) {

@@ -103,8 +103,11 @@ public class DataUtils {
      * @return 0, se a quantidade de dígitos estiver correta; -1, caso não
      * esteja correta
      */
-    public static int qtdDigitosData(final String data) {
-        return data.length() == NUMERO_DIGITOS ? 0 : -1;
+    public static void qtdDigitosData(final String data) {
+        if(data.length() != NUMERO_DIGITOS){
+          throw new DataInvalidaException(String.format("Tamanho digitos "
+                  + "data incorreto: %d", data.length()));
+        }
     }
 
     public static int getAnoAsInt(final String data) {

@@ -75,20 +75,25 @@ public final class DataUtils {
     private static final int DEZEMBRO = 12;
 
     /**
-     * Máximo número de dias em um mês.
+     * Total de dias dos meses mais longos.
      */
-    private static final int MAX_DIAS = 31;
+    private static final int DIAS_MES_MAIS_LONGO = 31;
 
     /**
-     * Máximo número de dias em fevereiro em ano comum.
+     * Total de dias dos meses com 30 dias.
      */
-    private static final int MAX_DIAS_FEV = 28;
+    private static final int DIAS_MES_NORMAL = 30;
+
+    /**
+     * Total de dias de fevereiro em ano comum.
+     */
+    private static final int DIAS_FEV = 28;
 
 
     /**
-     * Máximo número de dias em fevereiro em ano bissexto.
+     * Total de dias de fevereiro em ano bissexto.
      */
-    private static final int MAX_DIAS_FEV_BISSEXTO = 29;
+    private static final int DIAS_FEV_BISSEXTO = 29;
 
     /**
      * Inteiro correspondente ao domingo.
@@ -96,7 +101,7 @@ public final class DataUtils {
     public static final int DOMINGO = 6;
 
     /**
-     * Inteiro correspondente à segunda-feira
+     * Inteiro correspondente à segunda-feira.
      */
     public static final int SEGUNDA = 0;
 
@@ -210,18 +215,18 @@ public final class DataUtils {
         final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
                 OUTUBRO, DEZEMBRO};
 
-        if (dia == 0 | dia > MAX_DIAS) {
+        if (dia == 0 | dia > DIAS_MES_MAIS_LONGO) {
             throw new DataInvalidaException();
         }
 
-        if (dia == 31 &
+        if (dia == DIAS_MES_MAIS_LONGO &
                 Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
             throw new DataInvalidaException();
         }
 
-        if (dia > MAX_DIAS_FEV & mes == FEVEREIRO) {
+        if (dia > DIAS_FEV & mes == FEVEREIRO) {
             if (isBissexto(anoBissexto, ano)) {
-                if (dia > MAX_DIAS_FEV_BISSEXTO) {
+                if (dia > DIAS_FEV_BISSEXTO) {
                     throw new DataInvalidaException();
                 }
             } else {
@@ -331,7 +336,7 @@ public final class DataUtils {
             case JUNHO:
             case SETEMBRO:
             case NOVEMBRO:
-                if (dia == 30) {
+                if (dia == DIAS_MES_NORMAL) {
                     dia = 1;
                     mes = adicionaMes(mes);
                 } else {
@@ -344,7 +349,7 @@ public final class DataUtils {
             case JULHO:
             case AGOSTO:
             case OUTUBRO:
-                if (dia == 31) {
+                if (dia == DIAS_MES_MAIS_LONGO) {
                     dia = 1;
                     mes = adicionaMes(mes);
                 } else {
@@ -352,7 +357,7 @@ public final class DataUtils {
                 }
                 break;
             case DEZEMBRO:
-                if (dia == 31) {
+                if (dia == DIAS_MES_MAIS_LONGO) {
                     dia = 1;
                     mes = adicionaMes(mes);
                     ano++;
@@ -362,13 +367,13 @@ public final class DataUtils {
                 break;
             case FEVEREIRO:
                 if (isBissexto(anoBissexto, ano)) {
-                    if (dia == 29) {
+                    if (dia == DIAS_FEV_BISSEXTO) {
                         dia = 1;
                         mes = adicionaMes(mes);
                     } else {
                         dia++;
                     }
-                } else if (dia == 28) {
+                } else if (dia == DIAS_FEV) {
                     dia = 1;
                     mes = adicionaMes(mes);
                 } else {
@@ -400,7 +405,7 @@ public final class DataUtils {
             case SETEMBRO:
             case NOVEMBRO:
                 if (dia == 1) {
-                    dia = 31;
+                    dia = DIAS_MES_MAIS_LONGO;
                     mes = subtraiMes(mes);
                 } else {
                     dia--;
@@ -412,7 +417,7 @@ public final class DataUtils {
             case OUTUBRO:
             case DEZEMBRO:
                 if (dia == 1) {
-                    dia = 30;
+                    dia = DIAS_MES_NORMAL;
                     mes = subtraiMes(mes);
                 } else {
                     dia--;
@@ -421,7 +426,7 @@ public final class DataUtils {
 
             case JANEIRO:
                 if (dia == 1) {
-                    dia = 31;
+                    dia = DIAS_MES_MAIS_LONGO;
                     mes = subtraiMes(mes);
                     ano--;
                 } else {
@@ -432,8 +437,8 @@ public final class DataUtils {
             case MARCO:
                 if (dia == 1) {
                     dia = isBissexto(anoBissexto, ano)
-                            ? 29
-                            : 28;
+                            ? DIAS_FEV_BISSEXTO
+                            : DIAS_FEV;
                     mes = subtraiMes(mes);
                 } else {
                     dia--;

@@ -14,13 +14,13 @@ public final class ControladorUtils {
             InputUtils.qtdArgumentos(argumentos);
             InputUtils.argumentoIsNatural(argumentos);
 
-            DataUtils.qtdDigitosData(argumentos[0]);
-            DataUtils.qtdDigitosData(argumentos[2]);
+            DataUtils.evalQtdDigitosData(argumentos[0]);
+            DataUtils.evalQtdDigitosData(argumentos[2]);
 
-            DataUtils.rangeAno(argumentos[0]);
-            DataUtils.rangeAno(argumentos[2]);
-            DataUtils.rangeAnoBissexto(argumentos[1]);
-            DataUtils.rangeDiaDaSemana(argumentos[3]);
+            DataUtils.evalRangeAno(argumentos[0]);
+            DataUtils.evalRangeAno(argumentos[2]);
+            DataUtils.evalRangeAnoBissexto(argumentos[1]);
+            DataUtils.evalRangeDiaDaSemana(argumentos[3]);
 
             return DataUtils.getDiaDaSemana(argumentos[0], argumentos[1],
                     argumentos[2], argumentos[3]);

@@ -104,7 +104,7 @@ public final class DataUtils {
      *                               exatamente po 8 dígitos
      * @implNote Para atender o requisito R13a
      */
-    public static void qtdDigitosData(final String data) {
+    public static void evalQtdDigitosData(final String data) {
         if (data.length() != NUMERO_DIGITOS) {
             throw new DataInvalidaException();
         }
@@ -117,7 +117,7 @@ public final class DataUtils {
      * @throws DataInvalidaException Se o primeiro dígito da data for 0
      * @implNote Para atender o requisito R13b
      */
-    public static void rangeAno(final String data) {
+    public static void evalRangeAno(final String data) {
         final int primeiroDigitoData =
                 Integer.parseInt(data.substring(0, 1));
         if (primeiroDigitoData == 0) {
@@ -132,7 +132,7 @@ public final class DataUtils {
      * @throws IllegalArgumentException Se o dia da semana for maior que 6
      * @implNote Para atender o requisito R10
      */
-    public static void rangeDiaDaSemana(final String diaDaSemana) {
+    public static void evalRangeDiaDaSemana(final String diaDaSemana) {
         final int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
         if (diaDaSemanaAux > 6) {
             throw new IllegalArgumentException();
@@ -146,7 +146,7 @@ public final class DataUtils {
      * @throws IllegalArgumentException Se o ano bissexto for menor que 1
      * @implNote Para atender o requisito R11
      */
-    public static void rangeAnoBissexto(final String anoBissexto) {
+    public static void evalRangeAnoBissexto(final String anoBissexto) {
         final int anoBissextoAux = Integer.parseInt(anoBissexto);
         if (anoBissextoAux < 1) {
             throw new IllegalArgumentException();

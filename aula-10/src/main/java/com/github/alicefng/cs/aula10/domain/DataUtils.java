@@ -111,7 +111,7 @@ public class DataUtils {
     }
 
     public static void rangeAno(final String data) {
-        final int primeiroDigitoData = Integer.parseInt(data.substring(0));
+        final int primeiroDigitoData = Integer.parseInt(data.substring(0,1));
         if (primeiroDigitoData == 0) {
             throw new DataInvalidaException();
         }
@@ -120,6 +120,13 @@ public class DataUtils {
     public static void rangeDiaDaSemana(final String diaDaSemana) {
         final int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
         if (diaDaSemanaAux > 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void rangeAnoBissexto(final String anoBissexto){
+        final int anoBissextoAux = Integer.parseInt(anoBissexto);
+        if(anoBissextoAux < 1){
             throw new IllegalArgumentException();
         }
     }

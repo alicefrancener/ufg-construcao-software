@@ -81,14 +81,23 @@ public class DataUtilsTest {
 
     @Test
     public void testAdicionaData() {
-        assertEquals("20190701", DataUtils.adicionaDia("20190630",
-                "2019"));
-        assertEquals("20200101", DataUtils.adicionaDia("20191231",
-                "2019"));
-        assertEquals("20200229", DataUtils.adicionaDia("20200228",
-                "2020"));
-        assertEquals("20200301", DataUtils.adicionaDia("20200229",
-                "2020"));
+        assertEquals("20190201", DataUtils.adicionaDia("20190131", "2016"));
+        assertEquals("20200229", DataUtils.adicionaDia("20200228", "2020"));
+        assertEquals("20200301", DataUtils.adicionaDia("20200229", "2020"));
+        assertEquals("20190301", DataUtils.adicionaDia("20190228", "2016"));
+        assertEquals("20190202", DataUtils.adicionaDia("20190201", "2016"));
+        assertEquals("20190302", DataUtils.adicionaDia("20190301", "2016"));
+        assertEquals("20190402", DataUtils.adicionaDia("20190401", "2016"));
+        assertEquals("20190601", DataUtils.adicionaDia("20190531", "2016"));
+        assertEquals("20190701", DataUtils.adicionaDia("20190630", "2019"));
+        assertEquals("20190602", DataUtils.adicionaDia("20190601", "2016"));
+        assertEquals("20190801", DataUtils.adicionaDia("20190731", "2016"));
+        assertEquals("20190802", DataUtils.adicionaDia("20190801", "2016"));
+        assertEquals("20190902", DataUtils.adicionaDia("20190901", "2016"));
+        assertEquals("20191002", DataUtils.adicionaDia("20191001", "2016"));
+        assertEquals("20191102", DataUtils.adicionaDia("20191101", "2016"));
+        assertEquals("20191216", DataUtils.adicionaDia("20191215", "2016"));
+        assertEquals("20200101", DataUtils.adicionaDia("20191231", "2019"));
     }
 
     @Test
@@ -103,6 +112,14 @@ public class DataUtilsTest {
                 "2016", "20160228", "6"));
         assertEquals(0, DataUtils.getDiaDaSemana("20160229",
                 "2016", "20161231", "5"));
+        assertEquals(1, DataUtils.getDiaDaSemana("20191231",
+                "2016", "20190101", "1"));
+    }
+
+    @Test
+    public void coberturaException(){
+        new DataInvalidaException("Mensagem");
+        new DataInvalidaException("Mensagem", new Throwable());
     }
 
 }

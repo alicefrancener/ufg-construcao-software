@@ -24,8 +24,10 @@ public final class InputUtils {
      * @return -1, se o número de argumentos fornecidos não estiver de acordo
      * com o esperado; 0, se o número de argumentos estiver correto
      */
-    public static int qtdArgumentos(final String[] argumentos) {
-        return argumentos.length == NUMERO_ARGUMENTOS ? 0 : -1;
+    public static void qtdArgumentos(final String[] argumentos) {
+        if (argumentos.length != NUMERO_ARGUMENTOS){
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -36,18 +38,12 @@ public final class InputUtils {
      * @return -1, se algum dos argumentos não for natural; 0, se todos
      * argumentos forem naturais
      */
-    public static int argumentoIsNatural(final String[] argumentos) {
+    public static void argumentoIsNatural(final String[] argumentos) {
         for (final String argumento : argumentos) {
-            try {
-                if(Integer.parseInt(argumento) < 0){
-                    return -1;
-                }
-            } catch (NumberFormatException nfe) {
-                return -1;
+            if (Integer.parseInt(argumento) < 0) {
+                throw new IllegalArgumentException();
             }
         }
-
-        return 0;
     }
 
 }

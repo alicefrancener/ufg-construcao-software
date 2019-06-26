@@ -56,18 +56,34 @@ public class DataUtilsTest {
     }
 
     @Test
-    public void testComparaData(){
-        assertEquals(0, DataUtils.comparaDatas("20190229","20190229","2019"));
-        assertEquals(-1, DataUtils.comparaDatas("20190229","20200228","2019"));
-        assertEquals(1, DataUtils.comparaDatas("20001010","15001010","2019"));
+    public void testComparaData() {
+        assertEquals(0, DataUtils.comparaDatas("20190229", "20190229", "2019"));
+        assertEquals(-1, DataUtils.comparaDatas("20190229", "20200228", "2019"));
+        assertEquals(1, DataUtils.comparaDatas("20001010", "15001010", "2019"));
     }
 
     @Test
-    public void testAdicionaData(){
-        assertEquals("20190701", DataUtils.adicionaDia("20190630","2019"));
-        assertEquals("20200101", DataUtils.adicionaDia("20191231","2019"));
-        assertEquals("20200229", DataUtils.adicionaDia("20200228","2020"));
-        assertEquals("20200301", DataUtils.adicionaDia("20200229","2020"));
+    public void testAdicionaData() {
+        assertEquals("20190701", DataUtils.adicionaDia("20190630", "2019"));
+        assertEquals("20200101", DataUtils.adicionaDia("20191231", "2019"));
+        assertEquals("20200229", DataUtils.adicionaDia("20200228", "2020"));
+        assertEquals("20200301", DataUtils.adicionaDia("20200229", "2020"));
     }
+
+    @Test
+    public void testGetDiaDaSemana() {
+        assertEquals(1, DataUtils.getDiaDaSemana("20190101",
+                "2020", "20190101", "1"));
+       assertEquals(2, DataUtils.getDiaDaSemana("20190102",
+                "2020", "20190101", "1"));
+        assertEquals(3, DataUtils.getDiaDaSemana("20190103",
+                "2020", "20190101", "1"));
+        assertEquals(1, DataUtils.getDiaDaSemana("20160301",
+                "2016", "20160228", "6"));
+        assertEquals(0, DataUtils.getDiaDaSemana("20160229",
+                "2016", "20161231", "5"));
+    }
+
+
 
 }

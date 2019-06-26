@@ -193,24 +193,26 @@ public class DataUtils {
         final int comparacao = comparaDatas(dataDeInteresse, dataDeReferencia,
                 anoBissexto);
         int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
-        String dataDeInteresseAux = dataDeInteresse;
+        String dataDeReferenciaAux = dataDeReferencia;
 
-        if (comparacao == 1) {
-            while (!dataDeReferencia.equals(dataDeInteresseAux)) {
-                dataDeInteresseAux = adicionaDia(dataDeInteresseAux, anoBissexto);
-                diaDaSemanaAux = adicionaDiaDaSemana(diaDaSemanaAux);
+        if (comparacao == -1) {
+            while (!dataDeInteresse.equals(dataDeReferenciaAux)) {
+                dataDeReferenciaAux = subtraiDia(dataDeReferenciaAux,
+                        anoBissexto);
+                diaDaSemanaAux = subtraiDiaDaSemana(diaDaSemanaAux);
             }
         }
-        if (comparacao == -1) {
-            while (!dataDeReferencia.equals(dataDeInteresseAux)) {
-               /* dataDeInteresseAux = subtraiDia(dataDeInteresseAux,
-                        anoBissexto);
-                diaDaSemanaAux = subtraiDiaDaSemana(diaDaSemanaAux);*/
+
+        if (comparacao == 1) {
+            while (!dataDeInteresse.equals(dataDeReferenciaAux)) {
+                dataDeReferenciaAux = adicionaDia(dataDeReferenciaAux, anoBissexto);
+                diaDaSemanaAux = adicionaDiaDaSemana(diaDaSemanaAux);
             }
         }
 
         return diaDaSemanaAux;
     }
+
 
     public static String adicionaDia(String data, String anoBissexto) {
         int ano = getAnoAsInt(data);
@@ -253,21 +255,74 @@ public class DataUtils {
                 break;
             case FEVEREIRO:
                 if (isBissexto(anoBissexto, ano)) {
-                    if (dia == 28) {
-                        dia++;
-                    } else {
-                        if (dia == 29) {
-                            dia = 1;
-                            mes = adicionaMes(mes);
-                        }
-                    }
-                } else {
-                    if (dia == 28) {
+                    if (dia == 29) {
                         dia = 1;
                         mes = adicionaMes(mes);
                     } else {
                         dia++;
                     }
+                } else if (dia == 28) {
+                    dia = 1;
+                    mes = adicionaMes(mes);
+                } else {
+                    dia++;
+                }
+        }
+
+        return String.format("%04d%02d%02d", ano, mes, dia);
+    }
+
+    private static String subtraiDia(String data, String anoBissexto) {
+        int ano = getAnoAsInt(data);
+        int mes = getMesAsInt(data);
+        int dia = getDiaAsInt(data, anoBissexto);
+
+        switch (mes) {
+
+            case FEVEREIRO:
+            case ABRIL:
+            case JUNHO:
+            case AGOSTO:
+            case SETEMBRO:
+            case NOVEMBRO:
+                if (dia == 1) {
+                    dia = 31;
+                    mes = subtraiMes(mes);
+                } else {
+                    dia--;
+                }
+                break;
+
+            case MAIO:
+            case JULHO:
+            case OUTUBRO:
+            case DEZEMBRO:
+                if (dia == 1) {
+                    dia = 30;
+                    mes = subtraiMes(mes);
+                } else {
+                    dia--;
+                }
+                break;
+
+            case JANEIRO:
+                if (dia == 1) {
+                    dia = 31;
+                    mes = subtraiMes(mes);
+                    ano--;
+                } else {
+                    dia--;
+                }
+                break;
+
+            case MARCO:
+                if (dia == 1) {
+                    dia = isBissexto(anoBissexto, ano)
+                            ? 29
+                            : 28;
+                    mes = subtraiMes(mes);
+                } else {
+                    dia--;
                 }
         }
 
@@ -275,22 +330,35 @@ public class DataUtils {
     }
 
     private static int adicionaMes(int mes) {
-        final int[] mesesDoAno = {JANEIRO, FEVEREIRO, MARCO, ABRIL, MAIO, JUNHO,
-                JULHO, AGOSTO, SETEMBRO, OUTUBRO, NOVEMBRO, DEZEMBRO};
-
         if (mes == DEZEMBRO) {
             return JANEIRO;
         }
 
-        return mesesDoAno[mes];
+        return ++mes;
     }
 
-    private static int adicionaDiaDaSemana(int diaDaSemana) {
-        if(diaDaSemana == 6) {
+    private static int subtraiMes(int mes) {
+        if (mes == JANEIRO) {
+            return DEZEMBRO;
+        }
+
+        return --mes;
+    }
+
+    private static int adicionaDiaDaSemana(final int diaDaSemana) {
+        int diaDaSemanaAux = diaDaSemana;
+        if (diaDaSemanaAux == 6) {
             return 0;
         }
-        
-        return diaDaSemana++;
+
+        return ++diaDaSemanaAux;
+    }
+
+    private static int subtraiDiaDaSemana(int diaDaSemana) {
+        if (diaDaSemana == 0) {
+            return 6;
+        }
+        return --diaDaSemana;
     }
 
     public static boolean isMultiplo(final int num1, final int num2) {

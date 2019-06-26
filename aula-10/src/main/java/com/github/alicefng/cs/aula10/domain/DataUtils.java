@@ -262,8 +262,10 @@ public class DataUtils {
                 if (dia == 30) {
                     dia = 1;
                     mes = adicionaMes(mes);
-                    break;
+                } else {
+                    dia++;
                 }
+                break;
             case JANEIRO:
             case MARCO:
             case MAIO:
@@ -273,29 +275,33 @@ public class DataUtils {
                 if (dia == 31) {
                     dia = 1;
                     mes = adicionaMes(mes);
-                    break;
+                } else {
+                    dia++;
                 }
+                break;
             case DEZEMBRO:
                 if (dia == 31) {
                     dia = 1;
                     mes = adicionaMes(mes);
                     ano++;
-                    break;
+                } else {
+                    dia++;
                 }
+                break;
             case FEVEREIRO:
                 if (isBissexto(anoBissexto, ano)) {
                     if (dia == 29) {
                         dia = 1;
                         mes = adicionaMes(mes);
-                        break;
+                    } else {
+                        dia++;
                     }
                 } else if (dia == 28) {
                     dia = 1;
                     mes = adicionaMes(mes);
-                    break;
+                } else {
+                    dia++;
                 }
-            default:
-                dia++;
         }
 
         return String.format("%04d%02d%02d", ano, mes, dia);

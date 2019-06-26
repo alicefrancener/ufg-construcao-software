@@ -41,6 +41,16 @@ public class DataUtilsTest {
     }
 
     @Test
+    public void testDataFevereiroInValido() {
+        String dataInvalida = "20190230";
+        assertEquals(2019, DataUtils.getAnoAsInt(dataInvalida));
+        assertEquals(2, DataUtils.getMesAsInt(dataInvalida));
+        assertThrows(DataInvalidaException.class,
+                () -> DataUtils.getDiaAsInt(dataInvalida, "2019"));
+    }
+
+
+    @Test
     public void testDataFevereiroBissexto() {
         String dataValida = "20190229";
         assertEquals(2019, DataUtils.getAnoAsInt(dataValida));
@@ -59,17 +69,26 @@ public class DataUtilsTest {
 
     @Test
     public void testComparaData() {
-        assertEquals(0, DataUtils.comparaDatas("20190229", "20190229", "2019"));
-        assertEquals(-1, DataUtils.comparaDatas("20190229", "20200228", "2019"));
-        assertEquals(1, DataUtils.comparaDatas("20001010", "15001010", "2019"));
+        assertEquals(0, DataUtils.comparaDatas("20190229",
+                "20190229", "2019"));
+        assertEquals(1, DataUtils.comparaDatas("20190229",
+                "20190228", "2019"));
+        assertEquals(-1, DataUtils.comparaDatas("20190227",
+                "20190228", "2019"));
+        assertEquals(1, DataUtils.comparaDatas("20001010",
+                "15001010", "2019"));
     }
 
     @Test
     public void testAdicionaData() {
-        assertEquals("20190701", DataUtils.adicionaDia("20190630", "2019"));
-        assertEquals("20200101", DataUtils.adicionaDia("20191231", "2019"));
-        assertEquals("20200229", DataUtils.adicionaDia("20200228", "2020"));
-        assertEquals("20200301", DataUtils.adicionaDia("20200229", "2020"));
+        assertEquals("20190701", DataUtils.adicionaDia("20190630",
+                "2019"));
+        assertEquals("20200101", DataUtils.adicionaDia("20191231",
+                "2019"));
+        assertEquals("20200229", DataUtils.adicionaDia("20200228",
+                "2020"));
+        assertEquals("20200301", DataUtils.adicionaDia("20200229",
+                "2020"));
     }
 
     @Test
@@ -85,6 +104,5 @@ public class DataUtilsTest {
         assertEquals(0, DataUtils.getDiaDaSemana("20160229",
                 "2016", "20161231", "5"));
     }
-
 
 }

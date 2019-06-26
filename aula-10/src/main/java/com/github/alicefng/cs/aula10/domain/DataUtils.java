@@ -521,9 +521,13 @@ public final class DataUtils {
     public static boolean isBissexto(final String anoBissexto,
                                      final int anoAvaliado) {
         final int anoBissextoInt = Integer.parseInt(anoBissexto);
-        if ((anoBissextoInt - anoAvaliado) % 4 == 0) {
-            return isMultiplo(anoAvaliado, 100)
-                    ? isMultiplo(anoAvaliado, 400)
+        final int rangeAnoBissexto = 4;
+        final int cem = 100;
+        final int quatrocentos = 400;
+
+        if ((anoBissextoInt - anoAvaliado) % rangeAnoBissexto == 0) {
+            return isMultiplo(anoAvaliado, cem)
+                    ? isMultiplo(anoAvaliado, quatrocentos)
                     : true;
         }
 

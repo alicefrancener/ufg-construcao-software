@@ -1,7 +1,6 @@
 package com.github.alicefng.cs.aula10.application.console;
 
 import com.github.alicefng.cs.aula10.domain.ControladorUtils;
-import com.github.alicefng.cs.aula10.domain.InputUtils;
 
 /**
  * Classe para executar o programa pelo terminal.
@@ -15,12 +14,12 @@ public final class Programa {
     }
 
     /**
-     * Programa para executar pelo terminal o programa.
+     * Programa para executar pelo terminal.
      *
-     * @param args Os argumentos fornecidos pelo usuário.
+     * @param args Os argumentos a serem fornecidos via linha de comando.
      */
     public static void main(final String[] args) {
-        System.out.println(ControladorUtils.executar(args));
+        System.exit(ControladorUtils.executar(args));
     }
 
 }

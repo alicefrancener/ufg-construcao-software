@@ -198,7 +198,7 @@ public class DataUtils {
         if (comparacao == 1) {
             while (!dataDeReferencia.equals(dataDeInteresseAux)) {
                 dataDeInteresseAux = adicionaDia(dataDeInteresseAux, anoBissexto);
-                //diaDaSemanaAux = adicionaDiaDaSemana(diaDaSemanaAux);
+                diaDaSemanaAux = adicionaDiaDaSemana(diaDaSemanaAux);
             }
         }
         if (comparacao == -1) {
@@ -211,7 +211,6 @@ public class DataUtils {
 
         return diaDaSemanaAux;
     }
-
 
     public static String adicionaDia(String data, String anoBissexto) {
         int ano = getAnoAsInt(data);
@@ -284,6 +283,14 @@ public class DataUtils {
         }
 
         return mesesDoAno[mes];
+    }
+
+    private static int adicionaDiaDaSemana(int diaDaSemana) {
+        if(diaDaSemana == 6) {
+            return 0;
+        }
+        
+        return diaDaSemana++;
     }
 
     public static boolean isMultiplo(final int num1, final int num2) {

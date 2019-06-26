@@ -32,7 +32,7 @@ public final class InputUtils {
     }
 
     /**
-     * Avalia se os argumentos são números naturais (i.e., inteiros positivos).
+     * Avalia se os argumentos são números naturais (inteiros positivos).
      *
      * @param argumentos Os argumentos a serem avaliados
      * @throws IllegalArgumentException Se algum dos argumentos não for um

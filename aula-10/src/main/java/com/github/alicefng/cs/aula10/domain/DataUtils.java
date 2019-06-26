@@ -113,8 +113,8 @@ public final class DataUtils {
      * Avalia se a quantidade de dígitos de uma data está incorreta.
      *
      * @param data Data a ser avaliada
-     * @throws DataInvalidaException Se a quantidade de dígitos não for formada
-     *                               exatamente po 8 dígitos
+     * @throws DataInvalidaException Se a quantidade de dígitos não for
+     *                               formada exatamente po 8 dígitos
      * @implNote Para atender o requisito R13a
      */
     public static void evalQtdDigitosData(final String data) {
@@ -240,8 +240,9 @@ public final class DataUtils {
      * @param data             A data a ser comparada
      * @param dataDeReferencia A data de referência
      * @param anoBissexto      O ano bissexto de referência
-     * @return 0, se data e dataDeReferencia forem iguais; -1, se data for
-     * anterior à dataDeReferencia; 1, se data for posterior à dataDeReferencia
+     * @return 0, se data e dataDeReferencia forem iguais;
+     * -1, se data for anterior à dataDeReferencia;
+     * 1, se data for posterior à dataDeReferencia
      */
     public static int comparaDatas(final String data,
                                    final String dataDeReferencia,
@@ -286,13 +287,14 @@ public final class DataUtils {
      * @param dataDeReferencia A data de referência
      * @param diaDaSemana      O dia da semana da data de referência
      * @return O dia da semana da data de interesse (0 a 6). Com 0
-     * correspondente à segunda-feira, 1 à terça-feira, e assim sucessivamente.
+     * correspondente à segunda-feira, 1 à terça-feira, e assim
+     * sucessivamente
      * @implNote Para atender requisitos R17 e R18
      */
     public static int getDiaDaSemana(final String dataDeInteresse,
-                                           final String anoBissexto,
-                                           final String dataDeReferencia,
-                                           final String diaDaSemana) {
+                                     final String anoBissexto,
+                                     final String dataDeReferencia,
+                                     final String diaDaSemana) {
         final int comparacao = comparaDatas(dataDeInteresse, dataDeReferencia,
                 anoBissexto);
         int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
@@ -308,7 +310,8 @@ public final class DataUtils {
 
         if (comparacao == 1) {
             while (!dataDeInteresse.equals(dataDeReferenciaAux)) {
-                dataDeReferenciaAux = adicionaDia(dataDeReferenciaAux, anoBissexto);
+                dataDeReferenciaAux = adicionaDia(dataDeReferenciaAux,
+                        anoBissexto);
                 diaDaSemanaAux = adicionaDiaDaSemana(diaDaSemanaAux);
             }
         }
@@ -377,8 +380,8 @@ public final class DataUtils {
                 } else {
                     dia++;
                 }
-                default:
-                    break;
+            default:
+                break;
         }
 
         return String.format("%04d%02d%02d", ano, mes, dia);
@@ -444,8 +447,8 @@ public final class DataUtils {
                 } else {
                     dia--;
                 }
-                default:
-                    break;
+            default:
+                break;
         }
 
         return String.format("%04d%02d%02d", ano, mes, dia);
@@ -539,7 +542,8 @@ public final class DataUtils {
      *
      * @param num1 O número1 a ser avaliado
      * @param num2 O número2 a ser avaliado
-     * @return true, se os números são múltiplos; false, se não são múltiplos
+     * @return true, se os números são múltiplos; false, se os números
+     * não são múltiplos
      */
     public static boolean isMultiplo(final int num1, final int num2) {
         return !(num1 % num2 != 0);

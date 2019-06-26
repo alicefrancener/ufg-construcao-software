@@ -11,8 +11,8 @@ public final class ControladorUtils {
 
     public static int executar(String[] argumentos) {
         try {
-            InputUtils.qtdArgumentos(argumentos);
-            InputUtils.argumentoIsNatural(argumentos);
+            InputUtils.evalQtdArgumentos(argumentos);
+            InputUtils.evalArgumentoIsNatural(argumentos);
 
             DataUtils.evalQtdDigitosData(argumentos[0]);
             DataUtils.evalQtdDigitosData(argumentos[2]);

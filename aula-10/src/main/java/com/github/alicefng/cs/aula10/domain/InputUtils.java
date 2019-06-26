@@ -18,27 +18,28 @@ public final class InputUtils {
     }
 
     /**
-     * Avalia se a quantidade de argumentos fornecidos é 4 (R7).
+     * Avalia se a quantidade de argumentos fornecidos é 4.
      *
-     * @param argumentos Os argumentos fornecidos pelo usuário
-     * @return -1, se o número de argumentos fornecidos não estiver de acordo
-     * com o esperado; 0, se o número de argumentos estiver correto
+     * @param argumentos Os argumentos a serem avaliados
+     * @throws IllegalArgumentException Se a quantidade de argumentos
+     *                                  fornecida for diferente de 4.
+     * @implNote Para atender o requisito R7
      */
-    public static void qtdArgumentos(final String[] argumentos) {
-        if (argumentos.length != NUMERO_ARGUMENTOS){
+    public static void evalQtdArgumentos(final String[] argumentos) {
+        if (argumentos.length != NUMERO_ARGUMENTOS) {
             throw new IllegalArgumentException();
         }
     }
 
     /**
-     * Analisa se os argumentos são do números naturais(R8 e R9). Obs: números
-     * naturais são os inteiros positivos.
+     * Avalia se os argumentos são números naturais (i.e., inteiros positivos).
      *
-     * @param argumentos Os argumentos fornecidos pelo usuário.
-     * @return -1, se algum dos argumentos não for natural; 0, se todos
-     * argumentos forem naturais
+     * @param argumentos Os argumentos a serem avaliados
+     * @throws IllegalArgumentException Se algum dos argumentos não for um
+     *                                  número natural
+     * @implNote Para atender o requisito R8 e R9
      */
-    public static void argumentoIsNatural(final String[] argumentos) {
+    public static void evalArgumentoIsNatural(final String[] argumentos) {
         for (final String argumento : argumentos) {
             if (Integer.parseInt(argumento) < 0) {
                 throw new IllegalArgumentException();

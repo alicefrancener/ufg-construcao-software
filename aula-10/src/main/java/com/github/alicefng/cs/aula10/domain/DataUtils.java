@@ -105,10 +105,24 @@ public class DataUtils {
      */
     public static void qtdDigitosData(final String data) {
         if(data.length() != NUMERO_DIGITOS){
-          throw new DataInvalidaException(String.format("Tamanho digitos "
-                  + "data incorreto: %d", data.length()));
+          throw new DataInvalidaException();
         }
     }
+
+    public static void rangeAno(final String data){
+        final int primeiroDigitoData = Integer.parseInt(data.substring(0));
+        if(primeiroDigitoData == 0) {
+            throw new DataInvalidaException();
+        }
+    }
+
+    public static void rangeDiaDaSemana(final String diaDaSemana){
+        final int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
+        if(diaDaSemanaAux > 6 ){
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     public static int getAnoAsInt(final String data) {
         final int ano = Integer.parseInt(data.substring(0, 4));

@@ -31,7 +31,7 @@ public class ValidaEntradaUtilsTest {
     }
 
     @Test
-    public void testIsPositivo() {
+    public void testIsNumeroPositivo() {
         String[] test1 = {"-20190618", "2011", "20190618", "1"};
         assertEquals(-1, ValidaEntradaUtils.argumentoIsNatural(test1));
 

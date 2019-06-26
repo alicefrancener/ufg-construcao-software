@@ -20,7 +20,7 @@ public final class ControladorUtils {
      * assim sucessivamente.
      * @implNote Para atender aos requisitos R6 e R14
      */
-    public static int executar(String[] argumentos) {
+    public static int executar(final String[] argumentos) {
         try {
             InputUtils.evalQtdArgumentos(argumentos);
             InputUtils.evalArgumentoIsNatural(argumentos);

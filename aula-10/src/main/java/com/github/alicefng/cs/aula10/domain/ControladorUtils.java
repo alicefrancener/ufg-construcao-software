@@ -15,6 +15,9 @@ public final class ControladorUtils {
             InputUtils.argumentoIsNatural(argumentos);
             DataUtils.qtdDigitosData(argumentos[0]);
             DataUtils.qtdDigitosData(argumentos[2]);
+            DataUtils.rangeAno(argumentos[0]);
+            DataUtils.rangeAno(argumentos[2]);
+            DataUtils.rangeDiaDaSemana(argumentos[3]);
         } catch (IllegalArgumentException | DataInvalidaException ex) {
             return -1;
         }

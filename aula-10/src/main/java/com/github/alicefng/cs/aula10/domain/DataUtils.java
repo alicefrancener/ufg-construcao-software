@@ -1,6 +1,5 @@
 package com.github.alicefng.cs.aula10.domain;
 
-import javax.xml.crypto.Data;
 import java.util.Arrays;
 
 /**
@@ -111,7 +110,7 @@ public class DataUtils {
     }
 
     public static void rangeAno(final String data) {
-        final int primeiroDigitoData = Integer.parseInt(data.substring(0,1));
+        final int primeiroDigitoData = Integer.parseInt(data.substring(0, 1));
         if (primeiroDigitoData == 0) {
             throw new DataInvalidaException();
         }
@@ -124,9 +123,9 @@ public class DataUtils {
         }
     }
 
-    public static void rangeAnoBissexto(final String anoBissexto){
+    public static void rangeAnoBissexto(final String anoBissexto) {
         final int anoBissextoAux = Integer.parseInt(anoBissexto);
-        if(anoBissextoAux < 1){
+        if (anoBissextoAux < 1) {
             throw new IllegalArgumentException();
         }
     }
@@ -166,7 +165,7 @@ public class DataUtils {
         final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
                 OUTUBRO, DEZEMBRO};
 
-        if(dia == 0 | dia > MAX_DIAS ) {
+        if (dia == 0 | dia > MAX_DIAS) {
             throw new DataInvalidaException();
         }
 

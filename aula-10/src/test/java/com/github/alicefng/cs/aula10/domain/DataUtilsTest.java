@@ -28,7 +28,8 @@ public class DataUtilsTest {
         String dataInvalida = "20190431";
         assertEquals(2019, DataUtils.getAnoAsInt(dataInvalida));
         assertEquals(4, DataUtils.getMesAsInt(dataInvalida));
-        assertEquals(-1, DataUtils.getDiaAsInt(dataInvalida, "2019"));
+        assertThrows(DataInvalidaException.class,
+                () -> DataUtils.getDiaAsInt(dataInvalida, "2019"));
     }
 
     @Test
@@ -52,7 +53,8 @@ public class DataUtilsTest {
         String dataInvalida = "17000229";
         assertEquals(1700, DataUtils.getAnoAsInt(dataInvalida));
         assertEquals(2, DataUtils.getMesAsInt(dataInvalida));
-        assertEquals(-1, DataUtils.getDiaAsInt(dataInvalida, "1692"));
+        assertThrows(DataInvalidaException.class,
+                () -> DataUtils.getDiaAsInt(dataInvalida, "1692"));
     }
 
     @Test
@@ -74,7 +76,7 @@ public class DataUtilsTest {
     public void testGetDiaDaSemana() {
         assertEquals(1, DataUtils.getDiaDaSemana("20190101",
                 "2020", "20190101", "1"));
-       assertEquals(2, DataUtils.getDiaDaSemana("20190102",
+        assertEquals(2, DataUtils.getDiaDaSemana("20190102",
                 "2020", "20190101", "1"));
         assertEquals(3, DataUtils.getDiaDaSemana("20190103",
                 "2020", "20190101", "1"));
@@ -83,7 +85,6 @@ public class DataUtilsTest {
         assertEquals(0, DataUtils.getDiaDaSemana("20160229",
                 "2016", "20161231", "5"));
     }
-
 
 
 }

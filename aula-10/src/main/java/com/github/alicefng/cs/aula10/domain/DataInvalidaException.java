@@ -5,6 +5,13 @@ package com.github.alicefng.cs.aula10.domain;
  */
 public class DataInvalidaException extends RuntimeException {
 
+    /**
+     * Constroi uma exceção sem mensagem.
+     */
+    public DataInvalidaException() {
+        super();
+    }
+
       /**
      * Constroi uma exceção somente com mensagem.
      *

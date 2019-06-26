@@ -7,7 +7,6 @@ import java.util.Arrays;
  */
 public final class DataUtils {
 
-
     /**
      * Número de dígitos necessários para uma data válida no formato String.
      */
@@ -17,7 +16,6 @@ public final class DataUtils {
      * Inteiro correspondente ao mês de janeiro.
      */
     private static final int JANEIRO = 1;
-
 
     /**
      * Inteiro correspondente ao mês de fevereiro.
@@ -89,7 +87,6 @@ public final class DataUtils {
      */
     private static final int DIAS_FEV = 28;
 
-
     /**
      * Total de dias de fevereiro em ano bissexto.
      */
@@ -98,12 +95,12 @@ public final class DataUtils {
     /**
      * Inteiro correspondente ao domingo.
      */
-    public static final int DOMINGO = 6;
+    private static final int DOMINGO = 6;
 
     /**
      * Inteiro correspondente à segunda-feira.
      */
-    public static final int SEGUNDA = 0;
+    private static final int SEGUNDA = 0;
 
     /**
      * Construtor privado para evitar instaciação da classe utilitária.

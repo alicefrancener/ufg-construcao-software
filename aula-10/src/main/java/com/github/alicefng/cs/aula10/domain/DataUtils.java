@@ -377,6 +377,8 @@ public final class DataUtils {
                 } else {
                     dia++;
                 }
+                default:
+                    break;
         }
 
         return String.format("%04d%02d%02d", ano, mes, dia);
@@ -442,6 +444,8 @@ public final class DataUtils {
                 } else {
                     dia--;
                 }
+                default:
+                    break;
         }
 
         return String.format("%04d%02d%02d", ano, mes, dia);

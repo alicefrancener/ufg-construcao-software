@@ -13,14 +13,19 @@ public final class ControladorUtils {
         try {
             InputUtils.qtdArgumentos(argumentos);
             InputUtils.argumentoIsNatural(argumentos);
+
             DataUtils.qtdDigitosData(argumentos[0]);
             DataUtils.qtdDigitosData(argumentos[2]);
+
             DataUtils.rangeAno(argumentos[0]);
             DataUtils.rangeAno(argumentos[2]);
             DataUtils.rangeDiaDaSemana(argumentos[3]);
+
+            return DataUtils.getDiaDaSemana(argumentos[0], argumentos[1],
+                    argumentos[2], argumentos[3]);
+
         } catch (IllegalArgumentException | DataInvalidaException ex) {
             return -1;
         }
-        return 0;
     }
 }

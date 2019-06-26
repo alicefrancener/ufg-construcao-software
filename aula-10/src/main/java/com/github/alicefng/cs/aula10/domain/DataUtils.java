@@ -7,6 +7,7 @@ import java.util.Arrays;
  */
 public final class DataUtils {
 
+
     /**
      * Número de dígitos necessários para uma data válida no formato String.
      */
@@ -90,6 +91,16 @@ public final class DataUtils {
     private static final int MAX_DIAS_FEV_BISSEXTO = 29;
 
     /**
+     * Inteiro correspondente ao domingo.
+     */
+    public static final int DOMINGO = 6;
+
+    /**
+     * Inteiro correspondente à segunda-feira
+     */
+    public static final int SEGUNDA = 0;
+
+    /**
      * Construtor privado para evitar instaciação da classe utilitária.
      */
     private DataUtils() {
@@ -134,7 +145,7 @@ public final class DataUtils {
      */
     public static void evalRangeDiaDaSemana(final String diaDaSemana) {
         final int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
-        if (diaDaSemanaAux > 6) {
+        if (diaDaSemanaAux > DOMINGO) {
             throw new IllegalArgumentException();
         }
     }
@@ -468,8 +479,8 @@ public final class DataUtils {
      */
     private static int adicionaDiaDaSemana(final int diaDaSemana) {
         int diaDaSemanaAux = diaDaSemana;
-        if (diaDaSemanaAux == 6) {
-            return 0;
+        if (diaDaSemanaAux == DOMINGO) {
+            return SEGUNDA;
         }
 
         return ++diaDaSemanaAux;
@@ -482,8 +493,8 @@ public final class DataUtils {
      * @return O diaDaSemana anterior ao dia da semana passado
      */
     private static int subtraiDiaDaSemana(int diaDaSemana) {
-        if (diaDaSemana == 0) {
-            return 6;
+        if (diaDaSemana == SEGUNDA) {
+            return DOMINGO;
         }
         return --diaDaSemana;
     }

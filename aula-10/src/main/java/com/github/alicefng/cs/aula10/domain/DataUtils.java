@@ -199,11 +199,21 @@ public final class DataUtils {
      */
     public static int getMesAsInt(final String data) {
         final int mes = Integer.parseInt(data.substring(4, 6));
-        if (mes == 0 | mes > DEZEMBRO) {
-            throw new DataInvalidaException();
-        }
+        evalRangeMes(mes);
 
         return mes;
+    }
+
+    /**
+     * Avalia se mês está dentro da amplitude permitida.
+     *
+     * @param mes O mês a ser avaliado
+     * @throws DataInvalidaException Se mês está fora da amplitude (1,12)
+     */
+    public static void evalRangeMes(int mes) {
+        if (mes < JANEIRO | mes > DEZEMBRO) {
+            throw new DataInvalidaException();
+        }
     }
 
     /**
@@ -216,7 +226,8 @@ public final class DataUtils {
      *                               Se o dia não for compatível com o mês
      * @implNote Para atender os requisitos R13d e R13e
      */
-    public static int getDiaAsInt(final String data, final String anoBissexto) {
+    public static int getDiaAsInt(final String data,
+                                  final String anoBissexto) {
         final int dia = Integer.parseInt(data.substring(6, 8));
         final int mes = getMesAsInt(data);
         final int ano = getAnoAsInt(data);
@@ -234,7 +245,7 @@ public final class DataUtils {
      * @param dia O dia a ser avaliado
      * @throws DataInvalidaException Se dia forma menor que 1 ou maior que 31
      */
-    private static void evalRangeDia(final int dia) {
+    public static void evalRangeDia(final int dia) {
         if (dia < PRIMEIRO_DIA_MES | dia > ULTIMO_DIA_MES_LONGO) {
             throw new DataInvalidaException();
         }
@@ -247,7 +258,7 @@ public final class DataUtils {
      * @param mes O mes a ser avaliado
      * @throws DataInvalidaException Se dia 31 não for compatível com mês
      */
-    private static void evalDiaMesLongo(final int dia, final int mes) {
+    public static void evalDiaMesLongo(final int dia, final int mes) {
         final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
                 OUTUBRO, DEZEMBRO};
         if (dia == ULTIMO_DIA_MES_LONGO
@@ -266,7 +277,7 @@ public final class DataUtils {
      * @throws DataInvalidaException Se o dia de fevereiro não for compatível
      *                               com o mês
      */
-    private static void evalDiaFevereiro(final int dia, final int mes,
+    public static void evalDiaFevereiro(final int dia, final int mes,
                                          final int ano,
                                          final String anoBissexto) {
         if (dia > ULTIMO_DIA_FEV & mes == FEVEREIRO) {
@@ -285,41 +296,21 @@ public final class DataUtils {
      *
      * @param data             A data a ser comparada
      * @param dataDeReferencia A data de referência
-     * @param anoBissexto      O ano bissexto de referência
      * @return 0, se data e dataDeReferencia forem iguais;
      * -1, se data for anterior à dataDeReferencia;
      * 1, se data for posterior à dataDeReferencia
      */
     public static int comparaDatas(final String data,
-                                   final String dataDeReferencia,
-                                   final String anoBissexto) {
-        final int ano = getAnoAsInt(data);
-        final int anoRef = getAnoAsInt(dataDeReferencia);
+                                   final String dataDeReferencia) {
 
-        final int mes = getMesAsInt(data);
-        final int mesRef = getMesAsInt(dataDeReferencia);
+        int dataInt = Integer.parseInt(data);
+        int dataIntRef = Integer.parseInt(dataDeReferencia);
 
-        final int dia = getDiaAsInt(data, anoBissexto);
-        final int diaRef = getDiaAsInt(dataDeReferencia, anoBissexto);
-
-        if (ano < anoRef) {
+        if (dataInt < dataIntRef) {
             return -1;
         }
-        if (ano > anoRef) {
-            return 1;
-        }
 
-        if (mes < mesRef) {
-            return -1;
-        }
-        if (mes > mesRef) {
-            return 1;
-        }
-
-        if (dia < diaRef) {
-            return -1;
-        }
-        if (dia > diaRef) {
+        if (dataInt > dataIntRef) {
             return 1;
         }
 
@@ -348,8 +339,7 @@ public final class DataUtils {
         String dataDeReferenciaAux = dataDeReferencia;
         int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
 
-        final int comparacao = comparaDatas(dataDeInteresse, dataDeReferencia,
-                anoBissexto);
+        final int comparacao = comparaDatas(dataDeInteresse, dataDeReferencia);
         final int dataDeReferenciaPosterior = -1;
         final int dataDeReferenciaAnterior = 1;
 
@@ -452,7 +442,7 @@ public final class DataUtils {
      * @param anoBissexto O ano bissexto de referência
      * @return A data anterior à data passada como argumento
      */
-    private static String subtraiDia(final String data,
+    public static String subtraiDia(final String data,
                                      final String anoBissexto) {
         int ano = getAnoAsInt(data);
         int mes = getMesAsInt(data);
@@ -519,7 +509,7 @@ public final class DataUtils {
      * @param mes O mês a ser adicionado
      * @return O mes posterior ao mês passado como argumento
      */
-    private static int adicionaMes(final int mes) {
+    public static int adicionaMes(final int mes) {
         int mesAux = mes;
         if (mesAux == DEZEMBRO) {
             return JANEIRO;
@@ -534,7 +524,7 @@ public final class DataUtils {
      * @param mes O mês a ser subtraído
      * @return O mes anterior ao mes passado como argumento
      */
-    private static int subtraiMes(final int mes) {
+    public static int subtraiMes(final int mes) {
         int mesAux = mes;
         if (mesAux == JANEIRO) {
             return DEZEMBRO;
@@ -549,7 +539,7 @@ public final class DataUtils {
      * @param diaDaSemana O dia da semana a ser adicionado
      * @return O diaDaSemana posterior ao dia da semana passado como argumento
      */
-    private static int adicionaDiaDaSemana(final int diaDaSemana) {
+    public static int adicionaDiaDaSemana(final int diaDaSemana) {
         int diaDaSemanaAux = diaDaSemana;
         if (diaDaSemanaAux == DOMINGO) {
             return SEGUNDA;
@@ -564,7 +554,7 @@ public final class DataUtils {
      * @param diaDaSemana O dia da semana a ser subtraído
      * @return O diaDaSemana anterior ao dia da semana passado
      */
-    private static int subtraiDiaDaSemana(final int diaDaSemana) {
+    public static int subtraiDiaDaSemana(final int diaDaSemana) {
         int diaDaSemanaAux = diaDaSemana;
         if (diaDaSemanaAux == SEGUNDA) {
             return DOMINGO;
@@ -603,7 +593,7 @@ public final class DataUtils {
      * @return true, se os números são múltiplos; false, se os números
      * não são múltiplos
      */
-    public static boolean isMultiplo(final int num1, final int num2) {
+    private static boolean isMultiplo(final int num1, final int num2) {
         return num1 % num2 == 0;
     }
 

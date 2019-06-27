@@ -3,80 +3,27 @@ package com.github.alicefng.cs.aula10.domain;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalendarUtilsTest {
 
     @Test
-    public void testDataValida() {
+    public void testGet() {
         String dataValida = "20190621";
         assertEquals(2019, CalendarUtils.getAnoAsInt(dataValida));
         assertEquals(6, CalendarUtils.getMesAsInt(dataValida));
-        assertEquals(21, CalendarUtils.getDiaAsInt(dataValida, "2019"));
-    }
-
-    @Test
-    public void testDataTrintaEUmDias() {
-        String dataValida = "20190131";
-        assertEquals(2019, CalendarUtils.getAnoAsInt(dataValida));
-        assertEquals(1, CalendarUtils.getMesAsInt(dataValida));
-        assertEquals(31, CalendarUtils.getDiaAsInt(dataValida, "2019"));
-    }
-
-    @Test
-    public void testDataTrintaEUmDiasInvalido() {
-        String dataInvalida = "20190431";
-        assertEquals(2019, CalendarUtils.getAnoAsInt(dataInvalida));
-        assertEquals(4, CalendarUtils.getMesAsInt(dataInvalida));
-        assertThrows(DataInvalidaException.class,
-                () -> CalendarUtils.getDiaAsInt(dataInvalida, "2019"));
-    }
-
-    @Test
-    public void testDataFevereiroValido() {
-        String dataValida = "20190228";
-        assertEquals(2019, CalendarUtils.getAnoAsInt(dataValida));
-        assertEquals(2, CalendarUtils.getMesAsInt(dataValida));
-        assertEquals(28, CalendarUtils.getDiaAsInt(dataValida, "2018"));
-    }
-
-    @Test
-    public void testDataFevereiroInValido() {
-        String dataInvalida = "20190230";
-        assertEquals(2019, CalendarUtils.getAnoAsInt(dataInvalida));
-        assertEquals(2, CalendarUtils.getMesAsInt(dataInvalida));
-        assertThrows(DataInvalidaException.class,
-                () -> CalendarUtils.getDiaAsInt(dataInvalida, "2019"));
-    }
-
-
-    @Test
-    public void testDataFevereiroBissexto() {
-        String dataValida = "20190229";
-        assertEquals(2019, CalendarUtils.getAnoAsInt(dataValida));
-        assertEquals(2, CalendarUtils.getMesAsInt(dataValida));
-        assertEquals(29, CalendarUtils.getDiaAsInt(dataValida, "2015"));
-    }
-
-    @Test
-    public void testDataFevereiroBissextoInvalido() {
-        String dataInvalida = "17000229";
-        assertEquals(1700, CalendarUtils.getAnoAsInt(dataInvalida));
-        assertEquals(2, CalendarUtils.getMesAsInt(dataInvalida));
-        assertThrows(DataInvalidaException.class,
-                () -> CalendarUtils.getDiaAsInt(dataInvalida, "1692"));
+        assertEquals(21, CalendarUtils.getDiaAsInt(dataValida));
     }
 
     @Test
     public void testComparaData() {
         assertEquals(0, CalendarUtils.comparaDatas("20190229",
-                "20190229", "2019"));
+                "20190229"));
         assertEquals(1, CalendarUtils.comparaDatas("20190229",
-                "20190228", "2019"));
+                "20190228"));
         assertEquals(-1, CalendarUtils.comparaDatas("20190227",
-                "20190228", "2019"));
+                "20190228"));
         assertEquals(1, CalendarUtils.comparaDatas("20001010",
-                "15001010", "2019"));
+                "15001010"));
     }
 
     @Test
@@ -117,7 +64,7 @@ public class CalendarUtilsTest {
     }
 
     @Test
-    public void coberturaException(){
+    public void coberturaException() {
         new DataInvalidaException("Mensagem");
         new DataInvalidaException("Mensagem", new Throwable());
     }

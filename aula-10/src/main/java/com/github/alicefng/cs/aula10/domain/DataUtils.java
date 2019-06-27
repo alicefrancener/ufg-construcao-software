@@ -184,7 +184,8 @@ public final class DataUtils {
      * @return O ano como inteiro
      */
     public static int getAnoAsInt(final String data) {
-        return Integer.parseInt(data.substring(0, 4));
+        final int ano = Integer.parseInt(data.substring(0, 4));
+        return ano;
     }
 
     /**
@@ -219,18 +220,55 @@ public final class DataUtils {
         final int dia = Integer.parseInt(data.substring(6, 8));
         final int mes = getMesAsInt(data);
         final int ano = getAnoAsInt(data);
-        final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
-                OUTUBRO, DEZEMBRO};
 
-        if (dia == 0 | dia > ULTIMO_DIA_MES_LONGO) {
+        evalRangeDia(dia);
+        evalDiaMesLongo(dia, mes);
+        evalDiaFevereiro(dia, mes, ano, anoBissexto);
+
+        return dia;
+    }
+
+    /**
+     * Avalia se dia está dentro da amplitude permitida.
+     *
+     * @param dia O dia a ser avaliado
+     * @throws DataInvalidaException Se dia forma menor que 1 ou maior que 31
+     */
+    private static void evalRangeDia(final int dia) {
+        if (dia < PRIMEIRO_DIA_MES | dia > ULTIMO_DIA_MES_LONGO) {
             throw new DataInvalidaException();
         }
+    }
 
+    /**
+     * Avalia se dia é compatível com meses de 31 dias.
+     *
+     * @param dia O dia a ser avaliado
+     * @param mes O mes a ser avaliado
+     * @throws DataInvalidaException Se dia 31 não for compatível com mês
+     */
+    private static void evalDiaMesLongo(final int dia, final int mes) {
+        final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
+                OUTUBRO, DEZEMBRO};
         if (dia == ULTIMO_DIA_MES_LONGO
                 & Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
             throw new DataInvalidaException();
         }
+    }
 
+    /**
+     * Avalia se dia é compatível com mês de fevereiro.
+     *
+     * @param dia         O dia a ser avaliado
+     * @param mes         O mês a ser avaliado
+     * @param ano         O ano a ser avaliado
+     * @param anoBissexto O ano bissexto de referência
+     * @throws DataInvalidaException Se o dia de fevereiro não for compatível
+     *                               com o mês
+     */
+    private static void evalDiaFevereiro(final int dia, final int mes,
+                                         final int ano,
+                                         final String anoBissexto) {
         if (dia > ULTIMO_DIA_FEV & mes == FEVEREIRO) {
             if (isBissexto(anoBissexto, ano)) {
                 if (dia > ULTIMO_DIA_FEV_BISSEXTO) {
@@ -240,8 +278,6 @@ public final class DataUtils {
                 throw new DataInvalidaException();
             }
         }
-
-        return dia;
     }
 
     /**
@@ -398,7 +434,7 @@ public final class DataUtils {
                     dia++;
                 }
                 break;
-                
+
             default:
                 break;
         }

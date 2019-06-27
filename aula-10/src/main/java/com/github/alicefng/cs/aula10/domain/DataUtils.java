@@ -306,12 +306,16 @@ public final class DataUtils {
                                      final String anoBissexto,
                                      final String dataDeReferencia,
                                      final String diaDaSemana) {
+
+        String dataDeReferenciaAux = dataDeReferencia;
+        int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
+        
         final int comparacao = comparaDatas(dataDeInteresse, dataDeReferencia,
                 anoBissexto);
-        int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
-        String dataDeReferenciaAux = dataDeReferencia;
+        final int dataDeReferenciaPosterior = -1;
+        final int dataDeReferenciaAnterior = 1;
 
-        if (comparacao == -1) {
+        if (comparacao == dataDeReferenciaPosterior) {
             while (!dataDeInteresse.equals(dataDeReferenciaAux)) {
                 dataDeReferenciaAux = subtraiDia(dataDeReferenciaAux,
                         anoBissexto);
@@ -319,7 +323,7 @@ public final class DataUtils {
             }
         }
 
-        if (comparacao == 1) {
+        if (comparacao == dataDeReferenciaAnterior) {
             while (!dataDeInteresse.equals(dataDeReferenciaAux)) {
                 dataDeReferenciaAux = adicionaDia(dataDeReferenciaAux,
                         anoBissexto);

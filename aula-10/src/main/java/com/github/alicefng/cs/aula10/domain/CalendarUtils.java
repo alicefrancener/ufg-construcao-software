@@ -1,180 +1,110 @@
 package com.github.alicefng.cs.aula10.domain;
 
-import java.util.Arrays;
-
 /**
- * Classe para calcular dia da semana de interesse e validar datas.
+ * Classe para calcular dia da semana de interesse.
  */
 public final class CalendarUtils {
 
     /**
-     * Número de dígitos necessários para uma data válida no formato String
-     * (aaaammdd).
-     */
-    private static final int NUMERO_DIGITOS = 8;
-
-    /**
      * Inteiro correspondente ao mês de janeiro.
      */
-    private static final int JANEIRO = 1;
+    protected static final int JANEIRO = 1;
 
     /**
      * Inteiro correspondente ao mês de fevereiro.
      */
-    private static final int FEVEREIRO = 2;
+    protected static final int FEVEREIRO = 2;
 
     /**
      * Inteiro correspondente ao mês de março.
      */
-    private static final int MARCO = 3;
+    protected static final int MARCO = 3;
 
     /**
      * Inteiro correspondente ao mês abril.
      */
-    private static final int ABRIL = 4;
+    protected static final int ABRIL = 4;
 
     /**
      * Inteiro correspondente ao mês de maio.
      */
-    private static final int MAIO = 5;
+    protected static final int MAIO = 5;
 
     /**
      * Inteiro correspondente ao mês de junho.
      */
-    private static final int JUNHO = 6;
+    protected static final int JUNHO = 6;
 
     /**
      * Inteiro correspondente ao mês de julho.
      */
-    private static final int JULHO = 7;
+    protected static final int JULHO = 7;
 
     /**
      * Inteiro correspondente ao mês de agosto.
      */
-    private static final int AGOSTO = 8;
+    protected static final int AGOSTO = 8;
 
     /**
      * Inteiro correspondente ao mês de setembro.
      */
-    private static final int SETEMBRO = 9;
+    protected static final int SETEMBRO = 9;
 
     /**
      * Inteiro correspondente ao mês de outubro.
      */
-    private static final int OUTUBRO = 10;
+    protected static final int OUTUBRO = 10;
 
     /**
      * Inteiro correspondente ao mês de novembro.
      */
-    private static final int NOVEMBRO = 11;
+    protected static final int NOVEMBRO = 11;
 
     /**
      * Inteiro correspondente ao mês dezembro.
      */
-    private static final int DEZEMBRO = 12;
+    protected static final int DEZEMBRO = 12;
 
     /**
      * Primeiro dia de todos os meses.
      */
-    private static final int PRIMEIRO_DIA_MES = 1;
+    protected static final int PRIMEIRO_DIA_MES = 1;
 
     /**
      * Ultimo dia dos meses mais longos (31 dias).
      */
-    private static final int ULTIMO_DIA_MES_LONGO = 31;
+    protected static final int ULTIMO_DIA_MES_LONGO = 31;
 
     /**
      * Ultimo dia dos meses com 30 dias.
      */
-    private static final int ULTIMO_DIA_MES_NORMAL = 30;
+    protected static final int ULTIMO_DIA_MES_NORMAL = 30;
 
     /**
      * Último dia de fevereiro em ano comum.
      */
-    private static final int ULTIMO_DIA_FEV = 28;
+    protected static final int ULTIMO_DIA_FEV = 28;
 
     /**
      * Último dia de fevereiro em ano bissexto.
      */
-    private static final int ULTIMO_DIA_FEV_BISSEXTO = 29;
+    protected static final int ULTIMO_DIA_FEV_BISSEXTO = 29;
 
     /**
      * Inteiro correspondente à segunda-feira.
      */
-    private static final int SEGUNDA = 0;
+    protected static final int SEGUNDA = 0;
 
     /**
      * Inteiro correspondente ao domingo.
      */
-    private static final int DOMINGO = 6;
-
-    /**
-     * Menor ano bissexto considerado válido de acordo com os requisitos.
-     */
-    private static final int MENOR_ANO_BISSEXTO = 1;
+    protected static final int DOMINGO = 6;
 
     /**
      * Construtor privado para evitar instaciação da classe utilitária.
      */
     private CalendarUtils() {
 
-    }
-
-    /**
-     * Avalia se a quantidade de dígitos de uma data está incorreta.
-     *
-     * @param data Data a ser avaliada
-     * @throws DataInvalidaException Se a quantidade de dígitos não for
-     *                               formada exatamente po 8 dígitos
-     * @implNote Para atender o requisito R13a
-     */
-    public static void evalQtdDigitosData(final String data) {
-        if (data.length() != NUMERO_DIGITOS) {
-            throw new DataInvalidaException();
-        }
-    }
-
-    /**
-     * Avalia se o primeiro dígito da data está incorreto.
-     *
-     * @param data Data a ser avaliada
-     * @throws DataInvalidaException Se o primeiro dígito da data for 0
-     * @implNote Para atender o requisito R13b
-     */
-    public static void evalRangeAno(final String data) {
-        final int primeiroDigitoData =
-                Integer.parseInt(data.substring(0, 1));
-        if (primeiroDigitoData == 0) {
-            throw new DataInvalidaException();
-        }
-    }
-
-    /**
-     * Avalia se amplitude do dia da semana está correta.
-     *
-     * @param diaDaSemana Data a ser avaliada
-     * @throws IllegalArgumentException Se o dia da semana for maior que 6
-     * @implNote Para atender o requisito R10
-     */
-    public static void evalRangeDiaDaSemana(final String diaDaSemana) {
-        final int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
-        if (diaDaSemanaAux > DOMINGO) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    /**
-     * Avalia se amplitude do ano bissexto está correta.
-     *
-     * @param anoBissexto O ano bissexto a ser avaliado
-     * @throws IllegalArgumentException Se o ano bissexto for menor que 1
-     * @implNote Para atender o requisito R11
-     */
-    public static void evalRangeAnoBissexto(final String anoBissexto) {
-        final int anoBissextoAux = Integer.parseInt(anoBissexto);
-        if (anoBissextoAux < MENOR_ANO_BISSEXTO) {
-            throw new IllegalArgumentException();
-        }
     }
 
     /**
@@ -199,96 +129,21 @@ public final class CalendarUtils {
      */
     public static int getMesAsInt(final String data) {
         final int mes = Integer.parseInt(data.substring(4, 6));
-        evalRangeMes(mes);
-
         return mes;
-    }
-
-    /**
-     * Avalia se mês está dentro da amplitude permitida.
-     *
-     * @param mes O mês a ser avaliado
-     * @throws DataInvalidaException Se mês está fora da amplitude (1,12)
-     */
-    public static void evalRangeMes(int mes) {
-        if (mes < JANEIRO | mes > DEZEMBRO) {
-            throw new DataInvalidaException();
-        }
     }
 
     /**
      * Obtém o dia como inteiro a partir de uma data no formato "aaaammdd".
      *
      * @param data        A data da qual se quer obter o dia
-     * @param anoBissexto O ano bissexto de referência
      * @return O dia como inteiro
      * @throws DataInvalidaException Se o dia for zero ou maior que 31;
      *                               Se o dia não for compatível com o mês
      * @implNote Para atender os requisitos R13d e R13e
      */
-    public static int getDiaAsInt(final String data,
-                                  final String anoBissexto) {
+    public static int getDiaAsInt(final String data) {
         final int dia = Integer.parseInt(data.substring(6, 8));
-        final int mes = getMesAsInt(data);
-        final int ano = getAnoAsInt(data);
-
-        evalRangeDia(dia);
-        evalDiaMesLongo(dia, mes);
-        evalDiaFevereiro(dia, mes, ano, anoBissexto);
-
         return dia;
-    }
-
-    /**
-     * Avalia se dia está dentro da amplitude permitida.
-     *
-     * @param dia O dia a ser avaliado
-     * @throws DataInvalidaException Se dia forma menor que 1 ou maior que 31
-     */
-    public static void evalRangeDia(final int dia) {
-        if (dia < PRIMEIRO_DIA_MES | dia > ULTIMO_DIA_MES_LONGO) {
-            throw new DataInvalidaException();
-        }
-    }
-
-    /**
-     * Avalia se dia é compatível com meses de 31 dias.
-     *
-     * @param dia O dia a ser avaliado
-     * @param mes O mes a ser avaliado
-     * @throws DataInvalidaException Se dia 31 não for compatível com mês
-     */
-    public static void evalDiaMesLongo(final int dia, final int mes) {
-        final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
-                OUTUBRO, DEZEMBRO};
-        if (dia == ULTIMO_DIA_MES_LONGO
-                & Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
-            throw new DataInvalidaException();
-        }
-    }
-
-    /**
-     * Avalia se dia é compatível com mês de fevereiro.
-     *
-     * @param dia         O dia a ser avaliado
-     * @param mes         O mês a ser avaliado
-     * @param ano         O ano a ser avaliado
-     * @param anoBissexto O ano bissexto de referência
-     * @throws DataInvalidaException Se o dia de fevereiro não for compatível
-     *                               com o mês
-     */
-    public static void evalDiaFevereiro(final int dia, final int mes,
-                                         final int ano,
-                                         final String anoBissexto) {
-        if (dia > ULTIMO_DIA_FEV & mes == FEVEREIRO) {
-            if (isBissexto(anoBissexto, ano)) {
-                if (dia > ULTIMO_DIA_FEV_BISSEXTO) {
-                    throw new DataInvalidaException();
-                }
-            } else {
-                throw new DataInvalidaException();
-            }
-        }
     }
 
     /**
@@ -373,7 +228,7 @@ public final class CalendarUtils {
                                      final String anoBissexto) {
         int ano = getAnoAsInt(data);
         int mes = getMesAsInt(data);
-        int dia = getDiaAsInt(data, anoBissexto);
+        int dia = getDiaAsInt(data);
 
         switch (mes) {
             case ABRIL:
@@ -446,7 +301,7 @@ public final class CalendarUtils {
                                      final String anoBissexto) {
         int ano = getAnoAsInt(data);
         int mes = getMesAsInt(data);
-        int dia = getDiaAsInt(data, anoBissexto);
+        int dia = getDiaAsInt(data);
 
         switch (mes) {
             case FEVEREIRO:

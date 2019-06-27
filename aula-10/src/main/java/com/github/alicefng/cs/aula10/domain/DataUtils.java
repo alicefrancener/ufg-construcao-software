@@ -218,20 +218,22 @@ public final class DataUtils {
     public static int getDiaAsInt(final String data, final String anoBissexto) {
         final int dia = Integer.parseInt(data.substring(6, 8));
         final int mes = getMesAsInt(data);
-        final int ano = getAnoAsInt(data);
+
         final int[] mesesTrintaEUmDias = {JANEIRO, MARCO, MAIO, JULHO, AGOSTO,
                 OUTUBRO, DEZEMBRO};
 
         if (dia == 0 | dia > ULTIMO_DIA_MES_LONGO) {
             throw new DataInvalidaException();
         }
-
+        
         if (dia == ULTIMO_DIA_MES_LONGO
                 & Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
             throw new DataInvalidaException();
         }
 
         if (dia > ULTIMO_DIA_FEV & mes == FEVEREIRO) {
+
+            final int ano = getAnoAsInt(data);
             if (isBissexto(anoBissexto, ano)) {
                 if (dia > ULTIMO_DIA_FEV_BISSEXTO) {
                     throw new DataInvalidaException();

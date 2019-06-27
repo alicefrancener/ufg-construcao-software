@@ -1,8 +1,9 @@
 package com.github.alicefng.cs.aula10.domain;
 
 /**
- * Classe para avaliar parâmetros das classes InputUtils e CalendarUtils, além de
- * executar o programa para obter o dia da semana de interesse.
+ * Classe para avaliar parâmetros com uso das classes InputEvalUtils e
+ * CalendarEvalUtils, além de executar o programa para obter o dia da semana
+ * de interesse com uso da classe CalendarUtils.
  */
 public final class ControladorUtils {
 
@@ -41,26 +42,27 @@ public final class ControladorUtils {
      *
      * @param argumentos Argumentos a serem fornecidos pelo usuário
      * @return -1, caso os argumentos fornecidos não estejam de acordo com
-     * especificado pelos requisitos; 0 a 6, caso os parâmetros estejam
+     * especificado pelos requisitos; return 0 a 6, caso os parâmetros estejam
      * corretos, sendo 0 correspondente à segunda-feira, 1, terça-feira, e
      * assim sucessivamente.
-     * @implNote Para atender aos requisitos R1, R2, R3, R4, R5, R6 e R14
+     * @implNote Para atender aos requisitos de entrada (R1 a R5) e de
+     * saída (R6 a R14)
      */
     public static int executar(final String[] argumentos) {
         try {
-            InputUtils.evalQtdArgumentos(argumentos);
-            InputUtils.evalArgumentoIsNatural(argumentos);
+            InputEvalUtils.evalQtdArgumentos(argumentos);
+            InputEvalUtils.evalArgumentoIsNatural(argumentos);
 
-            CalendarUtils.evalQtdDigitosData(argumentos[INDEX_DATA_INTERESSE]);
-            CalendarUtils.evalQtdDigitosData(argumentos[INDEX_DATA_REFERENCIA]);
+            CalendarEvalUtils.evalAnoBissexto(argumentos[INDEX_ANO_BISSEXTO]);
+            CalendarEvalUtils.evalDiaDaSemana(argumentos[INDEX_DIA_DA_SEMANA]);
 
-            CalendarUtils.evalRangeAno(argumentos[INDEX_DATA_INTERESSE]);
-            CalendarUtils.evalRangeAno(argumentos[INDEX_DATA_REFERENCIA]);
-            CalendarUtils.evalRangeAnoBissexto(argumentos[INDEX_ANO_BISSEXTO]);
-            CalendarUtils.evalRangeDiaDaSemana(argumentos[INDEX_DIA_DA_SEMANA]);
-            //CalendarUtils.evalRangeDia();
+            CalendarEvalUtils.evalData(argumentos[INDEX_DATA_INTERESSE],
+                    argumentos[INDEX_ANO_BISSEXTO]);
+            CalendarEvalUtils.evalData(argumentos[INDEX_DATA_REFERENCIA],
+                    argumentos[INDEX_ANO_BISSEXTO]);
 
-            return CalendarUtils.getDiaDaSemana(argumentos[INDEX_DATA_INTERESSE],
+            return CalendarUtils.getDiaDaSemana(
+                    argumentos[INDEX_DATA_INTERESSE],
                     argumentos[INDEX_ANO_BISSEXTO],
                     argumentos[INDEX_DATA_REFERENCIA],
                     argumentos[INDEX_DIA_DA_SEMANA]);

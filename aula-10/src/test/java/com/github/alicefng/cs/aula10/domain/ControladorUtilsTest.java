@@ -19,12 +19,12 @@ public class ControladorUtilsTest {
 
         assertEquals(-1, ControladorUtils.executar(entrada));
         assertEquals(-1, ControladorUtils.executar(entrada2));
-         assertEquals(-1, ControladorUtils.executar(entrada3));
-        //assertEquals(-1, ControladorUtils.executar(entrada4));
-        //assertEquals(-1, ControladorUtils.executar(entrada5));
-        //assertEquals(-1, ControladorUtils.executar(entrada6));
-        // assertEquals(-1, ControladorUtils.executar(entrada7));
-        // assertEquals(-1, ControladorUtils.executar(entrada8));
+        assertEquals(-1, ControladorUtils.executar(entrada3));
+        assertEquals(-1, ControladorUtils.executar(entrada4));
+        assertEquals(-1, ControladorUtils.executar(entrada5));
+        assertEquals(-1, ControladorUtils.executar(entrada6));
+        assertEquals(-1, ControladorUtils.executar(entrada7));
+        assertEquals(-1, ControladorUtils.executar(entrada8));
     }
 
     @Test

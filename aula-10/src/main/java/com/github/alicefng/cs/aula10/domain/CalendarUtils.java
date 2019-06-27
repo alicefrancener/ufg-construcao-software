@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Classe para calcular dia da semana de interesse e validar datas.
  */
-public final class DataUtils {
+public final class CalendarUtils {
 
     /**
      * Número de dígitos necessários para uma data válida no formato String
@@ -116,7 +116,7 @@ public final class DataUtils {
     /**
      * Construtor privado para evitar instaciação da classe utilitária.
      */
-    private DataUtils() {
+    private CalendarUtils() {
 
     }
 

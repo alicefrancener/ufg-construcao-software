@@ -1,7 +1,7 @@
 package com.github.alicefng.cs.aula10.domain;
 
 /**
- * Classe para avaliar parâmetros das classes InputUtils e DataUtils, além de
+ * Classe para avaliar parâmetros das classes InputUtils e CalendarUtils, além de
  * executar o programa para obter o dia da semana de interesse.
  */
 public final class ControladorUtils {
@@ -51,15 +51,16 @@ public final class ControladorUtils {
             InputUtils.evalQtdArgumentos(argumentos);
             InputUtils.evalArgumentoIsNatural(argumentos);
 
-            DataUtils.evalQtdDigitosData(argumentos[INDEX_DATA_INTERESSE]);
-            DataUtils.evalQtdDigitosData(argumentos[INDEX_DATA_REFERENCIA]);
+            CalendarUtils.evalQtdDigitosData(argumentos[INDEX_DATA_INTERESSE]);
+            CalendarUtils.evalQtdDigitosData(argumentos[INDEX_DATA_REFERENCIA]);
 
-            DataUtils.evalRangeAno(argumentos[INDEX_DATA_INTERESSE]);
-            DataUtils.evalRangeAno(argumentos[INDEX_DATA_REFERENCIA]);
-            DataUtils.evalRangeAnoBissexto(argumentos[INDEX_ANO_BISSEXTO]);
-            DataUtils.evalRangeDiaDaSemana(argumentos[INDEX_DIA_DA_SEMANA]);
+            CalendarUtils.evalRangeAno(argumentos[INDEX_DATA_INTERESSE]);
+            CalendarUtils.evalRangeAno(argumentos[INDEX_DATA_REFERENCIA]);
+            CalendarUtils.evalRangeAnoBissexto(argumentos[INDEX_ANO_BISSEXTO]);
+            CalendarUtils.evalRangeDiaDaSemana(argumentos[INDEX_DIA_DA_SEMANA]);
+            //CalendarUtils.evalRangeDia();
 
-            return DataUtils.getDiaDaSemana(argumentos[INDEX_DATA_INTERESSE],
+            return CalendarUtils.getDiaDaSemana(argumentos[INDEX_DATA_INTERESSE],
                     argumentos[INDEX_ANO_BISSEXTO],
                     argumentos[INDEX_DATA_REFERENCIA],
                     argumentos[INDEX_DIA_DA_SEMANA]);

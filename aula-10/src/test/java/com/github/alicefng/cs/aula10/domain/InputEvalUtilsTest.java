@@ -10,37 +10,37 @@ public class InputUtilsTest {
     public void testQtdArgumentos() {
         String[] test1 = {};
         assertThrows(IllegalArgumentException.class,
-                () -> InputUtils.evalQtdArgumentos(test1));
+                () -> InputEvalUtils.evalQtdArgumentos(test1));
 
         String[] test2 = {"1", "2"};
         assertThrows(IllegalArgumentException.class,
-                () -> InputUtils.evalQtdArgumentos(test2));
+                () -> InputEvalUtils.evalQtdArgumentos(test2));
 
         String[] test3 = {"1", "2", "3"};
         assertThrows(IllegalArgumentException.class,
-                () -> InputUtils.evalQtdArgumentos(test3));
+                () -> InputEvalUtils.evalQtdArgumentos(test3));
     }
 
     @Test
     public void testIsInteiro() {
         String[] test1 = {"20190618", "10.5", "20190618", "1"};
         assertThrows(NumberFormatException.class,
-                () -> InputUtils.evalArgumentoIsNatural(test1));
+                () -> InputEvalUtils.evalArgumentoIsNatural(test1));
 
         String[] test2 = {"alice", "2011", "20190618", "1"};
         assertThrows(NumberFormatException.class,
-                () -> InputUtils.evalArgumentoIsNatural(test2));
+                () -> InputEvalUtils.evalArgumentoIsNatural(test2));
     }
 
     @Test
     public void testIsNumeroPositivo() {
         String[] test1 = {"-20190618", "2011", "20190618", "1"};
         assertThrows(IllegalArgumentException.class,
-                () -> InputUtils.evalArgumentoIsNatural(test1));
+                () -> InputEvalUtils.evalArgumentoIsNatural(test1));
 
         String[] test2 = {"20190618", "2011", "20190618", "-1"};
         assertThrows(IllegalArgumentException.class,
-                () -> InputUtils.evalArgumentoIsNatural(test2));
+                () -> InputEvalUtils.evalArgumentoIsNatural(test2));
     }
 
 }

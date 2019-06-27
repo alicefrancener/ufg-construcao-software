@@ -2,6 +2,9 @@ package com.github.alicefng.cs.aula10.domain;
 
 import java.util.Arrays;
 
+/**
+ * Classe para validar entradas relativas à datas e dias da semana.
+ */
 public final class CalendarEvalUtils {
 
     /**

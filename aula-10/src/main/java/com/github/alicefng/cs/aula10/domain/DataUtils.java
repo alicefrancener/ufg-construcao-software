@@ -3,7 +3,7 @@ package com.github.alicefng.cs.aula10.domain;
 import java.util.Arrays;
 
 /**
- * Classe para validar datas.
+ * Classe para calcular dia da semana de interesse e validar datas.
  */
 public final class DataUtils {
 

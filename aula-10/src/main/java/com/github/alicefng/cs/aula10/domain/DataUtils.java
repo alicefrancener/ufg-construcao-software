@@ -294,10 +294,12 @@ public final class DataUtils {
                                    final String dataDeReferencia,
                                    final String anoBissexto) {
         final int ano = getAnoAsInt(data);
-        final int mes = getMesAsInt(data);
-        final int dia = getDiaAsInt(data, anoBissexto);
         final int anoRef = getAnoAsInt(dataDeReferencia);
+
+        final int mes = getMesAsInt(data);
         final int mesRef = getMesAsInt(dataDeReferencia);
+
+        final int dia = getDiaAsInt(data, anoBissexto);
         final int diaRef = getDiaAsInt(dataDeReferencia, anoBissexto);
 
         if (ano < anoRef) {
@@ -305,21 +307,22 @@ public final class DataUtils {
         }
         if (ano > anoRef) {
             return 1;
-        } else {
-            if (mes < mesRef) {
-                return -1;
-            }
-            if (mes > mesRef) {
-                return 1;
-            } else {
-                if (dia < diaRef) {
-                    return -1;
-                }
-                if (dia > diaRef) {
-                    return 1;
-                }
-            }
         }
+
+        if (mes < mesRef) {
+            return -1;
+        }
+        if (mes > mesRef) {
+            return 1;
+        }
+
+        if (dia < diaRef) {
+            return -1;
+        }
+        if (dia > diaRef) {
+            return 1;
+        }
+
         return 0;
     }
 

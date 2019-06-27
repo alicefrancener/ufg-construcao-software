@@ -19,7 +19,8 @@ public final class Programa {
      * @param args Os argumentos a serem fornecidos via linha de comando.
      */
     public static void main(final String[] args) {
-        System.exit(ControladorUtils.executar(args));
+        final int diaDaSemanaDeInteresse = ControladorUtils.executar(args);
+        System.exit(diaDaSemanaDeInteresse);
     }
 
 }

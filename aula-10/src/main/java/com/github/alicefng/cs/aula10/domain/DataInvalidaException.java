@@ -3,7 +3,13 @@ package com.github.alicefng.cs.aula10.domain;
 /**
  * Exceção para datas inválidas.
  */
-public class DataInvalidaException extends RuntimeException {
+public class DataInvalidaException extends RuntimeException implements
+        java.io.Serializable {
+
+    /**
+     * Serial para resolver MissingSerialVersionUID.
+     */
+    private static final long serialVersionUID = 1;
 
     /**
      * Constroi uma exceção sem mensagem.

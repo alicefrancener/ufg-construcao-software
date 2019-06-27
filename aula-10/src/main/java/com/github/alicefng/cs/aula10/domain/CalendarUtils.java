@@ -158,8 +158,8 @@ public final class CalendarUtils {
     public static int comparaDatas(final String data,
                                    final String dataDeReferencia) {
 
-        int dataInt = Integer.parseInt(data);
-        int dataIntRef = Integer.parseInt(dataDeReferencia);
+        final int dataInt = Integer.parseInt(data);
+        final int dataIntRef = Integer.parseInt(dataDeReferencia);
 
         if (dataInt < dataIntRef) {
             return -1;

@@ -309,7 +309,7 @@ public final class DataUtils {
 
         String dataDeReferenciaAux = dataDeReferencia;
         int diaDaSemanaAux = Integer.parseInt(diaDaSemana);
-        
+
         final int comparacao = comparaDatas(dataDeInteresse, dataDeReferencia,
                 anoBissexto);
         final int dataDeReferenciaPosterior = -1;
@@ -544,9 +544,8 @@ public final class DataUtils {
         final int quatrocentos = 400;
 
         if ((anoBissextoInt - anoAvaliado) % rangeAnoBissexto == 0) {
-            return isMultiplo(anoAvaliado, cem)
-                    ? isMultiplo(anoAvaliado, quatrocentos)
-                    : true;
+            return !isMultiplo(anoAvaliado, cem)
+                    || isMultiplo(anoAvaliado, quatrocentos);
         }
 
         return false;
@@ -561,7 +560,7 @@ public final class DataUtils {
      * não são múltiplos
      */
     public static boolean isMultiplo(final int num1, final int num2) {
-        return !(num1 % num2 != 0);
+        return num1 % num2 == 0;
     }
 
 }

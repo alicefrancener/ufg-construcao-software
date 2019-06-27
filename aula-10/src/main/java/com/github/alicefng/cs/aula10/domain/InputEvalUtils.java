@@ -1,9 +1,9 @@
 package com.github.alicefng.cs.aula10.domain;
 
 /**
- * Classe para validar entrada do usuário pela linha de comando.
+ * Classe para validar entrada fornecida pela linha de comando.
  */
-public final class InputUtils {
+public final class InputEvalUtils {
 
     /**
      * Número de argumentos exigidos para ser utilizado em outros métodos.
@@ -13,7 +13,7 @@ public final class InputUtils {
     /**
      * Construtor privado para evitar instaciação da classe utilitária.
      */
-    private InputUtils() {
+    private InputEvalUtils() {
 
     }
 

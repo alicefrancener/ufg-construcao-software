@@ -16,6 +16,7 @@ public class ControladorUtilsTest {
         String[] entrada6 = {"20160900", "1", "23450101", "1"};
         String[] entrada7 = {"01110101", "1", "23450101", "1"};
         String[] entrada8 = {"19000229", "2016", "20190626", "2"};
+        String[] entrada9 = {"20190230", "2019", "20190626", "2"};
 
         assertEquals(-1, ControladorUtils.executar(entrada));
         assertEquals(-1, ControladorUtils.executar(entrada2));
@@ -25,6 +26,7 @@ public class ControladorUtilsTest {
         assertEquals(-1, ControladorUtils.executar(entrada6));
         assertEquals(-1, ControladorUtils.executar(entrada7));
         assertEquals(-1, ControladorUtils.executar(entrada8));
+        assertEquals(-1, ControladorUtils.executar(entrada9));
     }
 
     @Test

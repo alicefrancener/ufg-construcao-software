@@ -1,5 +1,9 @@
 package com.github.alicefng.cs.aula10.domain;
 
+/**
+ * Classe para avaliar parâmetros das classes InputUtils e DataUtils, além de
+ * executar o programa para obter o dia da semana de interesse.
+ */
 public final class ControladorUtils {
 
     /**

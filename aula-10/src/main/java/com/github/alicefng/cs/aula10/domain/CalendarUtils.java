@@ -8,97 +8,97 @@ public final class CalendarUtils {
     /**
      * Inteiro correspondente ao mês de janeiro.
      */
-    protected static final int JANEIRO = 1;
+    static final int JANEIRO = 1;
 
     /**
      * Inteiro correspondente ao mês de fevereiro.
      */
-    protected static final int FEVEREIRO = 2;
+    static final int FEVEREIRO = 2;
 
     /**
      * Inteiro correspondente ao mês de março.
      */
-    protected static final int MARCO = 3;
+    static final int MARCO = 3;
 
     /**
      * Inteiro correspondente ao mês abril.
      */
-    protected static final int ABRIL = 4;
+    static final int ABRIL = 4;
 
     /**
      * Inteiro correspondente ao mês de maio.
      */
-    protected static final int MAIO = 5;
+    static final int MAIO = 5;
 
     /**
      * Inteiro correspondente ao mês de junho.
      */
-    protected static final int JUNHO = 6;
+    static final int JUNHO = 6;
 
     /**
      * Inteiro correspondente ao mês de julho.
      */
-    protected static final int JULHO = 7;
+    static final int JULHO = 7;
 
     /**
      * Inteiro correspondente ao mês de agosto.
      */
-    protected static final int AGOSTO = 8;
+    static final int AGOSTO = 8;
 
     /**
      * Inteiro correspondente ao mês de setembro.
      */
-    protected static final int SETEMBRO = 9;
+    static final int SETEMBRO = 9;
 
     /**
      * Inteiro correspondente ao mês de outubro.
      */
-    protected static final int OUTUBRO = 10;
+    static final int OUTUBRO = 10;
 
     /**
      * Inteiro correspondente ao mês de novembro.
      */
-    protected static final int NOVEMBRO = 11;
+    static final int NOVEMBRO = 11;
 
     /**
      * Inteiro correspondente ao mês dezembro.
      */
-    protected static final int DEZEMBRO = 12;
+    static final int DEZEMBRO = 12;
 
     /**
      * Primeiro dia de todos os meses.
      */
-    protected static final int PRIMEIRO_DIA_MES = 1;
+    static final int PRIMEIRO_DIA_MES = 1;
 
     /**
      * Ultimo dia dos meses mais longos (31 dias).
      */
-    protected static final int ULTIMO_DIA_MES_LONGO = 31;
+    static final int ULTIMO_DIA_MES_LONGO = 31;
 
     /**
      * Ultimo dia dos meses com 30 dias.
      */
-    protected static final int ULTIMO_DIA_MES_NORMAL = 30;
+    static final int ULTIMO_DIA_MES_NORMAL = 30;
 
     /**
      * Último dia de fevereiro em ano comum.
      */
-    protected static final int ULTIMO_DIA_FEV = 28;
+    static final int ULTIMO_DIA_FEV = 28;
 
     /**
      * Último dia de fevereiro em ano bissexto.
      */
-    protected static final int ULTIMO_DIA_FEV_BISSEXTO = 29;
+    static final int ULTIMO_DIA_FEV_BISSEXTO = 29;
 
     /**
      * Inteiro correspondente à segunda-feira.
      */
-    protected static final int SEGUNDA = 0;
+    static final int SEGUNDA = 0;
 
     /**
      * Inteiro correspondente ao domingo.
      */
-    protected static final int DOMINGO = 6;
+    static final int DOMINGO = 6;
 
     /**
      * Construtor privado para evitar instaciação da classe utilitária.
@@ -135,7 +135,7 @@ public final class CalendarUtils {
     /**
      * Obtém o dia como inteiro a partir de uma data no formato "aaaammdd".
      *
-     * @param data        A data da qual se quer obter o dia
+     * @param data A data da qual se quer obter o dia
      * @return O dia como inteiro
      * @throws DataInvalidaException Se o dia for zero ou maior que 31;
      *                               Se o dia não for compatível com o mês
@@ -158,8 +158,8 @@ public final class CalendarUtils {
     public static int comparaDatas(final String data,
                                    final String dataDeReferencia) {
 
-        int dataInt = Integer.parseInt(data);
-        int dataIntRef = Integer.parseInt(dataDeReferencia);
+        final int dataInt = Integer.parseInt(data);
+        final int dataIntRef = Integer.parseInt(dataDeReferencia);
 
         if (dataInt < dataIntRef) {
             return -1;
@@ -298,7 +298,7 @@ public final class CalendarUtils {
      * @return A data anterior à data passada como argumento
      */
     public static String subtraiDia(final String data,
-                                     final String anoBissexto) {
+                                    final String anoBissexto) {
         int ano = getAnoAsInt(data);
         int mes = getMesAsInt(data);
         int dia = getDiaAsInt(data);

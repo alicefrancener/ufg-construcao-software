@@ -184,8 +184,7 @@ public final class DataUtils {
      * @return O ano como inteiro
      */
     public static int getAnoAsInt(final String data) {
-        final int ano = Integer.parseInt(data.substring(0, 4));
-        return ano;
+        return Integer.parseInt(data.substring(0, 4));
     }
 
     /**

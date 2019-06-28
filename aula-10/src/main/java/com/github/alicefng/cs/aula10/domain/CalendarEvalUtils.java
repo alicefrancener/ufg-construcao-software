@@ -146,7 +146,7 @@ public final class CalendarEvalUtils {
                 CalendarUtils.DEZEMBRO};
 
         if (dia == CalendarUtils.ULTIMO_DIA_MES_LONGO
-                & Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
+                && Arrays.stream(mesesTrintaEUmDias).noneMatch(m -> m == mes)) {
             throw new DataInvalidaException();
         }
     }

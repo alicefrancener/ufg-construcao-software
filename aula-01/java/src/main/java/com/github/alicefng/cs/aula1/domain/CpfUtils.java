@@ -123,8 +123,7 @@ public final class CpfUtils {
      */
     private static int segundoDigitoVerificador(final int[] digitosCpf) {
         final IntStream indices = IntStream.range(DIGITO_3, DIGITO_11);
-        final int parcelas = (int) indices
-                .mapToLong(i -> digitosCpf[i] * i).sum();
+        final int parcelas = indices.map(i -> digitosCpf[i] * i).sum();
 
         final int numeroDigitos = 11;
         final int constante = 10;
@@ -143,7 +142,7 @@ public final class CpfUtils {
      */
     private static boolean confereDigitosVerificadores(
             final int[] digitos, final int primeiro, final long segundo) {
-        return primeiro == digitos[DIGITO_10] & segundo == digitos[DIGITO_11];
+        return primeiro == digitos[DIGITO_10] && segundo == digitos[DIGITO_11];
     }
 
     /**
@@ -172,7 +171,7 @@ public final class CpfUtils {
                 * digitosCpf[DIGITO_10]) % numeroDigitos) % constanteDez;
 
         return calculoDigito10 == digitosCpf[DIGITO_10]
-                & calculoDigito11 == digitosCpf[DIGITO_11];
+                && calculoDigito11 == digitosCpf[DIGITO_11];
     }
 
     /**

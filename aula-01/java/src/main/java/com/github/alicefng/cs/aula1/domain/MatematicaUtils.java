@@ -472,7 +472,7 @@ public final class MatematicaUtils {
 
 
         final int limite = (int) Math.floor(Math.sqrt(vetorZeros.length));
-        int[] numerosPrimos = vetorZeros;
+        int[] numerosPrimos = vetorZeros.clone();
         for (int i = 1; i < limite; i++) {
             if (numerosPrimos[i] == 0) {
                 for (int multiplo = 2 * i;

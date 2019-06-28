@@ -43,21 +43,21 @@ public class MatematicaUtilsTest {
     @Test
     public void testPossuiPropriedade3025() {
         assertThrows(IllegalArgumentException.class,
-                () -> MatematicaUtils.possuiPropriedade3025(10000));
+                () -> MatematicaUtils.satisfazPropriedade3025(10000));
         assertThrows(IllegalArgumentException.class,
-                () -> MatematicaUtils.possuiPropriedade3025(-1));
-        assertTrue(MatematicaUtils.possuiPropriedade3025(3025));
-        assertFalse(MatematicaUtils.possuiPropriedade3025(3023));
+                () -> MatematicaUtils.satisfazPropriedade3025(-1));
+        assertTrue(MatematicaUtils.satisfazPropriedade3025(3025));
+        assertFalse(MatematicaUtils.satisfazPropriedade3025(3023));
     }
 
     @Test
     public void testPossuiPropriedade153() {
         assertThrows(IllegalArgumentException.class,
-                () -> MatematicaUtils.possuiPropriedade153(10000));
+                () -> MatematicaUtils.satisfazPropriedade153(10000));
         assertThrows(IllegalArgumentException.class,
-                () -> MatematicaUtils.possuiPropriedade153(-1));
-        assertTrue(MatematicaUtils.possuiPropriedade153(153));
-        assertFalse(MatematicaUtils.possuiPropriedade153(157));
+                () -> MatematicaUtils.satisfazPropriedade153(-1));
+        assertTrue(MatematicaUtils.satisfazPropriedade153(153));
+        assertFalse(MatematicaUtils.satisfazPropriedade153(157));
     }
 
     @Test
@@ -180,8 +180,8 @@ public class MatematicaUtilsTest {
 
     @Test
     public void testEstaDentroDoIntervalo() {
-        assertTrue(MatematicaUtils.estaDentroDoIntervalo(10, -100, 100));
-        assertFalse(MatematicaUtils.estaDentroDoIntervalo(-101, -100, 100));
+        assertTrue(MatematicaUtils.contidoNoIntervalo(10, -100, 100));
+        assertFalse(MatematicaUtils.contidoNoIntervalo(-101, -100, 100));
     }
 
 }

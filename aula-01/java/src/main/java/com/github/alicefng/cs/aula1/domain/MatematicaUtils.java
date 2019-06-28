@@ -6,6 +6,8 @@
 
 package com.github.alicefng.cs.aula1.domain;
 
+import java.util.stream.IntStream;
+
 /**
  * Implementação de várias operações matemáticas básicas.
  */
@@ -101,35 +103,35 @@ public final class MatematicaUtils {
     }
 
     /**
-     * Avalia se um número está dentro ou fora de um dado intervalo.
+     * Verifica se um número está contido em um intervalo fechado.
      *
      * @param numero            O número a ser avaliado
-     * @param intervaloInferior O Intervalo inferior a ser considerado
-     * @param intervaloSuperior O Intervalo superior a ser considerado
+     * @param limiteInferior O limite inferior a ser considerado
+     * @param limiteSuperior O limite superior a ser considerado
      * @return Verdadeiro, se o número está dentro do intervalo fornecido,
      * Falso, caso esteja fora do intervalo
      */
-    public static boolean estaDentroDoIntervalo(final int numero,
-                                                final int intervaloInferior,
-                                                final int intervaloSuperior) {
-        return numero >= intervaloInferior && numero <= intervaloSuperior;
+    public static boolean contidoNoIntervalo(final int numero,
+                                             final int limiteInferior,
+                                             final int limiteSuperior) {
+        return numero >= limiteInferior && numero <= limiteSuperior;
     }
 
     /**
-     * Avalia se o argumento possui a propriedade matemática 3025.
+     * Verifica se o argumento satisfaz a propriedade matemática 3025.
      * Essa propriedade é tal que 30 + 25 = 55 e o quadrado desta soma resulta
      * no próprio número, 55^2 = 3025.
      *
      * @param numero O número a ser avaliado
-     * @return Verdadeiro, se o número possui a propriedade
-     * Falso, caso não possua
+     * @return Verdadeiro, se o número satisfaz a propriedade
+     * Falso, caso não
      * @throws IllegalArgumentException Se parâmetro está fora do intervalo
      *                                  permitido [0,9999]
      */
-    public static boolean possuiPropriedade3025(final int numero) {
+    public static boolean satisfazPropriedade3025(final int numero) {
         final int intervaloMinino = 0;
         final int intervaloMaximo = 9999;
-        if (!estaDentroDoIntervalo(numero, intervaloMinino, intervaloMaximo)) {
+        if (!contidoNoIntervalo(numero, intervaloMinino, intervaloMaximo)) {
             throw new IllegalArgumentException(String.format("numero: %d",
                     numero));
         }
@@ -142,30 +144,30 @@ public final class MatematicaUtils {
     }
 
     /**
-     * Avalia se o argumento possuia a propriedade matemática 153.
-     * Essa propriedade é tal que a soma do cubo dos dígidos do número
+     * Verifica se o argumento satisfaz a propriedade matemática 153.
+     * Essa propriedade é tal que a soma do cubo dos dígitos do número
      * resulta no próprio número. Exemplo numero 153: 1^3 + 5^3 + 3^3 = 153.
      *
      * @param numero O número a ser avaliado
-     * @return Verdadeiro, se o número possui a propriedade,
-     * Falso, caso não possua
+     * @return Verdadeiro, se o número satisfaz a propriedade,
+     * Falso, caso não
      * @throws IllegalArgumentException Se parâmetro está fora do intervalo
      *                                  permitido [100,999]
      */
-    public static boolean possuiPropriedade153(final int numero) {
+    public static boolean satisfazPropriedade153(final int numero) {
         final int intervaloMinino = 100;
         final int intervaloMaximo = 999;
-        if (!estaDentroDoIntervalo(numero, intervaloMinino, intervaloMaximo)) {
+        if (!contidoNoIntervalo(numero, intervaloMinino, intervaloMaximo)) {
             throw new IllegalArgumentException(String.format("numero: %d",
                     numero));
         }
 
-        final int quociente = numero / 100;
+        final int primeiroDigito = numero / 100;
         final int resto = restoDaDivisaoInteira(numero, 100);
-        final int quociente2 = resto / 10;
-        final int resto2 = restoDaDivisaoInteira(resto, 10);
-        final int resultado = potencia(quociente, 3)
-                + potencia(quociente2, 3) + potencia(resto2, 3);
+        final int segundoDigito = resto / 10;
+        final int terceiroDigito = restoDaDivisaoInteira(resto, 10);
+        final int resultado = potencia(primeiroDigito, 3)
+                + potencia(segundoDigito, 3) + potencia(terceiroDigito, 3);
 
         return resultado == numero;
     }
@@ -184,12 +186,7 @@ public final class MatematicaUtils {
                     numero));
         }
 
-        int soma = 1;
-        for (int i = 2; i <= numero; i++) {
-            soma = soma + i;
-        }
-
-        return soma;
+        return IntStream.range(1, numero + 1).sum();
     }
 
     /**
@@ -402,15 +399,15 @@ public final class MatematicaUtils {
                             numeroA, numeroB));
         }
 
-        int numeroA2 = numeroA;
-        int numeroB2 = numeroB;
-        while (numeroB2 != 0) {
-            final int temporario = restoDaDivisaoInteira(numeroA2, numeroB2);
-            numeroA2 = numeroB2;
-            numeroB2 = temporario;
+        int a = numeroA;
+        int b = numeroB;
+        while (b != 0) {
+            final int temporario = restoDaDivisaoInteira(a, b);
+            a = b;
+            b = temporario;
         }
 
-        return numeroA2;
+        return a;
     }
 
     /**
@@ -431,17 +428,17 @@ public final class MatematicaUtils {
                             numeroA, numeroB));
         }
 
-        int numeroA2 = numeroA;
-        int numeroB2 = numeroB;
-        while (numeroA2 != numeroB2) {
-            if (numeroA2 > numeroB2) {
-                numeroA2 = numeroA2 - numeroB2;
+        int a = numeroA;
+        int b = numeroB;
+        while (a != b) {
+            if (a > b) {
+                a = a - b;
             } else {
-                numeroB2 = numeroB2 - numeroA2;
+                b = b - a;
             }
         }
 
-        return numeroA2;
+        return a;
     }
 
     /**

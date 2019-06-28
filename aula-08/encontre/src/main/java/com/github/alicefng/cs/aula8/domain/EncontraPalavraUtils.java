@@ -54,7 +54,7 @@ public final class EncontraPalavraUtils {
 
             int numeroColuna = conteudoLinha.indexOf(palavraProcurada);
             if (numeroColuna != -1) {
-                sb.append(String.format("L%d C%d: %s\n",
+                sb.append(String.format("L%d C%d: %s%n",
                         numeroLinha, numeroColuna, conteudoLinha));
             }
             numeroLinha++;
@@ -65,7 +65,7 @@ public final class EncontraPalavraUtils {
 
         br.close();
 
-        return String.format("Encontradas: %d\n%s",
+        return String.format("Encontradas: %d%n%s",
                 ocorrenciaTotal, sb.toString());
     }
 

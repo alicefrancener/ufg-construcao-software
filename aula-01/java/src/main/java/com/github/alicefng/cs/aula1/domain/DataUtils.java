@@ -24,20 +24,24 @@ public final class DataUtils {
     private static final int MENOR_DIA = 1;
 
     /**
-     * Maior valor para um mês.
+     * Inteiro correspondente ao primeiro mês do ano (janeiro).
      */
-    private static final int MAIOR_MES = 12;
+    private static final int JANEIRO = 1;
 
     /**
-     * Menor valor para um mês.
+     * Inteiro correspondente ao segundo mês do ano (fevereiro).
      */
-    private static final int MENOR_MES = 1;
+    private static final int FEVEREIRO = 2;
+
+    /**
+     * Inteiro correspondente ao último mês do ano (dezembro).
+     */
+    private static final int DEZEMBRO = 12;
 
     /**
      * Menor valor para um ano no algoritmo para calcular dia da semana.
      */
     private static final int MENOR_ANO = 1753;
-
 
     /**
      * Previne a classe utilitária de ser instanciada.
@@ -65,7 +69,7 @@ public final class DataUtils {
      * @throws DataInvalidaException Se o mês for inválido
      */
     private static void validaMes(final int mes) {
-        if (mes < MENOR_MES || mes > MAIOR_MES) {
+        if (mes < JANEIRO || mes > DEZEMBRO) {
             throw new DataInvalidaException(String.format("mes: %d", mes),
                     new IllegalArgumentException());
         }
@@ -125,10 +129,10 @@ public final class DataUtils {
         validaAno(ano);
 
         final int totalMesesDeAno = 12;
-        final int mesAux = mes == 1 || mes == 2
+        final int mesAux = mes == JANEIRO || mes == FEVEREIRO
                 ? mes + totalMesesDeAno
                 : mes;
-        final int anoAux = mes == 1 || mes == 2
+        final int anoAux = mes == JANEIRO || mes == FEVEREIRO
                 ? ano - 1
                 : ano;
 

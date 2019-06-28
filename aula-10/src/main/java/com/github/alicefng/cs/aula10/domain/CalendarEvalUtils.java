@@ -110,7 +110,7 @@ public final class CalendarEvalUtils {
      */
     private static void evalRangeMes(final String data) {
         final int mes = CalendarUtils.getMesAsInt(data);
-        if (mes < CalendarUtils.JANEIRO | mes > CalendarUtils.DEZEMBRO) {
+        if (mes < CalendarUtils.JANEIRO || mes > CalendarUtils.DEZEMBRO) {
             throw new DataInvalidaException();
         }
     }
@@ -125,7 +125,7 @@ public final class CalendarEvalUtils {
     private static void evalRangeDia(final String data) {
         final int dia = CalendarUtils.getDiaAsInt(data);
         if (dia < CalendarUtils.PRIMEIRO_DIA_MES
-                | dia > CalendarUtils.ULTIMO_DIA_MES_LONGO) {
+                || dia > CalendarUtils.ULTIMO_DIA_MES_LONGO) {
             throw new DataInvalidaException();
         }
     }
@@ -167,7 +167,7 @@ public final class CalendarEvalUtils {
         final int ano = CalendarUtils.getAnoAsInt(data);
 
         if (dia > CalendarUtils.ULTIMO_DIA_FEV
-                & mes == CalendarUtils.FEVEREIRO) {
+                && mes == CalendarUtils.FEVEREIRO) {
             if (CalendarUtils.isBissexto(anoBissexto, ano)) {
                 if (dia > CalendarUtils.ULTIMO_DIA_FEV_BISSEXTO) {
                     throw new DataInvalidaException();

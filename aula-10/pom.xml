@@ -105,13 +105,37 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-		
-		<dependency>
-			<groupId>com.github.stefanbirkner</groupId>
-			<artifactId>system-rules</artifactId>
-			<version>1.19.0</version>
-			<scope>test</scope>
-		</dependency>
+
+        <!--Inclui as seguintes dependencias para tentar resolver problema de
+         segurança, segundo recomendado em:
+         https://springframework.guru/jackson-dependency-issue-spring-boot-maven/
+         -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.9</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.9</version>
+        </dependency>
 
     </dependencies>
 
@@ -171,7 +195,7 @@
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
         <finalName>vetor</finalName>
 
-        <plugins>            
+        <plugins>
 
             <!-- spotbugs -->
             <!-- mvn compile           -->
@@ -239,7 +263,7 @@
             </plugin>
 
             <!-- FIM DE ATUALIZACAO DE PLUGINS -->
-                 
+
             <!-- mvn checkstyle:checkstyle -->
             <!-- mvn checkstyle:check      -->
             <plugin>
@@ -248,7 +272,9 @@
                 <version>${checkstyle.plugin}</version>
                 <configuration>
                     <configLocation>${tools.dir}/checkstyle.xml</configLocation>
-                    <suppressionsLocation>${tools.dir}/checkstyle-suppressions.xml</suppressionsLocation>
+                    <suppressionsLocation>
+                        ${tools.dir}/checkstyle-suppressions.xml
+                    </suppressionsLocation>
                     <maxAllowedViolations>0</maxAllowedViolations>
                 </configuration>
             </plugin>
@@ -315,7 +341,7 @@
                 <version>3.8.1</version>
             </plugin>
 
-             <!-- PMD                  -->
+            <!-- PMD                  -->
             <!-- mvn pmd:pmd          -->
             <!-- mvn pmd:check        -->
             <!-- target/site/pmd.html -->
@@ -355,7 +381,7 @@
                         <goals>
                             <goal>java</goal>
                         </goals>
-                </execution>
+                    </execution>
                 </executions>
                 <configuration>
                     <mainClass>${project.mainClass}</mainClass>
@@ -518,7 +544,7 @@
             <id>api</id>
             <build>
                 <finalName>api</finalName>
-                <plugins>            
+                <plugins>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>

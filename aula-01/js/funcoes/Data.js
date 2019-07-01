@@ -104,7 +104,7 @@ function validaData(dia, mes, ano) {
 function diaDaSemanaToString(dia) {
     const nomesDiasDaSemana = ["segunda-feira", "terça-feira", "quarta-feira",
         "quinta-feira", "sexta-feira", "sábado", "domingo"];
-    return nomesDiasDaSemana[dia];
+    return nomesDiasDaSemana[dia].toString;
 }
 
 /**

@@ -10,7 +10,7 @@
  * @returns {Array} Vetor contendo em cada posição um dígito do CPF como inteiro
  */
 function converteCaracteresEmInteiros(cpf) {
-    let digitosCpf = [];
+    const digitosCpf = [];
     for (let i = 0; i < cpf.length; i++) {
         digitosCpf[i] = parseInt(cpf.charAt(i));
     }

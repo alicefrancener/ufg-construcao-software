@@ -2,6 +2,8 @@
  * Funções relativas a datas e dias da semana
  */
 
+import DataInvalidaError from "./DataInvalidaError";
+
 /**
  * Lança erro se o dia informado for inválido
  *
@@ -123,7 +125,7 @@ function diaDaSemana(dia, mes, ano) {
     }
 
     const calculoDiaDaSemanaParcial = dia + (2 * mes) +
-    Math.floor((3 * (mes + 1)) / 5) + ano + Math.floor(ano / 4) -
+        Math.floor((3 * (mes + 1)) / 5) + ano + Math.floor(ano / 4) -
         Math.floor(ano / 100) + Math.floor(ano / 400);
     const calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
 

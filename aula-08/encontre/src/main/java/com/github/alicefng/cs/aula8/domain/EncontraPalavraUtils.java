@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.FilenameUtils;
+
 /**
  * Classe utilizada para encontrar palavras em arquivos.
  */
@@ -35,38 +37,49 @@ public final class EncontraPalavraUtils {
     public static String encontraPalavra(final String caminhoArquivo,
                                          final String palavraProcurada)
             throws IOException {
+        final File checkFile =
+                new File(FilenameUtils.getFullPath(caminhoArquivo),
+                        FilenameUtils.getName(caminhoArquivo));
 
-        final File checkFile = new File(caminhoArquivo);
         if (checkFile.length() == 0) {
-            throw new IllegalArgumentException("Arquivo está vazio.");
+            throw new IllegalArgumentException("Arquivo com dados "
+                    + "insuficientes");
         }
 
-        final Charset utf8 = Charset.forName("UTF-8");
-        final BufferedReader br =
-                Files.newBufferedReader(Paths.get(caminhoArquivo), utf8);
-
+        BufferedReader br = null;
         final StringBuilder sb = new StringBuilder();
-        String conteudoLinha;
-        int numeroLinha = 1;
-        int ocorrenciaTotal = 0;
+        try {
+            final Charset utf8 = Charset.forName("UTF-8");
+            br = Files.newBufferedReader(Paths.get(caminhoArquivo), utf8);
 
-        while ((conteudoLinha = br.readLine()) != null) {
+            String conteudoLinha;
+            int numeroLinha = 1;
+            int ocorrenciaTotal = 0;
 
-            int numeroColuna = conteudoLinha.indexOf(palavraProcurada);
-            if (numeroColuna != -1) {
-                sb.append(String.format("L%d C%d: %s%n",
-                        numeroLinha, numeroColuna, conteudoLinha));
+            while ((conteudoLinha = br.readLine()) != null) {
+                final int numeroColuna =
+                        conteudoLinha.indexOf(palavraProcurada);
+                if (numeroColuna != -1) {
+                    sb.append(String.format("L%d C%d: %s%n",
+                            numeroLinha, numeroColuna, conteudoLinha));
+                }
+                numeroLinha++;
+
+                ocorrenciaTotal = ocorrenciaTotal
+                        + conteOcorrencias(palavraProcurada, conteudoLinha);
+
             }
-            numeroLinha++;
 
-            ocorrenciaTotal = ocorrenciaTotal
-                    + conteOcorrencias(palavraProcurada, conteudoLinha);
+            sb.insert(0, String.format("Encontradas: %d%n", ocorrenciaTotal));
+        } catch (Exception ex) {
+            throw new IllegalArgumentException("Arquivo invalido");
+        } finally {
+            if (br != null) {
+                br.close();
+            }
         }
 
-        br.close();
-
-        return String.format("Encontradas: %d%n%s",
-                ocorrenciaTotal, sb.toString());
+        return sb.toString();
     }
 
     /**

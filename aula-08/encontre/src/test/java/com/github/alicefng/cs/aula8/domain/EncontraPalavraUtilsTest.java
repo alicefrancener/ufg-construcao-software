@@ -19,6 +19,7 @@ public final class EncontraPalavraUtilsTest {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(string).getFile());
 
+
         String absolutePath = file.getAbsolutePath();
 
         return absolutePath;
@@ -34,23 +35,42 @@ public final class EncontraPalavraUtilsTest {
 
     @Test
     public void testEncontraPalavra() throws IOException {
-        String stringEsperada = "Encontradas: 3\n" +
-                "L1 C6: It is never too late to be what you might have been. George Eliot\n" +
-                "L3 C1:  never never\n";
+        String stringEsperada = String.format("Encontradas: 3%n"
+                + "L1 C6: It is never too late to be what you might have been. "
+                + "George Eliot%n"
+                + "L3 C1:  never never%n");
 
         assertEquals(stringEsperada, EncontraPalavraUtils.encontraPalavra(
                 getFilename("arquivo-com-frase.txt"), "never"));
 
-        String stringEsperada2 = "Encontradas: 0\n";
+        String stringEsperada2 = String.format("Encontradas: 0%n");
         assertEquals(stringEsperada2, EncontraPalavraUtils.encontraPalavra(
                 getFilename("arquivo-com-frase.txt"), "oi"));
     }
 
     @Test
-    public void testExcecao() {
+    public void testArquivoInexistente() {
+        assertThrows(NullPointerException.class,
+                () -> EncontraPalavraUtils.encontraPalavra(getFilename(
+                        "arquivo-inexistente.txt"), "palavra"));
+        assertThrows(IllegalArgumentException.class,
+                () -> EncontraPalavraUtils.encontraPalavra(getFilename(
+                        ""), "palavra"));
+    }
+
+    @Test
+    public void testArquivoVazio() {
         assertThrows(IllegalArgumentException.class,
                 () -> EncontraPalavraUtils.encontraPalavra(getFilename(
                         "arquivo-vazio.txt"), "palavra"));
     }
+
+    @Test
+    public void testArquivoIncompativel() throws IOException {
+        assertThrows(IllegalArgumentException.class,
+                () -> EncontraPalavraUtils.encontraPalavra(getFilename(
+                        "imagem.jpeg"), "palavra"));
+    }
+
 
 }

@@ -35,19 +35,24 @@ public class VetorUtilsTest {
     @Test
     public void testConteIguais() {
         double[] vetorTest1 = {2, 3, 5.1, 10, 20.5, 2, 2};
-        double[] vetorTest2 = {1, 0, 15.5};
 
         assertEquals(3, VetorUtils.conteIguais(vetorTest1, 2));
-        assertEquals(0, VetorUtils.conteIguais(vetorTest2, 5));
+        assertEquals(1, VetorUtils.conteIguais(vetorTest1, 20.5));
+        assertEquals(0, VetorUtils.conteIguais(vetorTest1, 0));
     }
 
     @Test
     public void testConteLetras() {
-        String strTest1 = "Hello world!!!";
-        String strTest2 = "123456789";
+        String teste1 = "Aaaaaa  Zzz!!!";
+        int[] esperado1 = {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 3};
+        assertArrayEquals(esperado1, VetorUtils.conteLetras(teste1));
 
-        assertEquals(10, VetorUtils.conteLetras(strTest1));
-        assertEquals(0, VetorUtils.conteLetras(strTest2));
+        String teste2 = "{1231564879###$|}";
+        int[] esperado2 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0};
+        assertArrayEquals(esperado2, VetorUtils.conteLetras(teste2));
+
     }
 
     @Test
@@ -70,4 +75,8 @@ public class VetorUtilsTest {
                 VetorUtils.palavraMaisFrequente(strTest2));
     }
 
+    @Test
+    public void testNumeroMaisSorteado() {
+        assertNotNull(VetorUtils.numeroMaiSorteado());
+    }
 }

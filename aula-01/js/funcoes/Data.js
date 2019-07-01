@@ -2,16 +2,7 @@
  * Funções relativas a datas e dias da semana
  */
 
-// TODO considere a possibilidade de colocar esta classe em arquivo próprio. Imagine dezenas delas, ...
-/**
- * Erro para uma data inválida
- */
-class DataInvalidaError extends Error {
-    constructor(msg) {
-        super(msg);
-        this.name = "DataInvalidaError";
-    }
-}
+//const DataInvalidaError = require("DataInvalidaError.js");
 
 /**
  * Lança erro se o dia informado for inválido

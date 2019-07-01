@@ -63,7 +63,7 @@ public final class IsJpegUtils {
         final String segundoByteHex = String.format("%02x", is.read());
 
         if (primeiroByteHex.equals(PRIMEIRO_BYTE)
-                & segundoByteHex.equals(SEGUNDO_BYTE)) {
+                && segundoByteHex.equals(SEGUNDO_BYTE)) {
 
             String penultimoByteHex = "";
             String ultimoByteHex = "";
@@ -75,7 +75,7 @@ public final class IsJpegUtils {
             }
 
             if (penultimoByteHex.equals(PENULTIMO_BYTE)
-                    & ultimoByteHex.equals(ULTIMO_BYTE)) {
+                    && ultimoByteHex.equals(ULTIMO_BYTE)) {
 
                 is.close();
                 return true;

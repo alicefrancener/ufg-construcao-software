@@ -35,23 +35,19 @@ public final class EncontraPalavraUtils {
      * @throws IllegalArgumentException Se arquivo estiver vazio
      */
     public static String encontraPalavra(final String caminhoArquivo,
-                                         final String palavraProcurada) {
-
+                                         final String palavraProcurada)
+            throws IOException {
         final File checkFile =
                 new File(FilenameUtils.getFullPath(caminhoArquivo),
                         FilenameUtils.getName(caminhoArquivo));
 
-        if (!checkFile.exists()) {
-            throw new IllegalArgumentException("Arquivo não existe");
-        }
-
         if (checkFile.length() == 0) {
-            throw new IllegalArgumentException("Arquivo está vazio.");
+            throw new IllegalArgumentException("Arquivo com dados "
+                    + "insuficientes");
         }
 
         BufferedReader br = null;
         final StringBuilder sb = new StringBuilder();
-
         try {
             final Charset utf8 = Charset.forName("UTF-8");
             br = Files.newBufferedReader(Paths.get(caminhoArquivo), utf8);
@@ -61,7 +57,8 @@ public final class EncontraPalavraUtils {
             int ocorrenciaTotal = 0;
 
             while ((conteudoLinha = br.readLine()) != null) {
-                int numeroColuna = conteudoLinha.indexOf(palavraProcurada);
+                final int numeroColuna =
+                        conteudoLinha.indexOf(palavraProcurada);
                 if (numeroColuna != -1) {
                     sb.append(String.format("L%d C%d: %s%n",
                             numeroLinha, numeroColuna, conteudoLinha));
@@ -74,16 +71,11 @@ public final class EncontraPalavraUtils {
             }
 
             sb.insert(0, String.format("Encontradas: %d%n", ocorrenciaTotal));
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (Exception ex) {
+            throw new IllegalArgumentException("Arquivo invalido");
         } finally {
             if (br != null) {
-                try {
-                    br.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                br.close();
             }
         }
 

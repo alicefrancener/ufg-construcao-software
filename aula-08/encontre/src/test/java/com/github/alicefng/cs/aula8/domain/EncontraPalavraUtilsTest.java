@@ -34,7 +34,7 @@ public final class EncontraPalavraUtilsTest {
     }
 
     @Test
-    public void testEncontraPalavra() {
+    public void testEncontraPalavra() throws IOException {
         String stringEsperada = String.format("Encontradas: 3%n"
                 + "L1 C6: It is never too late to be what you might have been. "
                 + "George Eliot%n"
@@ -49,10 +49,28 @@ public final class EncontraPalavraUtilsTest {
     }
 
     @Test
-    public void testExcecao() {
+    public void testArquivoInexistente() {
+        assertThrows(NullPointerException.class,
+                () -> EncontraPalavraUtils.encontraPalavra(getFilename(
+                        "arquivo-inexistente.txt"), "palavra"));
+        assertThrows(IllegalArgumentException.class,
+                () -> EncontraPalavraUtils.encontraPalavra(getFilename(
+                        ""), "palavra"));
+    }
+
+    @Test
+    public void testArquivoVazio() {
         assertThrows(IllegalArgumentException.class,
                 () -> EncontraPalavraUtils.encontraPalavra(getFilename(
                         "arquivo-vazio.txt"), "palavra"));
     }
+
+    @Test
+    public void testArquivoIncompativel() throws IOException {
+        assertThrows(IllegalArgumentException.class,
+                () -> EncontraPalavraUtils.encontraPalavra(getFilename(
+                        "imagem.jpeg"), "palavra"));
+    }
+
 
 }

@@ -3,7 +3,7 @@
  */
 
 /**
- * Produz o resto da divisão entre dois numeros inteiros
+ * Produz o resto da divisão entre dois números inteiros.
  *
  * @param {number} numerador O numerador da divisão
  * @param {number} denominador O denominador da divisão
@@ -19,9 +19,11 @@ function restoDaDivisaoInteira(numerador, denominador) {
         || denominador === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numerador) || !Number.isInteger(denominador)) {
         throw new TypeError("argumentos devem ser inteiros");
     }
+    
     if (numerador <= 0 || denominador < 0) {
         throw new RangeError("numerador ou denominador inválido: numerado = "
             + numerador + ", denominador = " + denominador);
@@ -52,9 +54,11 @@ function produto(multiplicando, multiplicador) {
         || multiplicador === null || multiplicador === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(multiplicando) || !Number.isInteger(multiplicador)) {
         throw new TypeError("argumentos devem ser inteiros");
     }
+    
     if (multiplicando < 0 || multiplicador < 0) {
         throw new RangeError("multiplicando ou multiplicador inválido: "
             + "multiplicando = " + multiplicando + ", multiplicador = "
@@ -67,6 +71,7 @@ function produto(multiplicando, multiplicador) {
         totalParcelas = multiplicador;
         parcela = multiplicando;
     }
+    
     let produto = 0;
     for (let i = 1; i <= totalParcelas; i++) {
         produto = produto + parcela;
@@ -92,9 +97,11 @@ function potencia(base, expoente) {
         || expoente === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(base) || !Number.isInteger(expoente)) {
         throw new TypeError("argumentos devem ser inteiros");
     }
+    
     if (base < 0 || expoente < 0) {
         throw new RangeError("base ou expoente inválido: base = " + base
             + ", expoente = " + expoente);
@@ -118,6 +125,7 @@ function potencia(base, expoente) {
  * @returns {boolean} Verdadeiro, se o número está dentro do intervalo
  * fornecido, e Falso, caso esteja fora do intervalo
  */
+// TODO valem as observações feitas para a versão java.
 function estaDentroDoIntervalo(numero, intervaloInferior, intervaloSuperior) {
     return numero >= intervaloInferior && numero <= intervaloSuperior;
 }
@@ -141,9 +149,11 @@ function possuiPropriedade3025(numero) {
     if (numero === null || numero === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numero)) {
         throw new TypeError("argumento devem ser inteiro");
     }
+    
     if (!estaDentroDoIntervalo(numero, 0, 9999)) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -174,9 +184,11 @@ function possuiPropriedade153(numero) {
     if (numero === null || numero === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numero)) {
         throw new TypeError("argumento devem ser inteiro");
     }
+    
     if (!estaDentroDoIntervalo(numero, 100, 999)) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -207,9 +219,11 @@ function somaDosPrimeirosNaturais(numero) {
     if (numero === null || numero === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numero)) {
         throw new TypeError("argumento devem ser inteiro");
     }
+    
     if (numero < 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -237,9 +251,11 @@ function fatorial(numero) {
     if (numero === null || numero === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numero)) {
         throw new TypeError("argumento devem ser inteiro");
     }
+    
     if (numero < 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -265,12 +281,17 @@ function fatorial(numero) {
  * @throws {RangeError} Se precisao for menor que 1
  */
 function pi(precisao) {
+    // TODO observe que há mais código de verificação do que o restante.
+    // TODO Apenas observe que uma possibilidade é colocá-lo em function específica, conforme você mesmo já fez em outros cenários.
+    // TODO Não é preciso fazer este ajuste aqui e nos demais cenários, mas é importante você perceber como melhorar.
     if (precisao === null || precisao === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(precisao)) {
         throw new TypeError("argumento devem ser inteiro");
     }
+    
     if (precisao < 1) {
         throw new RangeError("precisao inválido: " + precisao);
     }
@@ -308,9 +329,11 @@ function logaritmoNatural(expoente, precisao) {
         || precisao === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(expoente) || !Number.isInteger(precisao)) {
         throw new TypeError("argumentos devem ser inteiro");
     }
+    
     if (expoente < 1 || precisao < 2) {
         throw new RangeError("expoente ou precisao inválido: expoente = "
             + expoente + ", precisao = " + precisao);
@@ -350,10 +373,12 @@ function razaoAurea(numeroA, numeroB, precisao) {
         || precisao === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)
         || !Number.isInteger(precisao)) {
         throw new TypeError("argumentos devem ser inteiro");
     }
+    
     if (numeroA < 0 || numeroA >= numeroB || precisao <= 0) {
         throw new RangeError("numeroA, numeroB ou precisao inválido: numeroA = "
             + numeroA + ", numeroB = " + numeroB + ", precisao = " + precisao);
@@ -386,9 +411,11 @@ function isQuadradoPerfeito(numero) {
     if (numero === null || numero === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numero)) {
         throw new TypeError("argumento deve ser inteiro");
     }
+    
     if (numero < 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -419,9 +446,11 @@ function raizQuadrada(radicando, precisao) {
         || precisao === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(radicando) || !Number.isInteger(precisao)) {
         throw new TypeError("argumentos devem ser inteiros");
     }
+    
     if (radicando <= 0) {
         throw new RangeError("radicando inválido: " + radicando);
     }
@@ -449,9 +478,11 @@ function isPrimo(numero) {
     if (numero === null || numero === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numero)) {
         throw new TypeError("argumento deve ser inteiro");
     }
+    
     if (numero <= 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -483,9 +514,11 @@ function maiorDivisorComumMetodo1(numeroA, numeroB) {
         || numeroB === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)) {
         throw new TypeError("argumentos devem ser inteiro");
     }
+    
     if (numeroB > numeroA || numeroB <= 0) {
         throw new RangeError("numeroA ou numeroB inválido: numeroA = "
             + numeroA + ", numeroB = " + numeroB);
@@ -518,9 +551,11 @@ function maiorDivisorComumMetodo2(numeroA, numeroB) {
         || numeroB === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)) {
         throw new TypeError("argumentos devem ser inteiro");
     }
+    
     if (numeroB > numeroA || numeroB <= 0) {
         throw new RangeError("numeroA ou numeroB inválido: numeroA = "
             + numeroA + ", numeroB = " + numeroB);
@@ -547,8 +582,9 @@ function maiorDivisorComumMetodo2(numeroA, numeroB) {
  */
 function determinarNumerosPrimos(vetorZeros) {
     if (vetorZeros.length <= 1) {
-        throw new Error("vetorZeros.length inválido: " + vetorZeros.length);
+        throw new Error("Vetor de tamanho inválido: " + vetorZeros.length);
     }
+    
     for (let i = 1; i < vetorZeros.length; i++) {
         if (vetorZeros[i] !== 0) {
             throw new RangeError("vetorZeros[" + i + "] inválido: "
@@ -565,6 +601,7 @@ function determinarNumerosPrimos(vetorZeros) {
             }
         }
     }
+    
     return vetorZeros;
 }
 
@@ -584,13 +621,16 @@ function calcularPolinomio(numero, coeficientes) {
     if (numero === null || numero === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(numero)) {
         throw new TypeError("argumento deve ser inteiro");
     }
+    
     const grauDoPolinomio = coeficientes.length;
     if (grauDoPolinomio < 1) {
         throw new Error("grau do polinomio inválido: " + grauDoPolinomio);
     }
+    
     for (let i = 0; i < grauDoPolinomio; i++) {
         if (coeficientes[i] === null || coeficientes[i] === undefined) {
             throw new TypeError("argumento null ou undefined");
@@ -623,9 +663,11 @@ function obterEnesimoTermoDeFibonacci(enesimoTermo) {
     if (enesimoTermo === null || enesimoTermo === undefined) {
         throw new TypeError("argumento null ou undefined");
     }
+    
     if (!Number.isInteger(enesimoTermo)) {
         throw new TypeError("argumento deve ser inteiro");
     }
+    
     if (enesimoTermo < 0) {
         throw new RangeError("enesimoTermo inválido: " + enesimoTermo);
     }
@@ -635,8 +677,9 @@ function obterEnesimoTermoDeFibonacci(enesimoTermo) {
     if (enesimoTermo === 0 | enesimoTermo === 1) {
         return enesimoTermo;
     }
+    
     for (let i = 2; i <= enesimoTermo; i++) {
-        let temporario = termoAtual;
+        const temporario = termoAtual;
         termoAtual = termoAtual + termoProximo;
         termoProximo = temporario;
     }

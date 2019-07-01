@@ -8,4 +8,4 @@ class DataInvalidaError extends Error {
   }
 }
 
-module.export = {DataInvalidaError};
+export default DataInvalidaError;

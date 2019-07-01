@@ -6,6 +6,9 @@
 
 package com.github.alicefng.cs.aula7.domain;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * Implementação de várias operações com vetores.
  */
@@ -41,13 +44,7 @@ public final class VetorUtils {
      * @return A soma dos ímpares do vetor
      */
     public static int somaImpares(final int[] numeros) {
-        int soma = 0;
-        for (int i = 0; i < numeros.length; i++) {
-            if (numeros[i] % 2 == 1) {
-                soma = soma + numeros[i];
-            }
-        }
-
+        final int soma = Arrays.stream(numeros).filter(n -> n % 2 == 1).sum();
         return soma;
     }
 

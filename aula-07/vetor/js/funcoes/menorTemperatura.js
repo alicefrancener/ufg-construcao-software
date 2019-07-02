@@ -18,14 +18,7 @@ function menorTemperatura(temperaturas) {
         }
     }
 
-    let menorTemperatura = temperaturas[0];
-    for (let i = 1; i < temperaturas.length; i++) {
-        if (menorTemperatura > temperaturas[i]) {
-            menorTemperatura = temperaturas[i];
-        }
-    }
-
-    return menorTemperatura;
+    return Math.min.apply(Math, temperaturas);
 }
 
 module.exports = {menorTemperatura};

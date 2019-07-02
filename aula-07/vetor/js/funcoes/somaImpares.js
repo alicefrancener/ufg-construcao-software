@@ -18,14 +18,7 @@ function somaImpares(numeros) {
         }
     }
 
-    let soma = 0;
-    for (let i = 0; i < numeros.length; i++) {
-        if (numeros[i] % 2 === 1) {
-            soma = soma + numeros[i];
-        }
-    }
-
-    return soma;
+    return numeros.filter(n => n % 2 === 1).reduce((a, b) => a + b);
 }
 
 module.exports = {somaImpares};

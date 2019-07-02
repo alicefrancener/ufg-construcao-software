@@ -625,8 +625,6 @@ function obterEnesimoTermoDeFibonacci(enesimoTermo) {
     return termoAtual;
 }
 
-
-
 module.exports = {
     satisfazPropriedade3025,
     restoDaDivisaoInteira,
@@ -644,7 +642,6 @@ module.exports = {
     isPrimo,
     maiorDivisorComumMetodo1,
     maiorDivisorComumMetodo2,
-    determinarNumerosPrimos,
     calcularPolinomio,
     obterEnesimoTermoDeFibonacci
 };

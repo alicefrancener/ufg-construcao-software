@@ -2,16 +2,7 @@
  * Funções relativas a datas e dias da semana
  */
 
-// TODO considere a possibilidade de colocar esta classe em arquivo próprio. Imagine dezenas delas, ...
-/**
- * Erro para uma data inválida
- */
-class DataInvalidaError extends Error {
-    constructor(msg) {
-        super(msg);
-        this.name = "DataInvalidaError";
-    }
-}
+const DataInvalidaError = require("./Data.js");
 
 /**
  * Lança erro se o dia informado for inválido
@@ -26,11 +17,11 @@ function diaValido(dia) {
     if (dia === null || dia === undefined) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
-    
+
     if (!Number.isInteger(dia)) {
         throw new DataInvalidaError("argumento deve ser inteiro");
     }
-    
+
     if (dia < 1 || dia > 31) {
         throw new DataInvalidaError("dia invalido: " + dia);
     }
@@ -49,11 +40,11 @@ function mesValido(mes) {
     if (mes === null || mes === undefined) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
-    
+
     if (!Number.isInteger(mes)) {
         throw new DataInvalidaError("argumento deve ser inteiro");
     }
-    
+
     if (mes < 1 || mes > 12) {
         throw new DataInvalidaError("mes invalido: " + mes);
     }
@@ -72,11 +63,11 @@ function anoValido(ano) {
     if (ano === null || ano === undefined) {
         throw new DataInvalidaError("argumento null ou undefined");
     }
-    
+
     if (!Number.isInteger(ano)) {
         throw new DataInvalidaError("argumento deve ser inteiro");
     }
-    
+
     if (ano <= 1753) {
         throw new DataInvalidaError("ano invalido: " + ano);
     }
@@ -110,8 +101,9 @@ function validaData(dia, mes, ano) {
  */
 function diaDaSemanaToString(dia) {
     const nomesDiasDaSemana = ["segunda-feira", "terça-feira", "quarta-feira",
-        "quinta-feira", "sexta-feira", "sábado", "domingo"];
-    return nomesDiasDaSemana[dia].toString;
+        "quinta-feira", "sexta-feira", "sábado", "domingo"
+    ];
+    return nomesDiasDaSemana[dia];
 }
 
 /**
@@ -131,11 +123,10 @@ function diaDaSemana(dia, mes, ano) {
         mes = mes + 12;
         ano = ano - 1;
     }
-    // FIXME observe que ano / 400, por exemplo, é sempre "real", enquanto o algoritmo, salvo engano, é div. 
-    // Noutras palavras, a expressão abaixo supostamente não é aquela fornecida pelo algoritmo. A alternativa
-    // especulada é Math.floor(ano / 400), por exemplo, e não para toda a expressão. 
-    const calculoDiaDaSemanaParcial = parseInt(dia + 2 * mes + 3
-        * (mes + 1) / 5 + ano + ano / 4 - ano / 100 + ano / 400);
+
+    const calculoDiaDaSemanaParcial = dia + (2 * mes) +
+        Math.floor((3 * (mes + 1)) / 5) + ano + Math.floor(ano / 4) -
+        Math.floor(ano / 100) + Math.floor(ano / 400);
     const calculoDiaDaSemanaFinal = calculoDiaDaSemanaParcial % 7;
 
     return diaDaSemanaToString(calculoDiaDaSemanaFinal);

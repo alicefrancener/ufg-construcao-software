@@ -2,6 +2,45 @@
  * Operações matemáticas básicas
  */
 
+
+/**
+ * Checa se argumento é null ou undefined
+ *
+ * @param argumento O argumento a ser checado
+ * @throws {TypeError} Se argumento for null ou undefined
+ */
+function checkForNullUndefined(argumento) {
+    if (argumento === null || argumento === undefined) {
+        throw new TypeError("argumento null ou undefined");
+    }
+}
+
+/**
+ * Checa se argumento é inteiro
+ *
+ * @param argumento O argumento a ser checado
+ * @throws {TypeError} Se argumento não for inteiro
+ */
+function checkForInteger(argumento) {
+    if (!Number.isInteger(argumento)) {
+        throw new TypeError("argumento não é inteiro");
+    }
+}
+
+/**
+ * Avalia se um número está dentro ou fora de um dado intervalo
+ *
+ * @param {number} numero O número a ser avaliado
+ * @param {number} limiteInferior O Intervalo superior a ser considerado
+ * @param {number} limiteSuperior O intervalo inferior a ser considerado
+ *
+ * @returns {boolean} Verdadeiro, se o número está dentro do intervalo
+ * fornecido, e Falso, caso esteja fora do intervalo
+ */
+function contidoNoInvervalo(numero, limiteInferior, limiteSuperior) {
+    return numero >= limiteInferior && numero <= limiteSuperior;
+}
+
 /**
  * Produz o resto da divisão entre dois números inteiros.
  *
@@ -15,15 +54,10 @@
  * @throws {RangeError}  Se o numerador for <= 0 ou se o denominador for <0
  */
 function restoDaDivisaoInteira(numerador, denominador) {
-    if (numerador === undefined || numerador === null || denominador === null
-        || denominador === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numerador) || !Number.isInteger(denominador)) {
-        throw new TypeError("argumentos devem ser inteiros");
-    }
-    
+    const argumentos = [numerador, denominador];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
     if (numerador <= 0 || denominador < 0) {
         throw new RangeError("numerador ou denominador inválido: numerado = "
             + numerador + ", denominador = " + denominador);
@@ -50,15 +84,10 @@ function restoDaDivisaoInteira(numerador, denominador) {
  * @throws {RangeError} Se o multiplicando ou multiplicador for menor que 0
  */
 function produto(multiplicando, multiplicador) {
-    if (multiplicando === null || multiplicando === undefined
-        || multiplicador === null || multiplicador === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(multiplicando) || !Number.isInteger(multiplicador)) {
-        throw new TypeError("argumentos devem ser inteiros");
-    }
-    
+    const argumentos = [multiplicando, multiplicador];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
     if (multiplicando < 0 || multiplicador < 0) {
         throw new RangeError("multiplicando ou multiplicador inválido: "
             + "multiplicando = " + multiplicando + ", multiplicador = "
@@ -71,7 +100,7 @@ function produto(multiplicando, multiplicador) {
         totalParcelas = multiplicador;
         parcela = multiplicando;
     }
-    
+
     let produto = 0;
     for (let i = 1; i <= totalParcelas; i++) {
         produto = produto + parcela;
@@ -93,15 +122,10 @@ function produto(multiplicando, multiplicador) {
  * @throws {RangeError} Se base ou expoente forem menores que 0
  */
 function potencia(base, expoente) {
-    if (base === null || base === undefined || expoente === null
-        || expoente === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(base) || !Number.isInteger(expoente)) {
-        throw new TypeError("argumentos devem ser inteiros");
-    }
-    
+    const argumentos = [base, expoente];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
     if (base < 0 || expoente < 0) {
         throw new RangeError("base ou expoente inválido: base = " + base
             + ", expoente = " + expoente);
@@ -115,20 +139,7 @@ function potencia(base, expoente) {
     return potencia;
 }
 
-/**
- * Avalia se um número está dentro ou fora de um dado intervalo
- *
- * @param {number} numero O número a ser avaliado
- * @param {number} intervaloInferior O Intervalo superior a ser considerado
- * @param {number} intervaloSuperior O intervalo inferior a ser considerado
- *
- * @returns {boolean} Verdadeiro, se o número está dentro do intervalo
- * fornecido, e Falso, caso esteja fora do intervalo
- */
-// TODO valem as observações feitas para a versão java.
-function estaDentroDoIntervalo(numero, intervaloInferior, intervaloSuperior) {
-    return numero >= intervaloInferior && numero <= intervaloSuperior;
-}
+
 
 /**
  * Avalia se o argumento possui a propriedade matemática 3025
@@ -145,16 +156,11 @@ function estaDentroDoIntervalo(numero, intervaloInferior, intervaloSuperior) {
  * @throws {TypeError} Se parâmetro não for inteiro
  * @throws {RangeError} Se parâmetro está fora do intervalo permitido [0,9999]
  */
-function possuiPropriedade3025(numero) {
-    if (numero === null || numero === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numero)) {
-        throw new TypeError("argumento devem ser inteiro");
-    }
-    
-    if (!estaDentroDoIntervalo(numero, 0, 9999)) {
+function satisfazPropriedade3025(numero) {
+    checkForNullUndefined(numero);
+    checkForInteger(numero);
+
+    if (!contidoNoInvervalo(numero, 0, 9999)) {
         throw new RangeError("numero inválido: " + numero);
     }
 
@@ -180,25 +186,20 @@ function possuiPropriedade3025(numero) {
  * @throws {TypeError} Se parâmetro não for inteiro
  * @throws {RangeError} Se parâmetro está fora do intervalo permitido [100,999]
  */
-function possuiPropriedade153(numero) {
-    if (numero === null || numero === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numero)) {
-        throw new TypeError("argumento devem ser inteiro");
-    }
-    
-    if (!estaDentroDoIntervalo(numero, 100, 999)) {
+function satisfazPropriedade153(numero) {
+    checkForNullUndefined(numero);
+    checkForInteger(numero);
+
+    if (!contidoNoInvervalo(numero, 100, 999)) {
         throw new RangeError("numero inválido: " + numero);
     }
 
-    const quociente = parseInt(numero / 100);
+    const primeiroDigito = parseInt(numero / 100);
     const resto = restoDaDivisaoInteira(numero, 100);
-    const quociente2 = parseInt(resto / 10);
-    const resto2 = restoDaDivisaoInteira(resto, 10);
-    const resultado = potencia(quociente, 3) + potencia(quociente2, 3)
-        + potencia(resto2, 3);
+    const segundoDigito = parseInt(resto / 10);
+    const terceiroDigito = restoDaDivisaoInteira(resto, 10);
+    const resultado = potencia(primeiroDigito, 3) + potencia(segundoDigito, 3)
+        + potencia(terceiroDigito, 3);
 
     return resultado === numero;
 }
@@ -216,14 +217,9 @@ function possuiPropriedade153(numero) {
  * @throws {RangeError} Se parâmetro for menor que 1
  */
 function somaDosPrimeirosNaturais(numero) {
-    if (numero === null || numero === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numero)) {
-        throw new TypeError("argumento devem ser inteiro");
-    }
-    
+    checkForNullUndefined(numero);
+    checkForInteger(numero);
+
     if (numero < 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -248,14 +244,9 @@ function somaDosPrimeirosNaturais(numero) {
  * @throws {RangeError} Se parâmetro for menor que 1
  */
 function fatorial(numero) {
-    if (numero === null || numero === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numero)) {
-        throw new TypeError("argumento devem ser inteiro");
-    }
-    
+    checkForNullUndefined(numero);
+    checkForInteger(numero);
+
     if (numero < 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -281,17 +272,9 @@ function fatorial(numero) {
  * @throws {RangeError} Se precisao for menor que 1
  */
 function pi(precisao) {
-    // TODO observe que há mais código de verificação do que o restante.
-    // TODO Apenas observe que uma possibilidade é colocá-lo em function específica, conforme você mesmo já fez em outros cenários.
-    // TODO Não é preciso fazer este ajuste aqui e nos demais cenários, mas é importante você perceber como melhorar.
-    if (precisao === null || precisao === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(precisao)) {
-        throw new TypeError("argumento devem ser inteiro");
-    }
-    
+    checkForNullUndefined(precisao);
+    checkForInteger(precisao);
+
     if (precisao < 1) {
         throw new RangeError("precisao inválido: " + precisao);
     }
@@ -325,15 +308,10 @@ function pi(precisao) {
  * que 2
  */
 function logaritmoNatural(expoente, precisao) {
-    if (expoente === null || expoente === undefined || precisao === null
-        || precisao === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(expoente) || !Number.isInteger(precisao)) {
-        throw new TypeError("argumentos devem ser inteiro");
-    }
-    
+    const argumentos = [expoente, precisao];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
     if (expoente < 1 || precisao < 2) {
         throw new RangeError("expoente ou precisao inválido: expoente = "
             + expoente + ", precisao = " + precisao);
@@ -368,18 +346,11 @@ function logaritmoNatural(expoente, precisao) {
  * ou se a precisão é menor ou igual a 0
  */
 function razaoAurea(numeroA, numeroB, precisao) {
-    if (numeroA === null || numeroA === undefined || numeroB === null
-        || numeroB === undefined || precisao === null
-        || precisao === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)
-        || !Number.isInteger(precisao)) {
-        throw new TypeError("argumentos devem ser inteiro");
-    }
-    
-    if (numeroA < 0 || numeroA >= numeroB || precisao <= 0) {
+    const argumentos = [numeroA, numeroB, precisao];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
+    if (!contidoNoInvervalo(numeroA, 0, numeroB) || precisao <= 0) {
         throw new RangeError("numeroA, numeroB ou precisao inválido: numeroA = "
             + numeroA + ", numeroB = " + numeroB + ", precisao = " + precisao);
     }
@@ -408,14 +379,9 @@ function razaoAurea(numeroA, numeroB, precisao) {
  * @throws {RangeError} Se o argumento é menor que 1
  */
 function isQuadradoPerfeito(numero) {
-    if (numero === null || numero === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numero)) {
-        throw new TypeError("argumento deve ser inteiro");
-    }
-    
+    checkForNullUndefined(numero);
+    checkForInteger(numero);
+
     if (numero < 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -442,15 +408,10 @@ function isQuadradoPerfeito(numero) {
  * @throws {RangeError} Se radicando é menor ou igual a 0
  */
 function raizQuadrada(radicando, precisao) {
-    if (radicando === null || radicando === undefined || precisao === null
-        || precisao === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(radicando) || !Number.isInteger(precisao)) {
-        throw new TypeError("argumentos devem ser inteiros");
-    }
-    
+    const argumentos = [radicando, precisao];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
     if (radicando <= 0) {
         throw new RangeError("radicando inválido: " + radicando);
     }
@@ -475,14 +436,9 @@ function raizQuadrada(radicando, precisao) {
  * @throws {RangeError} Se parâmetro é menor ou igual a 1
  */
 function isPrimo(numero) {
-    if (numero === null || numero === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numero)) {
-        throw new TypeError("argumento deve ser inteiro");
-    }
-    
+    checkForNullUndefined(numero);
+    checkForInteger(numero);
+
     if (numero <= 1) {
         throw new RangeError("numero inválido: " + numero);
     }
@@ -510,15 +466,10 @@ function isPrimo(numero) {
  * ou se o numero B for menor que 1
  */
 function maiorDivisorComumMetodo1(numeroA, numeroB) {
-    if (numeroA === null || numeroA === undefined || numeroB === null
-        || numeroB === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)) {
-        throw new TypeError("argumentos devem ser inteiro");
-    }
-    
+    const argumentos = [numeroA, numeroB];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
     if (numeroB > numeroA || numeroB <= 0) {
         throw new RangeError("numeroA ou numeroB inválido: numeroA = "
             + numeroA + ", numeroB = " + numeroB);
@@ -547,15 +498,10 @@ function maiorDivisorComumMetodo1(numeroA, numeroB) {
  * ou se o numero B for menor que 1
  */
 function maiorDivisorComumMetodo2(numeroA, numeroB) {
-    if (numeroA === null || numeroA === undefined || numeroB === null
-        || numeroB === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)) {
-        throw new TypeError("argumentos devem ser inteiro");
-    }
-    
+    const argumentos = [numeroA, numeroB];
+    argumentos.forEach(checkForNullUndefined);
+    argumentos.forEach(checkForInteger);
+
     if (numeroB > numeroA || numeroB <= 0) {
         throw new RangeError("numeroA ou numeroB inválido: numeroA = "
             + numeroA + ", numeroB = " + numeroB);
@@ -581,10 +527,12 @@ function maiorDivisorComumMetodo2(numeroA, numeroB) {
  * @throws {RangeError} Se números do vetor fornecido não for 0
  */
 function determinarNumerosPrimos(vetorZeros) {
+    checkForNullUndefined(vetorZeros);
+
     if (vetorZeros.length <= 1) {
         throw new Error("Vetor de tamanho inválido: " + vetorZeros.length);
     }
-    
+
     for (let i = 1; i < vetorZeros.length; i++) {
         if (vetorZeros[i] !== 0) {
             throw new RangeError("vetorZeros[" + i + "] inválido: "
@@ -592,7 +540,7 @@ function determinarNumerosPrimos(vetorZeros) {
         }
     }
 
-    const limite = Math.floor(raizQuadrada(vetorZeros.length, 100));
+    const limite = Math.floor(Math.sqrt(vetorZeros.length));
     for (let i = 1; i < limite; i++) {
         if (vetorZeros[i] === 0) {
             for (let multiplo = 2 * i; multiplo < vetorZeros.length; multiplo =
@@ -601,7 +549,7 @@ function determinarNumerosPrimos(vetorZeros) {
             }
         }
     }
-    
+
     return vetorZeros;
 }
 
@@ -618,19 +566,14 @@ function determinarNumerosPrimos(vetorZeros) {
  * @throws {Error} Se o grau do polinômio for menor que 1
  */
 function calcularPolinomio(numero, coeficientes) {
-    if (numero === null || numero === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(numero)) {
-        throw new TypeError("argumento deve ser inteiro");
-    }
-    
+    checkForNullUndefined(numero);
+    checkForInteger(numero);
+
     const grauDoPolinomio = coeficientes.length;
     if (grauDoPolinomio < 1) {
         throw new Error("grau do polinomio inválido: " + grauDoPolinomio);
     }
-    
+
     for (let i = 0; i < grauDoPolinomio; i++) {
         if (coeficientes[i] === null || coeficientes[i] === undefined) {
             throw new TypeError("argumento null ou undefined");
@@ -660,14 +603,9 @@ function calcularPolinomio(numero, coeficientes) {
  * @throws {RangeError} Se o argumento for menor que 0
  */
 function obterEnesimoTermoDeFibonacci(enesimoTermo) {
-    if (enesimoTermo === null || enesimoTermo === undefined) {
-        throw new TypeError("argumento null ou undefined");
-    }
-    
-    if (!Number.isInteger(enesimoTermo)) {
-        throw new TypeError("argumento deve ser inteiro");
-    }
-    
+    checkForInteger(enesimoTermo);
+    checkForNullUndefined(enesimoTermo);
+
     if (enesimoTermo < 0) {
         throw new RangeError("enesimoTermo inválido: " + enesimoTermo);
     }
@@ -677,7 +615,7 @@ function obterEnesimoTermoDeFibonacci(enesimoTermo) {
     if (enesimoTermo === 0 | enesimoTermo === 1) {
         return enesimoTermo;
     }
-    
+
     for (let i = 2; i <= enesimoTermo; i++) {
         const temporario = termoAtual;
         termoAtual = termoAtual + termoProximo;
@@ -688,12 +626,12 @@ function obterEnesimoTermoDeFibonacci(enesimoTermo) {
 }
 
 module.exports = {
-    possuiPropriedade3025,
+    satisfazPropriedade3025,
     restoDaDivisaoInteira,
     produto,
     potencia,
-    estaDentroDoIntervalo,
-    possuiPropriedade153,
+    contidoNoInvervalo,
+    satisfazPropriedade153,
     somaDosPrimeirosNaturais,
     fatorial,
     pi,
@@ -704,7 +642,6 @@ module.exports = {
     isPrimo,
     maiorDivisorComumMetodo1,
     maiorDivisorComumMetodo2,
-    determinarNumerosPrimos,
     calcularPolinomio,
     obterEnesimoTermoDeFibonacci
 };

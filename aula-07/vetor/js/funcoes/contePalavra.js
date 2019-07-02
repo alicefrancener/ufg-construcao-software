@@ -24,14 +24,7 @@ function contePalavra(palavra, frase) {
         }
     }
 
-    let quantidade = 0;
-    for (let i = 0; i < frase.length; i++) {
-        if (palavra === frase[i]) {
-            quantidade++;
-        }
-    }
-
-    return quantidade;
+    return frase.filter(i => i == palavra).length;
 }
 
 module.exports = {contePalavra};

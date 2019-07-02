@@ -2,7 +2,7 @@
  * Funções relativas a datas e dias da semana
  */
 
-import DataInvalidaError from "./DataInvalidaError";
+const DataInvalidaError = require("./Data.js");
 
 /**
  * Lança erro se o dia informado for inválido

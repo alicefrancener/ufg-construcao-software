@@ -25,20 +25,20 @@ public class DiaDaSemanaController {
             "não fornecida") String arg, @RequestParam(value = "data2",
             defaultValue = "não fornecida") String arg2) {
 
-        LocalDate data = localDateFromString(arg);
+        LocalDate dataInicial = localDateFromString(arg);
 
         // Se data não é fornecida, ou é inválida, use o dia corrente.
-        if (data == null) {
-            data = LocalDate.now();
+        if (dataInicial == null) {
+            dataInicial = LocalDate.now();
         }
 
-        int dia = data.getDayOfMonth();
-        int mes = data.getMonthValue();
-        int ano = data.getYear();
+        int dia = dataInicial.getDayOfMonth();
+        int mes = dataInicial.getMonthValue();
+        int ano = dataInicial.getYear();
 
         int ds = Calendario.diaDaSemana(dia, mes, ano);
 
-        return new DiaDaSemana(data, Calendario.semana[ds]);
+        return new DiaDaSemana(dataInicial, Calendario.semana[ds]);
     }
 
     /**

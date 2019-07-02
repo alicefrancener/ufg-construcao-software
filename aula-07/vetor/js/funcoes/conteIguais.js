@@ -23,16 +23,6 @@ function conteIguais(numeros, comparador) {
         }
     }
 
-    //let quantidade = 0;
-    //for (let i = 0; i < numeros.length; i++) {
-    //    if (numeros[i] === comparador) {
-    //        quantidade++;
-    //    }
-    //}
-
-    //return quantidade;
-    
-    // TODO observe a diferença da proposta acima. Aquela abaixo segue o estilo funcional. 
     return numeros.filter(i => i == comparador).length;
 }
 

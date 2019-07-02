@@ -21,4 +21,9 @@ test("argumento não é String", () => {
 test("satisfaz (caso classico)", () => {
     expect(funcao.contePalavra("como",
         ["como", "você", "hello", "como"])).toBe(2);
+    expect(funcao.contePalavra("hello",
+        ["como", "você", "hello", "como"])).toBe(1);
+    expect(funcao.contePalavra("nenhuma",
+        ["como", "você", "hello", "como"])).toBe(0);
+
 });

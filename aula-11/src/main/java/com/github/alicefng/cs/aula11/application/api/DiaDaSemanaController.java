@@ -21,8 +21,9 @@ public class DiaDaSemanaController {
 
     @CrossOrigin
     @RequestMapping("ds")
-    public DiaDaSemana diaDaSemana(@RequestParam(value="data", defaultValue =
-            "não fornecida") String arg) {
+    public DiaDaSemana diaDaSemana(@RequestParam(value = "data", defaultValue =
+            "não fornecida") String arg, @RequestParam(value = "data2",
+            defaultValue = "não fornecida") String arg2) {
 
         LocalDate data = localDateFromString(arg);
 
@@ -43,8 +44,8 @@ public class DiaDaSemanaController {
     /**
      * Recupera a instância de {@link LocalDate} correspondente à sequência
      * de caracteres.
-     * @param data Sequência de caracteres no formato dd-MM-yyyy.
      *
+     * @param data Sequência de caracteres no formato dd-MM-yyyy.
      * @return Instância de {@link LocalDate} ou {@code null}, se a sequência
      * não está no formato esperado (por exemplo, "01-01-2018")
      */

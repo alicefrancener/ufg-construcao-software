@@ -16,3 +16,7 @@ test("numero não é inteiro", () => {
 test("satisfaz (caso classico)", () => {
     expect(funcao.somaImpares([1, 8, 7, 3, 11])).toBe(22);
 });
+
+test("satisfaz (caso classico)", () => {
+    expect(funcao.somaImpares([1, 3, 1, 3, 50])).toBe(8);
+});

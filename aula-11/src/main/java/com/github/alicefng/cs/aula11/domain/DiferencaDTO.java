@@ -11,4 +11,8 @@ public class DiferencaDTO {
         this.diferecaDias = diferencaDias;
     }
 
+    public long getDiferencaDias() {
+        return this.diferecaDias;
+    }
+
 }

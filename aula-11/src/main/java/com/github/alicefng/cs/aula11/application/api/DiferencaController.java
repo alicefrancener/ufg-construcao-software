@@ -21,16 +21,17 @@ public class DiferencaController {
 
     @CrossOrigin
     @RequestMapping("ds")
-    public DiferencaDTO diferencaDias(@RequestParam(value = "data",
-            defaultValue = "não fornecida") String arg, @RequestParam(value = "data2",
-            defaultValue = "não fornecida") String arg2) {
+    public DiferencaDTO diferencaDias(@RequestParam(value = "inicio",
+            defaultValue = "não fornecida") String arg, @RequestParam(value =
+            "fim", defaultValue = "não fornecida") String arg2) {
 
         LocalDate dataInicial = localDateFromString(arg);
         LocalDate dataFinal = localDateFromString(arg2);
 
         // Se data não é fornecida, ou é inválida, use o dia corrente.
-        if (dataInicial == null) {
+        if (dataInicial == null || dataFinal == null) {
             dataInicial = LocalDate.now();
+            dataFinal = LocalDate.now();
         }
 
         long diferenca = DataUtils.getDiferencaEntreDatas(dataInicial,
@@ -49,7 +50,7 @@ public class DiferencaController {
      */
     public LocalDate localDateFromString(String data) {
         try {
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             return LocalDate.parse(data, fmt);
         } catch (Exception exp) {
             return null;

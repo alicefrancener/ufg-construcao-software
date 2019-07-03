@@ -19,7 +19,7 @@
             };
 
             let dataAnoMesDiaI = document.getElementById("inicio").value;
-            let dataAnoMesDiaF = document.getElementById("final").value;
+            let dataAnoMesDiaF = document.getElementById("fim").value;
             let inicio = formataData(dataAnoMesDiaI);
             let fim = formataData(dataAnoMesDiaF);
             xhttp.open("GET", PATH + inicio + "&fim" + fim, true);
@@ -27,13 +27,13 @@
         }
 
         function dataCorrente() {
-            document.getElementById("data").valueAsDate = new Date();
+            document.getElementById("inicio").valueAsDate = new Date();
         }
 
         // Funções para integração (satisfazer contrato do servidor)
 
         function extraiDiaDaSemanaDaResposta(resposta) {
-            return JSON.parse(resposta).diaDaSemana;
+            return JSON.parse(resposta).diferenca;
         }
 
         // Dia ou mês deve possuir dois dígitos
@@ -46,9 +46,9 @@
             return ("0000" + n).substr(-4,4);
         }
 
-        // ENTRADA: ano-mes-dia SAIDA: dd/mm/yyyy
+        // ENTRADA: ano-mes-dia SAIDA: dd-mm-yyyy
         function formataData(data) {
-            let [a, m, d] = data.split("/");
+            let [a, m, d] = data.split("-");
 
             let dia = formataDiaOuMes(d);
             let mes = formataDiaOuMes(m);

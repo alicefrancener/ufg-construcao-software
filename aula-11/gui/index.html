@@ -22,7 +22,7 @@
             let dataAnoMesDiaF = document.getElementById("fim").value;
             let inicio = formataData(dataAnoMesDiaI);
             let fim = formataData(dataAnoMesDiaF);
-            xhttp.open("GET", PATH + inicio + "&fim" + fim, true);
+            xhttp.open("GET", PATH + inicio + "&fim=" + fim, true);
             xhttp.send();
         }
 
@@ -33,7 +33,7 @@
         // Funções para integração (satisfazer contrato do servidor)
 
         function extraiDiaDaSemanaDaResposta(resposta) {
-            return JSON.parse(resposta).diferenca;
+            return JSON.parse(resposta).diferencaDias;
         }
 
         // Dia ou mês deve possuir dois dígitos

@@ -6,9 +6,8 @@
 
 package com.github.alicefng.cs.aula11.application.api;
 
-import com.github.alicefng.cs.aula11.domain.Calendario;
 import com.github.alicefng.cs.aula11.domain.DataUtils;
-import com.github.alicefng.cs.aula11.domain.DiaDaSemana;
+import com.github.alicefng.cs.aula11.domain.DiferencaDTO;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,12 +17,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @RestController
-public class DiaDaSemanaController {
+public class DiferencaController {
 
     @CrossOrigin
     @RequestMapping("ds")
-    public DiaDaSemana diaDaSemana(@RequestParam(value = "data", defaultValue =
-            "não fornecida") String arg, @RequestParam(value = "data2",
+    public DiferencaDTO diferencaDias(@RequestParam(value = "data",
+            defaultValue = "não fornecida") String arg, @RequestParam(value = "data2",
             defaultValue = "não fornecida") String arg2) {
 
         LocalDate dataInicial = localDateFromString(arg);
@@ -34,9 +33,10 @@ public class DiaDaSemanaController {
             dataInicial = LocalDate.now();
         }
 
-        long ds = DataUtils.getDiferencaEntreDatas(dataInicial, dataFinal);
+        long diferenca = DataUtils.getDiferencaEntreDatas(dataInicial,
+                dataFinal);
 
-        return new DiaDaSemana(dataInicial, Calendario.semana[1]);
+        return new DiferencaDTO(diferenca);
     }
 
     /**

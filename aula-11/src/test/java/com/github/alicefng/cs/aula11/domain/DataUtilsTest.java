@@ -1,11 +1,9 @@
 package com.github.alicefng.cs.aula11.domain;
 
-import com.github.alicefng.cs.aula11.application.api.DiaDaSemanaController;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

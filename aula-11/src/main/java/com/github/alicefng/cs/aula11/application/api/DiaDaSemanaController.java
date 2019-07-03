@@ -7,6 +7,7 @@
 package com.github.alicefng.cs.aula11.application.api;
 
 import com.github.alicefng.cs.aula11.domain.Calendario;
+import com.github.alicefng.cs.aula11.domain.DataUtils;
 import com.github.alicefng.cs.aula11.domain.DiaDaSemana;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,19 +27,16 @@ public class DiaDaSemanaController {
             defaultValue = "não fornecida") String arg2) {
 
         LocalDate dataInicial = localDateFromString(arg);
+        LocalDate dataFinal = localDateFromString(arg2);
 
         // Se data não é fornecida, ou é inválida, use o dia corrente.
         if (dataInicial == null) {
             dataInicial = LocalDate.now();
         }
 
-        int dia = dataInicial.getDayOfMonth();
-        int mes = dataInicial.getMonthValue();
-        int ano = dataInicial.getYear();
+        long ds = DataUtils.getDiferencaEntreDatas(dataInicial, dataFinal);
 
-        int ds = Calendario.diaDaSemana(dia, mes, ano);
-
-        return new DiaDaSemana(dataInicial, Calendario.semana[ds]);
+        return new DiaDaSemana(dataInicial, Calendario.semana[1]);
     }
 
     /**
@@ -51,7 +49,7 @@ public class DiaDaSemanaController {
      */
     public LocalDate localDateFromString(String data) {
         try {
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             return LocalDate.parse(data, fmt);
         } catch (Exception exp) {
             return null;

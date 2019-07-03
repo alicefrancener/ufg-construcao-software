@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
         // Path para a requisição (URL)
-        const PATH = "http://localhost:8080/ds?data=";
+        const PATH = "http://localhost:8080/ds?inicio=";
 
         function atualizaDiaDaSemana() {
             var xhttp = new XMLHttpRequest();
@@ -18,9 +18,11 @@
                 }
             };
 
-            let dataAnoMesDia = document.getElementById("data").value;
-            let data = formataData(dataAnoMesDia);
-            xhttp.open("GET", PATH + data, true);
+            let dataAnoMesDiaI = document.getElementById("inicio").value;
+            let dataAnoMesDiaF = document.getElementById("final").value;
+            let inicio = formataData(dataAnoMesDiaI);
+            let fim = formataData(dataAnoMesDiaF);
+            xhttp.open("GET", PATH + inicio + "&fim" + fim, true);
             xhttp.send();
         }
 
@@ -44,9 +46,9 @@
             return ("0000" + n).substr(-4,4);
         }
 
-        // ENTRADA: ano-mes-dia SAIDA: dd-mm-yyyy
+        // ENTRADA: ano-mes-dia SAIDA: dd/mm/yyyy
         function formataData(data) {
-            let [a, m, d] = data.split("-");
+            let [a, m, d] = data.split("/");
 
             let dia = formataDiaOuMes(d);
             let mes = formataDiaOuMes(m);
@@ -57,9 +59,11 @@
     </script>
 </head>
 <body onload="dataCorrente()">
-    <h1>Dia da semana</h1>
-    <label for="data">Mês / Dia / Ano</label><br>
-    <input type="date" id="data" onchange="atualizaDiaDaSemana()">
+    <h1>Diferença de dias entre datas</h1>
+    <label for="inicio">Mês / Dia / Ano</label><br>
+    <input type="date" id="inicio" onchange="atualizaDiaDaSemana()">
+    <label for="fim">Mês / Dia / Ano</label><br>
+    <input type="date" id="fim" onchange="atualizaDiaDaSemana()">
     <button onclick="atualizaDiaDaSemana();">Obtenha dia da semana</button><br>
     <span style="color: blue; font-size: 20pt;" id="resultado"></span>
 </body>

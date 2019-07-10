@@ -3,11 +3,17 @@ package com.github.alicefng.cs.aula12.domain;
 public class NumeroUtils {
 
     public static void getGrafiaNumeroCardinal(final int numero){
-        if (numero < 0 && numero > 9999){
+        if (numero < 0 || numero > 9999){
             throw new IllegalArgumentException("Numero invalido");
         }
 
         // obter cada um dos dígitos: milhar, centena, dezena, unidade
+        final int milhar = numero / 1000;
+        final int restoMilhar = numero % 1000;
+        final int centena = restoMilhar / 100;
+        final int restoCentena = restoMilhar % 100;
+        final int dezena = restoCentena / 10;
+        final int unidade = restoCentena % 10;
 
         // todos os dígitos vão de 0 a 9 (zero a nove)
             // 1º dígito (0 a 9) => getGrafiaMilhar()

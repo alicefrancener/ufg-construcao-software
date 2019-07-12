@@ -2,23 +2,48 @@ package com.github.alicefng.cs.aula12.domain;
 
 import java.util.Arrays;
 
-public class NumeroUtils {
-
-
-    private final static String[] GRAFIA_UNIDADE = {"zero", "um", "dois",
+/**
+ * Classe para se obter grafia de números.
+ */
+public final class NumeroUtils {
+    /**
+     * Grafia de unidades.
+     */
+    private static final String[] GRAFIA_UNIDADE = {"zero", "um", "dois",
             "três", "quatro", "cinco", "seis", "sete", "oito", "nove"};
 
-    private final static String[] GRAFIA_CENTENA = {"cento", "cem", "duzentos",
+    /**
+     * Grafia de centenas.
+     */
+    private static final String[] GRAFIA_CENTENA = {"cento", "cem", "duzentos",
             "trezentos", "quatrocentos", "quinhentos", "seiscentos",
             "setecentos", "oitocentos", "novecentos"};
 
-    private final static String[][] GRAFIA_DEZENA = {{"dez", "onze", "doze",
+    /**
+     * Grafia de dezenas.
+     */
+    private static final String[][] GRAFIA_DEZENA = {{"dez", "onze", "doze",
             "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito",
             "dezenove"},
 
             {"vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta",
                     "oitenta", "noventa"}};
 
+    /**
+     * Construtor privado para evitar instanciação da classe.
+     */
+    private NumeroUtils() {
+
+    }
+
+    /**
+     * Obtém a grafia de um número cardinal.
+     *
+     * @param numero O número a se obter a grafia
+     * @return A grafia do número
+     * @throws IllegalArgumentException, se parâmetro for menor que 0 e maior
+     * que 9999.
+     */
     public static String getGrafiaNumeroCardinal(final int numero) {
         if (numero < 0 || numero > 9999) {
             throw new IllegalArgumentException("Numero invalido");
@@ -31,20 +56,28 @@ public class NumeroUtils {
         final int dezena = restoCentena / 10;
         final int unidade = restoCentena % 10;
 
-        return  unirGrafiaNumero(milhar, centena, dezena, unidade);
-
-
+        return unirGrafiaNumero(milhar, centena, dezena, unidade);
     }
 
-    private static String unirGrafiaNumero(int milhar, int centena, int dezena,
-                                           int unidade) {
+    /**
+     * Reúne a grafia de cada um dos dígitos.
+     *
+     * @param milhar Dígito de milhar a se obter a grafia
+     * @param centena Dígito de centena a se obter a grafia
+     * @param dezena Dígito de dezena a se obter a grafia
+     * @param unidade Dígito de unidade a se obter a grafia
+     * @return A grafia reunida de cada um dos dígitos
+     */
+    private static String unirGrafiaNumero(final int milhar, final int centena,
+                                           final int dezena,
+                                           final int unidade) {
         final String[] grafiaNumero = {getGrafiaMillhar(milhar),
                 getGrafiaCentena(centena, dezena, unidade),
                 getGrafiaDezena(dezena, unidade),
                 getGrafiaUnidade(milhar, centena, dezena, unidade)};
 
-        long contNotNull =
-                Arrays.stream(grafiaNumero).filter(grafia -> grafia != null).count();
+        long contNotNull = Arrays.stream(grafiaNumero).filter(
+                grafia -> grafia != null).count();
 
         StringBuilder resu = new StringBuilder();
         int contNotNullAux = 0;
@@ -88,6 +121,13 @@ public class NumeroUtils {
         return resu.toString();
     }
 
+    /**
+     * Produz a grafia da dezena.
+     *
+     * @param dezena A dezena a ser obtida a grafia
+     * @param unidade A unidade para auxiliar a obtenção da grafia da dezena
+     * @return A grafia da dezena
+     */
     public static String getGrafiaDezena(final int dezena,
                                          final int unidade) {
         if (dezena == 0) {
@@ -101,6 +141,12 @@ public class NumeroUtils {
         return GRAFIA_DEZENA[1][dezena - 2];
     }
 
+    /**
+     * Produz a grafia do milhar.
+     *
+     * @param milhar O milhar a ser obtido a grafia
+     * @return A grafia do milhar
+     */
     public static String getGrafiaMillhar(final int milhar) {
         if (milhar == 0) {
             return null;
@@ -114,6 +160,14 @@ public class NumeroUtils {
         return String.format("%s %s", GRAFIA_UNIDADE[milhar], "mil");
     }
 
+    /**
+     * Produz a grafia da centena.
+     *
+     * @param centena A centena a ser obtida a grafia
+     * @param dezena A dezena para auxiliar a obtenção da grafia da centena
+     * @param unidade A unidade para auxiliar a obtenção da grafia da centena
+     * @return A grafia da centena
+     */
     public static String getGrafiaCentena(final int centena,
                                           final int dezena,
                                           final int unidade) {
@@ -128,9 +182,18 @@ public class NumeroUtils {
         }
     }
 
+    /**
+     * Produz a grafia da unidade.
+     *
+     * @param milhar O milhar para auxiliar a obtenção da grafia da unidade
+     * @param centena A centena para auxiliar a obtenção da grafia da unidade
+     * @param dezena A dezena para auxiliar a obtenção da grafia da unidade
+     * @param unidade A unidade a ser obtida a grafia
+     * @return A grafia da unidade
+     */
     public static String getGrafiaUnidade(final int milhar,
-                                          final int centena
-            , final int dezena, final int unidade) {
+                                          final int centena,
+                                          final int dezena, final int unidade) {
         if (dezena == 1) {
             return null;
         }

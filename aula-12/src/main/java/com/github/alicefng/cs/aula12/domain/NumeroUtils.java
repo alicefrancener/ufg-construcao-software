@@ -42,7 +42,7 @@ public final class NumeroUtils {
      * @param numero O número a se obter a grafia
      * @return A grafia do número
      * @throws IllegalArgumentException, se parâmetro for menor que 0 e maior
-     * que 9999.
+     *                                   que 9999.
      */
     public static String getGrafiaNumeroCardinal(final int numero) {
         final int menorNumero = 0;
@@ -58,75 +58,59 @@ public final class NumeroUtils {
         final int dezena = restoCentena / 10;
         final int unidade = restoCentena % 10;
 
-        return unirGrafiaNumero(milhar, centena, dezena, unidade);
-    }
-
-    /**
-     * Reúne a grafia de cada um dos dígitos.
-     *
-     * @param milhar Dígito de milhar a se obter a grafia
-     * @param centena Dígito de centena a se obter a grafia
-     * @param dezena Dígito de dezena a se obter a grafia
-     * @param unidade Dígito de unidade a se obter a grafia
-     * @return A grafia reunida de cada um dos dígitos
-     */
-    private static String unirGrafiaNumero(final int milhar, final int centena,
-                                           final int dezena,
-                                           final int unidade) {
         final String[] grafiaNumero = {getGrafiaMillhar(milhar),
                 getGrafiaCentena(centena, dezena, unidade),
                 getGrafiaDezena(dezena, unidade),
                 getGrafiaUnidade(milhar, centena, dezena, unidade)};
 
-        final long contNotNull = Arrays.stream(grafiaNumero).filter(
-                grafia -> grafia != null).count();
+        return unirGrafias(grafiaNumero);
+    }
 
-        final StringBuilder grafiaFinal = new StringBuilder();
-        int contNotNullAux = 0;
-        while (contNotNullAux != contNotNull) {
-            for (String grafia : grafiaNumero) {
+    /**
+     * Reúne a grafia de cada um dos dígitos.
+     *
+     * @param grafiaNumero String[] que contém a grafia isolada de 4 dígitos
+     *                     correspondentes a milhar, centena, dezena e unidade
+     * @return A grafia unidade de cada um dos dígitos
+     */
+    public static String unirGrafias(final String[] grafiaNumero) {
+        String[] grafiaNotNull = Arrays.stream(grafiaNumero)
+                .filter(grafia -> grafia != null)
+                .toArray(String[]::new);
 
-                if (grafia != null) {
-                    contNotNullAux++;
+        String grafiaUniao = null;
 
-                    if (contNotNull == 1) {
-                        grafiaFinal.append(grafia);
-                    }
+        if (grafiaNotNull.length == 1) {
+            grafiaUniao = grafiaNotNull[0];
+        }
 
-                    if (contNotNull == 2) {
-                        if (contNotNullAux == 1) {
-                            grafiaFinal.append(grafia);
-                        }
-                        if (contNotNullAux == 2) {
-                            grafiaFinal.append(" e ");
-                            grafiaFinal.append(grafia);
-                        }
-                    }
+        if (grafiaNotNull.length == 2) {
+            grafiaUniao = String.format("%s e %s", grafiaNotNull[0],
+                    grafiaNotNull[1]);
+        }
 
-                    if (contNotNull == 3) {
-                        if (contNotNullAux == 1) {
-                            grafiaFinal.append(grafia);
-                        }
-                        if (contNotNullAux == 2) {
-                            grafiaFinal.append(", ");
-                            grafiaFinal.append(grafia);
-                        }
-                        if (contNotNullAux == 3) {
-                            grafiaFinal.append(" e ");
-                            grafiaFinal.append(grafia);
-                        }
-                    }
-                }
+        if (grafiaNotNull.length == 3) {
+            if (grafiaNotNull[0].contains("mil")) {
+                grafiaUniao = String.format("%s, %s e %s", grafiaNotNull[0],
+                        grafiaNotNull[1], grafiaNotNull[2]);
+            } else {
+                grafiaUniao = String.format("%s e %s e %s", grafiaNotNull[0],
+                        grafiaNotNull[1], grafiaNotNull[2]);
             }
         }
 
-        return grafiaFinal.toString();
+        if (grafiaNotNull.length == 4) {
+            grafiaUniao = String.format("%s, %s e %s e %s", grafiaNotNull[0],
+                    grafiaNotNull[1], grafiaNotNull[2], grafiaNotNull[3]);
+        }
+
+        return grafiaUniao;
     }
 
     /**
      * Produz a grafia da dezena.
      *
-     * @param dezena A dezena a ser obtida a grafia
+     * @param dezena  A dezena a ser obtida a grafia
      * @param unidade A unidade para auxiliar a obtenção da grafia da dezena
      * @return A grafia da dezena
      */
@@ -166,7 +150,7 @@ public final class NumeroUtils {
      * Produz a grafia da centena.
      *
      * @param centena A centena a ser obtida a grafia
-     * @param dezena A dezena para auxiliar a obtenção da grafia da centena
+     * @param dezena  A dezena para auxiliar a obtenção da grafia da centena
      * @param unidade A unidade para auxiliar a obtenção da grafia da centena
      * @return A grafia da centena
      */
@@ -187,9 +171,9 @@ public final class NumeroUtils {
     /**
      * Produz a grafia da unidade.
      *
-     * @param milhar O milhar para auxiliar a obtenção da grafia da unidade
+     * @param milhar  O milhar para auxiliar a obtenção da grafia da unidade
      * @param centena A centena para auxiliar a obtenção da grafia da unidade
-     * @param dezena A dezena para auxiliar a obtenção da grafia da unidade
+     * @param dezena  A dezena para auxiliar a obtenção da grafia da unidade
      * @param unidade A unidade a ser obtida a grafia
      * @return A grafia da unidade
      */

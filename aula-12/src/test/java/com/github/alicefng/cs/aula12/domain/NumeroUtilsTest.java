@@ -27,6 +27,8 @@ public final class NumeroUtilsTest {
         assertEquals("cento", NumeroUtils.getGrafiaCentena(1, 2, 0));
         assertEquals("cem", NumeroUtils.getGrafiaCentena(1, 0, 0));
         assertEquals("novecentos", NumeroUtils.getGrafiaCentena(9, 3, 1));
+        assertEquals("oitocentos", NumeroUtils.getGrafiaCentena(8, 0, 0));
+        assertEquals("cento", NumeroUtils.getGrafiaCentena(1, 0, 1));
     }
 
     @Test
@@ -38,10 +40,15 @@ public final class NumeroUtilsTest {
     }
 
     @Test
-    public void testGetUnidade2() {
+    public void testGetUnidade() {
         assertEquals("zero", NumeroUtils.getGrafiaUnidade(0, 0, 0, 0));
         assertEquals("nove", NumeroUtils.getGrafiaUnidade(0, 0, 0, 9));
         assertEquals("dois", NumeroUtils.getGrafiaUnidade(9, 9, 9, 2));
+        assertEquals(null, NumeroUtils.getGrafiaUnidade(9, 9, 9, 0));
+        assertEquals(null, NumeroUtils.getGrafiaUnidade(9, 0, 9, 0));
+        assertEquals(null, NumeroUtils.getGrafiaUnidade(0, 1, 9, 0));
+        assertEquals(null, NumeroUtils.getGrafiaUnidade(3, 1, 0, 0));
+        assertEquals(null, NumeroUtils.getGrafiaUnidade(0, 0, 8, 0));
     }
 
     @Test

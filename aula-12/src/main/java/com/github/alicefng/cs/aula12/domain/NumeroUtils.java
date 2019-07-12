@@ -1,5 +1,7 @@
 package com.github.alicefng.cs.aula12.domain;
 
+import java.util.Arrays;
+
 public class NumeroUtils {
 
 
@@ -10,7 +12,14 @@ public class NumeroUtils {
             "trezentos", "quatrocentos", "quinhentos", "seiscentos",
             "setecentos", "oitocentos", "novecentos"};
 
-    public static void getGrafiaNumeroCardinal(final int numero) {
+    private final static String[][] GRAFIA_DEZENA = {{"dez", "onze", "doze",
+            "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito",
+            "dezenove"},
+
+            {"vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta",
+                    "oitenta", "noventa"}};
+
+    public static String getGrafiaNumeroCardinal(final int numero) {
         if (numero < 0 || numero > 9999) {
             throw new IllegalArgumentException("Numero invalido");
         }
@@ -22,51 +31,118 @@ public class NumeroUtils {
         final int dezena = restoCentena / 10;
         final int unidade = restoCentena % 10;
 
-        final StringBuilder grafiaNumero = new StringBuilder();
+        return  unirGrafiaNumero(milhar, centena, dezena, unidade);
 
-        if (milhar != 0) {
-            grafiaNumero.append(getGrafiaMillhar(milhar));
+
+    }
+
+    private static String unirGrafiaNumero(int milhar, int centena, int dezena,
+                                           int unidade) {
+        final String[] grafiaNumero = {getGrafiaMillhar(milhar),
+                getGrafiaCentena(centena, dezena, unidade),
+                getGrafiaDezena(dezena, unidade),
+                getGrafiaUnidade(milhar, centena, dezena, unidade)};
+
+        long contNotNull =
+                Arrays.stream(grafiaNumero).filter(grafia -> grafia != null).count();
+
+        StringBuilder resu = new StringBuilder();
+        int contNotNullAux = 0;
+        while (contNotNullAux != contNotNull) {
+            for (String grafia : grafiaNumero) {
+
+                if (grafia != null) {
+                    contNotNullAux++;
+
+                    if (contNotNull == 1) {
+                        resu.append(grafia);
+                    }
+
+                    if (contNotNull == 2) {
+                        if (contNotNullAux == 1) {
+                            resu.append(grafia);
+                        }
+                        if (contNotNullAux == 2) {
+                            resu.append(" e ");
+                            resu.append(grafia);
+                        }
+                    }
+
+                    if (contNotNull == 3) {
+                        if (contNotNullAux == 1) {
+                            resu.append(grafia);
+                        }
+                        if (contNotNullAux == 2) {
+                            resu.append(", ");
+                            resu.append(grafia);
+                        }
+                        if (contNotNullAux == 3) {
+                            resu.append(" e ");
+                            resu.append(grafia);
+                        }
+                    }
+                }
+            }
         }
-        if(milhar != 0){
-            grafiaNumero.append(getGrafiaCentena(centena,dezena,unidade));
+
+        return resu.toString();
+    }
+
+    public static String getGrafiaDezena(final int dezena,
+                                         final int unidade) {
+        if (dezena == 0) {
+            return null;
         }
 
-        // 3º digito, se for 1, checar próximo
-        // dez, onze, doze, treze, quatorze, ...
+        if (dezena == 1) {
+            return GRAFIA_DEZENA[0][unidade];
+        }
 
-        // 3º dígito (0 a 9, exceto 1) => getGrafiaDezena()
-        // se for zero, ignore
-        // se for entre 2 a 9, vinte, trinta ...
-
-        // 4º dígito, se todos os anteriores forem zero e esse for zero,
-        // retorne zero, se não ignore
-
-        // 4º dígito (1 a 9) =>
-        // retorne um a nove
+        return GRAFIA_DEZENA[1][dezena - 2];
     }
 
     public static String getGrafiaMillhar(final int milhar) {
-        final String grafiaMilhar = "mil";
+        if (milhar == 0) {
+            return null;
+        }
 
+        final String grafiaMilhar = "mil";
         if (milhar == 1) {
             return grafiaMilhar;
         }
 
-        return String.format("%s %s", getGrafiaUnidade(milhar), "mil");
+        return String.format("%s %s", GRAFIA_UNIDADE[milhar], "mil");
     }
 
-    public static String getGrafiaCentena(final int centena, final int dezena
-            , final int unidade) {
-        if (centena == 1 && dezena != 0 && unidade != 0) {
+    public static String getGrafiaCentena(final int centena,
+                                          final int dezena,
+                                          final int unidade) {
+        if (centena == 0) {
+            return null;
+        }
+
+        if (centena == 1 && (dezena != 0 || unidade != 0)) {
             return GRAFIA_CENTENA[0];
         } else {
             return GRAFIA_CENTENA[centena];
         }
     }
 
-    public static String getGrafiaUnidade(final int unidade) {
+    public static String getGrafiaUnidade(final int milhar,
+                                          final int centena
+            , final int dezena, final int unidade) {
+        if (dezena == 1) {
+            return null;
+        }
+
+        if (unidade == 0) {
+            if (milhar == 0 && centena == 0 && dezena == 0) {
+                return GRAFIA_UNIDADE[unidade];
+            }
+            return null;
+        }
+
         return GRAFIA_UNIDADE[unidade];
     }
-
 
 }

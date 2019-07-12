@@ -62,8 +62,14 @@ public final class NumeroUtilsTest {
         resultado = "mil e trezentos";
         assertEquals(resultado, NumeroUtils.getGrafiaNumeroCardinal(1300));
 
-        resultado = "quinhentos, trinta e cinco";
+        resultado = "quinhentos e trinta e cinco";
         assertEquals(resultado, NumeroUtils.getGrafiaNumeroCardinal(535));
-    }
 
+        resultado = "cento e onze";
+        assertEquals(resultado, NumeroUtils.getGrafiaNumeroCardinal(111));
+
+        resultado = "nove mil, novecentos e noventa e nove";
+        assertEquals(resultado, NumeroUtils.getGrafiaNumeroCardinal(9999));
+
+    }
 }

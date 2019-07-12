@@ -45,7 +45,9 @@ public final class NumeroUtils {
      * que 9999.
      */
     public static String getGrafiaNumeroCardinal(final int numero) {
-        if (numero < 0 || numero > 9999) {
+        final int menorNumero = 0;
+        final int maiorNumero = 9999;
+        if (numero < menorNumero || numero > maiorNumero) {
             throw new IllegalArgumentException("Numero invalido");
         }
 

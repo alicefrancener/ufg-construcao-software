@@ -78,10 +78,10 @@ public final class NumeroUtils {
                 getGrafiaDezena(dezena, unidade),
                 getGrafiaUnidade(milhar, centena, dezena, unidade)};
 
-        long contNotNull = Arrays.stream(grafiaNumero).filter(
+        final long contNotNull = Arrays.stream(grafiaNumero).filter(
                 grafia -> grafia != null).count();
 
-        StringBuilder resu = new StringBuilder();
+        final StringBuilder grafiaFinal = new StringBuilder();
         int contNotNullAux = 0;
         while (contNotNullAux != contNotNull) {
             for (String grafia : grafiaNumero) {
@@ -90,37 +90,37 @@ public final class NumeroUtils {
                     contNotNullAux++;
 
                     if (contNotNull == 1) {
-                        resu.append(grafia);
+                        grafiaFinal.append(grafia);
                     }
 
                     if (contNotNull == 2) {
                         if (contNotNullAux == 1) {
-                            resu.append(grafia);
+                            grafiaFinal.append(grafia);
                         }
                         if (contNotNullAux == 2) {
-                            resu.append(" e ");
-                            resu.append(grafia);
+                            grafiaFinal.append(" e ");
+                            grafiaFinal.append(grafia);
                         }
                     }
 
                     if (contNotNull == 3) {
                         if (contNotNullAux == 1) {
-                            resu.append(grafia);
+                            grafiaFinal.append(grafia);
                         }
                         if (contNotNullAux == 2) {
-                            resu.append(", ");
-                            resu.append(grafia);
+                            grafiaFinal.append(", ");
+                            grafiaFinal.append(grafia);
                         }
                         if (contNotNullAux == 3) {
-                            resu.append(" e ");
-                            resu.append(grafia);
+                            grafiaFinal.append(" e ");
+                            grafiaFinal.append(grafia);
                         }
                     }
                 }
             }
         }
 
-        return resu.toString();
+        return grafiaFinal.toString();
     }
 
     /**

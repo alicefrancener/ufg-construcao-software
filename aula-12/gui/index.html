@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grafia de Inteiro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+        // Path para a requisição (URL)
+        const PATH = "http://localhost:8080/ds?numero=";
+
+        function atualizaGrafiaNumero() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let dds = xhttp.responseText;
+                    document.getElementById("resultado").innerHTML = `${dds}`;
+                }
+            };
+
+            let numero = document.getElementById("numero").value;
+
+            xhttp.open("GET", PATH + numero, true);
+            xhttp.send();
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>Insira número para obter grafia</h1>
+    <label for="numero">Inteiro (0 a 9999)</label><br>
+    <input type="number" id="numero" onchange="atualizaGrafiaNumero()">
+    <button onclick="atualizaGrafiaNumero();">Obtenha grafia do
+        inteiro</button><br>
+    <span style="color: blue; font-size: 20pt;" id="resultado"></span>
+</body>
+</html>
